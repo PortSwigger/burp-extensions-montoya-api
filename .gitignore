@@ -1,0 +1,26 @@
+# /
+.DS_Store
+.idea/copyright
+.idea/modules
+.idea/shelf
+.idea/compiler.xml
+.idea/desktop.iml
+.idea/gradle.xml
+.idea/jarRepositories.xml
+.idea/libraries-with-intellij-classes.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
+.idea/dictionaries/
+.idea/cfnlintPlugin.xml
+.idea/inspectionProfiles/Project_Default.xml
+.gradle
+build/
+out/
+dist/
+*.iml
+.teamcity/target/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*

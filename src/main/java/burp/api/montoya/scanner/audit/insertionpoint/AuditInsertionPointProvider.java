@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ *
+ * This code may be used to extend the functionality of Burp Suite Community Edition
+ * and Burp Suite Professional, provided that this usage does not violate the
+ * license terms for those products.
+ */
+
+package burp.api.montoya.scanner.audit.insertionpoint;
+
+import burp.api.montoya.http.message.HttpRequestResponse;
+import burp.api.montoya.scanner.Scanner;
+
+import java.util.List;
+
+/**
+ * Extensions can implement this interface and then call
+ * {@link Scanner#registerInsertionPointProvider(AuditInsertionPointProvider)}
+ * to register a provider for custom audit insertion points.
+ */
+public interface AuditInsertionPointProvider
+{
+    /**
+     * When a request is actively audited, the Scanner will invoke this method,
+     * and the provider should provide a list of custom insertion points that
+     * will be used in the audit. <b>Note:</b> these insertion points are used
+     * in addition to those that are derived from Burp Scanner's configuration,
+     * and those provided by any other Burp extensions.
+     *
+     * @param baseHttpRequestResponse The base {@link HttpRequestResponse} that
+     * will be actively audited.
+     * @return A list of {@link ExtensionGeneratedAuditInsertionPoint} objects
+     * that should be used in the audit, or {@code null} if no custom insertion
+     * points are applicable for this request.
+     */
+    List<ExtensionGeneratedAuditInsertionPoint> provideInsertionPoints(HttpRequestResponse baseHttpRequestResponse);
+}

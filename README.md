@@ -31,3 +31,4 @@ Examples
 
 * [Register HTTP handler](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extender/http/HttpHandlerExample.java)
 * [Register Proxy handler](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extender/proxy/ProxyHandlerExample.java)
+* [Using both versions of the Api](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extender/multi/MultiApiExample.java)

@@ -10,10 +10,10 @@ package burp.api.montoya.scanner.audit.issues;
 
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.HttpRequestResponse;
+import burp.api.montoya.http.message.MarkedHttpRequestResponse;
 import burp.api.montoya.scanner.ScanCheck;
 import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.sitemap.SiteMap;
-import burp.api.montoya.ui.contextmenu.HttpRequestResponseWithSelection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -87,17 +87,13 @@ public interface AuditIssue
      * This method returns the HTTP request/response messages on the basis of
      * which the issue was generated.
      *
-     * @return The list of {@link HttpRequestResponse} objects on the basis of
+     * @return The list of {@link MarkedHttpRequestResponse} objects on the basis of
      * which the issue was generated.
-     * <b>Note:</b> The items in this list should be instances of
-     * {@link HttpRequestResponseWithSelection} if applicable, so that details
-     * of the relevant portions of the request and response messages are
-     * available.
      */
-    List<HttpRequestResponse> requestResponses();
+    List<MarkedHttpRequestResponse> requestResponses();
 
     /**
-     * This method returns the definition for this this issue.
+     * This method returns the definition for this issue.
      *
      * @return The {@link AuditIssueDefinition} for this issue.
      */
@@ -132,7 +128,7 @@ public interface AuditIssue
             String background,
             String remediationBackground,
             AuditIssueSeverity typicalSeverity,
-            HttpRequestResponse... requestResponses)
+            MarkedHttpRequestResponse... requestResponses)
     {
         return from(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, Arrays.asList(requestResponses));
     }
@@ -166,7 +162,7 @@ public interface AuditIssue
             String background,
             String remediationBackground,
             AuditIssueSeverity typicalSeverity,
-            List<HttpRequestResponse> requestResponses)
+            List<MarkedHttpRequestResponse> requestResponses)
     {
         AuditIssueDefinition definition = AuditIssueDefinition.from(name, background, remediationBackground, typicalSeverity);
         HttpService httpService = HttpService.from(baseUrl);
@@ -216,7 +212,7 @@ public interface AuditIssue
             }
 
             @Override
-            public List<HttpRequestResponse> requestResponses()
+            public List<MarkedHttpRequestResponse> requestResponses()
             {
                 return requestResponses;
             }

@@ -8,16 +8,24 @@
 
 package burp.api.montoya.ui.contextmenu;
 
+import burp.api.montoya.core.MessageAnnotations;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.message.HttpRequestResponse;
+import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.Optional;
 
 /**
  * This class contains information about a user selection of a request or response within a Burp Suite message editor.
  */
-public interface HttpRequestResponseWithSelection
+public interface MessageEditorHttpRequestResponse
 {
+    /**
+     * @return An {@link SelectionContext} which indicates what data has been selected by the user and has focus.
+     */
+    SelectionContext selectionContext();
+
     /**
      * This will return {@link Optional#empty()} if the user has not made a selection.
      *
@@ -33,5 +41,32 @@ public interface HttpRequestResponseWithSelection
     /**
      * @return An instance of {@link HttpRequestResponse} which contains the information about the currently displayed or selected HTTP request/response.
      */
-    HttpRequestResponse requestResponse();
+    HttpRequestResponse getRequestResponse();
+
+    /**
+     * Update the message editor with the HTTP request
+     *
+     * @param request the request to update the editor.
+     */
+    void setRequest(HttpRequest request);
+
+    /**
+     * Update the message editor with the HTTP response
+     *
+     * @param response the response to update the editor.
+     */
+    void setResponse(HttpResponse response);
+
+    /**
+     * Update the message editor with the annotations
+     *
+     * @param messageAnnotations the message annotations to update.
+     */
+    void setMessageAnnotations(MessageAnnotations messageAnnotations);
+
+    enum SelectionContext
+    {
+        REQUEST,
+        RESPONSE
+    }
 }

@@ -11,6 +11,7 @@ package burp.api.montoya.http;
 import burp.api.montoya.core.MessageAnnotations;
 import burp.api.montoya.core.Registration;
 import burp.api.montoya.http.message.HttpRequestResponse;
+import burp.api.montoya.http.message.MarkedHttpRequestResponse;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -90,7 +91,7 @@ public interface Http
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP headers.
-     * @param body A body of the HTTP request.
+     * @param body    A body of the HTTP request.
      * @return A new {@link HttpRequest} instance.
      */
     HttpRequest createRequest(HttpService service, List<String> headers, byte[] body);
@@ -100,7 +101,7 @@ public interface Http
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP headers.
-     * @param body A body of the HTTP request.
+     * @param body    A body of the HTTP request.
      * @return A new {@link HttpRequest} instance.
      */
     HttpRequest createRequest(HttpService service, List<String> headers, String body);
@@ -111,7 +112,7 @@ public interface Http
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP headers.
-     * @param body A body of the HTTP request.
+     * @param body    A body of the HTTP request.
      * @return A new {@link HttpRequest} instance.
      */
     HttpRequest createVerbatimRequest(HttpService service, List<HttpHeader> headers, byte[] body);
@@ -122,7 +123,7 @@ public interface Http
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP headers.
-     * @param body A body of the HTTP request.
+     * @param body    A body of the HTTP request.
      * @return A new {@link HttpRequest} instance.
      */
     HttpRequest createVerbatimRequest(HttpService service, List<HttpHeader> headers, String body);
@@ -155,7 +156,7 @@ public interface Http
      * This is a helper method to create a new instance of {@link HttpResponse}.
      *
      * @param headers A list of HTTP headers.
-     * @param body An HTTP response body.
+     * @param body    An HTTP response body.
      * @return A new {@link HttpResponse} instance.
      */
     HttpResponse createResponse(List<String> headers, byte[] body);
@@ -164,7 +165,7 @@ public interface Http
      * This is a helper method to create a new instance of {@link HttpResponse}.
      *
      * @param headers A list of HTTP headers.
-     * @param body An HTTP response body.
+     * @param body    An HTTP response body.
      * @return A new {@link HttpResponse} instance.
      */
     HttpResponse createResponse(List<String> headers, String body);
@@ -172,7 +173,7 @@ public interface Http
     /**
      * This is a helper method to create a new instance of {@link HttpRequestResponse}.
      *
-     * @param request The HTTP request.
+     * @param request  The HTTP request.
      * @param response The HTTP response.
      * @return A new {@link HttpRequestResponse} instance.
      */
@@ -184,12 +185,34 @@ public interface Http
     /**
      * This is a helper method to create a new instance of {@link HttpRequestResponse}.
      *
-     * @param httpRequest The HTTP request.
-     * @param httpResponse The HTTP response.
-     * @param messageAnnotations  Message annotations.
+     * @param httpRequest        The HTTP request.
+     * @param httpResponse       The HTTP response.
+     * @param messageAnnotations Message annotations.
      * @return A new {@link HttpRequestResponse} instance.
      */
     HttpRequestResponse createRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, MessageAnnotations messageAnnotations);
+
+    /**
+     * This is a helper method to create a new instance of {@link MarkedHttpRequestResponse}.
+     *
+     * @param httpRequest        The HTTP request.
+     * @param httpResponse       The HTTP response.
+     * @return A new {@link MarkedHttpRequestResponse} instance.
+     */
+    default MarkedHttpRequestResponse createMarkedRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse)
+    {
+        return createMarkedRequestResponse(httpRequest, httpResponse, MessageAnnotations.NONE);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link MarkedHttpRequestResponse}.
+     *
+     * @param httpRequest        The HTTP request.
+     * @param httpResponse       The HTTP response.
+     * @param messageAnnotations Message annotations.
+     * @return A new {@link MarkedHttpRequestResponse} instance.
+     */
+    MarkedHttpRequestResponse createMarkedRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, MessageAnnotations messageAnnotations);
 
     /**
      * This method can be used to issue HTTP requests and retrieve their responses.
@@ -205,7 +228,7 @@ public interface Http
     /**
      * This method can be used to issue HTTP requests and retrieve their responses.
      *
-     * @param request The full HTTP request.
+     * @param request  The full HTTP request.
      * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
@@ -217,8 +240,8 @@ public interface Http
     /**
      * This method can be used to issue HTTP requests and retrieve their responses.
      *
-     * @param request The full HTTP request.
-     * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
+     * @param request      The full HTTP request.
+     * @param httpMode     An {@link HttpMode} enum value which indicates how a request should be sent.
      * @param connectionId The identifier for the connection you want to use.
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */

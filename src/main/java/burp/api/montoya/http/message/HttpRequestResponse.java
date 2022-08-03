@@ -48,7 +48,7 @@ public interface HttpRequestResponse
      *
      * @param requestMarkers Request markers to add.
      * @param responseMarkers Response markers to add.
-     * @return A new {@code HttpRequestResponse} instance.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     MarkedHttpRequestResponse withMarkers(List<Range> requestMarkers, List<Range> responseMarkers);
 
@@ -56,7 +56,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
      *
      * @param requestMarkers Request markers to add.
-     * @return A new {@code HttpRequestResponse} instance.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     MarkedHttpRequestResponse withRequestMarkers(List<Range> requestMarkers);
 
@@ -64,7 +64,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
      *
      * @param requestMarkers Request markers to add.
-     * @return A new {@code HttpRequestResponse} instance.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     MarkedHttpRequestResponse withRequestMarkers(Range... requestMarkers);
 
@@ -72,7 +72,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add response markers to the {@code HttpRequestResponse} instance.
      *
      * @param responseMarkers Response markers to add.
-     * @return A new {@code HttpRequestResponse} instance.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     MarkedHttpRequestResponse withResponseMarkers(List<Range> responseMarkers);
 
@@ -80,7 +80,14 @@ public interface HttpRequestResponse
      * This is a helper method used to add response markers to the {@code HttpRequestResponse} instance.
      *
      * @param responseMarkers Response markers to add.
-     * @return A new {@code HttpRequestResponse} instance.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     MarkedHttpRequestResponse withResponseMarkers(Range... responseMarkers);
+
+    /**
+     * This is a helper method used to build a {@code MarkedHttpRequestResponse} instance with no markers.
+     *
+     * @return A new {@code MarkedHttpRequestResponse} instance.
+     */
+    MarkedHttpRequestResponse withNoMarkers();
 }

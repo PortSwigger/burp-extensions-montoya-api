@@ -21,12 +21,11 @@ import java.util.Optional;
 public interface ContextMenuEvent extends ComponentEvent, ToolSource, InvocationSource
 {
     /**
-     * This method can be used to retrieve details of the currently selected HTTP request/response that were selected by the user when the context menu was invoked.
-     * This will return {@link Optional#empty()} if the user has not made a selection.
+     * This method can be used to retrieve details of the currently selected HTTP request/response when the context menu was invoked.
      *
-     * @return an {@link Optional} describing the currently selected request response with selection position metadata.
+     * @return an {@link Optional} describing the currently selected request response with selection metadata.
      */
-    Optional<HttpRequestResponseWithSelection> requestResponseWithSelection();
+    Optional<MessageEditorHttpRequestResponse> messageEditorRequestResponse();
 
     /**
      * This method can be used to retrieve details of the currently selected HTTP request/response that were selected by the user when the context menu was invoked.
@@ -34,8 +33,7 @@ public interface ContextMenuEvent extends ComponentEvent, ToolSource, Invocation
      *
      * @return A list of request responses that have been selected by the user.
      */
-    List<HttpRequestResponse> requestResponses();
-
+    List<HttpRequestResponse> selectedRequestResponses();
 
     /**
      * This method can be used to retrieve details of the Scanner issues that were selected by the user when the context menu was invoked.
@@ -43,5 +41,5 @@ public interface ContextMenuEvent extends ComponentEvent, ToolSource, Invocation
      *
      * @return a List of {@link AuditIssue} objects representing the items that were shown or selected by the user when the context menu was invoked.
      */
-    List<AuditIssue> issues();
+    List<AuditIssue> selectedIssues();
 }

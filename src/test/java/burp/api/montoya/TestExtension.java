@@ -190,10 +190,10 @@ public class TestExtension implements BurpExtension
                 "remediation of issue",
                 AuditIssueSeverity.LOW,
                 List.of(
-                        http.createRequestResponse(httpRequest, httpResponse),
-                        http.createRequestResponse(httpRequest, httpResponse, MessageAnnotations.highlightColor(HighlightColor.BLUE)),
-                        http.createRequestResponse(httpRequest, httpResponse, MessageAnnotations.comment("comment")),
-                        http.createRequestResponse(httpRequest, httpResponse, MessageAnnotations.from("comment", HighlightColor.GREEN))
+                        http.createMarkedRequestResponse(httpRequest, httpResponse),
+                        http.createMarkedRequestResponse(httpRequest, httpResponse, MessageAnnotations.highlightColor(HighlightColor.BLUE)),
+                        http.createMarkedRequestResponse(httpRequest, httpResponse, MessageAnnotations.comment("comment")),
+                        http.createMarkedRequestResponse(httpRequest, httpResponse, MessageAnnotations.from("comment", HighlightColor.GREEN))
                 )
         ));
     }
@@ -526,13 +526,13 @@ public class TestExtension implements BurpExtension
     private void registerContextMenuFactory()
     {
         Registration contextMenuItemsProvider = userInterface.registerContextMenuItemsProvider(event -> {
-            if (event.isFromTool(ToolType.INTRUDER) && event.requestResponseWithSelection().isPresent())
+            if (event.isFromTool(ToolType.INTRUDER) && event.messageEditorRequestResponse().isPresent())
             {
                 return List.of(new JMenuItem("foo"), new JMenuItem("bar"));
             }
             else
             {
-                if (!event.requestResponses().isEmpty())
+                if (!event.selectedRequestResponses().isEmpty())
                 {
                     return List.of(new JMenuItem("barfoo"));
                 }
@@ -882,7 +882,7 @@ public class TestExtension implements BurpExtension
                         "background of issue",
                         "remediation of issue",
                         AuditIssueSeverity.LOW,
-                        List.of(baseRequestResponse)
+                        List.of(baseRequestResponse.withNoMarkers())
                 );
 
                 return List.of(issue);
@@ -901,7 +901,7 @@ public class TestExtension implements BurpExtension
                         "this is going to cost a lot of money",
                         "remediation of issue",
                         AuditIssueSeverity.LOW,
-                        baseRequestResponse
+                        baseRequestResponse.withNoMarkers()
                 );
 
                 return List.of(issue);

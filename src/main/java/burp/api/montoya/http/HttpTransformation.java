@@ -9,7 +9,7 @@
 package burp.api.montoya.http;
 
 /**
- * This enum defines transformations Burp can apply to an HTTP request.
+ * This enum defines transformations that Burp can apply to an HTTP request.
  */
 public enum HttpTransformation
 {

@@ -57,7 +57,7 @@ public interface Scan
     void addRequestResponse(HttpRequestResponse requestResponse);
 
     /**
-     * This method can be used to add built in configuration to this scan.
+     * This method can be used to add a built-in configuration to this scan.
      *
      * @param configuration The {@link BuiltInScanConfiguration} to add to this
      * scan.
@@ -81,14 +81,4 @@ public interface Scan
      * this scan is invalid.
      */
     Audit startAudit() throws InvalidLauncherConfigurationException;
-
-    /**
-     * This method can be used to start a crawl and audit in the Burp Scanner
-     * tool.
-     *
-     * @return The {@link CrawlAndAudit} started in the Burp Scanner tool.
-     * @throws InvalidLauncherConfigurationException if the configuration for
-     * this scan is invalid.
-     */
-    CrawlAndAudit startCrawlAndAudit() throws InvalidLauncherConfigurationException;
 }

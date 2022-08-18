@@ -15,7 +15,7 @@ public interface Collaborator
 {
     /**
      * This method is used to create a new Burp Collaborator client
-     * which can be used to generate Burp Collaborator payloads and poll the
+     * that can be used to generate Burp Collaborator payloads and poll the
      * Collaborator server for any network interactions that result from using
      * those payloads.
      *

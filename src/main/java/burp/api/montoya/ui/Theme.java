@@ -9,7 +9,7 @@
 package burp.api.montoya.ui;
 
 /**
- * This enum contains the different themes available in Burp Suites User Interface.
+ * This enum contains the different themes available in Burp Suites user interface.
  */
 public enum Theme
 {

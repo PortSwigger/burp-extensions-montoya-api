@@ -8,8 +8,6 @@
 
 package burp.api.montoya.intruder;
 
-import burp.api.montoya.core.Range;
-
 /**
  * This interface is used to represent an Intruder insertion point for attack payloads.
  */
@@ -19,9 +17,4 @@ public interface IntruderInsertionPoint
      * @return The base value of the insertion point.
      */
     byte[] content();
-
-    /**
-     * @return A {@link Range} object that contains insertion point offset values.
-     */
-    Range offsets();
 }

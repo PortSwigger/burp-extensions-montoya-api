@@ -84,8 +84,7 @@ public interface AuditIssue
     AuditIssueConfidence confidence();
 
     /**
-     * This method returns the HTTP request/response messages on the basis of
-     * which the issue was generated.
+     * This method returns the HTTP request/response messages that caused the issue to be generated.
      *
      * @return The list of {@link MarkedHttpRequestResponse} objects on the basis of
      * which the issue was generated.

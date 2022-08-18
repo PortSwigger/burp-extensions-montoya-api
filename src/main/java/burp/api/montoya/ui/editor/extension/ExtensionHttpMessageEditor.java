@@ -8,6 +8,7 @@
 
 package burp.api.montoya.ui.editor.extension;
 
+import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.ui.Selection;
 
 import java.awt.Component;
@@ -17,6 +18,21 @@ import java.awt.Component;
  */
 public interface ExtensionHttpMessageEditor
 {
+    /**
+     * Sets the provided {@link HttpRequestResponse} object within the editor component.
+     *
+     * @param requestResponse The request and response to set in the editor.
+     */
+    void setHttpRequestResponse(HttpRequestResponse requestResponse);
+
+    /**
+     * A check to determine if the HTTP message editor is enabled for a specific {@link HttpRequestResponse}
+     *
+     * @param requestResponse The {@link HttpRequestResponse} to check.
+     * @return True if the HTTP message editor is enabled for the provided request and response.
+     */
+    boolean isEnabledFor(HttpRequestResponse requestResponse);
+
     /**
      * @return The caption located in the message editor tab header.
      */

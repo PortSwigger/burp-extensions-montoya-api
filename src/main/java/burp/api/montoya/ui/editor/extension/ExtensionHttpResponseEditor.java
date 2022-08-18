@@ -17,22 +17,7 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 public interface ExtensionHttpResponseEditor extends ExtensionHttpMessageEditor
 {
     /**
-     * Sets the provided {@link HttpResponse} object within the editor component.
-     *
-     * @param response The response to set in the editor.
-     */
-    void setHttpResponse(HttpResponse response);
-
-    /**
      * @return An instance of {@link HttpResponse} derived from the content of the HTTP response editor.
      */
     HttpResponse getHttpResponse();
-
-    /**
-     * A check to determine if the HTTP response editor is enabled for a specific {@link HttpResponse}
-     *
-     * @param response The {@link HttpResponse} to check.
-     * @return True if the HTTP response editor is enabled for the provided response.
-     */
-    boolean isEnabledFor(HttpResponse response);
 }

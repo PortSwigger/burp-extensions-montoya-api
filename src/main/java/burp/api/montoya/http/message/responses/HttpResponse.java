@@ -59,7 +59,7 @@ public interface HttpResponse extends HttpMessage
     List<KeywordCount> keywordCounts(String... keywords);
 
     /**
-     * This method is used to retrieve values of response attributes.
+     * This method is used to retrieve the values of response attributes.
      *
      * @param types Response attributes to retrieve values for.
      * @return List of {@link Attribute} objects.

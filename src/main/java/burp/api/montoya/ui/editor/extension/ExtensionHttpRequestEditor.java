@@ -17,22 +17,7 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 public interface ExtensionHttpRequestEditor extends ExtensionHttpMessageEditor
 {
     /**
-     * Sets the provided {@link HttpRequest} object within the editor component.
-     *
-     * @param request The request to set in the editor.
-     */
-    void setHttpRequest(HttpRequest request);
-
-    /**
      * @return An instance of {@link HttpRequest} derived from the content of the HTTP request editor.
      */
     HttpRequest getHttpRequest();
-
-    /**
-     * A check to determine if the HTTP request editor is enabled for a specific {@link HttpRequest}
-     *
-     * @param request The {@link HttpRequest} to check.
-     * @return True if the HTTP request editor is enabled for the provided request.
-     */
-    boolean isEnabledFor(HttpRequest request);
 }

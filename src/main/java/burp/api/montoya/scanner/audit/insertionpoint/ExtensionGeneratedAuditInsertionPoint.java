@@ -64,7 +64,7 @@ public interface ExtensionGeneratedAuditInsertionPoint
      * @param payload The payload that should be placed into the insertion
      * point.
      * @return A list of {@link Range} objects containing the start and end
-     * offsets of the payload within the request, or {@code null} if this is
+     * offsets of the payload within the request, or an empty list if this is
      * not applicable (for example, where the insertion point places a payload
      * into a serialized data structure, the raw payload may not literally
      * appear anywhere within the resulting request).

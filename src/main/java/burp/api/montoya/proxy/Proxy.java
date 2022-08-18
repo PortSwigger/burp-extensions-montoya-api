@@ -39,7 +39,7 @@ public interface Proxy
     }
 
     /**
-     * This method returns details of items in the Proxy history based on
+     * This method returns details of items in the Proxy history based on the
      * filter.
      *
      * @param filter An instance of {@link ProxyHistoryFilter} that can be used

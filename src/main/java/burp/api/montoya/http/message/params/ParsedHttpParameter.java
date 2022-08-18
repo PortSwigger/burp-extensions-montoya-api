@@ -11,7 +11,7 @@ package burp.api.montoya.http.message.params;
 import burp.api.montoya.core.Range;
 
 /**
- * This interface is used to hold additional details about an HTTP request parameter which has been parsed by Burp.
+ * This interface is used to hold additional details about an HTTP request parameter that has been parsed by Burp.
  */
 public interface ParsedHttpParameter extends HttpParameter
 {

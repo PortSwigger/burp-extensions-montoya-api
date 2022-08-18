@@ -20,7 +20,8 @@ import burp.api.montoya.ui.editor.extension.ExtensionHttpResponseEditorProvider;
 import java.awt.Component;
 
 /**
- * This interface gives you access to various User Interface related features. Such as registering your own User Interface providers, creating instances of Burps various editors
+ * This interface gives you access to various user interface related features.
+ * Such as registering your own User Interface providers, creating instances of Burps various editors
  * and applying themes to custom components.
  */
 public interface UserInterface

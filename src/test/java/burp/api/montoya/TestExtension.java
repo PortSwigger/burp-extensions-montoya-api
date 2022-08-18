@@ -416,10 +416,8 @@ public class TestExtension implements BurpExtension
     {
         for (ProxyRequestResponse requestResponse : proxy.history())
         {
-//            System.out.println(requestResponse.originalRequest());
             System.out.println(requestResponse.finalRequest());
             System.out.println(requestResponse.originalResponse());
-//            System.out.println(requestResponse.finalResponse());
             System.out.println(requestResponse.messageAnnotations().comment());
             System.out.println(requestResponse.messageAnnotations().highlightColor());
         }
@@ -669,15 +667,15 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public void setHttpRequest(HttpRequest request)
+            public void setHttpRequestResponse(HttpRequestResponse requestResponse)
             {
-                this.httpRequest = httpRequest;
+                this.httpRequest = requestResponse.httpRequest();
             }
 
             @Override
-            public boolean isEnabledFor(HttpRequest request)
+            public boolean isEnabledFor(HttpRequestResponse requestResponse)
             {
-                return httpRequest.method().equalsIgnoreCase("POST") && httpRequest.httpService() != null;
+                return requestResponse.httpRequest().method().equalsIgnoreCase("POST") && requestResponse.httpRequest().httpService() != null;
             }
 
             @Override
@@ -708,9 +706,9 @@ public class TestExtension implements BurpExtension
         Registration requestEditorRegistration = userInterface.registerHttpRequestEditorProvider(new ExtensionHttpRequestEditorProvider()
         {
             @Override
-            public ExtensionHttpRequestEditor provideHttpRequestEditor(HttpRequest request, EditorMode editorMode)
+            public ExtensionHttpRequestEditor provideHttpRequestEditor(HttpRequestResponse requestResponse, EditorMode editorMode)
             {
-                if (httpRequest.method().equals("GET") && editorMode == EditorMode.READ_ONLY)
+                if (requestResponse.httpRequest().method().equals("GET") && editorMode == EditorMode.READ_ONLY)
                 {
                     return requestEditor;
                 }
@@ -728,22 +726,24 @@ public class TestExtension implements BurpExtension
 
         ExtensionHttpResponseEditor genericResponseEditor = new ExtensionHttpResponseEditor()
         {
+            private HttpResponse httpResponse;
+
             @Override
             public HttpResponse getHttpResponse()
             {
-                return null;
+                return httpResponse;
             }
 
             @Override
-            public void setHttpResponse(HttpResponse response)
+            public void setHttpRequestResponse(HttpRequestResponse requestResponse)
             {
-
+                this.httpResponse = requestResponse.httpResponse();
             }
 
             @Override
-            public boolean isEnabledFor(HttpResponse response)
+            public boolean isEnabledFor(HttpRequestResponse requestResponse)
             {
-                return false;
+                return requestResponse.httpRequest().method().equalsIgnoreCase("POST") && requestResponse.httpResponse().statusCode() == 404;
             }
 
             @Override

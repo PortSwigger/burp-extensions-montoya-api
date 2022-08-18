@@ -28,8 +28,8 @@ public interface ContextMenuEvent extends ComponentEvent, ToolSource, Invocation
     Optional<MessageEditorHttpRequestResponse> messageEditorRequestResponse();
 
     /**
-     * This method can be used to retrieve details of the currently selected HTTP request/response that were selected by the user when the context menu was invoked.
-     * This will return an empty list if the user has not made a selection.
+     * This method can be used to retrieve details of the currently selected HTTP request/response pair that was
+     * selected by the user when the context menu was invoked. This will return an empty list if the user has not made a selection.
      *
      * @return A list of request responses that have been selected by the user.
      */

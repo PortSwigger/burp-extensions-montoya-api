@@ -23,7 +23,7 @@ public interface AuditIssueDefinition
     String name();
 
     /**
-     * This method returns a background description for this type of issue.
+     * This method returns a background description for this issue type.
      *
      * @return A background description for this type of issue, or {@code null}
      * if none applies. A limited set of HTML tags may be used.

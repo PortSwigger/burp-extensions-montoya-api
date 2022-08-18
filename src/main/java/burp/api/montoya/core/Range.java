@@ -10,7 +10,7 @@ package burp.api.montoya.core;
 
 /**
  * This interface represents a range of integer values between two values
- * where the range is includes the start value but excludes the end value.
+ * in which the range includes the start value but excludes the end value.
  */
 public interface Range
 {

@@ -11,7 +11,7 @@ package burp.api.montoya.ui;
 import burp.api.montoya.core.Range;
 
 /**
- * This interface provides helpful information and functionality around a users selection within the user interface.
+ * This interface provides helpful information and functionality relating to a user's selection within the user interface.
  */
 public interface Selection
 {

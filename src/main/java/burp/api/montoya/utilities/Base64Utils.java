@@ -12,7 +12,7 @@ import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
 
 /**
- * This interface contains various methods which give you access to base64 encoding and decoding features.
+ * This interface contains various methods that give you access to base64 encoding and decoding features.
  */
 public interface Base64Utils
 {

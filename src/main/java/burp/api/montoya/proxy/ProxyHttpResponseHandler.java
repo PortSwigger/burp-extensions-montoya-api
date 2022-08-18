@@ -29,6 +29,7 @@ public interface ProxyHttpResponseHandler
      * user for manual review or modification.
      * @param request The {@link HttpRequest} that was issued.
      * @param annotations The {@link MessageAnnotations} for the intercepted request.
+     * @return The {@link ResponseInitialInterceptResult} containing the required action, HTTP response and annotations to be passed through.
      */
     ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, MessageAnnotations annotations);
 
@@ -40,6 +41,7 @@ public interface ProxyHttpResponseHandler
      * that extensions can use to query and update details of the response.
      * @param request The {@link HttpRequest} that was issued.
      * @param annotations The {@link MessageAnnotations} for the intercepted request.
+     * @return The {@link ResponseFinalInterceptResult} containing the required action, HTTP response and annotations to be passed through.
      */
     ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, MessageAnnotations annotations);
 }

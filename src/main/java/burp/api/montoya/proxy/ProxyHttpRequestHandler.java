@@ -27,6 +27,7 @@ public interface ProxyHttpRequestHandler
      * control whether the request should be intercepted and displayed to the
      * user for manual review or modification.
      * @param annotations The {@link MessageAnnotations} for the intercepted request.
+     * @return The {@link RequestInitialInterceptResult} containing the required action, HTTP request and annotations to be passed through.
      */
     RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, MessageAnnotations annotations);
 
@@ -37,6 +38,7 @@ public interface ProxyHttpRequestHandler
      * @param interceptedRequest An {@link InterceptedHttpRequest} object
      * that extensions can use to query and update details of the request.
      * @param annotations The {@link MessageAnnotations} for the intercepted request.
+     * @return The {@link RequestFinalInterceptResult} containing the required action, HTTP request and annotations to be passed through.
      */
     RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, MessageAnnotations annotations);
 }

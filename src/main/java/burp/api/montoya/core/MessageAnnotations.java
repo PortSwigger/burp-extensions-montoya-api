@@ -41,7 +41,7 @@ public interface MessageAnnotations
     MessageAnnotations withHighlightColor(HighlightColor highlightColor);
 
     /**
-     * This method is used to construct a message annotations from a comment.
+     * This method is used to construct message annotations from a comment.
      * @param comment        The comment of the annotation
      * @return The message annotations.
      */

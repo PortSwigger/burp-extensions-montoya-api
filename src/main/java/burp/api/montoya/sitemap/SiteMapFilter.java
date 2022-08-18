@@ -9,7 +9,7 @@
 package burp.api.montoya.sitemap;
 
 /**
- * This interface is used to filter items when querying the Burp's site map.
+ * This interface is used to filter items when querying Burp's site map.
  */
 public interface SiteMapFilter
 {

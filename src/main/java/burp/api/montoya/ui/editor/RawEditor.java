@@ -9,7 +9,7 @@
 package burp.api.montoya.ui.editor;
 
 /**
- * This interface provides extensions with an instance of Burp Suites HTTP text editor to use in their own user interface.
+ * This interface provides extensions with an instance of Burp Suite's HTTP text editor to use in their own user interface.
  */
 public interface RawEditor extends Editor
 {

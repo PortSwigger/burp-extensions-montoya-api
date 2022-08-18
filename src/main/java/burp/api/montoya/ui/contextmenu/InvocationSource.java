@@ -9,7 +9,7 @@
 package burp.api.montoya.ui.contextmenu;
 
 /**
- * This interface provides information about the source from which a context-menu was invoked.
+ * This interface provides information about the source from which a context menu was invoked.
  */
 public interface InvocationSource
 {

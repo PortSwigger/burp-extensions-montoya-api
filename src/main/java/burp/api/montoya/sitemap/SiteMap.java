@@ -15,7 +15,7 @@ import burp.api.montoya.scanner.audit.issues.AuditIssue;
 import java.util.List;
 
 /**
- * This interface provides methods for querying and modifying the Burp's site map.
+ * This interface provides methods for querying and modifying Burp's site map.
  */
 public interface SiteMap
 {

@@ -21,8 +21,8 @@ import java.util.List;
 public interface AuditInsertionPointProvider
 {
     /**
-     * When a request is actively audited, the Scanner will invoke this method,
-     * and the provider should provide a list of custom insertion points that
+     * The Scanner invokes this method when a request is actively audited. The
+     * provider should provide a list of custom insertion points that
      * will be used in the audit. <b>Note:</b> these insertion points are used
      * in addition to those that are derived from Burp Scanner's configuration,
      * and those provided by any other Burp extensions.

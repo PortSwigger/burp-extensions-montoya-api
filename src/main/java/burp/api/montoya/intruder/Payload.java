@@ -27,7 +27,7 @@ public interface Payload
     byte[] value();
 
     /**
-     * This method is a helper method to create a new {@link Payload} instance from a String payload value.
+     * This is a helper method to create a new {@link Payload} instance from a String payload value.
      *
      * @param payload String payload value. UTF-8 charset is assumed.
      * @return A new {@link Payload} instance.

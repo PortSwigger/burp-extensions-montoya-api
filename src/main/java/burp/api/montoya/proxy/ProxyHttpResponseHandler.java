@@ -8,7 +8,7 @@
 
 package burp.api.montoya.proxy;
 
-import burp.api.montoya.core.MessageAnnotations;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
 /**
@@ -24,24 +24,24 @@ public interface ProxyHttpResponseHandler
      * This method is invoked when an HTTP response is received in the Proxy.
      *
      * @param interceptedResponse An {@link InterceptedHttpResponse} object
-     * that extensions can use to query and update details of the response, and
-     * control whether the response should be intercepted and displayed to the
-     * user for manual review or modification.
-     * @param request The {@link HttpRequest} that was issued.
-     * @param annotations The {@link MessageAnnotations} for the intercepted request.
+     *                            that extensions can use to query and update details of the response, and
+     *                            control whether the response should be intercepted and displayed to the
+     *                            user for manual review or modification.
+     * @param request             The {@link HttpRequest} that was issued.
+     * @param annotations         The {@link Annotations} for the intercepted request.
      * @return The {@link ResponseInitialInterceptResult} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, MessageAnnotations annotations);
+    ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations);
 
     /**
      * This method is invoked when an HTTP response has been processed by the
      * Proxy before it is returned to the client.
      *
      * @param interceptedResponse An {@link InterceptedHttpResponse} object
-     * that extensions can use to query and update details of the response.
-     * @param request The {@link HttpRequest} that was issued.
-     * @param annotations The {@link MessageAnnotations} for the intercepted request.
+     *                            that extensions can use to query and update details of the response.
+     * @param request             The {@link HttpRequest} that was issued.
+     * @param annotations         The {@link Annotations} for the intercepted request.
      * @return The {@link ResponseFinalInterceptResult} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, MessageAnnotations annotations);
+    ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations);
 }

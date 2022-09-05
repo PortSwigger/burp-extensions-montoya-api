@@ -22,7 +22,7 @@ public interface TemporaryFileContext
     /**
      * This method is used to save {@link RawData} for the extension.
      *
-     * @param key The key of the {@link RawData}.
+     * @param key  The key of the {@link RawData}.
      * @param data The data.
      */
     void setRawData(String key, byte[] data);
@@ -38,7 +38,7 @@ public interface TemporaryFileContext
     /**
      * This method is used to save a {@link HttpRequest} for the extension.
      *
-     * @param key The key of the {@link HttpRequest}.
+     * @param key  The key of the {@link HttpRequest}.
      * @param data The {@link HttpRequest}.
      */
     void setHttpRequest(String key, HttpRequest data);
@@ -54,7 +54,7 @@ public interface TemporaryFileContext
     /**
      * This method is used to save a {@link HttpResponse} for the extension.
      *
-     * @param key The key of the {@link HttpResponse}.
+     * @param key  The key of the {@link HttpResponse}.
      * @param data The {@link HttpResponse}.
      */
     void setHttpResponse(String key, HttpResponse data);
@@ -71,7 +71,7 @@ public interface TemporaryFileContext
      * This method is used to save a {@link HttpRequestResponse} for the
      * extension.
      *
-     * @param key The key of the {@link HttpRequestResponse}.
+     * @param key  The key of the {@link HttpRequestResponse}.
      * @param data The {@link HttpRequestResponse}.
      */
     void setHttpRequestResponse(String key, HttpRequestResponse data);

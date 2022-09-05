@@ -21,7 +21,7 @@ public interface ScopeChangeHandler
      * target scope.
      *
      * @param scopeChange An object representing the change to Burp's
-     * Suite-wide target scope.
+     *                    Suite-wide target scope.
      */
     void scopeChanged(ScopeChange scopeChange);
 }

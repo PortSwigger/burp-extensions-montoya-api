@@ -8,6 +8,8 @@
 
 package burp.api.montoya.collaborator;
 
+import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
+
 /**
  * This interface provides a filtering mechanism for use when retrieving
  * interactions from the Burp Collaborator server.
@@ -16,18 +18,6 @@ package burp.api.montoya.collaborator;
  */
 public interface InteractionFilter
 {
-    /**
-     * This method will be called for each interaction retrieved from the
-     * Collaborator server and determines whether the interaction should be
-     * included in the list of interactions returned.
-     *
-     * @param server The collaborator server that received the interaction.
-     * @param interaction The interaction details.
-     * @return {@code true} if the interaction should be included,
-     * {@code false} if not.
-     */
-    boolean matches(CollaboratorServer server, Interaction interaction);
-
     /**
      * This method constructs an InteractionFilter that matches any
      * interaction with the specified interaction id.
@@ -38,7 +28,7 @@ public interface InteractionFilter
      */
     static InteractionFilter interactionIdFilter(String id)
     {
-        return (server, interaction) -> interaction.id().toString().equals(id);
+        return FACTORY.interactionIdFilter(id);
     }
 
     /**
@@ -51,15 +41,18 @@ public interface InteractionFilter
      */
     static InteractionFilter interactionPayloadFilter(String payload)
     {
-        if (payload == null)
-        {
-            return (server, interaction) -> false;
-        }
-
-        return (server, interaction) -> {
-            String format = server.isLiteralAddress() ? "%s/" : ".%s";
-            String interactionId = payload.replace(String.format(format, server.address()), "");
-            return interaction.id().toString().equals(interactionId);
-        };
+        return FACTORY.interactionPayloadFilter(payload);
     }
+
+    /**
+     * This method will be called for each interaction retrieved from the
+     * Collaborator server and determines whether the interaction should be
+     * included in the list of interactions returned.
+     *
+     * @param server      The collaborator server that received the interaction.
+     * @param interaction The interaction details.
+     * @return {@code true} if the interaction should be included,
+     * {@code false} if not.
+     */
+    boolean matches(CollaboratorServer server, Interaction interaction);
 }

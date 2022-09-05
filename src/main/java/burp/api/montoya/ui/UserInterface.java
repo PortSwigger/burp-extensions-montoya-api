@@ -16,6 +16,7 @@ import burp.api.montoya.ui.editor.HttpResponseEditor;
 import burp.api.montoya.ui.editor.RawEditor;
 import burp.api.montoya.ui.editor.extension.ExtensionHttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.ExtensionHttpResponseEditorProvider;
+import burp.api.montoya.ui.swing.SwingUtils;
 
 import java.awt.Component;
 
@@ -29,7 +30,7 @@ public interface UserInterface
     /**
      * This method is used to add a custom tab to the main Burp Suite window.
      *
-     * @param title The text to be displayed in the tab heading.
+     * @param title     The text to be displayed in the tab heading.
      * @param component The component that will be rendered within the custom tab.
      * @return A {@link Registration} of the custom suite tab.
      */
@@ -90,4 +91,16 @@ public interface UserInterface
      * @param component The component to be customized.
      */
     void applyThemeToComponent(Component component);
+
+    /**
+     * This method is used to identify the theme currently being used.
+     *
+     * @return the current {@link Theme}
+     */
+    Theme currentTheme();
+
+    /**
+     * @return an instance of {@link SwingUtils}
+     */
+    SwingUtils swingUtils();
 }

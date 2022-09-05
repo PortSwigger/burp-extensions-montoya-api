@@ -20,22 +20,10 @@ public interface ProxyHistoryFilter
      * whether it should be included in the filtered list of items.
      *
      * @param requestResponse A {@link ProxyRequestResponse} object that
-     * extensions can use to determine whether the item should be included in
-     * the filtered list of items.
+     *                        extensions can use to determine whether the item should be included in
+     *                        the filtered list of items.
      * @return Return {@code true} if the item should be included in the
      * filtered list of items.
      */
     boolean matches(ProxyRequestResponse requestResponse);
-
-    /**
-     * This method can be used to create a filter object that includes all
-     * items.
-     *
-     * @return A {@link ProxyRequestResponse} that includes all items in the
-     * Proxy history.
-     */
-    static ProxyHistoryFilter all()
-    {
-        return requestResponse -> true;
-    }
 }

@@ -14,17 +14,47 @@ package burp.api.montoya.utilities;
 public interface Utilities
 {
     /**
+     * @return an instance of {@link burp.api.montoya.utilities.Base64Utils}
+     */
+    Base64Utils base64Utils();
+
+    /**
      * @return an instance of {@link burp.api.montoya.utilities.ByteUtils}
      */
     ByteUtils byteUtils();
 
     /**
+     * @return an instance of {@link burp.api.montoya.utilities.CompressionUtils}
+     */
+    CompressionUtils compressionUtils();
+
+    /**
+     * @return an instance of {@link burp.api.montoya.utilities.CryptoUtils}
+     */
+    CryptoUtils cryptoUtils();
+
+    /**
+     * @return an instance of {@link burp.api.montoya.utilities.HtmlUtils}
+     */
+    HtmlUtils htmlUtils();
+
+    /**
+     * @return an instance of {@link burp.api.montoya.utilities.NumberUtils}
+     */
+    NumberUtils numberUtils();
+
+    /**
+     * @return an instance of {@link burp.api.montoya.utilities.RandomUtils}
+     */
+    RandomUtils randomUtils();
+
+    /**
+     * @return an instance of {@link burp.api.montoya.utilities.StringUtils}
+     */
+    StringUtils stringUtils();
+
+    /**
      * @return an instance of {@link burp.api.montoya.utilities.URLUtils}
      */
     URLUtils urlUtils();
-
-    /**
-     * @return  an instance of {@link burp.api.montoya.utilities.Base64Utils}
-     */
-    Base64Utils base64Utils();
 }

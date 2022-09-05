@@ -8,7 +8,7 @@
 
 package burp.api.montoya.ui.contextmenu;
 
-import burp.api.montoya.core.MessageAnnotations;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -60,9 +60,9 @@ public interface MessageEditorHttpRequestResponse
     /**
      * Update the message editor with the annotations
      *
-     * @param messageAnnotations the message annotations to update.
+     * @param annotations the annotations to update.
      */
-    void setMessageAnnotations(MessageAnnotations messageAnnotations);
+    void setMessageAnnotations(Annotations annotations);
 
     enum SelectionContext
     {

@@ -8,18 +8,47 @@
 
 package burp.api.montoya.http.message;
 
-import burp.api.montoya.core.MessageAnnotations;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.List;
 
+import static burp.api.montoya.core.Annotations.annotations;
+import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
+
 /**
  * This interface is used to define a coupling between {@link HttpRequest} and {@link HttpResponse} interfaces.
  */
 public interface HttpRequestResponse
 {
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequestResponse}.
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @return A new {@link HttpRequestResponse} instance.
+     */
+    static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response)
+    {
+        return httpRequestResponse(request, response, annotations());
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequestResponse}.
+     *
+     * @param httpRequest        The HTTP request.
+     * @param httpResponse       The HTTP response.
+     * @param annotations annotations.
+     * @return A new {@link HttpRequestResponse} instance.
+     */
+    static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
+    {
+        return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
+    }
+
     /**
      * @return The HTTP request message.
      */
@@ -31,22 +60,22 @@ public interface HttpRequestResponse
     HttpResponse httpResponse();
 
     /**
-     * @return The message annotations.
+     * @return The annotations.
      */
-    MessageAnnotations messageAnnotations();
+    Annotations messageAnnotations();
 
     /**
-     * This is a helper method used to add message annotations to the {@code HttpRequestResponse} instance.
+     * This is a helper method used to add annotations to the {@code HttpRequestResponse} instance.
      *
-     * @param messageAnnotations Message annotations to add.
+     * @param annotations annotations to add.
      * @return A new {@code HttpRequestResponse} instance.
      */
-    HttpRequestResponse withMessageAnnotations(MessageAnnotations messageAnnotations);
+    HttpRequestResponse withMessageAnnotations(Annotations annotations);
 
     /**
      * This is a helper method used to add markers to the {@code HttpRequestResponse} instance.
      *
-     * @param requestMarkers Request markers to add.
+     * @param requestMarkers  Request markers to add.
      * @param responseMarkers Response markers to add.
      * @return A new {@code MarkedHttpRequestResponse} instance.
      */

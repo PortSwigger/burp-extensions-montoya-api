@@ -36,6 +36,19 @@ public interface CollaboratorClient
     CollaboratorPayload generatePayload(PayloadOption... options);
 
     /**
+     * This method is used to generate new Burp Collaborator payloads with custom data.
+     * The custom data can be retrieved from any {@link Interaction} triggered.
+     * Options can be specified to alter the way the payloads are generated. If no
+     * options are specified, generated payloads will include the server location.
+     *
+     * @param customData The custom data to add to the payload. Maximum size is 16 characters. Must be alphanumeric.
+     * @param options The optional payload options to apply
+     * @return The generated payload.
+     * @throws IllegalStateException if Burp Collaborator is disabled
+     */
+    CollaboratorPayload generatePayload(String customData, PayloadOption... options);
+
+    /**
      * This method is used to retrieve all Collaborator server interactions
      * resulting from payloads that were generated for this client.
      *
@@ -65,4 +78,12 @@ public interface CollaboratorClient
      * @throws IllegalStateException if Burp Collaborator is disabled
      */
     CollaboratorServer server();
+
+    /**
+     * This provides the secret key that is associated with this client context.
+     * The key can be used to re-create this client again with the interaction data if required.
+     *
+     * @return The {@link SecretKey} that is associated with this Collaborator client.
+     */
+    SecretKey getSecretKey();
 }

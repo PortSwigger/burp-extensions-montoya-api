@@ -10,12 +10,12 @@ package net.portswigger.burp.extender.http;
 
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.HighlightColor;
-import burp.api.montoya.core.MessageAnnotations;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpHandler;
-import burp.api.montoya.http.RequestHandlerResult;
-import burp.api.montoya.http.ResponseHandlerResult;
+import burp.api.montoya.http.RequestResult;
+import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -26,23 +26,23 @@ import burp.api.montoya.logging.Logging;
 public class HttpHandlerExample implements BurpExtension
 {
     @Override
-    public void initialise(MontoyaApi api)
+    public void initialize(MontoyaApi api)
     {
         //Register our http handler with Burp.
-        api.http().registerHttpHandler(new MyHttpHandler(api.logging()));
+        api.http().registerHttpHandler(new MyHttpHandler(api));
     }
 
     private static class MyHttpHandler implements HttpHandler
     {
         private final Logging logging;
 
-        public MyHttpHandler(Logging logging)
+        public MyHttpHandler(MontoyaApi api)
         {
-            this.logging = logging;
+            this.logging = api.logging();
         }
 
         @Override
-        public RequestHandlerResult handleHttpRequest(HttpRequest request, MessageAnnotations annotations, ToolSource toolSource)
+        public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
         {
             // If the request is a post, log the body and add a comment annotation.
             if (request.method().equalsIgnoreCase("POST"))
@@ -52,21 +52,21 @@ public class HttpHandlerExample implements BurpExtension
             }
 
             //Modify the request by adding a url param.
-            HttpRequest modifiedRequest = request.withAddedParameters(HttpParameter.urlParam("foo", "bar"));
+            HttpRequest modifiedRequest = request.withAddedParameters(HttpParameter.urlParameter("foo", "bar"));
 
             //Return the modified request to burp with updated annotations.
-            return RequestHandlerResult.from(modifiedRequest, annotations);
+            return RequestResult.requestResult(modifiedRequest, annotations);
         }
 
         @Override
-        public ResponseHandlerResult handleHttpResponse(HttpRequest request, HttpResponse response, MessageAnnotations annotations, ToolSource toolSource)
+        public ResponseResult handleHttpResponse(HttpRequest request, HttpResponse response, Annotations annotations, ToolSource toolSource)
         {
             //Highlight all responses where the request had a Content-Length header.
             if (request.headers().stream().anyMatch(header -> header.name().equalsIgnoreCase("Content-Length")))
             {
                 annotations = annotations.withHighlightColor(HighlightColor.BLUE);
             }
-            return ResponseHandlerResult.from(response, annotations);
+            return ResponseResult.responseResult(response, annotations);
         }
     }
 }

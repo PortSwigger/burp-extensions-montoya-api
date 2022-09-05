@@ -18,9 +18,10 @@ import burp.api.montoya.collaborator.InteractionFilter;
 import burp.api.montoya.collaborator.InteractionId;
 import burp.api.montoya.collaborator.InteractionType;
 import burp.api.montoya.collaborator.PayloadOption;
+import burp.api.montoya.collaborator.SecretKey;
 import burp.api.montoya.collaborator.SmtpProtocol;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.HighlightColor;
-import burp.api.montoya.core.MessageAnnotations;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.core.Registration;
 import burp.api.montoya.core.ToolSource;
@@ -32,8 +33,8 @@ import burp.api.montoya.http.HttpHandler;
 import burp.api.montoya.http.HttpProtocol;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.HttpTransformation;
-import burp.api.montoya.http.RequestHandlerResult;
-import burp.api.montoya.http.ResponseHandlerResult;
+import burp.api.montoya.http.RequestResult;
+import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.MarkedHttpRequestResponse;
 import burp.api.montoya.http.message.cookies.Cookie;
@@ -49,7 +50,6 @@ import burp.api.montoya.http.message.responses.analysis.ResponseKeywordsAnalyzer
 import burp.api.montoya.http.message.responses.analysis.ResponseVariationsAnalyzer;
 import burp.api.montoya.http.sessions.CookieJar;
 import burp.api.montoya.http.sessions.SessionHandlingAction;
-import burp.api.montoya.http.sessions.SessionHandlingResult;
 import burp.api.montoya.intruder.AttackConfiguration;
 import burp.api.montoya.intruder.HttpRequestTemplate;
 import burp.api.montoya.intruder.Intruder;
@@ -122,12 +122,29 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Set;
 
+import static burp.api.montoya.core.Annotations.annotations;
+import static burp.api.montoya.core.Range.range;
 import static burp.api.montoya.http.HttpMode.HTTP_1;
 import static burp.api.montoya.http.HttpMode.HTTP_2;
 import static burp.api.montoya.http.HttpMode.HTTP_2_IGNORE_ALPN;
+import static burp.api.montoya.http.HttpService.httpService;
+import static burp.api.montoya.http.RequestResult.requestResult;
+import static burp.api.montoya.http.ResponseResult.responseResult;
+import static burp.api.montoya.http.message.MarkedHttpRequestResponse.markedRequestResponse;
+import static burp.api.montoya.http.message.headers.HttpHeader.httpHeader;
+import static burp.api.montoya.http.message.params.HttpParameter.bodyParameter;
+import static burp.api.montoya.http.message.params.HttpParameter.cookieParameter;
+import static burp.api.montoya.http.message.params.HttpParameter.urlParameter;
+import static burp.api.montoya.http.message.requests.HttpRequest.httpRequest;
+import static burp.api.montoya.http.message.requests.HttpRequest.httpRequestFromUrl;
+import static burp.api.montoya.http.message.requests.HttpRequest.httpVerbatimRequest;
+import static burp.api.montoya.http.message.responses.HttpResponse.httpResponse;
 import static burp.api.montoya.scanner.BuiltInScanConfiguration.ACTIVE_AUDIT_CHECKS;
 import static burp.api.montoya.scanner.BuiltInScanConfiguration.PASSIVE_AUDIT_CHECKS;
 import static burp.api.montoya.scanner.ReportFormat.XML;
+import static burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint.auditInsertionPoint;
+import static burp.api.montoya.scanner.audit.issues.AuditIssue.auditIssue;
+import static burp.api.montoya.ui.Selection.selection;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Collections.emptyList;
@@ -170,16 +187,16 @@ public class TestExtension implements BurpExtension
         persistence = api.persistence();
         utilities = api.utilities();
 
-        httpRequest = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.1\r\nHost: example.org\r\n\r\n");
-        httpResponse = http.createResponse("HTTP/1.1 200 OK \r\n\r\n");
-        httpRequestResponse = http.createRequestResponse(httpRequest, httpResponse);
+        httpRequest = httpRequest(httpService("example.org", true), "GET / HTTP/1.1\r\nHost: example.org\r\n\r\n");
+        httpResponse = httpResponse("HTTP/1.1 200 OK \r\n\r\n");
+        httpRequestResponse = HttpRequestResponse.httpRequestResponse(httpRequest, httpResponse);
 
         logging.logToOutput("Hello World!");
     }
 
     private void addScanIssue()
     {
-        siteMap.addAuditIssue(scanner.createAuditIssue(
+        siteMap.add(auditIssue(
                 "My Issue",
                 "Details",
                 "Remediation detail",
@@ -190,10 +207,10 @@ public class TestExtension implements BurpExtension
                 "remediation of issue",
                 AuditIssueSeverity.LOW,
                 List.of(
-                        http.createMarkedRequestResponse(httpRequest, httpResponse),
-                        http.createMarkedRequestResponse(httpRequest, httpResponse, MessageAnnotations.highlightColor(HighlightColor.BLUE)),
-                        http.createMarkedRequestResponse(httpRequest, httpResponse, MessageAnnotations.comment("comment")),
-                        http.createMarkedRequestResponse(httpRequest, httpResponse, MessageAnnotations.from("comment", HighlightColor.GREEN))
+                        markedRequestResponse(httpRequest, httpResponse),
+                        markedRequestResponse(httpRequest, httpResponse, annotations(HighlightColor.BLUE)),
+                        markedRequestResponse(httpRequest, httpResponse, Annotations.annotations("comment")),
+                        markedRequestResponse(httpRequest, httpResponse, Annotations.annotations("comment", HighlightColor.GREEN))
                 )
         ));
     }
@@ -205,23 +222,23 @@ public class TestExtension implements BurpExtension
 
     private void addToSiteMap()
     {
-        HttpRequestResponse requestResponse = http.createRequestResponse(httpRequest, httpResponse, MessageAnnotations.from("test comment", HighlightColor.BLUE));
+        HttpRequestResponse requestResponse = markedRequestResponse(httpRequest, httpResponse, Annotations.annotations("test comment", HighlightColor.BLUE));
 
         siteMap.add(requestResponse);
     }
 
     private void applyMarkers()
     {
-        List<Range> requestMarkers = List.of(Range.of(0, 10), Range.of(23, 51));
-        List<Range> responseMarkers = List.of(Range.of(5, 7), Range.of(16, 17));
+        List<Range> requestMarkers = List.of(range(0, 10), range(23, 51));
+        List<Range> responseMarkers = List.of(range(5, 7), range(16, 17));
 
         MarkedHttpRequestResponse markedRequestResponse1 = httpRequestResponse.withMarkers(requestMarkers, responseMarkers);
 
         MarkedHttpRequestResponse markedRequestResponse2 = httpRequestResponse.withRequestMarkers(requestMarkers);
-        MarkedHttpRequestResponse markedRequestResponse3 = httpRequestResponse.withRequestMarkers(Range.of(0, 10), Range.of(23, 51));
+        MarkedHttpRequestResponse markedRequestResponse3 = httpRequestResponse.withRequestMarkers(range(0, 10), range(23, 51));
 
         MarkedHttpRequestResponse markedRequestResponse4 = httpRequestResponse.withResponseMarkers(responseMarkers);
-        MarkedHttpRequestResponse markedRequestResponse5 = httpRequestResponse.withResponseMarkers(Range.of(5, 7), Range.of(16, 17));
+        MarkedHttpRequestResponse markedRequestResponse5 = httpRequestResponse.withResponseMarkers(range(5, 7), range(16, 17));
 
         System.out.println(markedRequestResponse1.requestMarkers());
         System.out.println(markedRequestResponse1.responseMarkers());
@@ -231,12 +248,15 @@ public class TestExtension implements BurpExtension
     {
         CollaboratorClient collaboratorClient = collaborator.createClient();
 
+        SecretKey secretKey = collaboratorClient.getSecretKey();
+
         for (Interaction interaction : collaboratorClient.getAllInteractions())
         {
             InteractionId id = interaction.id();
             InteractionType type = interaction.type();
             InetAddress ip = interaction.clientIp();
             ZonedDateTime zonedDateTime = interaction.timeStamp();
+            String customData = interaction.customData().get();
 
             byte[] query = interaction.dnsDetails().get().query();
             DnsQueryType dnsQueryType = interaction.dnsDetails().get().queryType();
@@ -252,6 +272,9 @@ public class TestExtension implements BurpExtension
         String payloadString = payload.toString();
         String payloadId = payload.id().toString();
         CollaboratorServer payloadServer = payload.server().get();
+
+        CollaboratorPayload payloadWithCustomData = collaboratorClient.generatePayload("custom");
+        String customData = payloadWithCustomData.customData().get();
 
         CollaboratorPayload payloadWithoutServerLocation = collaboratorClient.generatePayload(PayloadOption.WITHOUT_SERVER_LOCATION);
 
@@ -340,8 +363,8 @@ public class TestExtension implements BurpExtension
         Scan scan = scanner.createScan();
 
         Utilities utilities = this.utilities;
-        Range range1 = Range.of(0, 10);
-        Range range2 = Range.of(23, 51);
+        Range range1 = range(0, 10);
+        Range range2 = range(23, 51);
 
         scan.addRequest(httpRequest, List.of(range1, range2));
         scan.addConfiguration(ACTIVE_AUDIT_CHECKS);
@@ -569,19 +592,19 @@ public class TestExtension implements BurpExtension
         http.registerHttpHandler(new HttpHandler()
         {
             @Override
-            public RequestHandlerResult handleHttpRequest(HttpRequest request, MessageAnnotations annotations, ToolSource toolSource)
+            public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
             {
-                List<HttpParameter> parameters = List.of(http.createUrlParameter("foo", "bar"), http.createBodyParameter("foo2", "bar2"));
+                List<HttpParameter> parameters = List.of(urlParameter("foo", "bar"), bodyParameter("foo2", "bar2"));
 
                 HttpRequest modifiedRequest = httpRequest.withAddedParameters(parameters);
 
-                return RequestHandlerResult.from(modifiedRequest, annotations.withComment("new comment"));
+                return requestResult(modifiedRequest, annotations.withComment("new comment"));
             }
 
             @Override
-            public ResponseHandlerResult handleHttpResponse(HttpRequest request, HttpResponse response, MessageAnnotations annotations, ToolSource toolSource)
+            public ResponseResult handleHttpResponse(HttpRequest request, HttpResponse response, Annotations annotations, ToolSource toolSource)
             {
-                return ResponseHandlerResult.from(response, annotations);
+                return responseResult(response, annotations);
             }
         });
     }
@@ -693,7 +716,7 @@ public class TestExtension implements BurpExtension
             @Override
             public Selection selectedData()
             {
-                return Selection.ofOffsets(1, 5);
+                return selection(1, 5);
             }
 
             @Override
@@ -798,7 +821,7 @@ public class TestExtension implements BurpExtension
         proxy.registerRequestHandler(new ProxyHttpRequestHandler()
         {
             @Override
-            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, MessageAnnotations annotations)
+            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
             {
                 String comment = annotations.comment();
 
@@ -814,15 +837,15 @@ public class TestExtension implements BurpExtension
                     highlight = HighlightColor.BLUE;
                 }
 
-                HttpRequest modifiedRequest = interceptedRequest.withAddedParameters(http.createBodyParameter("foo", "bar"));
+                HttpRequest modifiedRequest = interceptedRequest.withAddedParameters(bodyParameter("foo", "bar"));
 
-                MessageAnnotations updatedAnnotations = MessageAnnotations.from(comment, highlight);
+                Annotations updatedAnnotations = Annotations.annotations(comment, highlight);
 
                 return RequestInitialInterceptResult.followUserRules(modifiedRequest, updatedAnnotations);
             }
 
             @Override
-            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, MessageAnnotations modifiableAnnotations)
+            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations modifiableAnnotations)
             {
                 String listenerInterface = interceptedRequest.listenerInterface();
                 int messageId = interceptedRequest.messageId();
@@ -839,7 +862,7 @@ public class TestExtension implements BurpExtension
             public ResponseInitialInterceptResult handleReceivedResponse(
                     InterceptedHttpResponse interceptedResponse,
                     HttpRequest httpRequest,
-                    MessageAnnotations modifiableAnnotations)
+                    Annotations modifiableAnnotations)
             {
                 return ResponseInitialInterceptResult.followUserRules(interceptedResponse);
             }
@@ -848,7 +871,7 @@ public class TestExtension implements BurpExtension
             public ResponseFinalInterceptResult handleResponseToReturn(
                     InterceptedHttpResponse interceptedResponse,
                     HttpRequest httpRequest,
-                    MessageAnnotations modifiableAnnotations)
+                    Annotations modifiableAnnotations)
             {
                 return ResponseFinalInterceptResult.drop();
             }
@@ -872,7 +895,7 @@ public class TestExtension implements BurpExtension
                     return emptyList();
                 }
 
-                AuditIssue issue = scanner.createAuditIssue(
+                AuditIssue issue = auditIssue(
                         "My Issue",
                         "Details",
                         "Remediation detail",
@@ -891,7 +914,7 @@ public class TestExtension implements BurpExtension
             @Override
             public List<AuditIssue> passiveAudit(HttpRequestResponse baseRequestResponse)
             {
-                AuditIssue issue = scanner.createAuditIssue(
+                AuditIssue issue = auditIssue(
                         "My Issue",
                         "Details",
                         "Remediation detail",
@@ -931,7 +954,7 @@ public class TestExtension implements BurpExtension
             {
                 ExtensionGeneratedAuditInsertionPoint firstTenCharactersInsertionPoint = new ExtensionGeneratedAuditInsertionPoint()
                 {
-                    private final Range range = Range.of(0, 10);
+                    private final Range range = range(0, 10);
 
                     @Override
                     public String name()
@@ -1029,12 +1052,12 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public SessionHandlingResult handle(HttpRequest currentRequest, MessageAnnotations messageAnnotations, List<HttpRequestResponse> macroRequestResponses)
+            public RequestResult handle(HttpRequest currentRequest, Annotations messageAnnotations, List<HttpRequestResponse> macroRequestResponses)
             {
-                HttpRequest updatedRequest = currentRequest.withRemovedParameters(http.createBodyParameter("foo", "bar"));
-                MessageAnnotations updatedMessageAnnotations = messageAnnotations.withComment("updated");
+                HttpRequest updatedRequest = currentRequest.withRemovedParameters(bodyParameter("foo", "bar"));
+                Annotations updatedAnnotations = messageAnnotations.withComment("updated");
 
-                return SessionHandlingResult.from(updatedRequest, updatedMessageAnnotations);
+                return requestResult(updatedRequest, updatedAnnotations);
             }
         });
 
@@ -1049,15 +1072,15 @@ public class TestExtension implements BurpExtension
         HttpHandler handler = new HttpHandler()
         {
             @Override
-            public RequestHandlerResult handleHttpRequest(HttpRequest request, MessageAnnotations annotations, ToolSource toolContext)
+            public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolContext)
             {
-                return RequestHandlerResult.from(httpRequest, annotations);
+                return requestResult(httpRequest, annotations);
             }
 
             @Override
-            public ResponseHandlerResult handleHttpResponse(HttpRequest request, HttpResponse response, MessageAnnotations annotations, ToolSource toolContext)
+            public ResponseResult handleHttpResponse(HttpRequest request, HttpResponse response, Annotations annotations, ToolSource toolContext)
             {
-                return ResponseHandlerResult.from(response, annotations);
+                return responseResult(response, annotations);
             }
         };
 
@@ -1087,13 +1110,13 @@ public class TestExtension implements BurpExtension
         ProxyHttpRequestHandler handler = new ProxyHttpRequestHandler()
         {
             @Override
-            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, MessageAnnotations modifiableAnnotations)
+            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations modifiableAnnotations)
             {
                 return RequestInitialInterceptResult.drop();
             }
 
             @Override
-            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, MessageAnnotations modifiableAnnotations)
+            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations modifiableAnnotations)
             {
                 return RequestFinalInterceptResult.drop();
             }
@@ -1149,9 +1172,9 @@ public class TestExtension implements BurpExtension
 
     private void sendToIntruderWithOffsets()
     {
-        List<Range> payloadPostionOffsets = List.of(Range.of(5, 6));
-        HttpRequestTemplate requestTemplate = HttpRequestTemplate.from(httpRequest, payloadPostionOffsets);
-        intruder.sendToIntruder(http.createService("example.org", true), requestTemplate);
+        List<Range> payloadPostionOffsets = List.of(range(5, 6));
+        HttpRequestTemplate requestTemplate = HttpRequestTemplate.httpRequestTemplate(httpRequest, payloadPostionOffsets);
+        intruder.sendToIntruder(httpService("example.org", true), requestTemplate);
     }
 
     private void sendToRepeater()
@@ -1168,11 +1191,6 @@ public class TestExtension implements BurpExtension
         scan.addUrl("http://example.org/login");
 
         Crawl crawl = scan.startCrawl();
-    }
-
-    private void setExtensionName()
-    {
-        api.misc().setExtensionName("Example extension");
     }
 
     private void setProxyInterceptionEnabled()
@@ -1194,12 +1212,12 @@ public class TestExtension implements BurpExtension
     //IExtensionHelpers
     private void addParameter()
     {
-        HttpRequest modifiedRequest = httpRequest.withAddedParameters(http.createUrlParameter("foo", "bar"));
+        HttpRequest modifiedRequest = httpRequest.withAddedParameters(urlParameter("foo", "bar"));
     }
 
     private void analyseRequest()
     {
-        HttpRequest request = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.0\r\n\r\n");
+        HttpRequest request = httpRequest(httpService("example.org", true), "GET / HTTP/1.0\r\n\r\n");
 
         int i = request.bodyOffset();
         byte[] body = request.body();
@@ -1212,7 +1230,7 @@ public class TestExtension implements BurpExtension
 
     private void analyseResponse()
     {
-        HttpResponse response = http.createResponse("HTTP/1.1 200 OK\r\n\r\n".getBytes(UTF_8));
+        HttpResponse response = httpResponse("HTTP/1.1 200 OK\r\n\r\n".getBytes(UTF_8));
 
         int i = response.bodyOffset();
         byte[] body = response.body();
@@ -1256,7 +1274,7 @@ public class TestExtension implements BurpExtension
 
     private void buildHeader()
     {
-        HttpHeader header = http.createHeader("foo", "bar");
+        HttpHeader header = httpHeader("foo", "bar");
         String name = header.name();
         String value = header.value();
     }
@@ -1265,24 +1283,24 @@ public class TestExtension implements BurpExtension
     {
         List<String> headers = List.of("foo: bar");
 
-        HttpRequest request = http.createRequest(null, headers, new byte[0]);
+        HttpRequest request = httpRequest(null, headers, new byte[0]);
 
-        HttpResponse response = http.createResponse(headers, new byte[0]);
+        HttpResponse response = httpResponse(headers, new byte[0]);
     }
 
     private void buildHttpRequest() throws MalformedURLException
     {
-        HttpRequest requestFromUrl = http.createRequestFromUrl("https://example.com:442/");
-        HttpRequest requestFromBytes = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.0\r\n\r\n".getBytes(UTF_8));
-        HttpRequest requestFromString = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.0\r\n\r\n");
-        HttpRequest requestFromHeadersAndBody = http.createRequest(http.createService("example.org", true), List.of(new String("foo: bar")), new byte[0]);
-        HttpRequest exactRequestFromHeadersAndBody = http.createVerbatimRequest(http.createService("example.org", true), List.of(http.createHeader("foo: bar")), new byte[0]);
+        HttpRequest requestFromUrl = httpRequestFromUrl("https://example.com:442/");
+        HttpRequest requestFromBytes = httpRequest(httpService("example.org", true), "GET / HTTP/1.0\r\n\r\n".getBytes(UTF_8));
+        HttpRequest requestFromString = httpRequest(httpService("example.org", true), "GET / HTTP/1.0\r\n\r\n");
+        HttpRequest requestFromHeadersAndBody = httpRequest(httpService("example.org", true), List.of(new String("foo: bar")), new byte[0]);
+        HttpRequest exactRequestFromHeadersAndBody = httpVerbatimRequest(httpService("example.org", true), List.of(httpHeader("foo: bar")), new byte[0]);
     }
 
     private void buildHttpService()
     {
-        HttpService service = http.createService("example.com", 8080, false);
-        HttpService service1 = http.createService("example.com", false);
+        HttpService service = httpService("example.com", 8080, false);
+        HttpService service1 = httpService("example.com", false);
 
         String host = service.host();
         int port = service.port();
@@ -1291,9 +1309,9 @@ public class TestExtension implements BurpExtension
 
     private void buildParameter()
     {
-        HttpParameter urlParam = http.createUrlParameter("foo", "bar");
-        HttpParameter bodyParam = http.createBodyParameter("foo", "bar");
-        HttpParameter cookie = http.createCookieParameter("foo", "bar");
+        HttpParameter urlParam = urlParameter("foo", "bar");
+        HttpParameter bodyParam = bodyParameter("foo", "bar");
+        HttpParameter cookie = cookieParameter("foo", "bar");
     }
 
     private void bytesToString()
@@ -1320,7 +1338,7 @@ public class TestExtension implements BurpExtension
 
     private void makeScannerInsertionPoint() throws IOException
     {
-        AuditInsertionPoint typedAuditInsertionPoint = scanner.createOffsetBasedInsertionPoint("foo", httpRequest, 0, 5);
+        AuditInsertionPoint typedAuditInsertionPoint = auditInsertionPoint("foo", httpRequest, 0, 5);
 
         String insertionPointName = typedAuditInsertionPoint.name();
         AuditInsertionPointType insertionPointType = typedAuditInsertionPoint.type();
@@ -1332,7 +1350,7 @@ public class TestExtension implements BurpExtension
 
     private void removeParameter()
     {
-        HttpRequest modifiedRequest = httpRequest.withRemovedParameters(http.createUrlParameter("foo", "bar"));
+        HttpRequest modifiedRequest = httpRequest.withRemovedParameters(urlParameter("foo", "bar"));
     }
 
     private void stringToBytes()
@@ -1347,7 +1365,7 @@ public class TestExtension implements BurpExtension
 
     private void updateParameter()
     {
-        HttpRequest modifiedRequest = httpRequest.withUpdatedParameters(http.createUrlParameter("foo", "bar"));
+        HttpRequest modifiedRequest = httpRequest.withUpdatedParameters(urlParameter("foo", "bar"));
     }
 
     private void urlDecode()

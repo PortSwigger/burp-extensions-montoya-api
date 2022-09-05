@@ -11,17 +11,66 @@ package burp.api.montoya.http.message.responses;
 import burp.api.montoya.http.MimeType;
 import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.cookies.Cookie;
+import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.responses.analysis.Attribute;
 import burp.api.montoya.http.message.responses.analysis.AttributeType;
 import burp.api.montoya.http.message.responses.analysis.KeywordCount;
 
 import java.util.List;
 
+import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
+
 /**
  * This interface is used to retrieve key details about an HTTP response.
  */
 public interface HttpResponse extends HttpMessage
 {
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param response The HTTP response.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(byte[] response)
+    {
+        return FACTORY.httpResponse(response);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param response The HTTP response.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(String response)
+    {
+        return FACTORY.httpResponse(response);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param headers A list of HTTP headers.
+     * @param body    An HTTP response body.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(List<String> headers, byte[] body)
+    {
+        return FACTORY.httpResponse(headers, body);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param headers A list of HTTP headers.
+     * @param body    An HTTP response body.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(List<String> headers, String body)
+    {
+        return FACTORY.httpResponse(headers, body);
+    }
+
     /**
      * This method is used to obtain the HTTP status code contained in the response.
      *
@@ -65,4 +114,72 @@ public interface HttpResponse extends HttpMessage
      * @return List of {@link Attribute} objects.
      */
     List<Attribute> attributes(AttributeType... types);
+
+    /**
+     * This is a helper method that builds a modified response with the updated body.
+     * Updates Content-Length header.
+     *
+     * @param body the new body for the response
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withBody(String body);
+
+    /**
+     * This is a helper method that builds a modified response with the updated body.
+     * Updates Content-Length header.
+     *
+     * @param body the new body for the response
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withBody(byte[] body);
+
+    /**
+     * Adds an HTTP header to the response.
+     *
+     * @param header The {@link HttpHeader} to add to the response.
+     * @return The updated response containing the added header.
+     */
+    HttpResponse addHeader(HttpHeader header);
+
+    /**
+     * Adds an HTTP header to the response.
+     *
+     * @param name  The name of the header.
+     * @param value The value of the header.
+     * @return The updated response containing the added header.
+     */
+    HttpResponse addHeader(String name, String value);
+
+    /**
+     * Updates an existing HTTP header in the response with a new value.
+     *
+     * @param header The {@link HttpHeader} to update containing the new value.
+     * @return The updated response containing the updated header.
+     */
+    HttpResponse updateHeader(HttpHeader header);
+
+    /**
+     * Updates an existing HTTP header in the response with a new value.
+     *
+     * @param name  The name of the header to update the value of.
+     * @param value The new value of the specified HTTP header.
+     * @return The updated response containing the updated header.
+     */
+    HttpResponse updateHeader(String name, String value);
+
+    /**
+     * Removes an existing HTTP header from the current response.
+     *
+     * @param header The {@link HttpHeader} to remove from the response.
+     * @return The updated response containing the removed header.
+     */
+    HttpResponse removeHeader(HttpHeader header);
+
+    /**
+     * Removes an existing HTTP header from the current response.
+     *
+     * @param name The name of the HTTP header to remove from the response.
+     * @return The updated response containing the removed header.
+     */
+    HttpResponse removeHeader(String name);
 }

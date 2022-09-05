@@ -25,9 +25,9 @@ public interface PayloadProcessor
     /**
      * This method is invoked by Burp each time the processor should be applied to an Intruder payload.
      *
-     * @param currentPayload The value of the payload to be processed.
+     * @param currentPayload  The value of the payload to be processed.
      * @param originalPayload The value of the original payload prior to processing by any already-applied processing rules
-     * @param insertionPoint The insertion point data.
+     * @param insertionPoint  The insertion point data.
      * @return The value of the processed payload.
      */
     PayloadProcessingResult processPayload(Payload currentPayload, Payload originalPayload, IntruderInsertionPoint insertionPoint);

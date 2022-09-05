@@ -8,7 +8,7 @@
 
 package burp.api.montoya.http;
 
-import burp.api.montoya.core.MessageAnnotations;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -23,21 +23,21 @@ public interface HttpHandler
     /**
      * This method is invoked by Burp when an HTTP request is about to be issued.
      *
-     * @param request The HTTP request that is about to be sent.
-     * @param annotations Message annotations.
-     * @param toolSource Indicates which Burp tool issued the request.
-     * @return An instance of {@link RequestHandlerResult}.
+     * @param request     The HTTP request that is about to be sent.
+     * @param annotations annotations.
+     * @param toolSource  Indicates which Burp tool issued the request.
+     * @return An instance of {@link RequestResult}.
      */
-    RequestHandlerResult handleHttpRequest(HttpRequest request, MessageAnnotations annotations, ToolSource toolSource);
+    RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource);
 
     /**
      * This method is invoked by Burp when an HTTP response has been received.
      *
-     * @param request The HTTP request that was issued.
-     * @param response The HTTP response that was received.
-     * @param annotations Message annotations.
-     * @param toolSource Indicates which Burp tool issued the request.
-     * @return An instance of {@link ResponseHandlerResult}.
+     * @param request     The HTTP request that was issued.
+     * @param response    The HTTP response that was received.
+     * @param annotations annotations.
+     * @param toolSource  Indicates which Burp tool issued the request.
+     * @return An instance of {@link ResponseResult}.
      */
-    ResponseHandlerResult handleHttpResponse(HttpRequest request, HttpResponse response, MessageAnnotations annotations, ToolSource toolSource);
+    ResponseResult handleHttpResponse(HttpRequest request, HttpResponse response, Annotations annotations, ToolSource toolSource);
 }

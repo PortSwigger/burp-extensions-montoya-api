@@ -25,9 +25,9 @@ public interface PersistenceContext
     /**
      * This method is used to save a string value for the extension.
      *
-     * @param name The name of the string.
+     * @param name  The name of the string.
      * @param value The string value. If this value is {@code null} then any
-     * value with the specified name will be removed.
+     *              value with the specified name will be removed.
      */
     void setString(String name, String value);
 
@@ -42,9 +42,9 @@ public interface PersistenceContext
     /**
      * This method is used to save a number value for the extension.
      *
-     * @param name The name of the number.
+     * @param name  The name of the number.
      * @param value The number value. If this value is {@code null} then any
-     * value with the specified name will be removed.
+     *              value with the specified name will be removed.
      */
     void setNumber(String name, Number value);
 
@@ -59,9 +59,9 @@ public interface PersistenceContext
     /**
      * This method is used to save a boolean value for the extension.
      *
-     * @param name The name of the boolean.
+     * @param name  The name of the boolean.
      * @param value The boolean value. If this value is {@code null} then any
-     * value with the specified name will be removed.
+     *              value with the specified name will be removed.
      */
     void setBoolean(String name, Boolean value);
 

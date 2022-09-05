@@ -41,6 +41,13 @@ public interface Version
      */
     String build();
 
+    /**
+     * This method returns the edition of Burp Suite
+     *
+     * @return The edition of Burp Suite
+     */
+    BurpSuiteEdition edition();
+
     @Override
     String toString();
 }

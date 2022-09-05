@@ -23,6 +23,13 @@ public interface CollaboratorPayload
     InteractionId id();
 
     /**
+     * Return custom data from the payload.
+     *
+     * @return The payload's custom data.
+     */
+    Optional<String> customData();
+
+    /**
      * Returns an optional instance of CollaboratorServer describing the
      * server location for this payload. If the payload was generated without
      * the server location this method will return an empty Optional.

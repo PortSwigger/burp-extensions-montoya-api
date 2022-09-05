@@ -36,10 +36,10 @@ public interface ScanCheck
      * point.
      *
      * @param baseRequestResponse The base {@link HttpRequestResponse} that
-     * should be actively audited.
+     *                            should be actively audited.
      * @param auditInsertionPoint An {@link AuditInsertionPoint} object that
-     * can be queried to obtain details of the insertion point being tested, and
-     * can be used to build requests for particular payloads.
+     *                            can be queried to obtain details of the insertion point being tested, and
+     *                            can be used to build requests for particular payloads.
      * @return A list of {@link AuditIssue} objects, or {@code null} if no
      * issues are identified.
      */
@@ -52,7 +52,7 @@ public interface ScanCheck
      * new HTTP requests of their own.
      *
      * @param baseRequestResponse The base {@link HttpRequestResponse} that
-     * should be passively audited.
+     *                            should be passively audited.
      * @return A list of {@link AuditIssue} objects, or {@code null} if no
      * issues are identified.
      */
@@ -68,10 +68,10 @@ public interface ScanCheck
      * the consolidation process will simply be a matter of comparing these
      * features for the two issues.
      *
-     * @param newIssue An {@link AuditIssue} at the same URL path that has been
-     * newly reported by this Scan check.
+     * @param newIssue      An {@link AuditIssue} at the same URL path that has been
+     *                      newly reported by this Scan check.
      * @param existingIssue An {@link AuditIssue} that was previously reported
-     * by this Scan check.
+     *                      by this Scan check.
      * @return A {@link ConsolidationAction} to determine which issue(s) should
      * be reported in the main Scanner results.
      */

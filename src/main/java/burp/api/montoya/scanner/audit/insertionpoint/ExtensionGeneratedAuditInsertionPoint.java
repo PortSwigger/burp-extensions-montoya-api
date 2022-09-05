@@ -50,7 +50,7 @@ public interface ExtensionGeneratedAuditInsertionPoint
      * point.
      *
      * @param payload The payload that should be placed into the insertion
-     * point.
+     *                point.
      * @return The resulting request.
      */
     byte[] buildHttpMessageWithPayload(byte[] payload);
@@ -62,7 +62,7 @@ public interface ExtensionGeneratedAuditInsertionPoint
      * relevant part of the request within the UI.
      *
      * @param payload The payload that should be placed into the insertion
-     * point.
+     *                point.
      * @return A list of {@link Range} objects containing the start and end
      * offsets of the payload within the request, or an empty list if this is
      * not applicable (for example, where the insertion point places a payload

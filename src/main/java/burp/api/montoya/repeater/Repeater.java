@@ -33,9 +33,9 @@ public interface Repeater
      * tool. The request will be displayed in the user interface, but will not
      * be issued until the user initiates this action.
      *
-     * @param name An optional caption which will appear on the Repeater
-     * tab containing the request. If this value is {@code null} then a default
-     * tab index will be displayed.
+     * @param name    An optional caption which will appear on the Repeater
+     *                tab containing the request. If this value is {@code null} then a default
+     *                tab index will be displayed.
      * @param request The full HTTP request.
      */
     void sendToRepeater(String name, HttpRequest request);

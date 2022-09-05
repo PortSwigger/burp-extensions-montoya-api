@@ -10,8 +10,8 @@ package net.portswigger.burp.extender.proxy;
 
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.HighlightColor;
-import burp.api.montoya.core.MessageAnnotations;
 import burp.api.montoya.http.ContentType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.proxy.InterceptedHttpRequest;
@@ -27,7 +27,7 @@ import burp.api.montoya.proxy.ResponseInitialInterceptResult;
 public class ProxyHandlerExample implements BurpExtension
 {
     @Override
-    public void initialise(MontoyaApi api)
+    public void initialize(MontoyaApi api)
     {
         //Register our http handlers with Burp.
         api.proxy().registerRequestHandler(new MyProxyHttpRequestHandler());
@@ -37,7 +37,7 @@ public class ProxyHandlerExample implements BurpExtension
     private static class MyProxyHttpRequestHandler implements ProxyHttpRequestHandler
     {
         @Override
-        public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, MessageAnnotations annotations)
+        public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
         {
             //Drop all post requests
             if (interceptedRequest.method().equals("POST"))
@@ -62,7 +62,7 @@ public class ProxyHandlerExample implements BurpExtension
         }
 
         @Override
-        public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, MessageAnnotations annotations)
+        public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
         {
             //Do nothing with the user modified request, continue as normal.
             return RequestFinalInterceptResult.continueWith(interceptedRequest, annotations);
@@ -72,7 +72,7 @@ public class ProxyHandlerExample implements BurpExtension
     private static class MyProxyHttpResponseHandler implements ProxyHttpResponseHandler
     {
         @Override
-        public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, MessageAnnotations annotations)
+        public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
         {
             //Highlight all responses that have username in them
             if (interceptedResponse.bodyAsString().contains("username"))
@@ -84,7 +84,7 @@ public class ProxyHandlerExample implements BurpExtension
         }
 
         @Override
-        public ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, MessageAnnotations annotations)
+        public ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
         {
             return ResponseFinalInterceptResult.continueWith(interceptedResponse, annotations);
         }

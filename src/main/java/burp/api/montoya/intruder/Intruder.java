@@ -46,8 +46,8 @@ public interface Intruder
      * will be displayed in the user interface, and markers for attack payloads will be placed
      * into the locations specified in the provided {@link HttpRequestTemplate} object.
      *
-     * @param service An {@link HttpService} object that specifies the hostname, port and protocol
-     *                of a remote server.
+     * @param service         An {@link HttpService} object that specifies the hostname, port and protocol
+     *                        of a remote server.
      * @param requestTemplate An HTTP request template containing insertion point offsets.
      */
     void sendToIntruder(HttpService service, HttpRequestTemplate requestTemplate);

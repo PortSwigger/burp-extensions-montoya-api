@@ -8,12 +8,42 @@
 
 package burp.api.montoya.intruder;
 
+import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
+
 /**
  * An instance of this interface should be returned by {@link PayloadProcessor#processPayload} if a custom
  * {@link PayloadProcessor} was registered with Intruder.
  */
 public interface PayloadProcessingResult
 {
+    /**
+     * This method is a helper method to create a new instance of {@link PayloadProcessingResult} with a
+     * {@link PayloadProcessingAction#USE_PAYLOAD} action.
+     *
+     * @param processedPayload Processed payload value
+     * @return A new {@link PayloadProcessingResult} instance.
+     */
+    static PayloadProcessingResult usePayload(byte[] processedPayload)
+    {
+        return payloadProcessingResult(processedPayload, PayloadProcessingAction.USE_PAYLOAD);
+    }
+
+    /**
+     * This method is a helper method to create a new instance of {@link PayloadProcessingResult} with a
+     * {@link PayloadProcessingAction#SKIP_PAYLOAD} action.
+     *
+     * @return A new {@link PayloadProcessingResult} instance.
+     */
+    static PayloadProcessingResult skipPayload()
+    {
+        return payloadProcessingResult(null, PayloadProcessingAction.SKIP_PAYLOAD);
+    }
+
+    private static PayloadProcessingResult payloadProcessingResult(byte[] processedPayload, PayloadProcessingAction action)
+    {
+        return FACTORY.payloadProcessingResult(processedPayload, action);
+    }
+
     /**
      * @return The current value of the processed payload.
      */
@@ -27,53 +57,4 @@ public interface PayloadProcessingResult
      * @return Action to perform with the payload.
      */
     PayloadProcessingAction action();
-
-    /**
-     * This method is a helper method to create a new instance of {@link PayloadProcessingResult} with a
-     * {@link PayloadProcessingAction#USE_PAYLOAD} action.
-     *
-     * @param processedPayload Processed payload value
-     * @return A new {@link PayloadProcessingResult} instance.
-     */
-    static PayloadProcessingResult usePayload(byte[] processedPayload)
-    {
-        return new PayloadProcessingResult()
-        {
-            @Override
-            public byte[] processedPayload()
-            {
-                return processedPayload;
-            }
-
-            @Override
-            public PayloadProcessingAction action()
-            {
-                return PayloadProcessingAction.USE_PAYLOAD;
-            }
-        };
-    }
-
-    /**
-     * This method is a helper method to create a new instance of {@link PayloadProcessingResult} with a
-     * {@link PayloadProcessingAction#SKIP_PAYLOAD} action.
-     *
-     * @return A new {@link PayloadProcessingResult} instance.
-     */
-    static PayloadProcessingResult skipPayload()
-    {
-        return new PayloadProcessingResult()
-        {
-            @Override
-            public byte[] processedPayload()
-            {
-                return null;
-            }
-
-            @Override
-            public PayloadProcessingAction action()
-            {
-                return PayloadProcessingAction.SKIP_PAYLOAD;
-            }
-        };
-    }
 }

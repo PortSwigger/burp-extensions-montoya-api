@@ -21,10 +21,10 @@ public interface CookieJar
     /**
      * This method is used to add a new HTTP cookie to the Cookie Jar.
      *
-     * @param name The name of the cookie.
-     * @param value The value of the cookie.
-     * @param path The path for which the cookie is in scope or {@code null} if none is set.
-     * @param domain The domain for which the cookie is in scope.
+     * @param name       The name of the cookie.
+     * @param value      The value of the cookie.
+     * @param path       The path for which the cookie is in scope or {@code null} if none is set.
+     * @param domain     The domain for which the cookie is in scope.
      * @param expiration The expiration time for the cookie, or {@code null} if none is set (i.e., for non-persistent session cookies).
      */
     void setCookie(String name, String value, String path, String domain, ZonedDateTime expiration);

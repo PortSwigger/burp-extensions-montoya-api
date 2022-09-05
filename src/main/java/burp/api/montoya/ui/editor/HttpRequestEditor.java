@@ -16,14 +16,14 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 public interface HttpRequestEditor extends Editor
 {
     /**
+     * @return an instance of {@link HttpRequest} derived from the contents of the editor.
+     */
+    HttpRequest getRequest();
+
+    /**
      * This method is used to display the contents of an HTTP request in the editor.
      *
      * @param request The HTTP request to be set.
      */
     void setRequest(HttpRequest request);
-
-    /**
-     * @return an instance of {@link HttpRequest} derived from the contents of the editor.
-     */
-    HttpRequest getRequest();
 }

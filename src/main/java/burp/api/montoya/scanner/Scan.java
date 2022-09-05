@@ -41,9 +41,9 @@ public interface Scan
     /**
      * This method can be used to add an HTTP request to this scan.
      *
-     * @param request The {@link HttpRequest} to add to this scan.
+     * @param request               The {@link HttpRequest} to add to this scan.
      * @param insertionPointOffsets The list of {@link Range}s representing the
-     * insertion point offsets.
+     *                              insertion point offsets.
      */
     void addRequest(HttpRequest request, List<Range> insertionPointOffsets);
 
@@ -52,7 +52,7 @@ public interface Scan
      * scan.
      *
      * @param requestResponse The {@link HttpRequestResponse} to add to this
-     * scan.
+     *                        scan.
      */
     void addRequestResponse(HttpRequestResponse requestResponse);
 
@@ -60,7 +60,7 @@ public interface Scan
      * This method can be used to add a built-in configuration to this scan.
      *
      * @param configuration The {@link BuiltInScanConfiguration} to add to this
-     * scan.
+     *                      scan.
      */
     void addConfiguration(BuiltInScanConfiguration configuration);
 
@@ -69,7 +69,7 @@ public interface Scan
      *
      * @return The {@link Crawl} started in the Burp Scanner tool.
      * @throws InvalidLauncherConfigurationException if the configuration for
-     * this scan is invalid.
+     *                                               this scan is invalid.
      */
     Crawl startCrawl() throws InvalidLauncherConfigurationException;
 
@@ -78,7 +78,7 @@ public interface Scan
      *
      * @return The {@link Audit} started in the Burp Scanner tool.
      * @throws InvalidLauncherConfigurationException if the configuration for
-     * this scan is invalid.
+     *                                               this scan is invalid.
      */
     Audit startAudit() throws InvalidLauncherConfigurationException;
 }

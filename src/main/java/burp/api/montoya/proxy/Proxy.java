@@ -35,7 +35,7 @@ public interface Proxy
      */
     default List<ProxyRequestResponse> history()
     {
-        return history(ProxyHistoryFilter.all());
+        return history(requestResponse -> true);
     }
 
     /**
@@ -43,7 +43,7 @@ public interface Proxy
      * filter.
      *
      * @param filter An instance of {@link ProxyHistoryFilter} that can be used
-     * to filter the items in the Proxy history.
+     *               to filter the items in the Proxy history.
      * @return The list of {@link ProxyRequestResponse} items in the Proxy
      * history that matched the filter.
      */
@@ -56,7 +56,7 @@ public interface Proxy
      * message interception.
      *
      * @param handler An object created by the extension that implements the
-     * {@link ProxyHttpRequestHandler} interface.
+     *                {@link ProxyHttpRequestHandler} interface.
      * @return The {@link Registration} for the handler.
      */
     Registration registerRequestHandler(ProxyHttpRequestHandler handler);
@@ -68,7 +68,7 @@ public interface Proxy
      * message interception.
      *
      * @param handler An object created by the extension that implements the
-     * {@link ProxyHttpResponseHandler} interface.
+     *                {@link ProxyHttpResponseHandler} interface.
      * @return The {@link Registration} for the handler.
      */
     Registration registerResponseHandler(ProxyHttpResponseHandler handler);

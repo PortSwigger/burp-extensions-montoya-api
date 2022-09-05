@@ -10,6 +10,7 @@ package burp.api.montoya;
 
 import burp.api.montoya.collaborator.Collaborator;
 import burp.api.montoya.comparer.Comparer;
+import burp.api.montoya.decoder.Decoder;
 import burp.api.montoya.http.Http;
 import burp.api.montoya.intruder.Intruder;
 import burp.api.montoya.logging.Logging;
@@ -46,6 +47,13 @@ public interface MontoyaApi
      * @return An implementation of the Comparer interface which exposes Comparer based functionality.
      */
     Comparer comparer();
+
+    /**
+     * This method is used to access the functionality of the Decoder.
+     *
+     * @return An implementation of the Decoder interface which exposes Decoder based functionality.
+     */
+    Decoder decoder();
 
     /**
      * This method is used to access the functionality related to HTTP requests and responses.

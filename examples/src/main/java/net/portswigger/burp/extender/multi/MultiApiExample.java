@@ -31,9 +31,10 @@ public class MultiApiExample implements BurpExtension, IBurpExtender
 
     //Invoked Last
     @Override
-    public void initialise(MontoyaApi api)
+    public void initialize(MontoyaApi api)
     {
         this.montoyaApi = api;
+
         //Register a suite tab that has a button that uses both api's
         api.userInterface().registerSuiteTab("My Suite Tab", new MySuiteTab());
 

@@ -16,14 +16,14 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 public interface HttpResponseEditor extends Editor
 {
     /**
+     * @return an instance of {@link HttpResponse} derived from the contents of the editor.
+     */
+    HttpResponse getResponse();
+
+    /**
      * This method is used to display the contents of an HTTP response in the editor.
      *
      * @param response The HTTP response to be set.
      */
     void setResponse(HttpResponse response);
-
-    /**
-     * @return an instance of {@link HttpResponse} derived from the contents of the editor.
-     */
-    HttpResponse getResponse();
 }

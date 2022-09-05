@@ -17,7 +17,7 @@ public interface ByteUtils
      * This method searches a piece of data for the first occurrence of a specified pattern.
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
-     * @param data The data to be searched.
+     * @param data       The data to be searched.
      * @param searchTerm The value to be searched for.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
@@ -30,8 +30,8 @@ public interface ByteUtils
      * This method searches a piece of data for the first occurrence of a specified pattern.
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
-     * @param data The data to be searched.
-     * @param searchTerm The value to be searched for.
+     * @param data          The data to be searched.
+     * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
@@ -44,14 +44,51 @@ public interface ByteUtils
      * This method searches a piece of data for the first occurrence of a specified pattern.
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
-     * @param data The data to be searched.
-     * @param searchTerm The value to be searched for.
+     * @param data          The data to be searched.
+     * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
-     * @param from The offset within data where the search should begin.
-     * @param to The offset within data where the search should end.
+     * @param from          The offset within data where the search should begin.
+     * @param to            The offset within data where the search should end.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
     int indexOf(byte[] data, byte[] searchTerm, boolean caseSensitive, int from, int to);
+
+    /**
+     * This method searches a piece of data and counts all matches for a specified pattern.
+     *
+     * @param data       The data to be searched.
+     * @param searchTerm The value to be searched for.
+     * @return The count of all matches of the pattern
+     */
+    default int countMatches(byte[] data, byte[] searchTerm)
+    {
+        return countMatches(data, searchTerm, true, 0, data.length);
+    }
+
+    /**
+     * This method searches a piece of data and counts all matches for a specified pattern.
+     *
+     * @param data          The data to be searched.
+     * @param searchTerm    The value to be searched for.
+     * @param caseSensitive Flags whether the search is case-sensitive.
+     * @return The count of all matches of the pattern
+     */
+    default int countMatches(byte[] data, byte[] searchTerm, boolean caseSensitive)
+    {
+        return countMatches(data, searchTerm, caseSensitive, 0, data.length);
+    }
+
+    /**
+     * This method searches a piece of data and counts all matches for a specified pattern.
+     *
+     * @param data          The data to be searched.
+     * @param searchTerm    The value to be searched for.
+     * @param caseSensitive Flags whether the search is case-sensitive.
+     * @param from          The offset within data where the search should begin.
+     * @param to            The offset within data where the search should end.
+     * @return The count of all matches of the pattern within the specified bounds
+     */
+    int countMatches(byte[] data, byte[] searchTerm, boolean caseSensitive, int from, int to);
 
     /**
      * This method can be used to convert data from an array of bytes into String form. The conversion does not reflect any particular character set, and a byte with the

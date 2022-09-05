@@ -47,7 +47,7 @@ public interface Scope
      * changes to Burp's Suite-wide target scope.
      *
      * @param handler An object created by the extension that implements the
-     * {@link ScopeChangeHandler} interface.
+     *                {@link ScopeChangeHandler} interface.
      * @return The {@link Registration} for the handler.
      */
     Registration registerHandler(ScopeChangeHandler handler);

@@ -13,5 +13,6 @@ package burp.api.montoya.ui;
  */
 public enum Theme
 {
-    DARK, LIGHT
+    DARK,
+    LIGHT
 }

@@ -69,4 +69,11 @@ public interface Interaction
      * not SMTP.
      */
     Optional<SmtpDetails> smtpDetails();
+
+    /**
+     * Return custom data from the payload.
+     *
+     * @return The custom data.
+     */
+    Optional<String> customData();
 }

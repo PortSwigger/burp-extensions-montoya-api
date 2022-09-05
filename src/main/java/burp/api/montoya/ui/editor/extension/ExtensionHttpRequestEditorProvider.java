@@ -19,7 +19,7 @@ public interface ExtensionHttpRequestEditorProvider
      * This method is invoked by Burp when a new HTTP request editor is created.
      *
      * @param httpRequestResponse The instance of {@link HttpRequestResponse} to be set in the editor.
-     * @param editorMode What mode the created editor should implement.
+     * @param editorMode          What mode the created editor should implement.
      * @return An instance of {@link ExtensionHttpRequestEditor}
      */
     ExtensionHttpRequestEditor provideHttpRequestEditor(HttpRequestResponse httpRequestResponse, EditorMode editorMode);

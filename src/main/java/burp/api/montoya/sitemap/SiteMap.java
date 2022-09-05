@@ -36,7 +36,7 @@ public interface SiteMap
      */
     default List<HttpRequestResponse> requestResponses()
     {
-        return requestResponses(SiteMapFilter.all());
+        return requestResponses(node -> true);
     }
 
     /**
@@ -56,7 +56,7 @@ public interface SiteMap
      */
     default List<AuditIssue> issues()
     {
-        return issues(SiteMapFilter.all());
+        return issues(node -> true);
     }
 
     /**
@@ -78,5 +78,5 @@ public interface SiteMap
      * @param auditIssue An object created by the extension that implements the
      *                   {@link AuditIssue} interface.
      */
-    void addAuditIssue(AuditIssue auditIssue);
+    void add(AuditIssue auditIssue);
 }

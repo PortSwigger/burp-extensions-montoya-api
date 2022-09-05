@@ -28,7 +28,7 @@ public interface AuditInsertionPointProvider
      * and those provided by any other Burp extensions.
      *
      * @param baseHttpRequestResponse The base {@link HttpRequestResponse} that
-     * will be actively audited.
+     *                                will be actively audited.
      * @return A list of {@link ExtensionGeneratedAuditInsertionPoint} objects
      * that should be used in the audit, or {@code null} if no custom insertion
      * points are applicable for this request.

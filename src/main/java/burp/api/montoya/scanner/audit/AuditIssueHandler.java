@@ -25,7 +25,7 @@ public interface AuditIssueHandler
      * results.
      *
      * @param auditIssue An {@link AuditIssue} object that the extension can
-     * query to obtain details about the new issue.
+     *                   query to obtain details about the new issue.
      */
     void handleNewAuditIssue(AuditIssue auditIssue);
 }

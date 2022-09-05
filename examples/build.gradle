@@ -10,6 +10,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.portswigger.burp.extender:montoya-api:0.9.5'
+    implementation 'net.portswigger.burp.extender:montoya-api:0.9.22'
     implementation 'net.portswigger.burp.extender:burp-extender-api:2.3'
 }

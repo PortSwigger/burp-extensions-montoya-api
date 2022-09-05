@@ -8,7 +8,6 @@
 
 package burp.api.montoya.http.message.cookies;
 
-import burp.api.montoya.http.Http;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.time.ZonedDateTime;
@@ -36,7 +35,7 @@ public interface Cookie
      * This method is used to retrieve the domain for which the cookie is in scope.
      *
      * @return The domain for which the cookie is in scope. Note: For cookies that have been obtained from generated responses
-     * (by calling {@link Http#createResponse} and then {@link HttpResponse#cookies}), the domain will be {@code null} if the response
+     * (by calling {@link HttpResponse#httpResponse} and then {@link HttpResponse#cookies}), the domain will be {@code null} if the response
      * did not explicitly set a domain attribute for the cookie.
      */
     String domain();

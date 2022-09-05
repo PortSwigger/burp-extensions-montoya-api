@@ -2,6 +2,7 @@ burp.api.montoya
 burp.api.montoya.collaborator
 burp.api.montoya.comparer
 burp.api.montoya.core
+burp.api.montoya.decoder
 burp.api.montoya.http
 burp.api.montoya.http.message
 burp.api.montoya.http.message.cookies
@@ -11,6 +12,7 @@ burp.api.montoya.http.message.requests
 burp.api.montoya.http.message.responses
 burp.api.montoya.http.message.responses.analysis
 burp.api.montoya.http.sessions
+burp.api.montoya.internal
 burp.api.montoya.intruder
 burp.api.montoya.logging
 burp.api.montoya.misc
@@ -27,4 +29,5 @@ burp.api.montoya.ui
 burp.api.montoya.ui.contextmenu
 burp.api.montoya.ui.editor
 burp.api.montoya.ui.editor.extension
+burp.api.montoya.ui.swing
 burp.api.montoya.utilities

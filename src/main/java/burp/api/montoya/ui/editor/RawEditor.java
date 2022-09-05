@@ -19,15 +19,15 @@ public interface RawEditor extends Editor
     void setEditable(boolean editable);
 
     /**
+     * @return The contents of the text editor.
+     */
+    byte[] getContents();
+
+    /**
      * This method can be used to set content within the text editor programmatically.
      * The default system charset is used when encoding to a String.
      *
      * @param contents The content to set in the text editor.
      */
     void setContents(byte[] contents);
-
-    /**
-     * @return The contents of the text editor.
-     */
-    byte[] getContents();
 }

@@ -64,7 +64,7 @@ public interface Misc
      * paths are provided, then the entire configuration will be saved.
      *
      * @param paths A list of Strings representing the path to each
-     * configuration section that should be included.
+     *              configuration section that should be included.
      * @return A String representing the current configuration in JSON format.
      */
     String exportProjectOptionsAsJson(String... paths);
@@ -74,7 +74,7 @@ public interface Misc
      * the JSON String provided. This is the same format that can be saved and
      * loaded via the Burp user interface. Partial configurations are
      * acceptable, and any settings not specified will be left unmodified.
-     *
+     * <p>
      * Any user-level configuration options contained in the input will be
      * ignored.
      *
@@ -103,7 +103,7 @@ public interface Misc
      * resources when the extension is unloaded.
      *
      * @param handler An object created by the extension that implements the
-     * {@link ExtensionUnloadHandler} interface.
+     *                {@link ExtensionUnloadHandler} interface.
      * @return The {@link Registration} for the handler.
      */
     Registration registerExtensionUnloadHandler(ExtensionUnloadHandler handler);
@@ -112,9 +112,9 @@ public interface Misc
      * This method can be used to shut down Burp programmatically.
      *
      * @param options The shutdown options for shutting down Burp
-     * programmatically. For example {@link ShutdownOptions#PROMPT_USER} will
-     * display a dialog to the user allowing them to confirm or cancel the
-     * shut down.
+     *                programmatically. For example {@link ShutdownOptions#PROMPT_USER} will
+     *                display a dialog to the user allowing them to confirm or cancel the
+     *                shut down.
      */
     void shutdownBurp(ShutdownOptions... options);
 }

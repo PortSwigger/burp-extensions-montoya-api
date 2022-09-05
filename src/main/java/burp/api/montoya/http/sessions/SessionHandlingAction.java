@@ -8,8 +8,9 @@
 
 package burp.api.montoya.http.sessions;
 
-import burp.api.montoya.core.MessageAnnotations;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.Http;
+import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
@@ -30,12 +31,12 @@ public interface SessionHandlingAction
     /**
      * This method is invoked when the session handling action should be executed.
      *
-     * @param currentRequest  The base request that is currently being processed. The action can query this object to obtain details about the base request.
-     * @param messageAnnotations The message annotation on the request.
-     * @param macroRequestResponses  If the action is invoked following execution of a macro, this parameter contains the result of executing the macro.
-     *                               Otherwise, it is an empty list. Actions can use the details of the macro items to perform custom analysis of the macro
-     *                               to derive values of non-standard session handling tokens, etc.
-     * @return A new {@link SessionHandlingResult} instance.
+     * @param currentRequest        The base request that is currently being processed. The action can query this object to obtain details about the base request.
+     * @param annotations    The message annotation on the request.
+     * @param macroRequestResponses If the action is invoked following execution of a macro, this parameter contains the result of executing the macro.
+     *                              Otherwise, it is an empty list. Actions can use the details of the macro items to perform custom analysis of the macro
+     *                              to derive values of non-standard session handling tokens, etc.
+     * @return A new {@link burp.api.montoya.http.RequestResult} instance.
      */
-    SessionHandlingResult handle(HttpRequest currentRequest, MessageAnnotations messageAnnotations, List<HttpRequestResponse> macroRequestResponses);
+    RequestResult handle(HttpRequest currentRequest, Annotations annotations, List<HttpRequestResponse> macroRequestResponses);
 }

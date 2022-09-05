@@ -22,11 +22,6 @@ public interface Payload
     Payload END = () -> null;
 
     /**
-     * @return Payload value.
-     */
-    byte[] value();
-
-    /**
      * This is a helper method to create a new {@link Payload} instance from a String payload value.
      *
      * @param payload String payload value. UTF-8 charset is assumed.
@@ -47,4 +42,9 @@ public interface Payload
     {
         return () -> payload;
     }
+
+    /**
+     * @return Payload value.
+     */
+    byte[] value();
 }

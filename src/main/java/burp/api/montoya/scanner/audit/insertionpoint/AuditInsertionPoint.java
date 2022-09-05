@@ -8,7 +8,10 @@
 
 package burp.api.montoya.scanner.audit.insertionpoint;
 
+import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.scanner.ScanCheck;
+
+import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * This interface is used to define an insertion point for use by active Scan
@@ -18,6 +21,22 @@ import burp.api.montoya.scanner.ScanCheck;
  */
 public interface AuditInsertionPoint extends ExtensionGeneratedAuditInsertionPoint
 {
+
+    /**
+     * This method can be used to create an audit insertion point based on
+     * offsets.
+     *
+     * @param name                The name of the audit insertion point.
+     * @param baseRequest         The base {@link HttpRequest}.
+     * @param startIndexInclusive The start index inclusive.
+     * @param endIndexExclusive   The end index exclusive.
+     * @return The {@link AuditInsertionPoint} based on offsets.
+     */
+    static AuditInsertionPoint auditInsertionPoint(String name, HttpRequest baseRequest, int startIndexInclusive, int endIndexExclusive)
+    {
+        return FACTORY.auditInsertionPoint(name, baseRequest, startIndexInclusive, endIndexExclusive);
+    }
+
     /**
      * This method returns the type of this insertion point.
      *

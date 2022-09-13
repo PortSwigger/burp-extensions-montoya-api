@@ -13,6 +13,8 @@ import burp.api.montoya.core.Registration;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.MarkedHttpRequestResponse;
 import burp.api.montoya.http.message.headers.HttpHeader;
+import burp.api.montoya.http.message.params.HttpParameter;
+import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.http.message.responses.analysis.ResponseKeywordsAnalyzer;
@@ -45,6 +47,94 @@ public interface Http
      * @return The {@link Registration} for the handler.
      */
     Registration registerSessionHandlingAction(SessionHandlingAction action);
+
+    /**
+     * Create a new instance of {@code HttpHeader} from name and value.
+     *
+     * @param name The name of the header.
+     * @param value The value of the header.
+     * @return A new {@code HttpHeader} instance.
+     */
+    HttpHeader createHeader(String name, String value);
+
+    /**
+     * Create a new instance of HttpHeader from a {@code String} header representation.
+     *
+     * @param header The {@code String} header representation.
+     * @return A new {@code HttpHeader} instance.
+     */
+    HttpHeader createHeader(String header);
+
+    /**
+     * Create a new instance of {@code HttpService}.
+     *
+     * @param baseUrl The URL for the service.
+     * @return A new {@code HttpService} instance.
+     * @throws IllegalArgumentException If the provided URL is invalid.
+     */
+    HttpService createService(String baseUrl);
+
+    /**
+     * Create a new instance of {@code HttpService}.
+     *
+     * @param host The hostname or IP address for the service.
+     * @param secure True is the secure connection is to be used.
+     * @return A new {@code HttpService} instance.
+     */
+    HttpService createService(String host, boolean secure);
+
+    /**
+     * Create a new instance of {@code HttpService}.
+     *
+     * @param host The hostname or IP address for the service.
+     * @param port The port number for the service.
+     * @param secure True is the secure connection is to be used.
+     * @return A new {@code HttpService} instance.
+     */
+    HttpService createService(String host, int port, boolean secure);
+
+    /**
+     * Create a new Instance of {@code HttpParameter} with {@link HttpParameterType#URL} type.
+     *
+     * @param name The parameter name.
+     * @param value The parameter value.
+     * @return A new {@code HttpParameter} instance.
+     */
+    default HttpParameter createUrlParameter(String name, String value) {
+        return createParameter(name, value, HttpParameterType.URL);
+    }
+
+    /**
+     * Create a new Instance of {@code HttpParameter} with {@link HttpParameterType#BODY} type.
+     *
+     * @param name The parameter name.
+     * @param value The parameter value.
+     * @return A new {@code HttpParameter} instance.
+     */
+    default HttpParameter createBodyParameter(String name, String value) {
+        return createParameter(name, value, HttpParameterType.BODY);
+    }
+
+    /**
+     * Create a new Instance of {@code HttpParameter} with {@link HttpParameterType#COOKIE} type.
+     *
+     * @param name The parameter name.
+     * @param value The parameter value.
+     * @return A new {@code HttpParameter} instance.
+     */
+    default HttpParameter createCookieParameter(String name, String value) {
+        return createParameter(name, value, HttpParameterType.COOKIE);
+    }
+
+    /**
+     * Create a new Instance of {@code HttpParameter} with the specified type.
+     *
+     * @param name The parameter name.
+     * @param value The parameter value.
+     * @param type The header type.
+     * @return A new {@code HttpParameter} instance.
+     */
+    HttpParameter createParameter(String name, String value, HttpParameterType type);
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequest}.

@@ -20,5 +20,5 @@ public interface BurpExtension
      *
      * @param api The api implementation to access the functionality of burp suite.
      */
-    void initialise(MontoyaApi api);
+    void initialize(MontoyaApi api);
 }

@@ -26,7 +26,7 @@ import burp.api.montoya.utilities.Utilities;
 /**
  * This interface is used by Burp Suite to pass a set of methods to extensions that can be used
  * to perform various actions within Burp. When an extension is loaded, Burp invokes its
- * {@link BurpExtension#initialise(MontoyaApi)} method and passes an instance
+ * {@link BurpExtension#initialize(MontoyaApi)} method and passes an instance
  * of the {@link MontoyaApi} interface. The extension may then invoke the
  * methods of this interface as required in order to extend Burp's
  * functionality.
@@ -71,7 +71,7 @@ public interface MontoyaApi
     /**
      * This method is used to access the functionality related to persistence.
      *
-     * @return An implementation of the Logging interface which exposes Logging based functionality.
+     * @return An implementation of the Persistence interface which exposes Persistence based functionality.
      */
     Persistence persistence();
 

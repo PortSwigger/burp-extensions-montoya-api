@@ -154,7 +154,7 @@ public class TestExtension implements BurpExtension
     private HttpRequestResponse httpRequestResponse;
 
     @Override
-    public void initialise(MontoyaApi api)
+    public void initialize(MontoyaApi api)
     {
         this.api = api;
         http = api.http();
@@ -170,7 +170,7 @@ public class TestExtension implements BurpExtension
         persistence = api.persistence();
         utilities = api.utilities();
 
-        httpRequest = http.createRequest(HttpService.from("example.org", true), "GET / HTTP/1.1\r\nHost: example.org\r\n\r\n");
+        httpRequest = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.1\r\nHost: example.org\r\n\r\n");
         httpResponse = http.createResponse("HTTP/1.1 200 OK \r\n\r\n");
         httpRequestResponse = http.createRequestResponse(httpRequest, httpResponse);
 
@@ -179,7 +179,7 @@ public class TestExtension implements BurpExtension
 
     private void addScanIssue()
     {
-        siteMap.addAuditIssue(AuditIssue.from(
+        siteMap.addAuditIssue(scanner.createAuditIssue(
                 "My Issue",
                 "Details",
                 "Remediation detail",
@@ -571,7 +571,7 @@ public class TestExtension implements BurpExtension
             @Override
             public RequestHandlerResult handleHttpRequest(HttpRequest request, MessageAnnotations annotations, ToolSource toolSource)
             {
-                List<HttpParameter> parameters = List.of(HttpParameter.urlParam("foo", "bar"), HttpParameter.bodyParam("foo2", "bar2"));
+                List<HttpParameter> parameters = List.of(http.createUrlParameter("foo", "bar"), http.createBodyParameter("foo2", "bar2"));
 
                 HttpRequest modifiedRequest = httpRequest.withAddedParameters(parameters);
 
@@ -814,7 +814,7 @@ public class TestExtension implements BurpExtension
                     highlight = HighlightColor.BLUE;
                 }
 
-                HttpRequest modifiedRequest = interceptedRequest.withAddedParameters(HttpParameter.bodyParam("foo", "bar"));
+                HttpRequest modifiedRequest = interceptedRequest.withAddedParameters(http.createBodyParameter("foo", "bar"));
 
                 MessageAnnotations updatedAnnotations = MessageAnnotations.from(comment, highlight);
 
@@ -872,7 +872,7 @@ public class TestExtension implements BurpExtension
                     return emptyList();
                 }
 
-                AuditIssue issue = AuditIssue.from(
+                AuditIssue issue = scanner.createAuditIssue(
                         "My Issue",
                         "Details",
                         "Remediation detail",
@@ -891,7 +891,7 @@ public class TestExtension implements BurpExtension
             @Override
             public List<AuditIssue> passiveAudit(HttpRequestResponse baseRequestResponse)
             {
-                AuditIssue issue = AuditIssue.from(
+                AuditIssue issue = scanner.createAuditIssue(
                         "My Issue",
                         "Details",
                         "Remediation detail",
@@ -1031,7 +1031,7 @@ public class TestExtension implements BurpExtension
             @Override
             public SessionHandlingResult handle(HttpRequest currentRequest, MessageAnnotations messageAnnotations, List<HttpRequestResponse> macroRequestResponses)
             {
-                HttpRequest updatedRequest = currentRequest.withRemovedParameters(HttpParameter.bodyParam("foo", "bar"));
+                HttpRequest updatedRequest = currentRequest.withRemovedParameters(http.createBodyParameter("foo", "bar"));
                 MessageAnnotations updatedMessageAnnotations = messageAnnotations.withComment("updated");
 
                 return SessionHandlingResult.from(updatedRequest, updatedMessageAnnotations);
@@ -1151,7 +1151,7 @@ public class TestExtension implements BurpExtension
     {
         List<Range> payloadPostionOffsets = List.of(Range.of(5, 6));
         HttpRequestTemplate requestTemplate = HttpRequestTemplate.from(httpRequest, payloadPostionOffsets);
-        intruder.sendToIntruder(HttpService.from("example.org", true), requestTemplate);
+        intruder.sendToIntruder(http.createService("example.org", true), requestTemplate);
     }
 
     private void sendToRepeater()
@@ -1194,12 +1194,12 @@ public class TestExtension implements BurpExtension
     //IExtensionHelpers
     private void addParameter()
     {
-        HttpRequest modifiedRequest = httpRequest.withAddedParameters(HttpParameter.urlParam("foo", "bar"));
+        HttpRequest modifiedRequest = httpRequest.withAddedParameters(http.createUrlParameter("foo", "bar"));
     }
 
     private void analyseRequest()
     {
-        HttpRequest request = http.createRequest(HttpService.from("example.org", true), "GET / HTTP/1.0\r\n\r\n");
+        HttpRequest request = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.0\r\n\r\n");
 
         int i = request.bodyOffset();
         byte[] body = request.body();
@@ -1256,7 +1256,7 @@ public class TestExtension implements BurpExtension
 
     private void buildHeader()
     {
-        HttpHeader header = HttpHeader.from("foo", "bar");
+        HttpHeader header = http.createHeader("foo", "bar");
         String name = header.name();
         String value = header.value();
     }
@@ -1273,16 +1273,16 @@ public class TestExtension implements BurpExtension
     private void buildHttpRequest() throws MalformedURLException
     {
         HttpRequest requestFromUrl = http.createRequestFromUrl("https://example.com:442/");
-        HttpRequest requestFromBytes = http.createRequest(HttpService.from("example.org", true), "GET / HTTP/1.0\r\n\r\n".getBytes(UTF_8));
-        HttpRequest requestFromString = http.createRequest(HttpService.from("example.org", true), "GET / HTTP/1.0\r\n\r\n");
-        HttpRequest requestFromHeadersAndBody = http.createRequest(HttpService.from("example.org", true), List.of(new String("foo: bar")), new byte[0]);
-        HttpRequest exactRequestFromHeadersAndBody = http.createVerbatimRequest(HttpService.from("example.org", true), List.of(HttpHeader.from("foo: bar")), new byte[0]);
+        HttpRequest requestFromBytes = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.0\r\n\r\n".getBytes(UTF_8));
+        HttpRequest requestFromString = http.createRequest(http.createService("example.org", true), "GET / HTTP/1.0\r\n\r\n");
+        HttpRequest requestFromHeadersAndBody = http.createRequest(http.createService("example.org", true), List.of(new String("foo: bar")), new byte[0]);
+        HttpRequest exactRequestFromHeadersAndBody = http.createVerbatimRequest(http.createService("example.org", true), List.of(http.createHeader("foo: bar")), new byte[0]);
     }
 
     private void buildHttpService()
     {
-        HttpService service = HttpService.from("example.com", 8080, false);
-        HttpService service1 = HttpService.from("example.com", false);
+        HttpService service = http.createService("example.com", 8080, false);
+        HttpService service1 = http.createService("example.com", false);
 
         String host = service.host();
         int port = service.port();
@@ -1291,9 +1291,9 @@ public class TestExtension implements BurpExtension
 
     private void buildParameter()
     {
-        HttpParameter urlParam = HttpParameter.urlParam("foo", "bar");
-        HttpParameter bodyParam = HttpParameter.bodyParam("foo", "bar");
-        HttpParameter cookie = HttpParameter.cookie("foo", "bar");
+        HttpParameter urlParam = http.createUrlParameter("foo", "bar");
+        HttpParameter bodyParam = http.createBodyParameter("foo", "bar");
+        HttpParameter cookie = http.createCookieParameter("foo", "bar");
     }
 
     private void bytesToString()
@@ -1332,7 +1332,7 @@ public class TestExtension implements BurpExtension
 
     private void removeParameter()
     {
-        HttpRequest modifiedRequest = httpRequest.withRemovedParameters(HttpParameter.urlParam("foo", "bar"));
+        HttpRequest modifiedRequest = httpRequest.withRemovedParameters(http.createUrlParameter("foo", "bar"));
     }
 
     private void stringToBytes()
@@ -1347,7 +1347,7 @@ public class TestExtension implements BurpExtension
 
     private void updateParameter()
     {
-        HttpRequest modifiedRequest = httpRequest.withUpdatedParameters(HttpParameter.urlParam("foo", "bar"));
+        HttpRequest modifiedRequest = httpRequest.withUpdatedParameters(http.createUrlParameter("foo", "bar"));
     }
 
     private void urlDecode()

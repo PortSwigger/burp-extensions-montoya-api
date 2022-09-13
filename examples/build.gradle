@@ -4,23 +4,12 @@ plugins {
 
 group 'net.portswigger.burp.extender'
 
-ext {
-    mavenExternalUrl = "https://maven-external.dev.portswigger.com"
-    mavenInternalUrl = "https://maven-internal.dev.portswigger.com"
-}
-
 repositories {
     mavenLocal()
     mavenCentral()
-    maven {
-        url mavenInternalUrl
-    }
-    maven {
-        url mavenExternalUrl
-    }
 }
 
 dependencies {
-    implementation 'net.portswigger.burp.extender:montoya-api:0.9'
+    implementation 'net.portswigger.burp.extender:montoya-api:0.9.5'
     implementation 'net.portswigger.burp.extender:burp-extender-api:2.3'
 }

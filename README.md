@@ -28,7 +28,7 @@ The initialise method will give you an implementation of the [MontoyaApi](https:
 
 Documentation
 --------
-* [Javadoc](https://portswigger.github.io/burp-extender-montoya-api/javadoc/burp/api/montoya/MontoyaApi.html)
+* [Javadoc](https://portswigger.github.io/burp-extensions-montoya-api/javadoc/burp/api/montoya/MontoyaApi.html)
 
 Examples
 --------

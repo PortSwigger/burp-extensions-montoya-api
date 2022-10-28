@@ -84,4 +84,18 @@ signing {
     sign publishing.publications.mavenJava
 }
 
+final JAVADOC_FIX_SEARCH_STR = '\n\n' +
+        'getURLPrefix = function(ui) {\n' +
+        '    return \'\';\n' +
+        '};\n'
+
+tasks.withType(Javadoc) {
+    doLast {
+        // Append the fix to the file
+        def searchScript = new File(destinationDir.getAbsolutePath() + '/search.js')
+        searchScript.append JAVADOC_FIX_SEARCH_STR
+    }
+}
+
+
 

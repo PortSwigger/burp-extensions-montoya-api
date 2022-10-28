@@ -1,7 +1,11 @@
-Burp Extender API - Montoya Version
+Burp Extensions API - Montoya Version
 ============================
 
-This repository holds the Burp Suite Pro Extender API for building user extensions ([BApps](https://portswigger.net/bappstore/)) leveraging the core functionality of Burp.
+This repository holds the Burp Suite Pro Extensions API for building user extensions ([BApps](https://portswigger.net/bappstore/)) leveraging the core functionality of Burp.
+
+Supported Burp Suite Version
+--------
+Minimum required version of Burp Suite is **2022.11**
 
 Download
 --------
@@ -11,20 +15,20 @@ Available on [Maven Central](https://search.maven.org/search?q=Montoya-api) and 
 <h5>Maven</h5>
 
     <dependency>
-        <groupId>net.portswigger.burp.extender</groupId>
+        <groupId>net.portswigger.burp.extensions</groupId>
         <artifactId>montoya-api</artifactId>
-        <version>0.9.25</version>
+        <version>LATEST</version>
     </dependency>
 
 <h5>Gradle</h5>
 
-    implementation 'net.portswigger.burp.extender:montoya-api:0.9.25'
+    implementation 'net.portswigger.burp.extensions:montoya-api:+'
 
 Getting Started
 --------
 
-Create a class that implements [BurpExtension](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/src/main/java/burp/api/montoya/BurpExtension.java). 
-The initialise method will give you an implementation of the [MontoyaApi](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/src/main/java/burp/api/montoya/MontoyaApi.java) which can be used to interact and modify Burp suite.
+Create a class that implements [BurpExtension](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/api/src/main/java/burp/api/montoya/BurpExtension.java). 
+The initialize method will give you an implementation of the [MontoyaApi](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/api/src/main/java/burp/api/montoya/MontoyaApi.java) which can be used to interact and modify Burp suite.
 
 Documentation
 --------
@@ -33,6 +37,6 @@ Documentation
 Examples
 --------
 
-* [Register HTTP handler](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extender/http/HttpHandlerExample.java)
-* [Register Proxy handler](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extender/proxy/ProxyHandlerExample.java)
-* [Using both versions of the Api](https://github.com/PortSwigger/burp-extender-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extender/multi/MultiApiExample.java)
+* [Register HTTP handler](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/http/HttpHandlerExample.java)
+* [Register Proxy handler](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/proxy/ProxyHandlerExample.java)
+* [Using both versions of the Api](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/multi/MultiApiExample.java)

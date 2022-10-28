@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'net.portswigger.burp.extender'
+group "net.portswigger.burp.extensions.example"
 
 repositories {
     mavenLocal()
@@ -10,6 +10,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.portswigger.burp.extender:montoya-api:0.9.22'
+    implementation project(":api");
     implementation 'net.portswigger.burp.extender:burp-extender-api:2.3'
 }

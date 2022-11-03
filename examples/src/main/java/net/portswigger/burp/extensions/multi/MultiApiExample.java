@@ -13,6 +13,7 @@ import burp.IBurpExtenderCallbacks;
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -73,6 +74,7 @@ public class MultiApiExample implements BurpExtension, IBurpExtender
     {
         public MySuiteTab()
         {
+            setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
             JPanel customTabContent = new JPanel();
             customTabContent.setName("The One Ring Custom Tab Panel");
             customTabContent.setBackground(Color.GRAY);

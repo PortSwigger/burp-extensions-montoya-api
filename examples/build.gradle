@@ -2,14 +2,68 @@ plugins {
     id 'java'
 }
 
-group "net.portswigger.burp.extensions.example"
+group "net.portswigger.burp.extensions.examples"
 
 repositories {
     mavenLocal()
     mavenCentral()
 }
 
+compileJava {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    options.encoding = "UTF-8"
+}
+
 dependencies {
-    implementation project(":api");
+    implementation project (":api")
     implementation 'net.portswigger.burp.extender:burp-extender-api:2.3'
+}
+
+task buildHttpHandlerExample(type: Jar, dependsOn: classes) {
+    group "build-examples"
+    archiveBaseName.set("HttpHandlerExample")
+    includeEmptyDirs(false)
+    from sourceSets.main.output
+    include("**\\httphandler\\*")
+}
+
+task buildMultiApiExample(type: Jar, dependsOn: classes) {
+    group "build-examples"
+    archiveBaseName.set("MultiApiExample")
+    includeEmptyDirs(false)
+    from sourceSets.main.output
+    include("**\\multiapi\\*")
+}
+
+task buildProxyHandlerExample(type: Jar, dependsOn: classes) {
+    group "build-examples"
+    archiveBaseName.set("ProxyHandlerExample")
+    includeEmptyDirs(false)
+    from sourceSets.main.output
+    include("**\\proxyhandler\\*")
+}
+
+task buildHelloWorld(type: Jar, dependsOn: classes) {
+    group "build-examples"
+    archiveBaseName.set("HelloWorld")
+    includeEmptyDirs(false)
+    from sourceSets.main.output
+    include("**\\helloworld\\*")
+}
+
+task buildEventListeners(type: Jar, dependsOn: classes) {
+    group "build-examples"
+    archiveBaseName.set("EventListeners")
+    includeEmptyDirs(false)
+    from sourceSets.main.output
+    include("**\\eventlisteners\\*")
+}
+
+task buildTrafficRedirector(type: Jar, dependsOn: classes) {
+    group "build-examples"
+    archiveBaseName.set("TrafficRedirector")
+    includeEmptyDirs(false)
+    from sourceSets.main.output
+    include("**\\trafficredirector\\*")
 }

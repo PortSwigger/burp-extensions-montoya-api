@@ -37,6 +37,9 @@ Documentation
 Examples
 --------
 
-* [Register HTTP handler](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/http/HttpHandlerExample.java)
-* [Register Proxy handler](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/proxy/ProxyHandlerExample.java)
-* [Using both versions of the Api](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/multi/MultiApiExample.java)
+* [Hello World](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/helloworld)
+* [HTTP Handlers](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/httphandler)
+* [Proxy Handlers](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/proxyhandler)
+* [Event Listeners](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/eventlisteners)
+* [Traffic Redirector](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/trafficredirector)
+* [Multi-API: Using both versions of the Api](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/multiapi)

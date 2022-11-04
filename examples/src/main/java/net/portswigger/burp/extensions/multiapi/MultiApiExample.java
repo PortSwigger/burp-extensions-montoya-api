@@ -6,13 +6,14 @@
  * license terms for those products.
  */
 
-package net.portswigger.burp.extensions.multi;
+package net.portswigger.burp.extensions.multiapi;
 
 import burp.IBurpExtender;
 import burp.IBurpExtenderCallbacks;
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -73,12 +74,13 @@ public class MultiApiExample implements BurpExtension, IBurpExtender
     {
         public MySuiteTab()
         {
+            setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+
             JPanel customTabContent = new JPanel();
             customTabContent.setName("The One Ring Custom Tab Panel");
             customTabContent.setBackground(Color.GRAY);
 
             JButton button = new JButton("Print filename to log file");
-
             button.addActionListener(e -> {
                 montoyaApi.logging().logToOutput("Montoya API used to log:" + montoyaApi.extension().filename());
                 oldApi.printOutput("Old API used to log:" + oldApi.getExtensionFilename());

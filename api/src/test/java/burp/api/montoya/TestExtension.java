@@ -64,8 +64,10 @@ import burp.api.montoya.intruder.PayloadGeneratorProvider;
 import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.intruder.PayloadProcessor;
 import burp.api.montoya.logging.Logging;
+import burp.api.montoya.persistence.PersistedObject;
 import burp.api.montoya.persistence.Persistence;
 import burp.api.montoya.persistence.Preferences;
+import burp.api.montoya.persistence.support.PersistedList;
 import burp.api.montoya.proxy.InterceptedHttpRequest;
 import burp.api.montoya.proxy.InterceptedHttpResponse;
 import burp.api.montoya.proxy.Proxy;
@@ -139,7 +141,7 @@ import static burp.api.montoya.http.HttpMode.HTTP_2_IGNORE_ALPN;
 import static burp.api.montoya.http.HttpService.httpService;
 import static burp.api.montoya.http.RequestResult.requestResult;
 import static burp.api.montoya.http.ResponseResult.responseResult;
-import static burp.api.montoya.http.message.MarkedHttpRequestResponse.markedRequestResponse;
+import static burp.api.montoya.http.message.MarkedHttpRequestResponse.unmarkedRequestResponse;
 import static burp.api.montoya.http.message.headers.HttpHeader.httpHeader;
 import static burp.api.montoya.http.message.params.HttpParameter.bodyParameter;
 import static burp.api.montoya.http.message.params.HttpParameter.cookieParameter;
@@ -221,10 +223,10 @@ public class TestExtension implements BurpExtension
                 "remediation of issue",
                 AuditIssueSeverity.LOW,
                 List.of(
-                        markedRequestResponse(httpRequest, httpResponse),
-                        markedRequestResponse(httpRequest, httpResponse, annotations(HighlightColor.BLUE)),
-                        markedRequestResponse(httpRequest, httpResponse, Annotations.annotations("comment")),
-                        markedRequestResponse(httpRequest, httpResponse, Annotations.annotations("comment", HighlightColor.GREEN))
+                        unmarkedRequestResponse(httpRequestResponse),
+                        unmarkedRequestResponse(httpRequestResponse.withMessageAnnotations(annotations(HighlightColor.BLUE))),
+                        unmarkedRequestResponse(httpRequestResponse.withMessageAnnotations(annotations("comment"))),
+                        unmarkedRequestResponse(httpRequestResponse.withMessageAnnotations(annotations("comment", HighlightColor.GREEN)))
                 )
         ));
     }
@@ -236,7 +238,7 @@ public class TestExtension implements BurpExtension
 
     private void addToSiteMap()
     {
-        HttpRequestResponse requestResponse = markedRequestResponse(httpRequest, httpResponse, Annotations.annotations("test comment", HighlightColor.BLUE));
+        HttpRequestResponse requestResponse = httpRequestResponse.withMessageAnnotations(annotations("test comment", HighlightColor.BLUE));
 
         siteMap.add(requestResponse);
     }
@@ -1147,14 +1149,9 @@ public class TestExtension implements BurpExtension
 
     private void saveBuffersToTempFiles()
     {
-        persistence.temporaryFile().setHttpRequestResponse("foo", httpRequestResponse);
-        HttpRequestResponse persistedHttpRequestResponse = persistence.temporaryFile().getHttpRequestResponse("foo");
-
-        persistence.temporaryFile().setHttpRequest("bar", httpRequest);
-        HttpRequest persistedHttpRequest = persistence.temporaryFile().getHttpRequest("bar");
-
-        persistence.temporaryFile().setHttpResponse("baz", httpResponse);
-        HttpResponse persistedHttpResponse = persistence.temporaryFile().getHttpResponse("baz");
+        ByteArray byteArray = ByteArray.byteArray("foo");
+        persistence.temporaryFile().setByteArray("bar", byteArray);
+        ByteArray persistedByteArray = persistence.temporaryFile().getByteArray("bar").get();
     }
 
     private void saveConfigAsJson()
@@ -1169,10 +1166,105 @@ public class TestExtension implements BurpExtension
         preferences.setByte("byteValue", (byte) 0x0A);
         preferences.setShort("shortValue", (short) 1);
         preferences.setInteger("intValue", 123);
-        preferences.setLong("longValue", 123456);
+        preferences.setLong("longValue", 123456L);
         preferences.setString("stringValue", "bar");
 
-        preferences.delete("intValue");
+        preferences.deleteInteger("intValue");
+    }
+
+    private void persistDataToProject()
+    {
+        PersistedObject extensionData = api.persistence().extensionData();
+
+        extensionData.setBoolean("boolean-key", true);
+        Boolean booleanValue = extensionData.getBoolean("boolean-key").get();
+
+        PersistedList<Boolean> persistedBooleanList = PersistedList.persistedBooleanList();
+        persistedBooleanList.addAll(List.of(true, false, true));
+        extensionData.setBooleanList("boolean-list-key", persistedBooleanList);
+        persistedBooleanList = extensionData.getBooleanList("boolean-list-key").get();
+
+        extensionData.setByte("byte-key", (byte) 123);
+        Byte byteValue = extensionData.getByte("byte-key").get();
+
+        extensionData.setByteArray("byte-array-key", ByteArray.byteArray("byte array data"));
+        ByteArray persistedByteArray = extensionData.getByteArray("byte-array-key").get();
+
+        PersistedList<ByteArray> persistedByteArrayList = PersistedList.persistedByteArrayList();
+        persistedByteArrayList.addAll(List.of(ByteArray.byteArray("data1"), ByteArray.byteArray("data2"), ByteArray.byteArray("data2")));
+        extensionData.setByteArrayList("byte-array-list-key", persistedByteArrayList);
+        persistedByteArrayList = extensionData.getByteArrayList("byte-array-list-key").get();
+
+        extensionData.setShort("short-key", (short) 1234);
+        Short shortValue = extensionData.getShort("short-key").get();
+
+        PersistedList<Short> persistedShortList = PersistedList.persistedShortList();
+        persistedShortList.addAll(List.of((short) 1, (short) 2, (short) 3));
+        extensionData.setShortList("short-list-key", persistedShortList);
+        persistedShortList = extensionData.getShortList("short-list-key").get();
+
+        extensionData.setInteger("integer-key", 12345);
+        Integer integerValue = extensionData.getInteger("integer-key").get();
+
+        PersistedList<Integer> persistedIntegerList = PersistedList.persistedIntegerList();
+        persistedIntegerList.addAll(List.of(1, 2, 3));
+        extensionData.setIntegerList("integer-list-key", persistedIntegerList);
+        persistedIntegerList = extensionData.getIntegerList("integer-list-key").get();
+
+        extensionData.setLong("long-key", 1234567L);
+        Long longValue = extensionData.getLong("long-key").get();
+
+        PersistedList<Long> persistedLongList = PersistedList.persistedLongList();
+        persistedLongList.addAll(List.of(1L, 2L, 3L));
+        extensionData.setLongList("long-list-key", persistedLongList);
+        persistedLongList = extensionData.getLongList("long-list-key").get();
+
+        extensionData.setString("string-key", "value");
+        String stringValue = extensionData.getString("string-key").get();
+
+        PersistedList<String> persistedStringList = PersistedList.persistedStringList();
+        persistedStringList.addAll(List.of("value1", "value2", "value3"));
+        extensionData.setStringList("string-list-key", persistedStringList);
+        persistedStringList = extensionData.getStringList("string-list-key").get();
+
+        extensionData.setHttpRequest("http-request-key", HttpRequest.httpRequest("request"));
+        HttpRequest httpRequest = extensionData.getHttpRequest("http-request-key").get();
+
+        HttpRequest httpRequest1 = httpRequest("request1");
+        HttpRequest httpRequest2 = httpRequest("request2");
+        HttpRequest httpRequest3 = httpRequest("request3");
+
+        PersistedList<HttpRequest> persistedHttpRequestList = PersistedList.persistedHttpRequestList();
+        persistedHttpRequestList.addAll(List.of(httpRequest1, httpRequest2, httpRequest3));
+        extensionData.setHttpRequestList("http-request-list-key", persistedHttpRequestList);
+        persistedHttpRequestList = extensionData.getHttpRequestList("http-request-list-key").get();
+
+        extensionData.setHttpResponse("http-response-key", HttpResponse.httpResponse("response"));
+        HttpResponse httpResponse = extensionData.getHttpResponse("http-response-key").get();
+
+        HttpResponse httpResponse1 = httpResponse("response1");
+        HttpResponse httpResponse2 = httpResponse("response2");
+        HttpResponse httpResponse3 = httpResponse("response3");
+
+        PersistedList<HttpResponse> persistedHttpResponseList = PersistedList.persistedHttpResponseList();
+        persistedHttpResponseList.addAll(List.of(httpResponse1, httpResponse2, httpResponse3));
+        extensionData.setHttpResponseList("http-response-list-key", persistedHttpResponseList);
+        persistedHttpResponseList = extensionData.getHttpResponseList("http-response-list-key").get();
+
+        extensionData.setHttpRequestResponse(
+                "http-request-response-key",
+                HttpRequestResponse.httpRequestResponse(HttpRequest.httpRequest("request"), HttpResponse.httpResponse("response"))
+        );
+        HttpRequestResponse httpRequestResponse = extensionData.getHttpRequestResponse("http-request-response-key").get();
+
+        HttpRequestResponse httpRequestResponse1 = HttpRequestResponse.httpRequestResponse(httpRequest("request1"), httpResponse("response1"));
+        HttpRequestResponse httpRequestResponse2 = HttpRequestResponse.httpRequestResponse(httpRequest("request2"), httpResponse("response2"));
+        HttpRequestResponse httpRequestResponse3 = HttpRequestResponse.httpRequestResponse(httpRequest("request3"), httpResponse("response3"));
+
+        PersistedList<HttpRequestResponse> persistedHttpRequestResponseList = PersistedList.persistedHttpRequestResponseList();
+        persistedHttpRequestResponseList.addAll(List.of(httpRequestResponse1, httpRequestResponse2, httpRequestResponse3));
+        extensionData.setHttpRequestResponseList("http-request-response-list-key", persistedHttpRequestResponseList);
+        persistedHttpRequestResponseList = extensionData.getHttpRequestResponseList("http-request-response-list-key").get();
     }
 
     private void sendToComparer()

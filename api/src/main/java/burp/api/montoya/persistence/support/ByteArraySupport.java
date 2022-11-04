@@ -10,50 +10,77 @@ package burp.api.montoya.persistence.support;
 
 import burp.api.montoya.core.ByteArray;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public interface ByteArraySupport
 {
     /**
-     * Returns the {@link ByteArray} to which the specified key is mapped,
-     * or {@code null} if this map contains no mapping for the key.
+     * Returns the {@link ByteArray} associated with the specified key,
+     * or {@link Optional#empty} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
-     * @return the value to which the specified key is mapped, or
-     * {@code null} if this map contains no mapping for the key
+     * @return the value associated with the specified key, or
+     * {@link Optional#empty} if this map contains no mapping for the key
      */
-    ByteArray getByteArray(String key);
+    Optional<ByteArray> getByteArray(String key);
 
     /**
      * Associates the specified {@code ByteArray} with the specified key in this map.
      * If the map previously contained a mapping for the key, the old value is replaced
      * by the specified value.
      *
-     * @param key  key with which the specified value is to be associated
-     * @param value value to be associated with the specified key.
-     * @return a read-only {@code ByteArray} representing the stored data
+     * @param key key with which the specified value is to be associated
+     * @param value value to be associated with the specified key
      */
-    ByteArray setByteArray(String key, ByteArray value);
+    void setByteArray(String key, ByteArray value);
 
     /**
-     * Returns the List of {@link ByteArray} to which the specified key is mapped,
-     * or {@code null} if this map contains no mapping for the key
+     * Removes the mapping from the specified key to the {@link ByteArray}.
+     *
+     * @param key the key whose mapping is to be deleted
+     */
+    void deleteByteArray(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link ByteArray} values.
+     *
+     * @return Set of keys.
+     */
+    Set<String> byteArrayKeys();
+
+    /**
+     * Returns the {@link PersistedList} of {@link ByteArray} associated with the specified key,
+     * or {@link Optional#empty} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
-     * @return the value to which the specified key is mapped, or
-     * {@code null} if this map contains no mapping for the key
+     * @return the value associated with the specified key, or
+     * {@link Optional#empty} if this map contains no mapping for the key
      */
-    List<ByteArray> getByteArrayList(String key);
+    Optional<PersistedList<ByteArray>> getByteArrayList(String key);
 
     /**
-     * Associates the specified List of {@code ByteArray} with the specified key in this map.
+     * Associates the specified {@link PersistedList} of {@code ByteArray} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
      * @param key  key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * @return A read-only {@code List} of read-only {@code ByteArray}
-     * representing the stored data
+     * The methods of this list operate on the underlying persisted data.
      */
-    List<ByteArray> setByteArrayList(String key, List<ByteArray> value);
+    void setByteArrayList(String key, PersistedList<ByteArray> value);
+
+    /**
+     * Removes the mapping from the specified key to the {@link PersistedList} of {@link ByteArray}.
+     *
+     * @param key the key whose mapping is to be deleted
+     */
+    void deleteByteArrayList(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link ByteArray} Lists.
+     *
+     * @return Set of keys.
+     */
+    Set<String> byteArrayListKeys();
 }

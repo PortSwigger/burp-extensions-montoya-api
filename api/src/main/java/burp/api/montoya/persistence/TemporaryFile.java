@@ -9,15 +9,12 @@
 package burp.api.montoya.persistence;
 
 import burp.api.montoya.persistence.support.ByteArraySupport;
-import burp.api.montoya.persistence.support.DeleteSupport;
-import burp.api.montoya.persistence.support.KeySupport;
-import burp.api.montoya.persistence.support.RequestResponseSupport;
 
 /**
  * This interface represents an instance of a class that allows data to be
  * stored to and accessed from a temporary file.
- * It has support for HTTP requests, HTTP responses and byte arrays.
+ * It has support for byte arrays.
  */
-public interface TemporaryFile extends RequestResponseSupport, ByteArraySupport, KeySupport, DeleteSupport
+public interface TemporaryFile extends ByteArraySupport
 {
 }

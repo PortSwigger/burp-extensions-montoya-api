@@ -76,10 +76,10 @@ public enum DigestAlgorithm
     TUPLEHASH_256_512("TUPLEHASH256-512"),
     WHIRLPOOL("WHIRLPOOL");
 
-    public final String name;
+    public final String displayName;
 
-    DigestAlgorithm(String name)
+    DigestAlgorithm(String displayName)
     {
-        this.name = name;
+        this.displayName = displayName;
     }
 }

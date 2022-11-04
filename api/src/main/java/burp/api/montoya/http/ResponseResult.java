@@ -28,7 +28,7 @@ public interface ResponseResult
      */
     static ResponseResult responseResult(HttpResponse response, Annotations annotations)
     {
-        return FACTORY.requestResult(response, annotations);
+        return FACTORY.responseResult(response, annotations);
     }
 
     /**

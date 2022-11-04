@@ -8,45 +8,45 @@
 
 package burp.api.montoya.http.message;
 
-import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.Range;
-import burp.api.montoya.http.message.requests.HttpRequest;
-import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.List;
 
-import static burp.api.montoya.core.Annotations.annotations;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface is used to extend {@link HttpRequestResponse} interface to hold message markers data.
+ * This interface is used to associate request and responses with their markers.
  */
-public interface MarkedHttpRequestResponse extends HttpRequestResponse
+public interface MarkedHttpRequestResponse
 {
     /**
-     * This is a helper method to create a new instance of {@link MarkedHttpRequestResponse}.
+     * This is a helper method to create a new instance of {@link MarkedHttpRequestResponse} that does not contain any markers.
      *
-     * @param httpRequest  The HTTP request.
-     * @param httpResponse The HTTP response.
+     * @param httpRequestResponse The HTTP request response.
      * @return A new {@link MarkedHttpRequestResponse} instance.
      */
-    static MarkedHttpRequestResponse markedRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse)
+    static MarkedHttpRequestResponse unmarkedRequestResponse(HttpRequestResponse httpRequestResponse)
     {
-        return markedRequestResponse(httpRequest, httpResponse, annotations());
+        return FACTORY.markedRequestResponse(httpRequestResponse);
     }
 
     /**
-     * This is a helper method to create a new instance of {@link MarkedHttpRequestResponse}.
+     * This is a helper method to create a new instance of {@link MarkedHttpRequestResponse} with markers.
      *
-     * @param httpRequest        The HTTP request.
-     * @param httpResponse       The HTTP response.
-     * @param annotations annotations.
+     * @param httpRequestResponse The HTTP request response.
+     * @param requestMarkers A list of markers indicating interesting information within the HTTP request.
+     * @param responseMarkers A list of markers indicating interesting information within the HTTP response.
      * @return A new {@link MarkedHttpRequestResponse} instance.
      */
-    static MarkedHttpRequestResponse markedRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
+    static MarkedHttpRequestResponse markedRequestResponse(HttpRequestResponse httpRequestResponse, List<Range> requestMarkers, List<Range> responseMarkers)
     {
-        return FACTORY.markedRequestResponse(httpRequest, httpResponse, annotations);
+        return FACTORY.markedRequestResponse(httpRequestResponse, requestMarkers, responseMarkers);
     }
+
+    /**
+     * @return The HTTP request/response which is associated with the markers.
+     */
+    HttpRequestResponse httpRequestResponse();
 
     /**
      * @return List of request markers
@@ -57,14 +57,4 @@ public interface MarkedHttpRequestResponse extends HttpRequestResponse
      * @return List of response markers
      */
     List<Range> responseMarkers();
-
-
-    /**
-     * This is a helper method used to add annotations to the {@code MarkedHttpRequestResponse} instance.
-     *
-     * @param annotations annotations to add.
-     * @return A new {@code MarkedHttpRequestResponse} instance.
-     */
-    @Override
-    MarkedHttpRequestResponse withMessageAnnotations(Annotations annotations);
 }

@@ -8,117 +8,178 @@
 
 package burp.api.montoya.persistence.support;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public interface PrimitiveListSupport
 {
     /**
-     * Returns the List of {@link Boolean} to which the specified key is mapped.
-     * or {@code null} if this map contains no mapping for the key
+     * Returns the {@link PersistedList} of {@link Boolean} associated with the specified key,
+     * or {@link Optional#empty} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * new empty list if this map contains no mapping for the key
+     * {@link Optional#empty} if this map contains no mapping for the key
      */
-    List<Boolean> getBooleanList(String key);
+    Optional<PersistedList<Boolean>> getBooleanList(String key);
 
     /**
-     * Associates the specified List of {@link Boolean} with the specified key in this map.
+     * Associates the specified {@link PersistedList} of {@link Boolean} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
      * @param key the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * @return A read-only {@link List} of {@link Boolean}
-     * representing the stored data
      */
-    List<Boolean> setBooleanList(String key, List<Boolean> value);
+    void setBooleanList(String key, PersistedList<Boolean> value);
 
     /**
-     * Returns the List of {@link Short} to which the specified key is mapped.
-     * or {@code null} if this map contains no mapping for the key
+     * Removes the mapping from the specified key to the {@link PersistedList} of {@link Boolean}.
+     *
+     * @param key the key whose mapping is to be deleted
+     */
+    void deleteBooleanList(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link Boolean} Lists.
+     *
+     * @return Set of keys.
+     */
+    Set<String> booleanListKeys();
+
+    /**
+     * Returns the {@link PersistedList} of {@link Short} associated with the specified key,
+     * or {@link Optional#empty} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * new empty list if this map contains no mapping for the key
+     * {@link Optional#empty} if this map contains no mapping for the key
      */
-    List<Short> getShortList(String key);
+    Optional<PersistedList<Short>> getShortList(String key);
 
     /**
-     * Associates the specified List of {@link Short} with the specified key in this map.
+     * Associates the specified {@link PersistedList} of {@link Short} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
      * @param key the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * @return A read-only {@link List} of {@link Short}
-     * representing the stored data
      */
-    List<Short> setShortList(String key, List<Short> value);
+    void setShortList(String key, PersistedList<Short> value);
 
     /**
-     * Returns the List of {@link Integer} to which the specified key is mapped.
-     * or {@code null} if this map contains no mapping for the key
+     * Removes the mapping from the specified key to the {@link PersistedList} of {@link Short}.
+     *
+     * @param key the key whose mapping is to be deleted
+     */
+    void deleteShortList(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link Short} Lists.
+     *
+     * @return Set of keys.
+     */
+    Set<String> shortListKeys();
+
+    /**
+     * Returns the {@link PersistedList} of {@link Integer} associated with the specified key,
+     * or {@link Optional#empty} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * new empty list if this map contains no mapping for the key
+     * {@link Optional#empty} if this map contains no mapping for the key
      */
-    List<Integer> getIntegerList(String key);
+    Optional<PersistedList<Integer>> getIntegerList(String key);
 
     /**
-     * Associates the specified List of {@link Integer} with the specified key in this map.
+     * Associates the specified {@link PersistedList} of {@link Integer} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
      * @param key the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * @return A read-only {@link List} of {@link Integer}
-     * representing the stored data
      */
-    List<Integer> setIntegerList(String key, List<Integer> value);
+    void setIntegerList(String key, PersistedList<Integer> value);
 
     /**
-     * Returns the List of {@link Long} to which the specified key is mapped.
-     * or {@code null} if this map contains no mapping for the key
+     * Removes the mapping from the specified key to the {@link PersistedList} of {@link Integer}.
+     *
+     * @param key the key whose mapping is to be deleted
+     */
+    void deleteIntegerList(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link Integer} Lists.
+     *
+     * @return Set of keys.
+     */
+    Set<String> integerListKeys();
+
+    /**
+     * Returns the {@link PersistedList} of {@link Long} associated with the specified key,
+     * or {@link Optional#empty} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * new empty list if this map contains no mapping for the key
+     * {@link Optional#empty} if this map contains no mapping for the key
      */
-    List<Long> getLongList(String key);
+    Optional<PersistedList<Long>> getLongList(String key);
 
     /**
-     * Associates the specified List of {@link Long} with the specified key in this map.
+     * Associates the specified {@link PersistedList} of {@link Long} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
      * @param key the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * @return A read-only {@link List} of {@link Long}
-     * representing the stored data
      */
-    List<Long> setLongList(Long key, List<Long> value);
+    void setLongList(String key, PersistedList<Long> value);
 
     /**
-     * Returns the List of {@link String} to which the specified key is mapped
-     * or {@code null} if this map contains no mapping for the key
+     * Removes the mapping from the specified key to the {@link PersistedList} of {@link Long}.
+     *
+     * @param key the key whose mapping is to be deleted
+     */
+    void deleteLongList(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link Long} Lists.
+     *
+     * @return Set of keys.
+     */
+    Set<String> longListKeys();
+
+    /**
+     * Returns the {@link PersistedList} of {@link String} associated with the specified key,
+     * or {@link Optional#empty} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * {@code null} if this map contains no mapping for the key
+     * {@link Optional#empty} if this map contains no mapping for the key
      */
-    List<String> getStringList(String key);
+    Optional<PersistedList<String>> getStringList(String key);
 
     /**
-     * Associates the specified List of {@link String} with the specified key in this map.
+     * Associates the specified {@link PersistedList} of {@link String} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
      * @param key the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * @return A read-only {@link List} of {@link String}
-     * representing the stored data
      */
-    List<String> setStringList(String key, List<String> value);
+    void setStringList(String key, PersistedList<String> value);
+
+    /**
+     * Removes the mapping from the specified key to the {@link PersistedList} of {@link String}.
+     *
+     * @param key the key whose mapping is to be deleted
+     */
+    void deleteStringList(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link String} Lists.
+     *
+     * @return Set of keys.
+     */
+    Set<String> stringListKeys();
 }

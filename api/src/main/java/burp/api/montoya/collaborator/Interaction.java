@@ -47,6 +47,13 @@ public interface Interaction
     InetAddress clientIp();
 
     /**
+     * Returns the client port.
+     *
+     * @return The port of the client initiating the interaction.
+     */
+    int clientPort();
+
+    /**
      * Returns the DNS interaction details.
      *
      * @return Details of the DNS interaction or empty if the interaction was

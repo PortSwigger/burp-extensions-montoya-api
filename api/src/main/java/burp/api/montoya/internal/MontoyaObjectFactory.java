@@ -27,6 +27,8 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.intruder.HttpRequestTemplate;
 import burp.api.montoya.intruder.PayloadProcessingAction;
 import burp.api.montoya.intruder.PayloadProcessingResult;
+import burp.api.montoya.persistence.PersistedObject;
+import burp.api.montoya.persistence.support.PersistedList;
 import burp.api.montoya.proxy.FinalInterceptAction;
 import burp.api.montoya.proxy.InitialInterceptAction;
 import burp.api.montoya.proxy.ProxyWebSocketFinalInterceptBinaryMessage;
@@ -88,7 +90,9 @@ public interface MontoyaObjectFactory
 
     HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response, Annotations annotations);
 
-    MarkedHttpRequestResponse markedRequestResponse(HttpRequest request, HttpResponse response, Annotations annotations);
+    MarkedHttpRequestResponse markedRequestResponse(HttpRequestResponse requestResponse);
+
+    MarkedHttpRequestResponse markedRequestResponse(HttpRequestResponse requestResponse, List<Range> requestMarkers, List<Range> responseMarkers);
 
     Range range(int startIndexInclusive, int endIndexExclusive);
 
@@ -114,7 +118,7 @@ public interface MontoyaObjectFactory
 
     RequestResult requestResult(HttpRequest request, Annotations annotations);
 
-    ResponseResult requestResult(HttpResponse response, Annotations annotations);
+    ResponseResult responseResult(HttpResponse response, Annotations annotations);
 
     HttpRequestTemplate httpRequestTemplate(ByteArray content, List<Range> insertionPointOffsets);
 
@@ -145,4 +149,24 @@ public interface MontoyaObjectFactory
     ProxyWebSocketFinalInterceptTextMessage proxyWebSocketTextMessage(String payload, FinalInterceptAction action);
 
     ProxyWebSocketFinalInterceptBinaryMessage proxyWebSocketBinaryMessage(ByteArray payload, FinalInterceptAction action);
+
+    PersistedObject persistedObject();
+
+    PersistedList<Boolean> persistedBooleanList();
+
+    PersistedList<Short> persistedShortList();
+
+    PersistedList<Integer> persistedIntegerList();
+
+    PersistedList<Long> persistedLongList();
+
+    PersistedList<String> persistedStringList();
+
+    PersistedList<ByteArray> persistedByteArrayList();
+
+    PersistedList<HttpRequest> persistedHttpRequestList();
+
+    PersistedList<HttpResponse> persistedHttpResponseList();
+
+    PersistedList<HttpRequestResponse> persistedHttpRequestResponseList();
 }

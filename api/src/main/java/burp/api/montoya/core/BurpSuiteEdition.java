@@ -6,10 +6,10 @@ public enum BurpSuiteEdition
     COMMUNITY_EDITION("Community Edition"),
     ENTERPRISE_EDITION("Enterprise Edition");
 
-    public final String name;
+    public final String displayName;
 
-    BurpSuiteEdition(String name)
+    BurpSuiteEdition(String displayName)
     {
-        this.name = name;
+        this.displayName = displayName;
     }
 }

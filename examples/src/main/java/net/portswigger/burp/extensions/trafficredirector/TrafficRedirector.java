@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package net.portswigger.burp.extensions.sample;
+package net.portswigger.burp.extensions.trafficredirector;
 
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
@@ -19,6 +19,10 @@ import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
+import static burp.api.montoya.http.HttpService.httpService;
+import static burp.api.montoya.http.RequestResult.requestResult;
+import static burp.api.montoya.http.ResponseResult.responseResult;
+
 //Burp will auto-detect and load any class that extends BurpExtension.
 public class TrafficRedirector implements BurpExtension
 {
@@ -28,14 +32,14 @@ public class TrafficRedirector implements BurpExtension
     @Override
     public void initialize(MontoyaApi api)
     {
-        // set our extension name
+        // set extension name
         api.extension().setName("Traffic redirector");
 
-        // register ourselves as an HTTP handler
+        // register a new HTTP handler
         api.http().registerHttpHandler(new MyHttpHandler());
     }
 
-    private class MyHttpHandler implements HttpHandler
+    private static class MyHttpHandler implements HttpHandler
     {
         @Override
         public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
@@ -44,37 +48,18 @@ public class TrafficRedirector implements BurpExtension
 
             if (HOST_FROM.equalsIgnoreCase(service.host()))
             {
-                HttpRequest newRequest = request.withService(new HttpService()
-                {
-                    @Override
-                    public String host()
-                    {
-                        return HOST_TO;
-                    }
+                HttpRequest newRequest = request.withService(httpService(HOST_TO, service.port(), service.secure()));
 
-                    @Override
-                    public int port()
-                    {
-                        return service.port();
-                    }
-
-                    @Override
-                    public boolean secure()
-                    {
-                        return service.secure();
-                    }
-                });
-
-                return RequestResult.requestResult(newRequest, annotations);
+                return requestResult(newRequest, annotations);
             }
 
-            return RequestResult.requestResult(request, annotations);
+            return requestResult(request, annotations);
         }
 
         @Override
         public ResponseResult handleHttpResponse(HttpResponse response, HttpRequest initiatingRequest, Annotations annotations, ToolSource toolSource)
         {
-            return ResponseResult.responseResult(response, annotations);
+            return responseResult(response, annotations);
         }
     }
 }

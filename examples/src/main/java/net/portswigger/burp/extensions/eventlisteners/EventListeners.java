@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package net.portswigger.burp.extensions.sample;
+package net.portswigger.burp.extensions.eventlisteners;
 
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
@@ -30,43 +30,46 @@ import burp.api.montoya.proxy.RequestFinalInterceptResult;
 import burp.api.montoya.proxy.RequestInitialInterceptResult;
 import burp.api.montoya.proxy.ResponseFinalInterceptResult;
 import burp.api.montoya.proxy.ResponseInitialInterceptResult;
+import burp.api.montoya.scanner.Scanner;
 import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
 
-import java.io.PrintStream;
+import static burp.api.montoya.http.RequestResult.requestResult;
+import static burp.api.montoya.http.ResponseResult.responseResult;
+import static burp.api.montoya.proxy.RequestFinalInterceptResult.continueWith;
+import static burp.api.montoya.proxy.RequestInitialInterceptResult.followUserRules;
+import static burp.api.montoya.proxy.ResponseFinalInterceptResult.continueWith;
+import static burp.api.montoya.proxy.ResponseInitialInterceptResult.followUserRules;
 
 //Burp will auto-detect and load any class that extends BurpExtension.
 public class EventListeners implements BurpExtension
 {
-    private PrintStream out;
-    private PrintStream err;
+    private Logging logging;
 
     @Override
     public void initialize(MontoyaApi api)
     {
+        logging = api.logging();
+
         Http http = api.http();
         Proxy proxy = api.proxy();
-        Logging logging = api.logging();
         Extension extension = api.extension();
+        Scanner scanner = api.scanner();
 
-        // set our extension name
-        api.extension().setName("Event listeners");
+        // set extension name
+        extension.setName("Event listeners");
 
-        // obtain our output and error streams
-        out = logging.output();
-        err = logging.error();
-
-        // register ourselves as an HTTP handler
+        // register a new HTTP handler
         http.registerHttpHandler(new MyHttpHandler());
 
-        // register ourselves as a Proxy handler
+        // register a new Proxy handler
         proxy.registerRequestHandler(new MyProxyHttpRequestHandler());
         proxy.registerResponseHandler(new MyProxyHttpResponseHandler());
 
-        // register ourselves as an Audit Issue handler
-        api.scanner().registerAuditIssueHandler(new MyAuditIssueListenerHandler());
+        // register a new Audit Issue handler
+        scanner.registerAuditIssueHandler(new MyAuditIssueListenerHandler());
 
-        // register ourselves as an extension unload handler
+        // register a new extension unload handler
         extension.registerUnloadingHandler(new MyExtensionUnloadHandler());
     }
 
@@ -75,17 +78,17 @@ public class EventListeners implements BurpExtension
         @Override
         public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
         {
-            out.println("HTTP request to " + request.httpService().toString() + " [" + toolSource.toolType().toolName() + "]");
+            logging.logToOutput("HTTP request to " + request.httpService() + " [" + toolSource.toolType().toolName() + "]");
 
-            return RequestResult.requestResult(request, annotations);
+            return requestResult(request, annotations);
         }
 
         @Override
         public ResponseResult handleHttpResponse(HttpResponse response, HttpRequest initiatingRequest, Annotations annotations, ToolSource toolSource)
         {
-            out.println("HTTP response from " + initiatingRequest.httpService().toString() + " [" + toolSource.toolType().toolName() + "]");
+            logging.logToOutput("HTTP response from " + initiatingRequest.httpService() + " [" + toolSource.toolType().toolName() + "]");
 
-            return ResponseResult.responseResult(response, annotations);
+            return responseResult(response, annotations);
         }
     }
 
@@ -94,17 +97,17 @@ public class EventListeners implements BurpExtension
         @Override
         public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
         {
-            out.println("Initial intercepted proxy request to " + interceptedRequest.httpService().toString());
+            logging.logToOutput("Initial intercepted proxy request to " + interceptedRequest.httpService());
 
-            return RequestInitialInterceptResult.followUserRules(interceptedRequest);
+            return followUserRules(interceptedRequest);
         }
 
         @Override
         public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
         {
-            out.println("Final intercepted proxy request to " + interceptedRequest.httpService().toString());
+            logging.logToOutput("Final intercepted proxy request to " + interceptedRequest.httpService());
 
-            return RequestFinalInterceptResult.continueWith(interceptedRequest);
+            return continueWith(interceptedRequest);
         }
     }
 
@@ -113,17 +116,17 @@ public class EventListeners implements BurpExtension
         @Override
         public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
         {
-            out.println("Initial intercepted proxy response from " + request.httpService().toString());
+            logging.logToOutput("Initial intercepted proxy response from " + request.httpService());
 
-            return ResponseInitialInterceptResult.followUserRules(interceptedResponse);
+            return followUserRules(interceptedResponse);
         }
 
         @Override
         public ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
         {
-            out.println("Final intercepted proxy response from " + request.httpService().toString());
+            logging.logToOutput("Final intercepted proxy response from " + request.httpService());
 
-            return ResponseFinalInterceptResult.continueWith(interceptedResponse);
+            return continueWith(interceptedResponse);
         }
     }
 
@@ -132,7 +135,7 @@ public class EventListeners implements BurpExtension
         @Override
         public void handleNewAuditIssue(AuditIssue auditIssue)
         {
-            out.println("New scan issue: " + auditIssue.name());
+            logging.logToOutput("New scan issue: " + auditIssue.name());
         }
     }
 
@@ -141,7 +144,7 @@ public class EventListeners implements BurpExtension
         @Override
         public void extensionUnloaded()
         {
-            out.println("Extension was unloaded.");
+            logging.logToOutput("Extension was unloaded.");
         }
     }
 }

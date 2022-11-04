@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group "net.portswigger.burp.extensions"
+group "net.portswigger.burp.extensions.examples"
 
 repositories {
     mavenLocal()
@@ -10,8 +10,8 @@ repositories {
 }
 
 compileJava {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     options.encoding = "UTF-8"
 }
 
@@ -25,7 +25,7 @@ task buildHttpHandlerExample(type: Jar, dependsOn: classes) {
     archiveBaseName.set("HttpHandlerExample")
     includeEmptyDirs(false)
     from sourceSets.main.output
-    include("**\\HttpHandlerExample*")
+    include("**\\httphandler\\*")
 }
 
 task buildMultiApiExample(type: Jar, dependsOn: classes) {
@@ -33,7 +33,7 @@ task buildMultiApiExample(type: Jar, dependsOn: classes) {
     archiveBaseName.set("MultiApiExample")
     includeEmptyDirs(false)
     from sourceSets.main.output
-    include("**\\MultiApiExample*")
+    include("**\\multiapi\\*")
 }
 
 task buildProxyHandlerExample(type: Jar, dependsOn: classes) {
@@ -41,7 +41,7 @@ task buildProxyHandlerExample(type: Jar, dependsOn: classes) {
     archiveBaseName.set("ProxyHandlerExample")
     includeEmptyDirs(false)
     from sourceSets.main.output
-    include("**\\ProxyHandlerExample*")
+    include("**\\proxyhandler\\*")
 }
 
 task buildHelloWorld(type: Jar, dependsOn: classes) {
@@ -49,7 +49,7 @@ task buildHelloWorld(type: Jar, dependsOn: classes) {
     archiveBaseName.set("HelloWorld")
     includeEmptyDirs(false)
     from sourceSets.main.output
-    include("**\\HelloWorld*")
+    include("**\\helloworld\\*")
 }
 
 task buildEventListeners(type: Jar, dependsOn: classes) {
@@ -57,7 +57,7 @@ task buildEventListeners(type: Jar, dependsOn: classes) {
     archiveBaseName.set("EventListeners")
     includeEmptyDirs(false)
     from sourceSets.main.output
-    include("**\\EventListeners*")
+    include("**\\eventlisteners\\*")
 }
 
 task buildTrafficRedirector(type: Jar, dependsOn: classes) {
@@ -65,5 +65,5 @@ task buildTrafficRedirector(type: Jar, dependsOn: classes) {
     archiveBaseName.set("TrafficRedirector")
     includeEmptyDirs(false)
     from sourceSets.main.output
-    include("**\\TrafficRedirector*")
+    include("**\\trafficredirector\\*")
 }

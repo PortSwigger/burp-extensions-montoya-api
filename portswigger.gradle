@@ -1,0 +1,77 @@
+ext {
+    sonatypeExternalUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+    sonatypeSnapshotsExternalUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+    ossrhRelease = project.hasProperty("signing.keyId")
+    mavenInternalUrl = "https://maven-internal.devtools.portswigger.com"
+    mavenExternalUrl = "https://maven-external.devtools.portswigger.com"
+}
+
+repositories {
+    maven {
+        url mavenInternalUrl
+    }
+    maven {
+        url mavenExternalUrl
+    }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives javadocJar
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "internal"
+            url = mavenInternalUrl
+            credentials {
+                username = System.getenv("NEXUS_USERNAME")
+                password = System.getenv("NEXUS_PASSWORD")
+            }
+        }
+
+        if (ossrhRelease) {
+            maven {
+                name = "ossrh"
+                url = sonatypeExternalUrl
+                credentials {
+                    username = ossrhUsername
+                    password = ossrhPassword
+                }
+            }
+        }
+    }
+}
+
+signing {
+    required { ossrhRelease }
+    sign publishing.publications.mavenJava
+}
+
+task copyJavaDoc(type: Copy) {
+    group 'documentation'
+    dependsOn javadocJar
+    from "build/docs"
+    into "../docs/"
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+final JAVADOC_FIX_SEARCH_STR = '\n\n' +
+        'getURLPrefix = function(ui) {\n' +
+        '    return \'\';\n' +
+        '};\n'
+
+tasks.withType(Javadoc) {
+    doLast {
+        // Append the fix to the file
+        def searchScript = new File(destinationDir.getAbsolutePath() + '/search.js')
+        searchScript.append JAVADOC_FIX_SEARCH_STR
+    }
+}

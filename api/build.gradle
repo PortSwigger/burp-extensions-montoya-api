@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'signing'
 }
 
 repositories {
@@ -39,3 +40,5 @@ publishing {
         }
     }
 }
+
+apply(from: "../portswigger.gradle")

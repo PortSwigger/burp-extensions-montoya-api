@@ -18,7 +18,6 @@ burp.api.montoya.internal
 burp.api.montoya.intruder
 burp.api.montoya.logging
 burp.api.montoya.persistence
-burp.api.montoya.persistence.support
 burp.api.montoya.proxy
 burp.api.montoya.repeater
 burp.api.montoya.scanner

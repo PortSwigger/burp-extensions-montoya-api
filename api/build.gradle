@@ -1,29 +1,11 @@
 plugins {
-    id 'java-library'
+    id 'java'
     id 'maven-publish'
-    id 'signing'
-}
-
-group "net.portswigger.burp.extensions"
-
-ext {
-    sonatypeExternalUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-    sonatypeSnapshotsExternalUrl = "https://oss.sonatype.org/content/repositories/snapshots"
-    ossrhRelease = project.hasProperty("signing.keyId")
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
-}
-
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -35,67 +17,25 @@ dependencies {
 }
 
 compileJava {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     options.encoding = "UTF-8"
 }
 
-task copyJavaDoc(type: Copy) {
-    group 'documentation'
-    dependsOn javadocJar
-    from "build/docs"
-    into "../docs/"
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+test {
+    useJUnitPlatform()
 }
 
 jar {
     archiveBaseName.set("montoya-api")
 }
 
-artifacts {
-    archives jar
-    archives sourcesJar
-    archives javadocJar
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-        }
-    }
-
-    repositories {
-        if (ossrhRelease) {
-            maven {
-                name = "ossrh"
-                url = sonatypeExternalUrl
-                credentials {
-                    username = ossrhUsername
-                    password = ossrhPassword
-                }
-            }
+            groupId = "net.portswigger.burp.extensions"
+            artifactId = "montoya-api"
         }
     }
 }
-
-signing {
-    required { ossrhRelease }
-    sign publishing.publications.mavenJava
-}
-
-final JAVADOC_FIX_SEARCH_STR = '\n\n' +
-        'getURLPrefix = function(ui) {\n' +
-        '    return \'\';\n' +
-        '};\n'
-
-tasks.withType(Javadoc) {
-    doLast {
-        // Append the fix to the file
-        def searchScript = new File(destinationDir.getAbsolutePath() + '/search.js')
-        searchScript.append JAVADOC_FIX_SEARCH_STR
-    }
-}
-
-
-

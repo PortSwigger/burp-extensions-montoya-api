@@ -71,7 +71,7 @@ public interface Scan
      * @throws InvalidLauncherConfigurationException if the configuration for
      *                                               this scan is invalid.
      */
-    Crawl startCrawl() throws InvalidLauncherConfigurationException;
+    Crawl startCrawl();
 
     /**
      * This method can be used to start an audit in the Burp Scanner tool.
@@ -80,5 +80,5 @@ public interface Scan
      * @throws InvalidLauncherConfigurationException if the configuration for
      *                                               this scan is invalid.
      */
-    Audit startAudit() throws InvalidLauncherConfigurationException;
+    Audit startAudit();
 }

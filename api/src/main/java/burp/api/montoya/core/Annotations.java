@@ -61,8 +61,14 @@ public interface Annotations
         return FACTORY.annotations(comment, highlightColor);
     }
 
+    /**
+     * @return the comment
+     */
     String comment();
 
+    /**
+     * @return the highlight color;
+     */
     HighlightColor highlightColor();
 
     /**

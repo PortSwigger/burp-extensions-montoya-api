@@ -11,6 +11,9 @@ package burp.api.montoya.persistence.support;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Add support for primitives
+ */
 public interface PrimitivesSupport
 {
     /**

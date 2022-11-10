@@ -15,6 +15,9 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Add support for requests and responses
+ */
 public interface RequestResponseSupport
 {
     /**

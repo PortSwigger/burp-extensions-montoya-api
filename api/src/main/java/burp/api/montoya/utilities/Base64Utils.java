@@ -8,8 +8,9 @@
 
 package burp.api.montoya.utilities;
 
-import java.util.Base64.Decoder;
-import java.util.Base64.Encoder;
+import burp.api.montoya.core.ByteArray;
+
+import java.util.Base64;
 
 /**
  * This interface contains various methods that give you access to base64 encoding and decoding features.
@@ -17,48 +18,70 @@ import java.util.Base64.Encoder;
 public interface Base64Utils
 {
     /**
-     * @return A Base64 encoder.
-     * @see java.util.Base64#getEncoder()
+     * Encodes all bytes from the specified byte array into a newly-allocated
+     * byte array using the {@link Base64} encoding scheme. The returned byte
+     * array is of the length of the resulting bytes.
+     *
+     * @param data    the byte array to encode
+     * @param options the options to use for encoding
+     * @return A newly-allocated byte array containing the resulting
+     * encoded bytes.
      */
-    Encoder getEncoder();
+    ByteArray encode(ByteArray data, Base64EncodingOptions... options);
 
     /**
-     * @return A Base64 encoder.
-     * @see java.util.Base64#getUrlEncoder()
+     * Encodes all UTF-8 encoded bytes from the specified String into a newly-allocated
+     * byte array using the {@link Base64} encoding scheme. The returned byte
+     * array is of the length of the resulting bytes.
+     *
+     * @param data    the UTF-8 encoded string to encode.
+     * @param options the options to use for encoding
+     * @return A newly-allocated byte array containing the resulting
+     * encoded bytes.
      */
-    Encoder getUrlEncoder();
+    ByteArray encode(String data, Base64EncodingOptions... options);
 
     /**
-     * @return A Base64 encoder.
-     * @see java.util.Base64#getMimeEncoder()
+     * Encodes all bytes from the specified byte array into a UTF-8 encoded String using the {@link Base64} encoding scheme.
+     *
+     * @param data    the byte array to encode
+     * @param options the options to use for encoding
+     * @return A newly-allocated byte array containing the resulting
+     * encoded bytes.
      */
-    Encoder getMimeEncoder();
+    String encodeToString(ByteArray data, Base64EncodingOptions... options);
 
     /**
-     * @param lineLength    the length of each output line (rounded down to nearest multiple
-     *                      of 4). If the rounded down line length is not a positive value,
-     *                      the output will not be separated in lines
-     * @param lineSeparator the line separator for each output line
-     * @return A Base64 encoder.
-     * @see java.util.Base64#getMimeEncoder(int, byte[])
+     * Encodes all UTF-8 encoded bytes from the specified String into a UTF-8 encoded String using the {@link Base64} encoding scheme.
+     *
+     * @param data    the UTF-8 encoded string to encode.
+     * @param options the options to use for encoding
+     * @return A newly-allocated byte array containing the resulting
+     * encoded bytes.
      */
-    Encoder getMimeEncoder(int lineLength, String lineSeparator);
+    String encodeToString(String data, Base64EncodingOptions... options);
 
     /**
-     * @return A Base64 decoder.
-     * @see java.util.Base64#getDecoder()
+     * Decodes all bytes from the specified byte array into a newly-allocated
+     * byte array using the {@link Base64} decoding scheme. The returned byte
+     * array is of the length of the resulting bytes.
+     *
+     * @param data    the bytes to decode.
+     * @param options the options to use for decoding
+     * @return A newly-allocated byte array containing the resulting
+     * decoded bytes.
      */
-    Decoder getDecoder();
+    ByteArray decode(ByteArray data, Base64DecodingOptions... options);
 
     /**
-     * @return A Base64 decoder.
-     * @see java.util.Base64#getUrlDecoder()
+     * Decodes all UTF-8 encoded bytes from the specified String into a newly-allocated
+     * byte array using the {@link Base64} decoding scheme. The returned byte
+     * array is of the length of the resulting bytes.
+     *
+     * @param data    the UTF-8 encoded string to decode.
+     * @param options the options to use for decoding
+     * @return A newly-allocated byte array containing the resulting
+     * decoded bytes.
      */
-    Decoder getUrlDecoder();
-
-    /**
-     * @return A Base64 decoder.
-     * @see java.util.Base64#getMimeDecoder()
-     */
-    Decoder getMimeDecoder();
+    ByteArray decode(String data, Base64DecodingOptions... options);
 }

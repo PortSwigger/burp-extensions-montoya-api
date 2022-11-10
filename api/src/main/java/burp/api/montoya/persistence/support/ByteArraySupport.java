@@ -13,6 +13,9 @@ import burp.api.montoya.core.ByteArray;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Add support for byte arrays
+ */
 public interface ByteArraySupport
 {
     /**

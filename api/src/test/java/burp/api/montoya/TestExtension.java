@@ -160,7 +160,6 @@ import static burp.api.montoya.websocket.WebSocketBinaryMessage.continueWithBina
 import static burp.api.montoya.websocket.WebSocketTextMessage.continueWithTextMessage;
 import static burp.api.montoya.websocket.WebSocketTextMessage.dropTextMessage;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Collections.emptyList;
 
 @SuppressWarnings("all")
@@ -1370,13 +1369,12 @@ public class TestExtension implements BurpExtension
 
     private void base64Decode()
     {
-        utilities.base64Utils().getDecoder().decode("base64data");
-        utilities.base64Utils().getDecoder().decode("base64data".getBytes(UTF_8));
+        utilities.base64Utils().decode("base64data");
     }
 
     private void base64Encode()
     {
-        utilities.base64Utils().getEncoder().encode("base64Data".getBytes(UTF_8));
+        utilities.base64Utils().encode("base64Data");
     }
 
     private void buildHeader()
@@ -1485,13 +1483,15 @@ public class TestExtension implements BurpExtension
         System.out.println(utilities.urlUtils().encode("foo"));
     }
 
-    private void webSocketExample() {
+    private void webSocketExample()
+    {
         api.websockets().registerWebSocketCreationHandler(new WebSocketCreationHandler()
         {
             @Override
             public void handleWebSocketCreated(WebSocket webSocket, HttpRequest upgradeRequest, ToolSource toolSource)
             {
-                if (upgradeRequest.url().contains("foo.bar")) {
+                if (upgradeRequest.url().contains("foo.bar"))
+                {
                     webSocket.registerHandler(new WebSocketHandler()
                     {
                         @Override

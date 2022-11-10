@@ -13,19 +13,31 @@ public interface ByteArray extends Iterable<Byte>
      *
      * @return New empty {@code ByteArray}.
      */
-    static ByteArray byteArray() {
+    static ByteArray byteArray()
+    {
         return FACTORY.byteArray();
     }
 
     /**
      * Create a new {@code ByteArray} that wraps the provided byte array
      *
-     * @param bytes Byte array to wrap.
+     * @param data byte[] to wrap, or sequence of bytes to wrap.
      * @return New {@code ByteArray} wrapping the provided byte array.
      */
-    static ByteArray byteArray(byte[] bytes)
+    static ByteArray byteArray(byte... data)
     {
-        return FACTORY.byteArray(bytes);
+        return FACTORY.byteArray(data);
+    }
+
+    /**
+     * Create a new {@code ByteArray} that wraps the provided integers after a narrowing primitive conversion to bytes.
+     *
+     * @param data int[] to wrap or sequence of integers to wrap.
+     * @return New {@code ByteArray} wrapping the provided data after a narrowing primitive conversion to bytes.
+     */
+    static ByteArray byteArray(int... data)
+    {
+        return FACTORY.byteArray(data);
     }
 
     /**
@@ -51,46 +63,38 @@ public interface ByteArray extends Iterable<Byte>
      * This method sets the byte at the provided index to the provided byte.
      *
      * @param index Index of the byte to be set.
-     * @param b The byte to be set.
+     * @param value The byte to be set.
      */
-    void setByte(int index, byte b);
+    void setByte(int index, byte value);
 
     /**
-     * This method returns all bytes.
+     * This method sets the byte at the provided index to the provided narrowed integer value.
      *
-     * @return All bytes.
+     * @param index Index of the byte to be set.
+     * @param value The integer value to be set after a narrowing primitive conversion to a byte.
      */
-    byte[] getBytes();
-
-    /**
-     * This method returns all bytes between the start index (inclusive) and the end index (exclusive).
-     *
-     * @param startIndexInclusive The inclusive start index of retrieved range.
-     * @param endIndexExclusive The exclusive end index of retrieved range.
-     * @return All bytes in the specified range.
-     */
-    byte[] getBytes(int startIndexInclusive, int endIndexExclusive);
-
-    /**
-     * This method returns all bytes in the specified range.
-     *
-     * @param range The {@link Range} of bytes to be returned.
-     * @return All bytes in the specified range.
-     */
-    byte[] getBytes(Range range);
+    void setByte(int index, int value);
 
     /**
      * This method sets bytes starting at the specified index to the provided bytes.
      *
      * @param index The index of the first byte to set.
-     * @param bytes The bytes to be set.
+     * @param data  The byte[] or sequence of bytes to be set.
      */
-    void setBytes(int index, byte[] bytes);
+    void setBytes(int index, byte... data);
+
+    /**
+     * This method sets bytes starting at the specified index to the provided integers after narrowing primitive conversion to bytes.
+     *
+     * @param index The index of the first byte to set.
+     * @param data  The int[] or the sequence of integers to be set after a narrowing primitive conversion to bytes.
+     */
+    void setBytes(int index, int... data);
 
     /**
      * This method sets bytes starting at the specified index to the provided bytes.
      *
-     * @param index The index of the first byte to set.
+     * @param index     The index of the first byte to set.
      * @param byteArray The {@code ByteArray} object holding the provided bytes.
      */
     void setBytes(int index, ByteArray byteArray);
@@ -98,16 +102,30 @@ public interface ByteArray extends Iterable<Byte>
     /**
      * This method appends the provided byte.
      *
-     * @param b The byte to be appended.
+     * @param data The byte to be appended.
      */
-    void append(byte b);
+    void append(byte data);
+
+    /**
+     * This method appends the provided byte after narrowing primitive conversion.
+     *
+     * @param value The byte to be appended after narrowing primitive conversion.
+     */
+    void append(int value);
 
     /**
      * This method appends the provided bytes.
      *
-     * @param bytes The bytes to append.
+     * @param data The byte[] or sequence of bytes to append.
      */
-    void append(byte[] bytes);
+    void append(byte... data);
+
+    /**
+     * This method appends the provided integers after narrowing primitive conversion to bytes.
+     *
+     * @param data The int[] or sequence of integers to append after narrowing primitive conversion to bytes
+     */
+    void append(int... data);
 
     /**
      * This method appends the provided text as UTF-8 encoded bytes.
@@ -131,9 +149,33 @@ public interface ByteArray extends Iterable<Byte>
     int length();
 
     /**
-     * Create a deep copy of the {@code ByteArray}
+     * This method returns all bytes as a byte[]
      *
-     * @return New {@code ByteArray} with a deep copy of the wrapped bytes.
+     * @return All bytes.
+     */
+    byte[] getBytes();
+
+    /**
+     * This method returns new ByteArray with all bytes between the start index (inclusive) and the end index (exclusive).
+     *
+     * @param startIndexInclusive The inclusive start index of retrieved range.
+     * @param endIndexExclusive   The exclusive end index of retrieved range.
+     * @return ByteArray containing all bytes in the specified range.
+     */
+    ByteArray subArray(int startIndexInclusive, int endIndexExclusive);
+
+    /**
+     * This method returns a new ByteArray with all bytes in the specified range.
+     *
+     * @param range The {@link Range} of bytes to be returned.
+     * @return ByteArray containing all bytes in the specified range.
+     */
+    ByteArray subArray(Range range);
+
+    /**
+     * Create a copy of the {@code ByteArray}
+     *
+     * @return New {@code ByteArray} with a copy of the wrapped bytes.
      */
     ByteArray copy();
 
@@ -144,7 +186,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm The value to be searched for.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(byte[] searchTerm)
+    default int indexOf(ByteArray searchTerm)
     {
         return indexOf(searchTerm, true, 0, length());
     }
@@ -169,7 +211,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive Flags whether the search is case-sensitive.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(byte[] searchTerm, boolean caseSensitive)
+    default int indexOf(ByteArray searchTerm, boolean caseSensitive)
     {
         return indexOf(searchTerm, caseSensitive, 0, length());
     }
@@ -191,22 +233,22 @@ public interface ByteArray extends Iterable<Byte>
      * This method searches the data in the ByteArray for the first occurrence of a specified term.
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
-     * @param searchTerm    The value to be searched for.
-     * @param caseSensitive Flags whether the search is case-sensitive.
+     * @param searchTerm          The value to be searched for.
+     * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
-     * @param endIndexExclusive The exclusive end index for the search.
+     * @param endIndexExclusive   The exclusive end index for the search.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    int indexOf(byte[] searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
+    int indexOf(ByteArray searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
 
     /**
      * This method searches the data in the ByteArray for the first occurrence of a specified term.
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
-     * @param searchTerm    The value to be searched for.
-     * @param caseSensitive Flags whether the search is case-sensitive.
+     * @param searchTerm          The value to be searched for.
+     * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
-     * @param endIndexExclusive The exclusive end index for the search.
+     * @param endIndexExclusive   The exclusive end index for the search.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
     int indexOf(String searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
@@ -217,7 +259,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm The value to be searched for.
      * @return The count of all matches of the pattern
      */
-    default int countMatches(byte[] searchTerm)
+    default int countMatches(ByteArray searchTerm)
     {
         return countMatches(searchTerm, true, 0, length());
     }
@@ -240,7 +282,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive Flags whether the search is case-sensitive.
      * @return The count of all matches of the pattern
      */
-    default int countMatches(byte[] searchTerm, boolean caseSensitive)
+    default int countMatches(ByteArray searchTerm, boolean caseSensitive)
     {
         return countMatches(searchTerm, caseSensitive, 0, length());
     }
@@ -260,21 +302,21 @@ public interface ByteArray extends Iterable<Byte>
     /**
      * This method searches the data in the ByteArray and counts all matches for a specified term.
      *
-     * @param searchTerm    The value to be searched for.
-     * @param caseSensitive Flags whether the search is case-sensitive.
+     * @param searchTerm          The value to be searched for.
+     * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
-     * @param endIndexExclusive The exclusive end index for the search.
+     * @param endIndexExclusive   The exclusive end index for the search.
      * @return The count of all matches of the pattern within the specified bounds
      */
-    int countMatches(byte[] searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
+    int countMatches(ByteArray searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
 
     /**
      * This method searches the data in the ByteArray and counts all matches for a specified term.
      *
-     * @param searchTerm    The value to be searched for.
-     * @param caseSensitive Flags whether the search is case-sensitive.
+     * @param searchTerm          The value to be searched for.
+     * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
-     * @param endIndexExclusive The exclusive end index for the search.
+     * @param endIndexExclusive   The exclusive end index for the search.
      * @return The count of all matches of the pattern within the specified bounds
      */
     int countMatches(String searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);

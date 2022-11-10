@@ -134,6 +134,8 @@ public interface MontoyaObjectFactory
 
     ByteArray byteArray(byte[] bytes);
 
+    ByteArray byteArray(int[] ints);
+
     ByteArray byteArray(String text);
 
     ByteArray byteArray(ByteArray byteArrayToCopy);

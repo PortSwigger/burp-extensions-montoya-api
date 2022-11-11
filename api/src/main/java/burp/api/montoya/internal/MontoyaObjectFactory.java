@@ -70,13 +70,9 @@ public interface MontoyaObjectFactory
 
     HttpRequest httpRequest(HttpService service, String request);
 
-    HttpRequest httpRequest(HttpService service, List<String> headers, ByteArray body);
+    HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body);
 
-    HttpRequest httpRequest(HttpService service, List<String> headers, String body);
-
-    HttpRequest httpVerbatimRequest(HttpService service, List<HttpHeader> headers, String body);
-
-    HttpRequest httpVerbatimRequest(HttpService service, List<HttpHeader> headers, ByteArray body);
+    HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body);
 
     HttpRequest httpRequestFromUrl(String url);
 

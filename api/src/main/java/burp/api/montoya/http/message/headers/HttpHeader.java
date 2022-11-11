@@ -29,6 +29,7 @@ public interface HttpHeader
 
     /**
      * Create a new instance of HttpHeader from a {@code String} header representation.
+     * It will be parsed according to the HTTP/1.1 specification for headers.
      *
      * @param header The {@code String} header representation.
      * @return A new {@code HttpHeader} instance.

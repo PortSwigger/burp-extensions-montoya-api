@@ -27,117 +27,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface HttpRequest extends HttpMessage
 {
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
-     *
-     * @param request The HTTP request
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(ByteArray request)
-    {
-        return httpRequest(null, request);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
-     *
-     * @param request The HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(String request)
-    {
-        return httpRequest(null, request);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
-     *
-     * @param service An HTTP service for the request.
-     * @param request The HTTP request.
-     * @return A new {@link HttpRequest} instance. A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(HttpService service, ByteArray request)
-    {
-        return FACTORY.httpRequest(service, request);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
-     *
-     * @param service An HTTP service for the request.
-     * @param request The HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(HttpService service, String request)
-    {
-        return FACTORY.httpRequest(service, request);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
-     *
-     * @param service An HTTP service for the request.
-     * @param headers A list of HTTP headers.
-     * @param body    A body of the HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(HttpService service, List<String> headers, ByteArray body)
-    {
-        return FACTORY.httpRequest(service, headers, body);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
-     *
-     * @param service An HTTP service for the request.
-     * @param headers A list of HTTP headers.
-     * @param body    A body of the HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(HttpService service, List<String> headers, String body)
-    {
-        return FACTORY.httpRequest(service, headers, body);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest} that will only contain
-     * the data provided in the arguments.
-     *
-     * @param service An HTTP service for the request.
-     * @param headers A list of HTTP headers.
-     * @param body    A body of the HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpVerbatimRequest(HttpService service, List<HttpHeader> headers, ByteArray body)
-    {
-        return FACTORY.httpVerbatimRequest(service, headers, body);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest} that will only contain
-     * the data provided in the arguments.
-     *
-     * @param service An HTTP service for the request.
-     * @param headers A list of HTTP headers.
-     * @param body    A body of the HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpVerbatimRequest(HttpService service, List<HttpHeader> headers, String body)
-    {
-        return FACTORY.httpVerbatimRequest(service, headers, body);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
-     *
-     * @param url A URL for the request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequestFromUrl(String url)
-    {
-        return FACTORY.httpRequestFromUrl(url);
-    }
-
-    /**
      * This method is used to retrieve the HTTP service for the request.
      *
      * @return An {@link HttpService} object containing details of the HTTP service.
@@ -179,6 +68,14 @@ public interface HttpRequest extends HttpMessage
      * @return A new {@code HttpRequest} instance with updated path.
      */
     HttpRequest withPath(String path);
+
+    /**
+     * his is a helper method that builds a modified request with the new method.
+     *
+     * @param method the method to use
+     * @return a new {@code HttpRequest} instance with updated method.
+     */
+    HttpRequest withMethod(String method);
 
     /**
      * This is a helper method that builds a modified request with the added HTTP parameters.
@@ -305,4 +202,99 @@ public interface HttpRequest extends HttpMessage
      * @return The updated request containing the removed header.
      */
     HttpRequest removeHeader(HttpHeader header);
+
+    /**
+     * This is a helper method to create a new empty {@link HttpRequest}.
+     *
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest()
+    {
+        return httpRequest(null, "");
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequest}.
+     *
+     * @param request The HTTP request
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(ByteArray request)
+    {
+        return httpRequest(null, request);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequest}.
+     *
+     * @param request The HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(String request)
+    {
+        return httpRequest(null, request);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequest}.
+     *
+     * @param service An HTTP service for the request.
+     * @param request The HTTP request.
+     * @return A new {@link HttpRequest} instance. A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(HttpService service, ByteArray request)
+    {
+        return FACTORY.httpRequest(service, request);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequest}.
+     *
+     * @param service An HTTP service for the request.
+     * @param request The HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(HttpService service, String request)
+    {
+        return FACTORY.httpRequest(service, request);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequest}.
+     *
+     * @param url A URL for the request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequestFromUrl(String url)
+    {
+        return FACTORY.httpRequestFromUrl(url);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequest} that will only contain
+     * the data provided in the arguments.
+     *
+     * @param service An HTTP service for the request.
+     * @param headers A list of HTTP headers.
+     * @param body    A body of the HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body)
+    {
+        return FACTORY.http2Request(service, headers, body);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequest} that will only contain
+     * the data provided in the arguments.
+     *
+     * @param service An HTTP service for the request.
+     * @param headers A list of HTTP headers.
+     * @param body    A body of the HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body)
+    {
+        return FACTORY.http2Request(service, headers, body);
+    }
 }

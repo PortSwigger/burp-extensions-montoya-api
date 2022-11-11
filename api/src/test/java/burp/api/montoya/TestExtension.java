@@ -146,9 +146,9 @@ import static burp.api.montoya.http.message.headers.HttpHeader.httpHeader;
 import static burp.api.montoya.http.message.params.HttpParameter.bodyParameter;
 import static burp.api.montoya.http.message.params.HttpParameter.cookieParameter;
 import static burp.api.montoya.http.message.params.HttpParameter.urlParameter;
+import static burp.api.montoya.http.message.requests.HttpRequest.http2Request;
 import static burp.api.montoya.http.message.requests.HttpRequest.httpRequest;
 import static burp.api.montoya.http.message.requests.HttpRequest.httpRequestFromUrl;
-import static burp.api.montoya.http.message.requests.HttpRequest.httpVerbatimRequest;
 import static burp.api.montoya.http.message.responses.HttpResponse.httpResponse;
 import static burp.api.montoya.scanner.BuiltInScanConfiguration.ACTIVE_AUDIT_CHECKS;
 import static burp.api.montoya.scanner.BuiltInScanConfiguration.PASSIVE_AUDIT_CHECKS;
@@ -1388,8 +1388,6 @@ public class TestExtension implements BurpExtension
     {
         List<String> headers = List.of("foo: bar");
 
-        HttpRequest request = httpRequest(null, headers, ByteArray.byteArray());
-
         HttpResponse response = httpResponse(headers, ByteArray.byteArray());
     }
 
@@ -1398,8 +1396,7 @@ public class TestExtension implements BurpExtension
         HttpRequest requestFromUrl = httpRequestFromUrl("https://example.com:442/");
         HttpRequest requestFromBytes = httpRequest(httpService("example.org", true), byteArray("GET / HTTP/1.0\r\n\r\n"));
         HttpRequest requestFromString = httpRequest(httpService("example.org", true), "GET / HTTP/1.0\r\n\r\n");
-        HttpRequest requestFromHeadersAndBody = httpRequest(httpService("example.org", true), List.of(new String("foo: bar")), ByteArray.byteArray());
-        HttpRequest exactRequestFromHeadersAndBody = httpVerbatimRequest(httpService("example.org", true), List.of(httpHeader("foo: bar")), ByteArray.byteArray());
+        HttpRequest exactRequestFromHeadersAndBody = http2Request(httpService("example.org", true), List.of(httpHeader("foo: bar")), ByteArray.byteArray());
     }
 
     private void buildHttpService()

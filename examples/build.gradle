@@ -2,8 +2,6 @@ plugins {
     id 'java'
 }
 
-group "net.portswigger.burp.extensions.examples"
-
 repositories {
     mavenLocal()
     mavenCentral()

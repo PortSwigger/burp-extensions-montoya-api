@@ -27,57 +27,18 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface HttpResponse extends HttpMessage
 {
     /**
-     * This is a helper method to create a new instance of {@link HttpResponse}.
-     *
-     * @param response The HTTP response.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(ByteArray response)
-    {
-        return FACTORY.httpResponse(response);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpResponse}.
-     *
-     * @param response The HTTP response.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(String response)
-    {
-        return FACTORY.httpResponse(response);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpResponse}.
-     *
-     * @param headers A list of HTTP headers.
-     * @param body    An HTTP response body.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(List<String> headers, ByteArray body)
-    {
-        return FACTORY.httpResponse(headers, body);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpResponse}.
-     *
-     * @param headers A list of HTTP headers.
-     * @param body    An HTTP response body.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(List<String> headers, String body)
-    {
-        return FACTORY.httpResponse(headers, body);
-    }
-
-    /**
      * This method is used to obtain the HTTP status code contained in the response.
      *
      * @return HTTP status code.
      */
     short statusCode();
+
+    /**
+     * This method is used to obtain the HTTP reason phrase contained in the response for HTTP 1 messages.
+     * HTTP 2 messages will return a mapped phrase based on the status code.
+     * @return HTTP Reason phrase.
+     */
+    String reasonPhrase();
 
     /**
      * This method is used to obtain details of the HTTP cookies set in the response.
@@ -183,4 +144,50 @@ public interface HttpResponse extends HttpMessage
      * @return The updated response containing the removed header.
      */
     HttpResponse removeHeader(String name);
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param response The HTTP response.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(ByteArray response)
+    {
+        return FACTORY.httpResponse(response);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param response The HTTP response.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(String response)
+    {
+        return FACTORY.httpResponse(response);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param headers A list of HTTP headers.
+     * @param body    An HTTP response body.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(List<String> headers, ByteArray body)
+    {
+        return FACTORY.httpResponse(headers, body);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse}.
+     *
+     * @param headers A list of HTTP headers.
+     * @param body    An HTTP response body.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(List<String> headers, String body)
+    {
+        return FACTORY.httpResponse(headers, body);
+    }
 }

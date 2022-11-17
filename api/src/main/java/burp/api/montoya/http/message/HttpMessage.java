@@ -28,6 +28,14 @@ public interface HttpMessage
     List<HttpHeader> headers();
 
     /**
+     * This method is used to return the HTTP Version text parsed from the request line for HTTP 1 messages.
+     * HTTP 2 messages will return "HTTP/2"
+     *
+     * @return Version string
+     */
+    String httpVersion();
+
+    /**
      * This method is used to obtain the offset within the message where the message body begins.
      *
      * @return The message body offset.

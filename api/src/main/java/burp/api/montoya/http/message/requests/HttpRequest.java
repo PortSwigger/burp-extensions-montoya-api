@@ -39,6 +39,11 @@ public interface HttpRequest extends HttpMessage
     String method();
 
     /**
+     * @return the path and file in the request
+     */
+    String path();
+
+    /**
      * @return The URL in the request.
      */
     String url();
@@ -70,7 +75,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withPath(String path);
 
     /**
-     * his is a helper method that builds a modified request with the new method.
+     * This is a helper method that builds a modified request with the new method.
      *
      * @param method the method to use
      * @return a new {@code HttpRequest} instance with updated method.
@@ -271,12 +276,11 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest} that will only contain
-     * the data provided in the arguments.
+     * This is a helper method to create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.
      *
      * @param service An HTTP service for the request.
-     * @param headers A list of HTTP headers.
-     * @param body    A body of the HTTP request.
+     * @param headers A list of HTTP 2 headers.
+     * @param body    A body of the HTTP 2 request.
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body)
@@ -285,12 +289,11 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest} that will only contain
-     * the data provided in the arguments.
+     * This is a helper method to create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.
      *
      * @param service An HTTP service for the request.
-     * @param headers A list of HTTP headers.
-     * @param body    A body of the HTTP request.
+     * @param headers A list of HTTP 2 headers.
+     * @param body    A body of the HTTP 2 request.
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body)

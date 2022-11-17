@@ -13,6 +13,7 @@ import burp.api.montoya.http.ContentType;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.HttpTransformation;
 import burp.api.montoya.http.message.HttpMessage;
+import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
@@ -207,6 +208,29 @@ public interface HttpRequest extends HttpMessage
      * @return The updated request containing the removed header.
      */
     HttpRequest removeHeader(HttpHeader header);
+
+    /**
+     * This method is used to obtain the HTTP headers contained in the message.
+     *
+     * @return A list of HTTP headers.
+     */
+    List<Marker> markers();
+
+    /**
+     * This is a helper method used to add request markers to the {@code HttpRequest} instance.
+     *
+     * @param markers Request markers to add.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
+     */
+    HttpRequest withMarkers(List<Marker> markers);
+
+    /**
+     * This is a helper method used create a new instance with markers to the {@code HttpRequest} instance.
+     *
+     * @param markers Request markers to add.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
+     */
+    HttpRequest withMarkers(Marker... markers);
 
     /**
      * This is a helper method to create a new empty {@link HttpRequest}.

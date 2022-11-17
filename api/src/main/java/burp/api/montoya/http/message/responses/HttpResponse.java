@@ -11,6 +11,7 @@ package burp.api.montoya.http.message.responses;
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.http.MimeType;
 import burp.api.montoya.http.message.HttpMessage;
+import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.cookies.Cookie;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.responses.analysis.Attribute;
@@ -145,6 +146,28 @@ public interface HttpResponse extends HttpMessage
      */
     HttpResponse removeHeader(String name);
 
+    /**
+     * This method is used to obtain the markers for the message.
+     *
+     * @return A list of HTTP headers.
+     */
+    List<Marker> markers();
+
+    /**
+     * This is a helper method used to add request markers to the {@code HttpResponse} instance.
+     *
+     * @param markers Request markers to add.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
+     */
+    HttpResponse withMarkers(List<Marker> markers);
+
+    /**
+     * This is a helper method used create a new instance with markers to the {@code HttpResponse} instance.
+     *
+     * @param markers Request markers to add.
+     * @return A new {@code MarkedHttpRequestResponse} instance.
+     */
+    HttpResponse withMarkers(Marker... markers);
     /**
      * This is a helper method to create a new instance of {@link HttpResponse}.
      *

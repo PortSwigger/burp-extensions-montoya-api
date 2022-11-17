@@ -9,7 +9,7 @@
 package burp.api.montoya.scanner.audit.issues;
 
 import burp.api.montoya.http.HttpService;
-import burp.api.montoya.http.message.MarkedHttpRequestResponse;
+import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.scanner.ScanCheck;
 import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.sitemap.SiteMap;
@@ -45,7 +45,7 @@ public interface AuditIssue
      * @param remediationBackground The background description of the
      *                              remediation for this type of issue.
      * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
-     * @param requestResponses      The {@link MarkedHttpRequestResponse} objects on the
+     * @param requestResponses      The {@link HttpRequestResponse} objects on the
      *                              basis of which the issue is generated.
      * @return The audit issue for the URL.
      */
@@ -59,7 +59,7 @@ public interface AuditIssue
             String background,
             String remediationBackground,
             AuditIssueSeverity typicalSeverity,
-            MarkedHttpRequestResponse... requestResponses)
+            HttpRequestResponse... requestResponses)
     {
         return auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, Arrays.asList(requestResponses));
     }
@@ -79,7 +79,7 @@ public interface AuditIssue
      * @param remediationBackground The background description of the
      *                              remediation for this type of issue.
      * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
-     * @param requestResponses      The list of {@link MarkedHttpRequestResponse} objects
+     * @param requestResponses      The list of {@link HttpRequestResponse} objects
      *                              on the basis of which the issue is generated.
      * @return The audit issue for the URL.
      */
@@ -93,7 +93,7 @@ public interface AuditIssue
             String background,
             String remediationBackground,
             AuditIssueSeverity typicalSeverity,
-            List<MarkedHttpRequestResponse> requestResponses)
+            List<HttpRequestResponse> requestResponses)
     {
         return FACTORY.auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, requestResponses);
     }
@@ -155,10 +155,10 @@ public interface AuditIssue
     /**
      * This method returns the HTTP request/response messages that caused the issue to be generated.
      *
-     * @return The list of {@link MarkedHttpRequestResponse} objects on the basis of
+     * @return The list of {@link HttpRequestResponse} objects on the basis of
      * which the issue was generated.
      */
-    List<MarkedHttpRequestResponse> requestResponses();
+    List<HttpRequestResponse> requestResponses();
 
     /**
      * This method returns the definition for this issue.

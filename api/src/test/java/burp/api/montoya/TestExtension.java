@@ -40,7 +40,6 @@ import burp.api.montoya.http.HttpTransformation;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.HttpRequestResponse;
-import burp.api.montoya.http.message.MarkedHttpRequestResponse;
 import burp.api.montoya.http.message.cookies.Cookie;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
@@ -141,7 +140,7 @@ import static burp.api.montoya.http.HttpMode.HTTP_2_IGNORE_ALPN;
 import static burp.api.montoya.http.HttpService.httpService;
 import static burp.api.montoya.http.RequestResult.requestResult;
 import static burp.api.montoya.http.ResponseResult.responseResult;
-import static burp.api.montoya.http.message.MarkedHttpRequestResponse.unmarkedRequestResponse;
+import static burp.api.montoya.http.message.Marker.marker;
 import static burp.api.montoya.http.message.headers.HttpHeader.httpHeader;
 import static burp.api.montoya.http.message.params.HttpParameter.bodyParameter;
 import static burp.api.montoya.http.message.params.HttpParameter.cookieParameter;
@@ -211,23 +210,24 @@ public class TestExtension implements BurpExtension
 
     private void addScanIssue()
     {
-        siteMap.add(auditIssue(
-                "My Issue",
-                "Details",
-                "Remediation detail",
-                httpRequest.url(),
-                AuditIssueSeverity.INFORMATION,
-                AuditIssueConfidence.FIRM,
-                "background of issue",
-                "remediation of issue",
-                AuditIssueSeverity.LOW,
-                List.of(
-                        unmarkedRequestResponse(httpRequestResponse),
-                        unmarkedRequestResponse(httpRequestResponse.withMessageAnnotations(annotations(HighlightColor.BLUE))),
-                        unmarkedRequestResponse(httpRequestResponse.withMessageAnnotations(annotations("comment"))),
-                        unmarkedRequestResponse(httpRequestResponse.withMessageAnnotations(annotations("comment", HighlightColor.GREEN)))
-                )
-        ));
+        siteMap.add(
+                auditIssue(
+                        "My Issue",
+                        "Details",
+                        "Remediation detail",
+                        httpRequest.url(),
+                        AuditIssueSeverity.INFORMATION,
+                        AuditIssueConfidence.FIRM,
+                        "background of issue",
+                        "remediation of issue",
+                        AuditIssueSeverity.LOW,
+                        List.of(
+                                httpRequestResponse,
+                                httpRequestResponse.withMessageAnnotations(annotations(HighlightColor.BLUE)),
+                                httpRequestResponse.withMessageAnnotations(annotations("comment")),
+                                httpRequestResponse.withMessageAnnotations(annotations("comment", HighlightColor.GREEN))
+                        )
+                ));
     }
 
     private void addSuiteTab()
@@ -247,16 +247,12 @@ public class TestExtension implements BurpExtension
         List<Range> requestMarkers = List.of(range(0, 10), range(23, 51));
         List<Range> responseMarkers = List.of(range(5, 7), range(16, 17));
 
-        MarkedHttpRequestResponse markedRequestResponse1 = httpRequestResponse.withMarkers(requestMarkers, responseMarkers);
+        HttpRequest markedRequest = httpRequest.withMarkers(marker(range(0, 10)), marker(range(0, 10)));
+        System.out.println(markedRequest.markers());
 
-        MarkedHttpRequestResponse markedRequestResponse2 = httpRequestResponse.withRequestMarkers(requestMarkers);
-        MarkedHttpRequestResponse markedRequestResponse3 = httpRequestResponse.withRequestMarkers(range(0, 10), range(23, 51));
+        HttpResponse markedResponse = httpResponse.withMarkers(marker(0, 10), marker(0, 10));
 
-        MarkedHttpRequestResponse markedRequestResponse4 = httpRequestResponse.withResponseMarkers(responseMarkers);
-        MarkedHttpRequestResponse markedRequestResponse5 = httpRequestResponse.withResponseMarkers(range(5, 7), range(16, 17));
-
-        System.out.println(markedRequestResponse1.requestMarkers());
-        System.out.println(markedRequestResponse1.responseMarkers());
+        System.out.println(markedResponse);
     }
 
     private void createBurpCollaboratorClientContext()
@@ -920,7 +916,7 @@ public class TestExtension implements BurpExtension
                         "background of issue",
                         "remediation of issue",
                         AuditIssueSeverity.LOW,
-                        List.of(baseRequestResponse.withNoMarkers())
+                        baseRequestResponse
                 );
 
                 return List.of(issue);
@@ -939,7 +935,7 @@ public class TestExtension implements BurpExtension
                         "this is going to cost a lot of money",
                         "remediation of issue",
                         AuditIssueSeverity.LOW,
-                        baseRequestResponse.withNoMarkers()
+                        baseRequestResponse
                 );
 
                 return List.of(issue);

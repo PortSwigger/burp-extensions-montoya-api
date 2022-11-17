@@ -18,7 +18,7 @@ import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.HttpRequestResponse;
-import burp.api.montoya.http.message.MarkedHttpRequestResponse;
+import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.HttpParameterType;
@@ -86,10 +86,6 @@ public interface MontoyaObjectFactory
 
     HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response, Annotations annotations);
 
-    MarkedHttpRequestResponse markedRequestResponse(HttpRequestResponse requestResponse);
-
-    MarkedHttpRequestResponse markedRequestResponse(HttpRequestResponse requestResponse, List<Range> requestMarkers, List<Range> responseMarkers);
-
     Range range(int startIndexInclusive, int endIndexExclusive);
 
     Annotations annotations(String comment, HighlightColor highlightColor);
@@ -98,7 +94,7 @@ public interface MontoyaObjectFactory
 
     AuditIssueDefinition auditIssueDefinition(String name, String background, String remediation, AuditIssueSeverity typicalSeverity);
 
-    AuditIssue auditIssue(String name, String detail, String remediation, String baseUrl, AuditIssueSeverity severity, AuditIssueConfidence confidence, String background, String remediationBackground, AuditIssueSeverity typicalSeverity, List<MarkedHttpRequestResponse> requestResponses);
+    AuditIssue auditIssue(String name, String detail, String remediation, String baseUrl, AuditIssueSeverity severity, AuditIssueConfidence confidence, String background, String remediationBackground, AuditIssueSeverity typicalSeverity, List<HttpRequestResponse> requestResponses);
 
     Selection selection(ByteArray selectionContents, int startIndexInclusive, int endIndexExclusive);
 
@@ -125,6 +121,10 @@ public interface MontoyaObjectFactory
     InteractionFilter interactionPayloadFilter(String payload);
 
     SiteMapFilter prefixFilter(String prefix);
+
+    Marker marker(Range range);
+
+    Marker marker(int startIndexInclusive, int endIndexExclusive);
 
     ByteArray byteArray();
 

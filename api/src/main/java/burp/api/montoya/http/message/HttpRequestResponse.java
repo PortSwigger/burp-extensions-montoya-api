@@ -9,7 +9,6 @@
 package burp.api.montoya.http.message;
 
 import burp.api.montoya.core.Annotations;
-import burp.api.montoya.core.Range;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
@@ -65,6 +64,16 @@ public interface HttpRequestResponse
     Annotations messageAnnotations();
 
     /**
+     * @return List of request markers
+     */
+    List<Marker> requestMarkers();
+
+    /**
+     * @return List of response markers
+     */
+    List<Marker> responseMarkers();
+
+    /**
      * This is a helper method used to add annotations to the {@code HttpRequestResponse} instance.
      *
      * @param annotations annotations to add.
@@ -73,50 +82,34 @@ public interface HttpRequestResponse
     HttpRequestResponse withMessageAnnotations(Annotations annotations);
 
     /**
-     * This is a helper method used to add markers to the {@code HttpRequestResponse} instance.
+     * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
      *
-     * @param requestMarkers  Request markers to add.
-     * @param responseMarkers Response markers to add.
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @param requestMarkers Request markers to add.
+     * @return A new {@code HttpRequestResponse} instance.
      */
-    MarkedHttpRequestResponse withMarkers(List<Range> requestMarkers, List<Range> responseMarkers);
+    HttpRequestResponse withRequestMarkers(List<Marker> requestMarkers);
 
     /**
      * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
      *
      * @param requestMarkers Request markers to add.
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @return A new {@code HttpRequestResponse} instance.
      */
-    MarkedHttpRequestResponse withRequestMarkers(List<Range> requestMarkers);
-
-    /**
-     * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
-     *
-     * @param requestMarkers Request markers to add.
-     * @return A new {@code MarkedHttpRequestResponse} instance.
-     */
-    MarkedHttpRequestResponse withRequestMarkers(Range... requestMarkers);
+    HttpRequestResponse withRequestMarkers(Marker... requestMarkers);
 
     /**
      * This is a helper method used to add response markers to the {@code HttpRequestResponse} instance.
      *
      * @param responseMarkers Response markers to add.
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @return A new {@code HttpRequestResponse} instance.
      */
-    MarkedHttpRequestResponse withResponseMarkers(List<Range> responseMarkers);
+    HttpRequestResponse withResponseMarkers(List<Marker> responseMarkers);
 
     /**
      * This is a helper method used to add response markers to the {@code HttpRequestResponse} instance.
      *
      * @param responseMarkers Response markers to add.
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @return A new {@code HttpRequestResponse} instance.
      */
-    MarkedHttpRequestResponse withResponseMarkers(Range... responseMarkers);
-
-    /**
-     * This is a helper method used to build a {@code MarkedHttpRequestResponse} instance with no markers.
-     *
-     * @return A new {@code MarkedHttpRequestResponse} instance.
-     */
-    MarkedHttpRequestResponse withNoMarkers();
+    HttpRequestResponse withResponseMarkers(Marker... responseMarkers);
 }

@@ -35,16 +35,25 @@ public interface HttpRequest extends HttpMessage
     HttpService httpService();
 
     /**
+     * This method is used to retrieve the HTTP method for the request. If the request has been Kettled, then a {@link MalformedRequestException} is thrown.
+     *
+     * @throws MalformedRequestException if request is Kettled.
      * @return The HTTP method used in the request.
      */
     String method();
 
     /**
+     * This method is used to retrieve the path for the request. If the request has been Kettled, then a {@link MalformedRequestException} is thrown.
+     *
+     * @throws MalformedRequestException if request is Kettled.
      * @return the path and file in the request
      */
     String path();
 
     /**
+     * This method is used to retrieve the URL for the request. If the request has been Kettled, then a {@link MalformedRequestException} is thrown.
+     *
+     * @throws MalformedRequestException if request is Kettled.
      * @return The URL in the request.
      */
     String url();

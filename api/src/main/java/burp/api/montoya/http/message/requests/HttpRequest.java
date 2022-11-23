@@ -12,7 +12,6 @@ import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.http.ContentType;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.HttpTransformation;
-import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
@@ -25,7 +24,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 /**
  * This interface is used to retrieve key details about an HTTP request.
  */
-public interface HttpRequest extends HttpMessage
+public interface HttpRequest
 {
     /**
      * This method is used to retrieve the HTTP service for the request.
@@ -35,31 +34,49 @@ public interface HttpRequest extends HttpMessage
     HttpService httpService();
 
     /**
-     * This method is used to retrieve the HTTP method for the request. If the request has been Kettled, then a {@link MalformedRequestException} is thrown.
+     * This method is used to retrieve the URL for the request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
-     * @throws MalformedRequestException if request is Kettled.
-     * @return The HTTP method used in the request.
-     */
-    String method();
-
-    /**
-     * This method is used to retrieve the path for the request. If the request has been Kettled, then a {@link MalformedRequestException} is thrown.
-     *
-     * @throws MalformedRequestException if request is Kettled.
-     * @return the path and file in the request
-     */
-    String path();
-
-    /**
-     * This method is used to retrieve the URL for the request. If the request has been Kettled, then a {@link MalformedRequestException} is thrown.
-     *
-     * @throws MalformedRequestException if request is Kettled.
      * @return The URL in the request.
+     * @throws MalformedRequestException if request is malformed.
      */
     String url();
 
     /**
-     * @return The content type of the message body.
+     * This method is used to retrieve the HTTP method for the request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The HTTP method used in the request.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String method();
+
+    /**
+     * This method is used to retrieve the path for the request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return the path and file in the request
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String path();
+
+    /**
+     * This method is used to return the HTTP Version text parsed from the request line for HTTP 1 messages.
+     * HTTP 2 messages will return "HTTP/2"
+     *
+     * @return Version string
+     */
+    String httpVersion();
+
+    /**
+     * This method is used to obtain the HTTP headers contained in the request.
+     *
+     * @return A list of HTTP headers.
+     */
+    List<HttpHeader> headers();
+
+    /**
+     * @return The detected content type of the request.
      */
     ContentType contentType();
 
@@ -67,6 +84,43 @@ public interface HttpRequest extends HttpMessage
      * @return The parameters contained in the request.
      */
     List<ParsedHttpParameter> parameters();
+
+    /**
+     * This method is used to get the body of a request as a byte array.
+     *
+     * @return The body of a request as a byte array.
+     */
+    ByteArray body();
+
+    /**
+     * This method is used to get the body of a response as a {@code String}.
+     *
+     * @return The body of a message as a {@code String}.
+     */
+    String bodyToString();
+
+    /**
+     * This method is used to obtain the offset within the message where the response body begins.
+     * Returns zero for HTTP/2 responses.
+     *
+     * @return The message body offset.
+     */
+    int bodyOffset();
+
+    /**
+     * This method is used to get the message as a byte array.
+     *
+     * @return The message as a byte array.
+     */
+    ByteArray toByteArray();
+
+    /**
+     * This method is used to get the message as a {@code String}.
+     *
+     * @return The message as a {@code String}.
+     */
+    @Override
+    String toString();
 
     /**
      * This is a helper method that builds a modified request with the new service.

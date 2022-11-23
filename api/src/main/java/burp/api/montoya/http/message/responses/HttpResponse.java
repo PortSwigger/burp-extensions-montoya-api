@@ -10,7 +10,6 @@ package burp.api.montoya.http.message.responses;
 
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.http.MimeType;
-import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.cookies.Cookie;
 import burp.api.montoya.http.message.headers.HttpHeader;
@@ -25,7 +24,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 /**
  * This interface is used to retrieve key details about an HTTP response.
  */
-public interface HttpResponse extends HttpMessage
+public interface HttpResponse
 {
     /**
      * This method is used to obtain the HTTP status code contained in the response.
@@ -40,6 +39,56 @@ public interface HttpResponse extends HttpMessage
      * @return HTTP Reason phrase.
      */
     String reasonPhrase();
+
+    /**
+     * This method is used to return the HTTP Version text parsed from the response line for HTTP 1 messages.
+     * HTTP 2 messages will return "HTTP/2"
+     *
+     * @return Version string
+     */
+    String httpVersion();
+
+    /**
+     * This method is used to obtain the HTTP headers contained in the message.
+     *
+     * @return A list of HTTP headers.
+     */
+    List<HttpHeader> headers();
+
+    /**
+     * This method is used to get the body of a message as a byte array.
+     *
+     * @return The body of a message as a byte array.
+     */
+    ByteArray body();
+
+    /**
+     * This method is used to get the body of a message as a {@code String}.
+     *
+     * @return The body of a message as a {@code String}.
+     */
+    String bodyToString();
+    /**
+     * This method is used to obtain the offset within the message where the message body begins.
+     *
+     * @return The message body offset.
+     */
+    int bodyOffset();
+
+    /**
+     * This method is used to get the message as a byte array.
+     *
+     * @return The message as a byte array.
+     */
+    ByteArray toByteArray();
+
+    /**
+     * This method is used to get the message as a {@code String}.
+     *
+     * @return The message as a {@code String}.
+     */
+    @Override
+    String toString();
 
     /**
      * This method is used to obtain details of the HTTP cookies set in the response.

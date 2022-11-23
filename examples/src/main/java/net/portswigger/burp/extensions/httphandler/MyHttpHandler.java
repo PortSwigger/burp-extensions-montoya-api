@@ -31,7 +31,7 @@ class MyHttpHandler implements HttpHandler
         if (request.method().equalsIgnoreCase("POST"))
         {
             annotations = annotations.withComment("Request was a post");
-            logging.logToOutput(request.bodyAsString());
+            logging.logToOutput(request.bodyToString());
         }
 
         //Modify the request by adding a url param.

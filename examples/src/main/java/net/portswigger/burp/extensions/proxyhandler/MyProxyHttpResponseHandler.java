@@ -17,7 +17,7 @@ class MyProxyHttpResponseHandler implements ProxyHttpResponseHandler
     public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
     {
         //Highlight all responses that have username in them
-        if (interceptedResponse.bodyAsString().contains("username"))
+        if (interceptedResponse.bodyToString().contains("username"))
         {
             return followUserRules(interceptedResponse, annotations.withHighlightColor(BLUE));
         }

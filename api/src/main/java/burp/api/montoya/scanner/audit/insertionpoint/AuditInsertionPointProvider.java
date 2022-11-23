@@ -29,9 +29,9 @@ public interface AuditInsertionPointProvider
      *
      * @param baseHttpRequestResponse The base {@link HttpRequestResponse} that
      *                                will be actively audited.
-     * @return A list of {@link ExtensionGeneratedAuditInsertionPoint} objects
+     * @return A list of {@link AuditInsertionPoint} objects
      * that should be used in the audit, or {@code null} if no custom insertion
      * points are applicable for this request.
      */
-    List<ExtensionGeneratedAuditInsertionPoint> provideInsertionPoints(HttpRequestResponse baseHttpRequestResponse);
+    List<AuditInsertionPoint> provideInsertionPoints(HttpRequestResponse baseHttpRequestResponse);
 }

@@ -32,7 +32,7 @@ public interface HttpRequestTemplate
      */
     static HttpRequestTemplate httpRequestTemplate(HttpRequest request, List<Range> insertionPointOffsets)
     {
-        return httpRequestTemplate(request.asBytes(), insertionPointOffsets);
+        return httpRequestTemplate(request.toByteArray(), insertionPointOffsets);
     }
 
     /**

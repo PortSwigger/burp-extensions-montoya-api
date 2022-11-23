@@ -88,7 +88,6 @@ import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPointProvider;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPointType;
-import burp.api.montoya.scanner.audit.insertionpoint.ExtensionGeneratedAuditInsertionPoint;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
 import burp.api.montoya.scanner.audit.issues.AuditIssueConfidence;
 import burp.api.montoya.scanner.audit.issues.AuditIssueDefinition;
@@ -961,9 +960,9 @@ public class TestExtension implements BurpExtension
         Registration registration = scanner.registerInsertionPointProvider(new AuditInsertionPointProvider()
         {
             @Override
-            public List<ExtensionGeneratedAuditInsertionPoint> provideInsertionPoints(HttpRequestResponse baseRequestResponse)
+            public List<AuditInsertionPoint> provideInsertionPoints(HttpRequestResponse baseRequestResponse)
             {
-                ExtensionGeneratedAuditInsertionPoint firstTenCharactersInsertionPoint = new ExtensionGeneratedAuditInsertionPoint()
+                AuditInsertionPoint firstTenCharactersInsertionPoint = new AuditInsertionPoint()
                 {
                     private final Range range = range(0, 10);
 
@@ -976,7 +975,7 @@ public class TestExtension implements BurpExtension
                     @Override
                     public String baseValue()
                     {
-                        ByteArray requestBytes = baseRequestResponse.httpRequest().asBytes();
+                        ByteArray requestBytes = baseRequestResponse.httpRequest().toByteArray();
                         String requestString = requestBytes.toString();
 
                         return requestString.substring(range.startIndexInclusive(), range.endIndexExclusive());
@@ -985,7 +984,7 @@ public class TestExtension implements BurpExtension
                     @Override
                     public ByteArray buildHttpMessageWithPayload(ByteArray payload)
                     {
-                        ByteArray requestBytes = baseRequestResponse.httpRequest().asBytes();
+                        ByteArray requestBytes = baseRequestResponse.httpRequest().toByteArray();
                         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                         int payloadLength = payload.length();
 

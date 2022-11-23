@@ -11,6 +11,7 @@ package burp.api.montoya.persistence.support;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
+import burp.api.montoya.persistence.PersistedList;
 
 import java.util.Optional;
 import java.util.Set;

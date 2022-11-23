@@ -9,6 +9,7 @@
 package burp.api.montoya.persistence.support;
 
 import burp.api.montoya.core.ByteArray;
+import burp.api.montoya.persistence.PersistedList;
 
 import java.util.Optional;
 import java.util.Set;

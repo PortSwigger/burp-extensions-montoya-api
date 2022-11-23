@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.persistence.support;
+package burp.api.montoya.persistence;
 
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.http.message.HttpRequestResponse;

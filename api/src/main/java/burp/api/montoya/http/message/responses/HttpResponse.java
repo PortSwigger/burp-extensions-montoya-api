@@ -76,19 +76,11 @@ public interface HttpResponse
     int bodyOffset();
 
     /**
-     * This method is used to get the message as a byte array.
+     * This method is used to obtain the markers for the response.
      *
-     * @return The message as a byte array.
+     * @return A list of HTTP headers.
      */
-    ByteArray toByteArray();
-
-    /**
-     * This method is used to get the message as a {@code String}.
-     *
-     * @return The message as a {@code String}.
-     */
-    @Override
-    String toString();
+    List<Marker> markers();
 
     /**
      * This method is used to obtain details of the HTTP cookies set in the response.
@@ -127,6 +119,21 @@ public interface HttpResponse
      */
     List<Attribute> attributes(AttributeType... types);
 
+    /**
+     * This method is used to get the message as a byte array.
+     *
+     * @return The message as a byte array.
+     */
+    ByteArray toByteArray();
+
+    /**
+     * This method is used to get the message as a {@code String}.
+     *
+     * @return The message as a {@code String}.
+     */
+    @Override
+    String toString();
+    
     /**
      * This is a helper method that builds a modified response with the updated body.
      * Updates Content-Length header.
@@ -194,13 +201,6 @@ public interface HttpResponse
      * @return The updated response containing the removed header.
      */
     HttpResponse removeHeader(String name);
-
-    /**
-     * This method is used to obtain the markers for the message.
-     *
-     * @return A list of HTTP headers.
-     */
-    List<Marker> markers();
 
     /**
      * This is a helper method used to add request markers to the {@code HttpResponse} instance.

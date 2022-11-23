@@ -108,6 +108,13 @@ public interface HttpRequest
     int bodyOffset();
 
     /**
+     * This method is used to obtain the markers contained in the message.
+     *
+     * @return A list of HTTP headers.
+     */
+    List<Marker> markers();
+
+    /**
      * This method is used to get the message as a byte array.
      *
      * @return The message as a byte array.
@@ -271,13 +278,6 @@ public interface HttpRequest
      * @return The updated request containing the removed header.
      */
     HttpRequest removeHeader(HttpHeader header);
-
-    /**
-     * This method is used to obtain the HTTP headers contained in the message.
-     *
-     * @return A list of HTTP headers.
-     */
-    List<Marker> markers();
 
     /**
      * This is a helper method used to add request markers to the {@code HttpRequest} instance.

@@ -9,49 +9,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface ByteArray extends Iterable<Byte>
 {
     /**
-     * Create a new {@code ByteArray}
-     *
-     * @return New empty {@code ByteArray}.
-     */
-    static ByteArray byteArray()
-    {
-        return FACTORY.byteArray();
-    }
-
-    /**
-     * Create a new {@code ByteArray} that wraps the provided byte array
-     *
-     * @param data byte[] to wrap, or sequence of bytes to wrap.
-     * @return New {@code ByteArray} wrapping the provided byte array.
-     */
-    static ByteArray byteArray(byte... data)
-    {
-        return FACTORY.byteArray(data);
-    }
-
-    /**
-     * Create a new {@code ByteArray} that wraps the provided integers after a narrowing primitive conversion to bytes.
-     *
-     * @param data int[] to wrap or sequence of integers to wrap.
-     * @return New {@code ByteArray} wrapping the provided data after a narrowing primitive conversion to bytes.
-     */
-    static ByteArray byteArray(int... data)
-    {
-        return FACTORY.byteArray(data);
-    }
-
-    /**
-     * Create a new {@code ByteArray} from the provided UTF-8 encoded text.
-     *
-     * @param text UTF-8 encoded text.
-     * @return New {@code ByteArray} holding a copy of the text as UTF-8 encoded bytes.
-     */
-    static ByteArray byteArray(String text)
-    {
-        return FACTORY.byteArray(text);
-    }
-
-    /**
      * This method returns a byte stored at the provided index.
      *
      * @param index Index of the byte to be retrieved.
@@ -98,48 +55,6 @@ public interface ByteArray extends Iterable<Byte>
      * @param byteArray The {@code ByteArray} object holding the provided bytes.
      */
     void setBytes(int index, ByteArray byteArray);
-
-    /**
-     * This method appends the provided byte.
-     *
-     * @param data The byte to be appended.
-     */
-    void append(byte data);
-
-    /**
-     * This method appends the provided byte after narrowing primitive conversion.
-     *
-     * @param value The byte to be appended after narrowing primitive conversion.
-     */
-    void append(int value);
-
-    /**
-     * This method appends the provided bytes.
-     *
-     * @param data The byte[] or sequence of bytes to append.
-     */
-    void append(byte... data);
-
-    /**
-     * This method appends the provided integers after narrowing primitive conversion to bytes.
-     *
-     * @param data The int[] or sequence of integers to append after narrowing primitive conversion to bytes
-     */
-    void append(int... data);
-
-    /**
-     * This method appends the provided text as UTF-8 encoded bytes.
-     *
-     * @param text The UTF-8 encoded string to append.
-     */
-    void append(String text);
-
-    /**
-     * This method appends the provided bytes.
-     *
-     * @param byteArray The bytes to append.
-     */
-    void append(ByteArray byteArray);
 
     /**
      * This method returns the number of bytes stored in the {@code ByteArray}.
@@ -328,5 +243,77 @@ public interface ByteArray extends Iterable<Byte>
      */
     @Override
     String toString();
+
+    /**
+     * This method creates a new {@code ByteArray} appended with the provided bytes.
+     *
+     * @param data The byte[] or sequence of bytes to append.
+     */
+    ByteArray withAppended(byte... data);
+
+    /**
+     * This method creates a new {@code ByteArray} appended with the provided integers after narrowing primitive conversion to bytes.
+     *
+     * @param data The int[] or sequence of integers to append after narrowing primitive conversion to bytes.
+     */
+    ByteArray withAppended(int... data);
+
+    /**
+     * This method creates a new {@code ByteArray} appended with the provided text as UTF-8 encoded bytes.
+     *
+     * @param text The UTF-8 encoded string to append.
+     */
+    ByteArray withAppended(String text);
+
+    /**
+     * This method creates a new {@code ByteArray} appended with the provided ByteArray.
+     *
+     * @param byteArray The ByteArray to append.
+     */
+    ByteArray withAppended(ByteArray byteArray);
+
+    /**
+     * Create a new {@code ByteArray} with the provided length.
+     *
+     * @param length array length.
+     * @return New {@code ByteArray} with the provided length.
+     */
+    static ByteArray byteArrayOfLength(int length)
+    {
+        return FACTORY.byteArrayOfLength(length);
+    }
+
+    /**
+     * Create a new {@code ByteArray} that wraps the provided byte array
+     *
+     * @param data byte[] to wrap, or sequence of bytes to wrap.
+     * @return New {@code ByteArray} wrapping the provided byte array.
+     */
+    static ByteArray byteArray(byte... data)
+    {
+        return FACTORY.byteArray(data);
+    }
+
+    /**
+     * Create a new {@code ByteArray} that wraps the provided integers after a narrowing primitive conversion to bytes.
+     *
+     * @param data int[] to wrap or sequence of integers to wrap.
+     * @return New {@code ByteArray} wrapping the provided data after a narrowing primitive conversion to bytes.
+     */
+    static ByteArray byteArray(int... data)
+    {
+        return FACTORY.byteArray(data);
+    }
+
+    /**
+     * Create a new {@code ByteArray} from the provided UTF-8 encoded text.
+     *
+     * @param text UTF-8 encoded text.
+     * @return New {@code ByteArray} holding a copy of the text as UTF-8 encoded bytes.
+     */
+    static ByteArray byteArray(String text)
+    {
+        return FACTORY.byteArray(text);
+    }
 }
 

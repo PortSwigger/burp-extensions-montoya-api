@@ -126,7 +126,7 @@ public interface MontoyaObjectFactory
 
     Marker marker(int startIndexInclusive, int endIndexExclusive);
 
-    ByteArray byteArray();
+    ByteArray byteArrayOfLength(int length);
 
     ByteArray byteArray(byte[] bytes);
 

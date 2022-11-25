@@ -39,18 +39,18 @@ public interface PersistedObject extends PrimitivesSupport, PrimitiveListSupport
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedObject> getChildObject(String key);
+    PersistedObject getChildObject(String key);
 
     /**
      * Associates the specified {@link PersistedObject} with the specified key in this map.
      * If the map previously contained a mapping for
      * the key, the old value is replaced by the specified value.
      *
-     * @param key key with which the specified child object is to be associated
+     * @param key         key with which the specified child object is to be associated
      * @param childObject the {@link PersistedObject} to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified key will be removed
+     *                    If this value is {@code null} then any value with the specified key will be removed
      */
     void setChildObject(String key, PersistedObject childObject);
 

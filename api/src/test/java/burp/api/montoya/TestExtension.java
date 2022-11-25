@@ -1145,7 +1145,7 @@ public class TestExtension implements BurpExtension
     {
         ByteArray byteArray = ByteArray.byteArray("foo");
         persistence.temporaryFile().setByteArray("bar", byteArray);
-        ByteArray persistedByteArray = persistence.temporaryFile().getByteArray("bar").get();
+        ByteArray persistedByteArray = persistence.temporaryFile().getByteArray("bar");
     }
 
     private void saveConfigAsJson()
@@ -1171,58 +1171,58 @@ public class TestExtension implements BurpExtension
         PersistedObject extensionData = api.persistence().extensionData();
 
         extensionData.setBoolean("boolean-key", true);
-        Boolean booleanValue = extensionData.getBoolean("boolean-key").get();
+        Boolean booleanValue = extensionData.getBoolean("boolean-key");
 
         PersistedList<Boolean> persistedBooleanList = PersistedList.persistedBooleanList();
         persistedBooleanList.addAll(List.of(true, false, true));
         extensionData.setBooleanList("boolean-list-key", persistedBooleanList);
-        persistedBooleanList = extensionData.getBooleanList("boolean-list-key").get();
+        persistedBooleanList = extensionData.getBooleanList("boolean-list-key");
 
         extensionData.setByte("byte-key", (byte) 123);
-        Byte byteValue = extensionData.getByte("byte-key").get();
+        Byte byteValue = extensionData.getByte("byte-key");
 
         extensionData.setByteArray("byte-array-key", ByteArray.byteArray("byte array data"));
-        ByteArray persistedByteArray = extensionData.getByteArray("byte-array-key").get();
+        ByteArray persistedByteArray = extensionData.getByteArray("byte-array-key");
 
         PersistedList<ByteArray> persistedByteArrayList = PersistedList.persistedByteArrayList();
         persistedByteArrayList.addAll(List.of(ByteArray.byteArray("data1"), ByteArray.byteArray("data2"), ByteArray.byteArray("data2")));
         extensionData.setByteArrayList("byte-array-list-key", persistedByteArrayList);
-        persistedByteArrayList = extensionData.getByteArrayList("byte-array-list-key").get();
+        persistedByteArrayList = extensionData.getByteArrayList("byte-array-list-key");
 
         extensionData.setShort("short-key", (short) 1234);
-        Short shortValue = extensionData.getShort("short-key").get();
+        Short shortValue = extensionData.getShort("short-key");
 
         PersistedList<Short> persistedShortList = PersistedList.persistedShortList();
         persistedShortList.addAll(List.of((short) 1, (short) 2, (short) 3));
         extensionData.setShortList("short-list-key", persistedShortList);
-        persistedShortList = extensionData.getShortList("short-list-key").get();
+        persistedShortList = extensionData.getShortList("short-list-key");
 
         extensionData.setInteger("integer-key", 12345);
-        Integer integerValue = extensionData.getInteger("integer-key").get();
+        Integer integerValue = extensionData.getInteger("integer-key");
 
         PersistedList<Integer> persistedIntegerList = PersistedList.persistedIntegerList();
         persistedIntegerList.addAll(List.of(1, 2, 3));
         extensionData.setIntegerList("integer-list-key", persistedIntegerList);
-        persistedIntegerList = extensionData.getIntegerList("integer-list-key").get();
+        persistedIntegerList = extensionData.getIntegerList("integer-list-key");
 
         extensionData.setLong("long-key", 1234567L);
-        Long longValue = extensionData.getLong("long-key").get();
+        Long longValue = extensionData.getLong("long-key");
 
         PersistedList<Long> persistedLongList = PersistedList.persistedLongList();
         persistedLongList.addAll(List.of(1L, 2L, 3L));
         extensionData.setLongList("long-list-key", persistedLongList);
-        persistedLongList = extensionData.getLongList("long-list-key").get();
+        persistedLongList = extensionData.getLongList("long-list-key");
 
         extensionData.setString("string-key", "value");
-        String stringValue = extensionData.getString("string-key").get();
+        String stringValue = extensionData.getString("string-key");
 
         PersistedList<String> persistedStringList = PersistedList.persistedStringList();
         persistedStringList.addAll(List.of("value1", "value2", "value3"));
         extensionData.setStringList("string-list-key", persistedStringList);
-        persistedStringList = extensionData.getStringList("string-list-key").get();
+        persistedStringList = extensionData.getStringList("string-list-key");
 
         extensionData.setHttpRequest("http-request-key", HttpRequest.httpRequest("request"));
-        HttpRequest httpRequest = extensionData.getHttpRequest("http-request-key").get();
+        HttpRequest httpRequest = extensionData.getHttpRequest("http-request-key");
 
         HttpRequest httpRequest1 = httpRequest("request1");
         HttpRequest httpRequest2 = httpRequest("request2");
@@ -1231,10 +1231,10 @@ public class TestExtension implements BurpExtension
         PersistedList<HttpRequest> persistedHttpRequestList = PersistedList.persistedHttpRequestList();
         persistedHttpRequestList.addAll(List.of(httpRequest1, httpRequest2, httpRequest3));
         extensionData.setHttpRequestList("http-request-list-key", persistedHttpRequestList);
-        persistedHttpRequestList = extensionData.getHttpRequestList("http-request-list-key").get();
+        persistedHttpRequestList = extensionData.getHttpRequestList("http-request-list-key");
 
         extensionData.setHttpResponse("http-response-key", HttpResponse.httpResponse("response"));
-        HttpResponse httpResponse = extensionData.getHttpResponse("http-response-key").get();
+        HttpResponse httpResponse = extensionData.getHttpResponse("http-response-key");
 
         HttpResponse httpResponse1 = httpResponse("response1");
         HttpResponse httpResponse2 = httpResponse("response2");
@@ -1243,13 +1243,13 @@ public class TestExtension implements BurpExtension
         PersistedList<HttpResponse> persistedHttpResponseList = PersistedList.persistedHttpResponseList();
         persistedHttpResponseList.addAll(List.of(httpResponse1, httpResponse2, httpResponse3));
         extensionData.setHttpResponseList("http-response-list-key", persistedHttpResponseList);
-        persistedHttpResponseList = extensionData.getHttpResponseList("http-response-list-key").get();
+        persistedHttpResponseList = extensionData.getHttpResponseList("http-response-list-key");
 
         extensionData.setHttpRequestResponse(
                 "http-request-response-key",
                 HttpRequestResponse.httpRequestResponse(HttpRequest.httpRequest("request"), HttpResponse.httpResponse("response"))
         );
-        HttpRequestResponse httpRequestResponse = extensionData.getHttpRequestResponse("http-request-response-key").get();
+        HttpRequestResponse httpRequestResponse = extensionData.getHttpRequestResponse("http-request-response-key");
 
         HttpRequestResponse httpRequestResponse1 = HttpRequestResponse.httpRequestResponse(httpRequest("request1"), httpResponse("response1"));
         HttpRequestResponse httpRequestResponse2 = HttpRequestResponse.httpRequestResponse(httpRequest("request2"), httpResponse("response2"));
@@ -1258,7 +1258,7 @@ public class TestExtension implements BurpExtension
         PersistedList<HttpRequestResponse> persistedHttpRequestResponseList = PersistedList.persistedHttpRequestResponseList();
         persistedHttpRequestResponseList.addAll(List.of(httpRequestResponse1, httpRequestResponse2, httpRequestResponse3));
         extensionData.setHttpRequestResponseList("http-request-response-list-key", persistedHttpRequestResponseList);
-        persistedHttpRequestResponseList = extensionData.getHttpRequestResponseList("http-request-response-list-key").get();
+        persistedHttpRequestResponseList = extensionData.getHttpRequestResponseList("http-request-response-list-key");
     }
 
     private void sendToComparer()

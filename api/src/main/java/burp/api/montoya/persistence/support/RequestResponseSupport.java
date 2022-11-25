@@ -13,7 +13,6 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.persistence.PersistedList;
 
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -23,13 +22,13 @@ public interface RequestResponseSupport
 {
     /**
      * Returns the {@link HttpRequest} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<HttpRequest> getHttpRequest(String key);
+    HttpRequest getHttpRequest(String key);
 
     /**
      * Associates the specified {@link HttpRequest} with the specified key in this map
@@ -38,7 +37,7 @@ public interface RequestResponseSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified name will be removed.
+     *              If this value is {@code null} then any value with the specified name will be removed.
      */
     void setHttpRequest(String key, HttpRequest value);
 
@@ -58,22 +57,22 @@ public interface RequestResponseSupport
 
     /**
      * Returns the {@link PersistedList} of {@link HttpRequest} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<HttpRequest>> getHttpRequestList(String key);
+    PersistedList<HttpRequest> getHttpRequestList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link HttpRequest} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * The methods of this list operate on the underlying persisted data.
+     *              The methods of this list operate on the underlying persisted data.
      */
     void setHttpRequestList(String key, PersistedList<HttpRequest> value);
 
@@ -93,13 +92,13 @@ public interface RequestResponseSupport
 
     /**
      * Returns the {@link HttpResponse} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<HttpResponse> getHttpResponse(String key);
+    HttpResponse getHttpResponse(String key);
 
     /**
      * Associates the specified {@link HttpResponse} with the specified key in this map
@@ -128,22 +127,22 @@ public interface RequestResponseSupport
 
     /**
      * Returns the {@link PersistedList} of {@link HttpResponse} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<HttpResponse>> getHttpResponseList(String key);
+    PersistedList<HttpResponse> getHttpResponseList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link HttpResponse} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * The methods of this list operate on the underlying persisted data.
+     *              The methods of this list operate on the underlying persisted data.
      */
     void setHttpResponseList(String key, PersistedList<HttpResponse> value);
 
@@ -163,13 +162,13 @@ public interface RequestResponseSupport
 
     /**
      * Returns the {@link HttpRequestResponse} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<HttpRequestResponse> getHttpRequestResponse(String key);
+    HttpRequestResponse getHttpRequestResponse(String key);
 
     /**
      * Associates the specified {@link HttpRequestResponse} with the specified key in this map
@@ -198,22 +197,22 @@ public interface RequestResponseSupport
 
     /**
      * Returns the {@link PersistedList} of {@link HttpRequestResponse} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<HttpRequestResponse>> getHttpRequestResponseList(String key);
+    PersistedList<HttpRequestResponse> getHttpRequestResponseList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link HttpRequestResponse} with the specified key in this map.
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
-     * The methods of this list operate on the underlying persisted data.
+     *              The methods of this list operate on the underlying persisted data.
      */
     void setHttpRequestResponseList(String key, PersistedList<HttpRequestResponse> value);
 

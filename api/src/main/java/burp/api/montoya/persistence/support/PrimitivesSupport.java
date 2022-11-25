@@ -18,13 +18,13 @@ public interface PrimitivesSupport
 {
     /**
      * Returns the {@link Boolean} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<Boolean> getBoolean(String key);
+    Boolean getBoolean(String key);
 
     /**
      * Associates the specified {@link Boolean} with the specified key in this map
@@ -33,7 +33,7 @@ public interface PrimitivesSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified key will be removed.
+     *              If this value is {@code null} then any value with the specified key will be removed.
      */
     void setBoolean(String key, Boolean value);
 
@@ -53,13 +53,13 @@ public interface PrimitivesSupport
 
     /**
      * Returns the {@link Byte} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<Byte> getByte(String key);
+    Byte getByte(String key);
 
     /**
      * Associates the specified {@link Byte} with the specified key in this map
@@ -68,7 +68,7 @@ public interface PrimitivesSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified key will be removed.
+     *              If this value is {@code null} then any value with the specified key will be removed.
      */
     void setByte(String key, Byte value);
 
@@ -88,13 +88,13 @@ public interface PrimitivesSupport
 
     /**
      * Returns the {@link Short} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<Short> getShort(String key);
+    Short getShort(String key);
 
     /**
      * Associates the specified {@link Short} with the specified key in this map
@@ -103,7 +103,7 @@ public interface PrimitivesSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified key will be removed.
+     *              If this value is {@code null} then any value with the specified key will be removed.
      */
     void setShort(String key, Short value);
 
@@ -123,13 +123,13 @@ public interface PrimitivesSupport
 
     /**
      * Returns the {@link Integer} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<Integer> getInteger(String key);
+    Integer getInteger(String key);
 
     /**
      * Associates the specified {@link Integer} with the specified key in this map
@@ -138,7 +138,7 @@ public interface PrimitivesSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified key will be removed.
+     *              If this value is {@code null} then any value with the specified key will be removed.
      */
     void setInteger(String key, Integer value);
 
@@ -162,9 +162,9 @@ public interface PrimitivesSupport
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<Long> getLong(String key);
+    Long getLong(String key);
 
     /**
      * Associates the specified {@link Long} with the specified key in this map
@@ -173,7 +173,7 @@ public interface PrimitivesSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified key will be removed.
+     *              If this value is {@code null} then any value with the specified key will be removed.
      */
     void setLong(String key, Long value);
 
@@ -193,13 +193,13 @@ public interface PrimitivesSupport
 
     /**
      * Returns the {@link String} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<String> getString(String key);
+    String getString(String key);
 
     /**
      * Associates the specified {@link String} with the specified key in this map
@@ -208,7 +208,7 @@ public interface PrimitivesSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     * If this value is {@code null} then any value with the specified key will be removed.
+     *              If this value is {@code null} then any value with the specified key will be removed.
      */
     void setString(String key, String value);
 

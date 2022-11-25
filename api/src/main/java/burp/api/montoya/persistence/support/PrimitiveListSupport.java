@@ -10,7 +10,6 @@ package burp.api.montoya.persistence.support;
 
 import burp.api.montoya.persistence.PersistedList;
 
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -20,13 +19,13 @@ public interface PrimitiveListSupport
 {
     /**
      * Returns the {@link PersistedList} of {@link Boolean} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<Boolean>> getBooleanList(String key);
+    PersistedList<Boolean> getBooleanList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link Boolean} with the specified key in this map.
@@ -54,13 +53,13 @@ public interface PrimitiveListSupport
 
     /**
      * Returns the {@link PersistedList} of {@link Short} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<Short>> getShortList(String key);
+    PersistedList<Short> getShortList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link Short} with the specified key in this map.
@@ -88,13 +87,13 @@ public interface PrimitiveListSupport
 
     /**
      * Returns the {@link PersistedList} of {@link Integer} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<Integer>> getIntegerList(String key);
+    PersistedList<Integer> getIntegerList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link Integer} with the specified key in this map.
@@ -122,13 +121,13 @@ public interface PrimitiveListSupport
 
     /**
      * Returns the {@link PersistedList} of {@link Long} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<Long>> getLongList(String key);
+    PersistedList<Long> getLongList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link Long} with the specified key in this map.
@@ -156,13 +155,13 @@ public interface PrimitiveListSupport
 
     /**
      * Returns the {@link PersistedList} of {@link String} associated with the specified key,
-     * or {@link Optional#empty} if this map contains no mapping for the key
+     * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
-     * {@link Optional#empty} if this map contains no mapping for the key
+     * {@code null} if this map contains no mapping for the key
      */
-    Optional<PersistedList<String>> getStringList(String key);
+    PersistedList<String> getStringList(String key);
 
     /**
      * Associates the specified {@link PersistedList} of {@link String} with the specified key in this map.

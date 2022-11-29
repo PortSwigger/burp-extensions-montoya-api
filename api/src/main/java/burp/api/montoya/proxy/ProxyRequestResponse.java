@@ -9,6 +9,7 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
+import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
@@ -16,14 +17,14 @@ import burp.api.montoya.http.message.responses.HttpResponse;
  * This interface represents an instance of an HTTP request and response
  * intercepted by the Proxy.
  */
-public interface ProxyRequestResponse
+public interface ProxyRequestResponse extends HttpRequestResponse
 {
     /**
-     * This method retrieves the annotations for the request/response pair.
+     * This method used to update annotations to the {@code ProxyRequestResponse} instance.
      *
-     * @return The {@link Annotations} for the request/response pair.
+     * @param annotations new annotations for the request/response.
      */
-    Annotations messageAnnotations();
+    void setMessageAnnotations(Annotations annotations);
 
     /**
      * This method retrieves the HTTP request that was issued by Burp Proxy.

@@ -97,6 +97,7 @@ import burp.api.montoya.scope.ScopeChange;
 import burp.api.montoya.scope.ScopeChangeHandler;
 import burp.api.montoya.sitemap.SiteMap;
 import burp.api.montoya.sitemap.SiteMapFilter;
+import burp.api.montoya.sitemap.SiteMapRequestResponse;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.ui.UserInterface;
 import burp.api.montoya.ui.editor.HttpRequestEditor;
@@ -463,7 +464,7 @@ public class TestExtension implements BurpExtension
 
     private void getSiteMap()
     {
-        List<HttpRequestResponse> httpRequestResponses = siteMap.requestResponses(SiteMapFilter.prefixFilter("https://example.org"));
+        List<SiteMapRequestResponse> httpRequestResponses = siteMap.requestResponses(SiteMapFilter.prefixFilter("https://example.org"));
     }
 
     private void getStderr()

@@ -25,32 +25,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface HttpRequestResponse
 {
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequestResponse}.
-     *
-     * @param request  The HTTP request.
-     * @param response The HTTP response.
-     * @return A new {@link HttpRequestResponse} instance.
-     */
-    static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response)
-    {
-        return httpRequestResponse(request, response, annotations());
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpRequestResponse}.
-     *
-     * @param httpRequest  The HTTP request.
-     * @param httpResponse The HTTP response.
-     * @param annotations  annotations.
-     * @return A new {@link HttpRequestResponse} instance.
-     */
-    static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
-    {
-        return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
-    }
-
     /**
      * @return The HTTP request message.
      */
@@ -143,4 +117,29 @@ public interface HttpRequestResponse
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withResponseMarkers(Marker... responseMarkers);
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequestResponse}.
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @return A new {@link HttpRequestResponse} instance.
+     */
+    static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response)
+    {
+        return httpRequestResponse(request, response, annotations());
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequestResponse}.
+     *
+     * @param httpRequest        The HTTP request.
+     * @param httpResponse       The HTTP response.
+     * @param annotations annotations.
+     * @return A new {@link HttpRequestResponse} instance.
+     */
+    static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
+    {
+        return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
+    }
 }

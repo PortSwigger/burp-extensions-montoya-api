@@ -8,15 +8,28 @@
 
 package burp.api.montoya.sitemap;
 
-import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.HttpRequestResponse;
 
-public interface SiteMapRequestResponse extends HttpRequestResponse
+public interface SiteMapRequestResponse
 {
+//    /**
+//     * This method retrieves the annotations for the request/response pair.
+//     *
+//     * @return The {@link Annotations} for the request/response pair.
+//     */
+//    Annotations getMessageAnnotations();
+//
+//    /**
+//     * This method used to update annotations to the {@code SiteMapRequestResponse} instance.
+//     *
+//     * @param annotations new annotations for the request/response.
+//     */
+//    void setMessageAnnotations(Annotations annotations);
+
     /**
-     * This method used to update annotations to the {@code SiteMapRequestResponse} instance.
+     * This method retrieves the request/response pair.
      *
-     * @param annotations new annotations for the request/response.
+     * @return The underlying {@link HttpRequestResponse}.
      */
-    void setMessageAnnotations(Annotations annotations);
+    HttpRequestResponse requestResponse();
 }

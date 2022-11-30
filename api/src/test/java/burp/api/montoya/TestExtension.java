@@ -452,8 +452,8 @@ public class TestExtension implements BurpExtension
         {
             System.out.println(requestResponse.finalRequest());
             System.out.println(requestResponse.originalResponse());
-            System.out.println(requestResponse.messageAnnotations().comment());
-            System.out.println(requestResponse.messageAnnotations().highlightColor());
+            System.out.println(requestResponse.getMessageAnnotations().comment());
+            System.out.println(requestResponse.getMessageAnnotations().highlightColor());
         }
     }
 

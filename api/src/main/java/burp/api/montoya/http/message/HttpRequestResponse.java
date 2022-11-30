@@ -9,7 +9,10 @@
 package burp.api.montoya.http.message;
 
 import burp.api.montoya.core.Annotations;
+import burp.api.montoya.http.ContentType;
+import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.List;
@@ -38,9 +41,9 @@ public interface HttpRequestResponse
     /**
      * This is a helper method to create a new instance of {@link HttpRequestResponse}.
      *
-     * @param httpRequest        The HTTP request.
-     * @param httpResponse       The HTTP response.
-     * @param annotations annotations.
+     * @param httpRequest  The HTTP request.
+     * @param httpResponse The HTTP response.
+     * @param annotations  annotations.
      * @return A new {@link HttpRequestResponse} instance.
      */
     static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
@@ -62,6 +65,34 @@ public interface HttpRequestResponse
      * @return The annotations.
      */
     Annotations messageAnnotations();
+
+    /**
+     * This method is used to retrieve the URL for the request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The URL in the request.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String url();
+
+    /**
+     * This method is used to retrieve the HTTP service for the request.
+     *
+     * @return An {@link HttpService} object containing details of the HTTP service.
+     */
+    HttpService httpService();
+
+    /**
+     * @return The detected content type of the request.
+     */
+    ContentType contentType();
+
+    /**
+     * This method is used to obtain the HTTP status code contained in the response.
+     *
+     * @return HTTP status code or -1 if there is no response.
+     */
+    short statusCode();
 
     /**
      * @return List of request markers

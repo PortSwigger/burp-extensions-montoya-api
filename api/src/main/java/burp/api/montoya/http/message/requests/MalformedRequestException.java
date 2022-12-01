@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message.requests;
 
 /**
- * This class represents an exception which is thrown when trying to get attributes from Kettled HTTP requests
+ * This class represents an exception which is thrown when trying to retrieve attributes from a malformed request.
  */
 public class MalformedRequestException extends RuntimeException
 {

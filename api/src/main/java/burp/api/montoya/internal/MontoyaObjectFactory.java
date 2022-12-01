@@ -78,10 +78,6 @@ public interface MontoyaObjectFactory
 
     HttpResponse httpResponse(String response);
 
-    HttpResponse httpResponse(List<String> headers, ByteArray body);
-
-    HttpResponse httpResponse(List<String> headers, String body);
-
     HttpResponse httpResponse(ByteArray response);
 
     HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response, Annotations annotations);

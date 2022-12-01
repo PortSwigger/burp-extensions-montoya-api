@@ -238,28 +238,4 @@ public interface HttpResponse
     {
         return FACTORY.httpResponse(response);
     }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpResponse}.
-     *
-     * @param headers A list of HTTP headers.
-     * @param body    An HTTP response body.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(List<String> headers, ByteArray body)
-    {
-        return FACTORY.httpResponse(headers, body);
-    }
-
-    /**
-     * This is a helper method to create a new instance of {@link HttpResponse}.
-     *
-     * @param headers A list of HTTP headers.
-     * @param body    An HTTP response body.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(List<String> headers, String body)
-    {
-        return FACTORY.httpResponse(headers, body);
-    }
 }

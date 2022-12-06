@@ -59,7 +59,7 @@ public interface AuditInsertionPoint
      *                point.
      * @return The resulting request.
      */
-    ByteArray buildHttpMessageWithPayload(ByteArray payload);
+    HttpRequest buildHttpRequestWithPayload(ByteArray payload);
 
     /**
      * This method is used to determine the offsets of the payload value within

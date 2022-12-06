@@ -158,7 +158,7 @@ public interface HttpResponse
      * @param header The {@link HttpHeader} to add to the response.
      * @return The updated response containing the added header.
      */
-    HttpResponse addHeader(HttpHeader header);
+    HttpResponse withAddedHeader(HttpHeader header);
 
     /**
      * Adds an HTTP header to the response.
@@ -167,7 +167,7 @@ public interface HttpResponse
      * @param value The value of the header.
      * @return The updated response containing the added header.
      */
-    HttpResponse addHeader(String name, String value);
+    HttpResponse withAddedHeader(String name, String value);
 
     /**
      * Updates an existing HTTP header in the response with a new value.
@@ -175,7 +175,7 @@ public interface HttpResponse
      * @param header The {@link HttpHeader} to update containing the new value.
      * @return The updated response containing the updated header.
      */
-    HttpResponse updateHeader(HttpHeader header);
+    HttpResponse withUpdatedHeader(HttpHeader header);
 
     /**
      * Updates an existing HTTP header in the response with a new value.
@@ -184,7 +184,7 @@ public interface HttpResponse
      * @param value The new value of the specified HTTP header.
      * @return The updated response containing the updated header.
      */
-    HttpResponse updateHeader(String name, String value);
+    HttpResponse withUpdatedHeader(String name, String value);
 
     /**
      * Removes an existing HTTP header from the current response.
@@ -192,7 +192,7 @@ public interface HttpResponse
      * @param header The {@link HttpHeader} to remove from the response.
      * @return The updated response containing the removed header.
      */
-    HttpResponse removeHeader(HttpHeader header);
+    HttpResponse withRemovedHeader(HttpHeader header);
 
     /**
      * Removes an existing HTTP header from the current response.
@@ -200,7 +200,7 @@ public interface HttpResponse
      * @param name The name of the HTTP header to remove from the response.
      * @return The updated response containing the removed header.
      */
-    HttpResponse removeHeader(String name);
+    HttpResponse withRemovedHeader(String name);
 
     /**
      * This is a helper method used to add request markers to the {@code HttpResponse} instance.

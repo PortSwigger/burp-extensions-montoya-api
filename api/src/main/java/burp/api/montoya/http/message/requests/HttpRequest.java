@@ -236,7 +236,7 @@ public interface HttpRequest
      * @param value The value of the header.
      * @return The updated HTTP request with the added header.
      */
-    HttpRequest addHeader(String name, String value);
+    HttpRequest withAddedHeader(String name, String value);
 
     /**
      * Adds an HTTP header to the current request.
@@ -244,7 +244,7 @@ public interface HttpRequest
      * @param header The {@link HttpHeader} to add to the HTTP request.
      * @return The updated HTTP request with the added header.
      */
-    HttpRequest addHeader(HttpHeader header);
+    HttpRequest withAddedHeader(HttpHeader header);
 
     /**
      * Updates an existing HTTP header in the request with a new value.
@@ -253,7 +253,7 @@ public interface HttpRequest
      * @param value The new value of the specified HTTP header.
      * @return The updated request containing the updated header.
      */
-    HttpRequest updateHeader(String name, String value);
+    HttpRequest withUpdatedHeader(String name, String value);
 
     /**
      * Updates an existing HTTP header in the request with a new value.
@@ -261,7 +261,7 @@ public interface HttpRequest
      * @param header The {@link HttpHeader} to update containing the new value.
      * @return The updated request containing the updated header.
      */
-    HttpRequest updateHeader(HttpHeader header);
+    HttpRequest withUpdatedHeader(HttpHeader header);
 
     /**
      * Removes an existing HTTP header from the current request.
@@ -269,7 +269,7 @@ public interface HttpRequest
      * @param name The name of the HTTP header to remove from the request.
      * @return The updated request containing the removed header.
      */
-    HttpRequest removeHeader(String name);
+    HttpRequest withRemovedHeader(String name);
 
     /**
      * Removes an existing HTTP header from the current request.
@@ -277,7 +277,7 @@ public interface HttpRequest
      * @param header The {@link HttpHeader} to remove from the request.
      * @return The updated request containing the removed header.
      */
-    HttpRequest removeHeader(HttpHeader header);
+    HttpRequest withRemovedHeader(HttpHeader header);
 
     /**
      * This is a helper method used to add request markers to the {@code HttpRequest} instance.

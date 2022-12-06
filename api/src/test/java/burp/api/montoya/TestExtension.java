@@ -983,7 +983,7 @@ public class TestExtension implements BurpExtension
                     }
 
                     @Override
-                    public ByteArray buildHttpMessageWithPayload(ByteArray payload)
+                    public HttpRequest buildHttpRequestWithPayload(ByteArray payload)
                     {
                         ByteArray requestBytes = baseRequestResponse.httpRequest().toByteArray();
                         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -1002,7 +1002,7 @@ public class TestExtension implements BurpExtension
                             }
                         }
 
-                        return ByteArray.byteArray(outputStream.toByteArray());
+                        return HttpRequest.httpRequest(byteArray(outputStream.toByteArray()));
                     }
 
                     @Override
@@ -1380,13 +1380,6 @@ public class TestExtension implements BurpExtension
         String value = header.value();
     }
 
-    private void buildHttpMessage()
-    {
-        List<String> headers = List.of("foo: bar");
-
-        HttpResponse response = httpResponse(headers, ByteArray.byteArray());
-    }
-
     private void buildHttpRequest() throws MalformedURLException
     {
         HttpRequest requestFromUrl = httpRequestFromUrl("https://example.com:442/");
@@ -1442,7 +1435,7 @@ public class TestExtension implements BurpExtension
         AuditInsertionPointType insertionPointType = typedAuditInsertionPoint.type();
         String baseValue = typedAuditInsertionPoint.baseValue();
 
-        ByteArray request = typedAuditInsertionPoint.buildHttpMessageWithPayload(byteArray("Foo"));
+        HttpRequest request = typedAuditInsertionPoint.buildHttpRequestWithPayload(byteArray("Foo"));
         List<Range> highlightOffsets = typedAuditInsertionPoint.issueHighlights(byteArray("Foo"));
     }
 

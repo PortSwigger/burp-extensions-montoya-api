@@ -62,7 +62,7 @@ public interface MessageEditorHttpRequestResponse
      *
      * @param annotations the annotations to update.
      */
-    void setMessageAnnotations(Annotations annotations);
+    void setAnnotations(Annotations annotations);
 
     enum SelectionContext
     {

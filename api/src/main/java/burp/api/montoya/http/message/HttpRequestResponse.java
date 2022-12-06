@@ -17,7 +17,6 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.List;
 
-import static burp.api.montoya.core.Annotations.annotations;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
@@ -28,17 +27,17 @@ public interface HttpRequestResponse
     /**
      * @return The HTTP request message.
      */
-    HttpRequest httpRequest();
+    HttpRequest request();
 
     /**
      * @return The HTTP response message.
      */
-    HttpResponse httpResponse();
+    HttpResponse response();
 
     /**
      * @return The annotations.
      */
-    Annotations messageAnnotations();
+    Annotations annotations();
 
     /**
      * This method is used to retrieve the URL for the request.
@@ -84,7 +83,7 @@ public interface HttpRequestResponse
      * @param annotations annotations to add.
      * @return A new {@code HttpRequestResponse} instance.
      */
-    HttpRequestResponse withMessageAnnotations(Annotations annotations);
+    HttpRequestResponse withAnnotations(Annotations annotations);
 
     /**
      * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
@@ -127,7 +126,7 @@ public interface HttpRequestResponse
      */
     static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response)
     {
-        return httpRequestResponse(request, response, annotations());
+        return httpRequestResponse(request, response, Annotations.annotations());
     }
 
     /**

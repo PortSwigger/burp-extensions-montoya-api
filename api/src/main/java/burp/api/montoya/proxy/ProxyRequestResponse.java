@@ -23,14 +23,14 @@ public interface ProxyRequestResponse
      *
      * @return The {@link Annotations} for the request/response pair.
      */
-    Annotations getMessageAnnotations();
+    Annotations getAnnotations();
 
     /**
      * This method used to update annotations to the {@code ProxyRequestResponse} instance.
      *
      * @param annotations new annotations for the request/response.
      */
-    void setMessageAnnotations(Annotations annotations);
+    void setAnnotations(Annotations annotations);
 
     /**
      * This method retrieves the HTTP request that was issued by Burp Proxy.

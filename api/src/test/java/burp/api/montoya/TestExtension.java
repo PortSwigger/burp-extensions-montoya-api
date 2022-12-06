@@ -223,9 +223,9 @@ public class TestExtension implements BurpExtension
                         AuditIssueSeverity.LOW,
                         List.of(
                                 httpRequestResponse,
-                                httpRequestResponse.withMessageAnnotations(annotations(HighlightColor.BLUE)),
-                                httpRequestResponse.withMessageAnnotations(annotations("comment")),
-                                httpRequestResponse.withMessageAnnotations(annotations("comment", HighlightColor.GREEN))
+                                httpRequestResponse.withAnnotations(annotations(HighlightColor.BLUE)),
+                                httpRequestResponse.withAnnotations(annotations("comment")),
+                                httpRequestResponse.withAnnotations(annotations("comment", HighlightColor.GREEN))
                         )
                 ));
     }
@@ -237,7 +237,7 @@ public class TestExtension implements BurpExtension
 
     private void addToSiteMap()
     {
-        HttpRequestResponse requestResponse = httpRequestResponse.withMessageAnnotations(annotations("test comment", HighlightColor.BLUE));
+        HttpRequestResponse requestResponse = httpRequestResponse.withAnnotations(annotations("test comment", HighlightColor.BLUE));
 
         siteMap.add(requestResponse);
     }
@@ -452,8 +452,8 @@ public class TestExtension implements BurpExtension
         {
             System.out.println(requestResponse.finalRequest());
             System.out.println(requestResponse.originalResponse());
-            System.out.println(requestResponse.getMessageAnnotations().comment());
-            System.out.println(requestResponse.getMessageAnnotations().highlightColor());
+            System.out.println(requestResponse.getAnnotations().comment());
+            System.out.println(requestResponse.getAnnotations().highlightColor());
         }
     }
 
@@ -703,13 +703,13 @@ public class TestExtension implements BurpExtension
             @Override
             public void setHttpRequestResponse(HttpRequestResponse requestResponse)
             {
-                this.httpRequest = requestResponse.httpRequest();
+                this.httpRequest = requestResponse.request();
             }
 
             @Override
             public boolean isEnabledFor(HttpRequestResponse requestResponse)
             {
-                return requestResponse.httpRequest().method().equalsIgnoreCase("POST") && requestResponse.httpRequest().httpService() != null;
+                return requestResponse.request().method().equalsIgnoreCase("POST") && requestResponse.request().httpService() != null;
             }
 
             @Override
@@ -742,7 +742,7 @@ public class TestExtension implements BurpExtension
             @Override
             public ExtensionHttpRequestEditor provideHttpRequestEditor(HttpRequestResponse requestResponse, EditorMode editorMode)
             {
-                if (requestResponse.httpRequest().method().equals("GET") && editorMode == EditorMode.READ_ONLY)
+                if (requestResponse.request().method().equals("GET") && editorMode == EditorMode.READ_ONLY)
                 {
                     return requestEditor;
                 }
@@ -771,13 +771,13 @@ public class TestExtension implements BurpExtension
             @Override
             public void setHttpRequestResponse(HttpRequestResponse requestResponse)
             {
-                this.httpResponse = requestResponse.httpResponse();
+                this.httpResponse = requestResponse.response();
             }
 
             @Override
             public boolean isEnabledFor(HttpRequestResponse requestResponse)
             {
-                return requestResponse.httpRequest().method().equalsIgnoreCase("POST") && requestResponse.httpResponse().statusCode() == 404;
+                return requestResponse.request().method().equalsIgnoreCase("POST") && requestResponse.response().statusCode() == 404;
             }
 
             @Override
@@ -910,7 +910,7 @@ public class TestExtension implements BurpExtension
                         "My Issue",
                         "Details",
                         "Remediation detail",
-                        baseRequestResponse.httpRequest().url(),
+                        baseRequestResponse.request().url(),
                         AuditIssueSeverity.INFORMATION,
                         AuditIssueConfidence.FIRM,
                         "background of issue",
@@ -929,7 +929,7 @@ public class TestExtension implements BurpExtension
                         "My Issue",
                         "Details",
                         "Remediation detail",
-                        baseRequestResponse.httpRequest().url(),
+                        baseRequestResponse.request().url(),
                         AuditIssueSeverity.HIGH,
                         AuditIssueConfidence.CERTAIN,
                         "this is going to cost a lot of money",
@@ -976,7 +976,7 @@ public class TestExtension implements BurpExtension
                     @Override
                     public String baseValue()
                     {
-                        ByteArray requestBytes = baseRequestResponse.httpRequest().toByteArray();
+                        ByteArray requestBytes = baseRequestResponse.request().toByteArray();
                         String requestString = requestBytes.toString();
 
                         return requestString.substring(range.startIndexInclusive(), range.endIndexExclusive());
@@ -985,7 +985,7 @@ public class TestExtension implements BurpExtension
                     @Override
                     public HttpRequest buildHttpRequestWithPayload(ByteArray payload)
                     {
-                        ByteArray requestBytes = baseRequestResponse.httpRequest().toByteArray();
+                        ByteArray requestBytes = baseRequestResponse.request().toByteArray();
                         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                         int payloadLength = payload.length();
 

@@ -16,7 +16,7 @@ import burp.api.montoya.http.message.responses.HttpResponse;
  * This interface represents an instance of an HTTP request and response
  * intercepted by the Proxy.
  */
-public interface ProxyRequestResponse
+public interface ProxyHttpRequestResponse
 {
     /**
      * This method retrieves the annotations for the request/response pair.

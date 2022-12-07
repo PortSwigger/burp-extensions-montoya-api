@@ -11,7 +11,7 @@ package burp.api.montoya.sitemap;
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.HttpRequestResponse;
 
-public interface SiteMapRequestResponse
+public interface SiteMapHttpRequestResponse
 {
     /**
      * This method retrieves the annotations for the request/response pair.

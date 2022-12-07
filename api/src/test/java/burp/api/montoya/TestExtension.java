@@ -71,8 +71,8 @@ import burp.api.montoya.proxy.InterceptedHttpRequest;
 import burp.api.montoya.proxy.InterceptedHttpResponse;
 import burp.api.montoya.proxy.Proxy;
 import burp.api.montoya.proxy.ProxyHttpRequestHandler;
+import burp.api.montoya.proxy.ProxyHttpRequestResponse;
 import burp.api.montoya.proxy.ProxyHttpResponseHandler;
-import burp.api.montoya.proxy.ProxyRequestResponse;
 import burp.api.montoya.proxy.RequestFinalInterceptResult;
 import burp.api.montoya.proxy.RequestInitialInterceptResult;
 import burp.api.montoya.proxy.ResponseFinalInterceptResult;
@@ -97,7 +97,7 @@ import burp.api.montoya.scope.ScopeChange;
 import burp.api.montoya.scope.ScopeChangeHandler;
 import burp.api.montoya.sitemap.SiteMap;
 import burp.api.montoya.sitemap.SiteMapFilter;
-import burp.api.montoya.sitemap.SiteMapRequestResponse;
+import burp.api.montoya.sitemap.SiteMapHttpRequestResponse;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.ui.UserInterface;
 import burp.api.montoya.ui.editor.HttpRequestEditor;
@@ -448,7 +448,7 @@ public class TestExtension implements BurpExtension
 
     private void getProxyHistory()
     {
-        for (ProxyRequestResponse requestResponse : proxy.history())
+        for (ProxyHttpRequestResponse requestResponse : proxy.history())
         {
             System.out.println(requestResponse.finalRequest());
             System.out.println(requestResponse.originalResponse());
@@ -464,7 +464,7 @@ public class TestExtension implements BurpExtension
 
     private void getSiteMap()
     {
-        List<SiteMapRequestResponse> httpRequestResponses = siteMap.requestResponses(SiteMapFilter.prefixFilter("https://example.org"));
+        List<SiteMapHttpRequestResponse> httpRequestResponses = siteMap.requestResponses(SiteMapFilter.prefixFilter("https://example.org"));
     }
 
     private void getStderr()

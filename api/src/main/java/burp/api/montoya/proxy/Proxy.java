@@ -30,10 +30,10 @@ public interface Proxy
     /**
      * This method returns details of all items in the Proxy history.
      *
-     * @return The list of all the {@link ProxyRequestResponse} items in the
+     * @return The list of all the {@link ProxyHttpRequestResponse} items in the
      * Proxy history.
      */
-    default List<ProxyRequestResponse> history()
+    default List<ProxyHttpRequestResponse> history()
     {
         return history(requestResponse -> true);
     }
@@ -44,10 +44,10 @@ public interface Proxy
      *
      * @param filter An instance of {@link ProxyHistoryFilter} that can be used
      *               to filter the items in the Proxy history.
-     * @return The list of {@link ProxyRequestResponse} items in the Proxy
+     * @return The list of {@link ProxyHttpRequestResponse} items in the Proxy
      * history that matched the filter.
      */
-    List<ProxyRequestResponse> history(ProxyHistoryFilter filter);
+    List<ProxyHttpRequestResponse> history(ProxyHistoryFilter filter);
 
     /**
      * This method is used to register a handler which will be notified of

@@ -1145,8 +1145,6 @@ public class TestExtension implements BurpExtension
     private void saveBuffersToTempFiles()
     {
         ByteArray byteArray = ByteArray.byteArray("foo");
-        persistence.temporaryFile().setByteArray("bar", byteArray);
-        ByteArray persistedByteArray = persistence.temporaryFile().getByteArray("bar");
     }
 
     private void saveConfigAsJson()

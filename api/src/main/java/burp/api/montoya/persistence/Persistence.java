@@ -31,13 +31,4 @@ public interface Persistence
      * which stores data in a persistent way.
      */
     Preferences preferences();
-
-    /**
-     * This method is used to access the functionality related to temporary
-     * files.
-     *
-     * @return An implementation of the {@link TemporaryFile} interface
-     * which exposes temporary file based functionality.
-     */
-    TemporaryFile temporaryFile();
 }

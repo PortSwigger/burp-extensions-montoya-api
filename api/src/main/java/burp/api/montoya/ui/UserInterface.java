@@ -14,8 +14,8 @@ import burp.api.montoya.ui.editor.EditorOptions;
 import burp.api.montoya.ui.editor.HttpRequestEditor;
 import burp.api.montoya.ui.editor.HttpResponseEditor;
 import burp.api.montoya.ui.editor.RawEditor;
-import burp.api.montoya.ui.editor.extension.ExtensionHttpRequestEditorProvider;
-import burp.api.montoya.ui.editor.extension.ExtensionHttpResponseEditorProvider;
+import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
+import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
 import burp.api.montoya.ui.swing.SwingUtils;
 
 import java.awt.Component;
@@ -50,7 +50,7 @@ public interface UserInterface
      * @param provider The provider to register.
      * @return A {@link Registration} of the HTTP request editor provider.
      */
-    Registration registerHttpRequestEditorProvider(ExtensionHttpRequestEditorProvider provider);
+    Registration registerHttpRequestEditorProvider(HttpRequestEditorProvider provider);
 
     /**
      * This method can be used to register a provider of custom HTTP response editors.
@@ -58,7 +58,7 @@ public interface UserInterface
      * @param provider The provider to register.
      * @return A {@link Registration} of the HTTP response editor provider.
      */
-    Registration registerHttpResponseEditorProvider(ExtensionHttpResponseEditorProvider provider);
+    Registration registerHttpResponseEditorProvider(HttpResponseEditorProvider provider);
 
     /**
      * This method is used to create a new instance of Burp's plain text editor, for the extension to use in its own UI.

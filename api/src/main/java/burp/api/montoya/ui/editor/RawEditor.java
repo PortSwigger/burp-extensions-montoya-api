@@ -26,8 +26,7 @@ public interface RawEditor extends Editor
     ByteArray getContents();
 
     /**
-     * This method can be used to set content within the text editor programmatically.
-     * The default system charset is used when encoding to a String.
+     * This method can be used to set content within the text editor programmatically
      *
      * @param contents The content to set in the text editor.
      */

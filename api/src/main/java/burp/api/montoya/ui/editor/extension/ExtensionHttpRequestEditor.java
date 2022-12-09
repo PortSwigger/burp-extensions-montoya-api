@@ -8,16 +8,57 @@
 
 package burp.api.montoya.ui.editor.extension;
 
+import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.ui.Selection;
+
+import java.awt.Component;
 
 /**
- * Extensions that register an {@link ExtensionHttpRequestEditorProvider} must return an instance of this interface. Burp will then use that instance to create custom tabs within
+ * Extensions that register an {@link HttpRequestEditorProvider} must return an instance of this interface. Burp will then use that instance to create custom tabs within
  * its HTTP request editor.
  */
-public interface ExtensionHttpRequestEditor extends ExtensionHttpMessageEditor
+public interface ExtensionHttpRequestEditor
 {
     /**
      * @return An instance of {@link HttpRequest} derived from the content of the HTTP request editor.
      */
     HttpRequest getHttpRequest();
+
+    /**
+     * Sets the provided {@link HttpRequestResponse} object within the editor component.
+     *
+     * @param requestResponse The request and response to set in the editor.
+     */
+    void setHttpRequestResponse(HttpRequestResponse requestResponse);
+
+    /**
+     * A check to determine if the HTTP message editor is enabled for a specific {@link HttpRequestResponse}
+     *
+     * @param requestResponse The {@link HttpRequestResponse} to check.
+     * @return True if the HTTP message editor is enabled for the provided request and response.
+     */
+    boolean isEnabledFor(HttpRequestResponse requestResponse);
+
+    /**
+     * @return The caption located in the message editor tab header.
+     */
+    String caption();
+
+    /**
+     * @return The component that is rendered within the message editor tab.
+     */
+    Component uiComponent();
+
+    /**
+     * The method should return {@code null} if no data has been selected.
+     *
+     * @return The data that is currently selected by the user.
+     */
+    Selection selectedData();
+
+    /**
+     * @return True if the user has modified the current message within the editor.
+     */
+    boolean isModified();
 }

@@ -8,19 +8,16 @@
 
 package burp.api.montoya.ui.editor.extension;
 
-import burp.api.montoya.http.message.HttpRequestResponse;
-
 /**
  * Extensions can register an instance of this interface to provide custom HTTP request editors within Burp's user interface.
  */
-public interface ExtensionHttpRequestEditorProvider
+public interface HttpRequestEditorProvider
 {
     /**
-     * This method is invoked by Burp when a new HTTP request editor is created.
+     * This method is invoked by Burp when a new HTTP request editor is required from the extension.
      *
-     * @param httpRequestResponse The instance of {@link HttpRequestResponse} to be set in the editor.
-     * @param editorMode          What mode the created editor should implement.
+     * @param creationContext details about the context that is requiring a request editor
      * @return An instance of {@link ExtensionHttpRequestEditor}
      */
-    ExtensionHttpRequestEditor provideHttpRequestEditor(HttpRequestResponse httpRequestResponse, EditorMode editorMode);
+    ExtensionHttpRequestEditor provideHttpRequestEditor(EditorCreationContext creationContext);
 }

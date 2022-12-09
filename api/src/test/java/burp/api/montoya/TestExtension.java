@@ -103,11 +103,12 @@ import burp.api.montoya.ui.UserInterface;
 import burp.api.montoya.ui.editor.HttpRequestEditor;
 import burp.api.montoya.ui.editor.HttpResponseEditor;
 import burp.api.montoya.ui.editor.RawEditor;
+import burp.api.montoya.ui.editor.extension.EditorCreationContext;
 import burp.api.montoya.ui.editor.extension.EditorMode;
 import burp.api.montoya.ui.editor.extension.ExtensionHttpRequestEditor;
-import burp.api.montoya.ui.editor.extension.ExtensionHttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.ExtensionHttpResponseEditor;
-import burp.api.montoya.ui.editor.extension.ExtensionHttpResponseEditorProvider;
+import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
+import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
 import burp.api.montoya.utilities.Utilities;
 import burp.api.montoya.websocket.Direction;
 import burp.api.montoya.websocket.WebSocket;
@@ -737,12 +738,12 @@ public class TestExtension implements BurpExtension
             }
         };
 
-        Registration requestEditorRegistration = userInterface.registerHttpRequestEditorProvider(new ExtensionHttpRequestEditorProvider()
+        Registration requestEditorRegistration = userInterface.registerHttpRequestEditorProvider(new HttpRequestEditorProvider()
         {
             @Override
-            public ExtensionHttpRequestEditor provideHttpRequestEditor(HttpRequestResponse requestResponse, EditorMode editorMode)
+            public ExtensionHttpRequestEditor provideHttpRequestEditor(EditorCreationContext context)
             {
-                if (requestResponse.request().method().equals("GET") && editorMode == EditorMode.READ_ONLY)
+                if (context.editorMode() == EditorMode.READ_ONLY)
                 {
                     return requestEditor;
                 }
@@ -805,12 +806,12 @@ public class TestExtension implements BurpExtension
             }
         };
 
-        Registration responseEditorRegistration = userInterface.registerHttpResponseEditorProvider(new ExtensionHttpResponseEditorProvider()
+        Registration responseEditorRegistration = userInterface.registerHttpResponseEditorProvider(new HttpResponseEditorProvider()
         {
             @Override
-            public ExtensionHttpResponseEditor provideHttpResponseEditor(HttpRequestResponse httpRequestResponse, EditorMode editorMode)
+            public ExtensionHttpResponseEditor provideHttpResponseEditor(EditorCreationContext context)
             {
-                if (editorMode != EditorMode.READ_ONLY)
+                if (context.editorMode() != EditorMode.READ_ONLY)
                 {
                     return genericResponseEditor;
                 }

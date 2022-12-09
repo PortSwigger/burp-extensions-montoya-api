@@ -297,6 +297,7 @@ public interface HttpRequest
 
     /**
      * This is a helper method to create a new empty {@link HttpRequest}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @return A new {@link HttpRequest} instance.
      */
@@ -307,6 +308,7 @@ public interface HttpRequest
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequest}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request
      * @return A new {@link HttpRequest} instance.
@@ -318,6 +320,7 @@ public interface HttpRequest
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequest}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request.
      * @return A new {@link HttpRequest} instance.
@@ -329,6 +332,7 @@ public interface HttpRequest
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequest}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
@@ -341,6 +345,7 @@ public interface HttpRequest
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequest}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
@@ -352,7 +357,20 @@ public interface HttpRequest
     }
 
     /**
+     * This is a helper method to create a new instance of {@link HttpRequest} from the given {@link HttpRequest}.
+     * This object's data will be stored in temporary memory-mapped file.
+     *
+     * @param httpRequestToCopy source HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(HttpRequest httpRequestToCopy)
+    {
+        return FACTORY.httpRequest(httpRequestToCopy);
+    }
+
+    /**
      * This is a helper method to create a new instance of {@link HttpRequest}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param url A URL for the request.
      * @return A new {@link HttpRequest} instance.
@@ -364,6 +382,7 @@ public interface HttpRequest
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP 2 headers.
@@ -377,6 +396,7 @@ public interface HttpRequest
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP 2 headers.

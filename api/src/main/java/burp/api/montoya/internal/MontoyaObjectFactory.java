@@ -70,6 +70,8 @@ public interface MontoyaObjectFactory
 
     HttpRequest httpRequest(HttpService service, String request);
 
+    HttpRequest httpRequest(HttpRequest httpRequestToCopy);
+
     HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body);
 
     HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body);
@@ -80,7 +82,11 @@ public interface MontoyaObjectFactory
 
     HttpResponse httpResponse(ByteArray response);
 
+    HttpResponse httpResponse(HttpResponse httpResponseToCopy);
+
     HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response, Annotations annotations);
+
+    HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy);
 
     Range range(int startIndexInclusive, int endIndexExclusive);
 

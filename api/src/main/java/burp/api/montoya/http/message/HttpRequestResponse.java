@@ -119,6 +119,7 @@ public interface HttpRequestResponse
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequestResponse}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request  The HTTP request.
      * @param response The HTTP response.
@@ -131,6 +132,7 @@ public interface HttpRequestResponse
 
     /**
      * This is a helper method to create a new instance of {@link HttpRequestResponse}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param httpRequest        The HTTP request.
      * @param httpResponse       The HTTP response.
@@ -140,5 +142,17 @@ public interface HttpRequestResponse
     static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
     {
         return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpRequestResponse} from the given {@link HttpRequestResponse}.
+     * This object's data will be stored in temporary memory-mapped file.
+     *
+     * @param httpRequestResponseToCopy source HTTP request response.
+     * @return A new {@link HttpRequestResponse} instance.
+     */
+    static HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy)
+    {
+        return FACTORY.httpRequestResponse(httpRequestResponseToCopy);
     }
 }

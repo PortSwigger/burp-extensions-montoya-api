@@ -274,6 +274,7 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} with the provided length.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param length array length.
      * @return New {@code ByteArray} with the provided length.
@@ -285,6 +286,7 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} that wraps the provided byte array
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data byte[] to wrap, or sequence of bytes to wrap.
      * @return New {@code ByteArray} wrapping the provided byte array.
@@ -296,6 +298,7 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} that wraps the provided integers after a narrowing primitive conversion to bytes.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data int[] to wrap or sequence of integers to wrap.
      * @return New {@code ByteArray} wrapping the provided data after a narrowing primitive conversion to bytes.
@@ -307,6 +310,7 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} from the provided UTF-8 encoded text.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param text UTF-8 encoded text.
      * @return New {@code ByteArray} holding a copy of the text as UTF-8 encoded bytes.
@@ -314,6 +318,18 @@ public interface ByteArray extends Iterable<Byte>
     static ByteArray byteArray(String text)
     {
         return FACTORY.byteArray(text);
+    }
+
+    /**
+     * Create a new {@code ByteArray} from the given {@code ByteArray}.
+     * This object's data will be stored in temporary memory-mapped file.
+     *
+     * @param byteArrayToCopy source byte array.
+     * @return New {@code ByteArray} holding a copy of the data in the source byte array.
+     */
+    static ByteArray byteArray(ByteArray byteArrayToCopy)
+    {
+        return FACTORY.byteArray(byteArrayToCopy);
     }
 }
 

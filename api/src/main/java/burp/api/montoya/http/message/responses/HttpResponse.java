@@ -217,8 +217,10 @@ public interface HttpResponse
      * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     HttpResponse withMarkers(Marker... markers);
+
     /**
      * This is a helper method to create a new instance of {@link HttpResponse}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
      * @return A new {@link HttpResponse} instance.
@@ -230,6 +232,7 @@ public interface HttpResponse
 
     /**
      * This is a helper method to create a new instance of {@link HttpResponse}.
+     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
      * @return A new {@link HttpResponse} instance.
@@ -237,5 +240,17 @@ public interface HttpResponse
     static HttpResponse httpResponse(String response)
     {
         return FACTORY.httpResponse(response);
+    }
+
+    /**
+     * This is a helper method to create a new instance of {@link HttpResponse} from the given {@link HttpResponse}.
+     * This object's data will be stored in temporary memory-mapped file.
+     *
+     * @param httpResponseToCopy source HTTP response.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(HttpResponse httpResponseToCopy)
+    {
+        return FACTORY.httpResponse(httpResponseToCopy);
     }
 }

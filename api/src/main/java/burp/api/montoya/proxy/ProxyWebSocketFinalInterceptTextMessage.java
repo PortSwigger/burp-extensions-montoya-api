@@ -11,8 +11,6 @@ package burp.api.montoya.proxy;
 import burp.api.montoya.websocket.Direction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.proxy.FinalInterceptAction.CONTINUE;
-import static burp.api.montoya.proxy.FinalInterceptAction.DROP;
 
 
 /**
@@ -38,7 +36,7 @@ public interface ProxyWebSocketFinalInterceptTextMessage
      */
     static ProxyWebSocketFinalInterceptTextMessage continueWithTextMessage(String payload)
     {
-        return FACTORY.proxyWebSocketTextMessage(payload, CONTINUE);
+        return FACTORY.continueWithFinalProxyTextMessage(payload);
     }
 
     /**
@@ -47,6 +45,6 @@ public interface ProxyWebSocketFinalInterceptTextMessage
      */
     static ProxyWebSocketFinalInterceptTextMessage dropTextMessage()
     {
-        return FACTORY.proxyWebSocketTextMessage(null, DROP);
+        return FACTORY.dropFinalProxyTextMessage();
     }
 }

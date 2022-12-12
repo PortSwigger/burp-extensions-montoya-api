@@ -47,7 +47,6 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.websocket.WebSocketBinaryMessage;
-import burp.api.montoya.websocket.WebSocketMessageAction;
 import burp.api.montoya.websocket.WebSocketTextMessage;
 
 import java.util.List;
@@ -65,7 +64,13 @@ public interface MontoyaObjectFactory
     HttpHeader httpHeader(String header);
 
     HttpParameter parameter(String name, String value, HttpParameterType type);
+    
+    HttpRequest httpRequest();
 
+    HttpRequest httpRequest(ByteArray request);
+
+    HttpRequest httpRequest(String request);
+    
     HttpRequest httpRequest(HttpService service, ByteArray request);
 
     HttpRequest httpRequest(HttpService service, String request);
@@ -91,7 +96,13 @@ public interface MontoyaObjectFactory
     HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy);
 
     Range range(int startIndexInclusive, int endIndexExclusive);
+    
+    Annotations annotations();
 
+    Annotations annotations(String comment);
+
+    Annotations annotations(HighlightColor highlightColor);
+    
     Annotations annotations(String comment, HighlightColor highlightColor);
 
     AuditInsertionPoint auditInsertionPoint(String name, HttpRequest baseRequest, int startIndexInclusive, int endIndexExclusive);
@@ -99,6 +110,10 @@ public interface MontoyaObjectFactory
     AuditIssueDefinition auditIssueDefinition(String name, String background, String remediation, AuditIssueSeverity typicalSeverity);
 
     AuditIssue auditIssue(String name, String detail, String remediation, String baseUrl, AuditIssueSeverity severity, AuditIssueConfidence confidence, String background, String remediationBackground, AuditIssueSeverity typicalSeverity, List<HttpRequestResponse> requestResponses);
+
+    Selection selection(ByteArray selectionContents);
+
+    Selection selection(int startIndexInclusive, int endIndexExclusive);
 
     Selection selection(ByteArray selectionContents, int startIndexInclusive, int endIndexExclusive);
 
@@ -140,17 +155,33 @@ public interface MontoyaObjectFactory
 
     ByteArray byteArray(ByteArray byteArrayToCopy);
 
-    WebSocketBinaryMessage webSocketBinaryMessage(ByteArray payload, WebSocketMessageAction action);
+    WebSocketTextMessage continueWithTextMessage(String payload);
 
-    WebSocketTextMessage webSocketTextMessage(String payload, WebSocketMessageAction action);
+    WebSocketTextMessage dropTextMessage();
 
-    ProxyWebSocketInitialInterceptTextMessage proxyWebSocketTextMessage(String payload, InitialInterceptAction action);
+    WebSocketBinaryMessage continueWithBinaryMessage(ByteArray payload);
 
-    ProxyWebSocketInitialInterceptBinaryMessage proxyWebSocketBinaryMessage(ByteArray payload, InitialInterceptAction action);
+    WebSocketBinaryMessage dropBinaryMessage();
 
-    ProxyWebSocketFinalInterceptTextMessage proxyWebSocketTextMessage(String payload, FinalInterceptAction action);
+    ProxyWebSocketInitialInterceptBinaryMessage interceptInitialProxyBinaryMessage(ByteArray payload);
 
-    ProxyWebSocketFinalInterceptBinaryMessage proxyWebSocketBinaryMessage(ByteArray payload, FinalInterceptAction action);
+    ProxyWebSocketInitialInterceptTextMessage interceptInitialProxyTextMessage(String payload);
+
+    ProxyWebSocketInitialInterceptBinaryMessage dropInitialProxyBinaryMessage();
+
+    ProxyWebSocketInitialInterceptTextMessage dropInitialProxyTextMessage();
+
+    ProxyWebSocketInitialInterceptBinaryMessage doNotInterceptInitialProxyBinaryMessage(ByteArray payload);
+
+    ProxyWebSocketInitialInterceptTextMessage doNotInterceptInitialProxyTextMessage(String payload);
+
+    ProxyWebSocketFinalInterceptBinaryMessage continueWithFinalProxyBinaryMessage(ByteArray payload);
+
+    ProxyWebSocketFinalInterceptTextMessage continueWithFinalProxyTextMessage(String payload);
+
+    ProxyWebSocketFinalInterceptBinaryMessage dropFinalProxyBinaryMessage();
+
+    ProxyWebSocketFinalInterceptTextMessage dropFinalProxyTextMessage();
 
     PersistedObject persistedObject();
 

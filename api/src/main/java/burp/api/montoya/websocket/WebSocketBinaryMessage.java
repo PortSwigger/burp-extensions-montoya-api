@@ -3,8 +3,6 @@ package burp.api.montoya.websocket;
 import burp.api.montoya.core.ByteArray;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.websocket.WebSocketMessageAction.CONTINUE;
-import static burp.api.montoya.websocket.WebSocketMessageAction.DROP;
 
 /**
  * This interface represents a binary WebSocket message.
@@ -28,7 +26,7 @@ public interface WebSocketBinaryMessage
      */
     static WebSocketBinaryMessage continueWithBinaryMessage(ByteArray payload)
     {
-        return FACTORY.webSocketBinaryMessage(payload, CONTINUE);
+        return FACTORY.continueWithBinaryMessage(payload);
     }
 
     /**
@@ -37,6 +35,6 @@ public interface WebSocketBinaryMessage
      */
     static WebSocketBinaryMessage dropBinaryMessage()
     {
-        return FACTORY.webSocketBinaryMessage(null, DROP);
+        return FACTORY.dropBinaryMessage();
     }
 }

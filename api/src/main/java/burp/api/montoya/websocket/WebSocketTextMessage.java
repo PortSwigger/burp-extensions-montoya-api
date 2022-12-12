@@ -1,8 +1,6 @@
 package burp.api.montoya.websocket;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.websocket.WebSocketMessageAction.CONTINUE;
-import static burp.api.montoya.websocket.WebSocketMessageAction.DROP;
 
 /**
  * This interface represents a text WebSocket message.
@@ -26,7 +24,7 @@ public interface WebSocketTextMessage
      */
     static WebSocketTextMessage continueWithTextMessage(String payload)
     {
-        return FACTORY.webSocketTextMessage(payload, CONTINUE);
+        return FACTORY.continueWithTextMessage(payload);
     }
 
     /**
@@ -35,6 +33,6 @@ public interface WebSocketTextMessage
      */
     static WebSocketTextMessage dropTextMessage()
     {
-        return FACTORY.webSocketTextMessage(null, DROP);
+        return FACTORY.dropTextMessage();
     }
 }

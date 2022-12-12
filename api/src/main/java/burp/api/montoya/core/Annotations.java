@@ -16,52 +16,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface Annotations
 {
     /**
-     * This method is used to construct empty annotations.
-     *
-     * @return The annotations.
-     */
-    static Annotations annotations()
-    {
-        return annotations("", HighlightColor.NONE);
-    }
-
-    /**
-     * This method is used to construct annotations from a comment.
-     *
-     * @param comment The comment of the annotation
-     * @return The annotations.
-     */
-    static Annotations annotations(String comment)
-    {
-        return annotations(comment, HighlightColor.NONE);
-    }
-
-    /**
-     * This method is used to construct a annotations from a highlight
-     * color.
-     *
-     * @param highlightColor The highlight color of the annotation
-     * @return The annotations.
-     */
-    static Annotations annotations(HighlightColor highlightColor)
-    {
-        return annotations("", highlightColor);
-    }
-
-    /**
-     * This method is used to construct a annotations from a comment
-     * and a highlight color.
-     *
-     * @param comment        The comment of the annotation
-     * @param highlightColor The highlight color of the annotation
-     * @return The annotations.
-     */
-    static Annotations annotations(String comment, HighlightColor highlightColor)
-    {
-        return FACTORY.annotations(comment, highlightColor);
-    }
-
-    /**
      * @return the comment
      */
     String comment();
@@ -88,4 +42,50 @@ public interface Annotations
      * @return The new annotations.
      */
     Annotations withHighlightColor(HighlightColor highlightColor);
+
+    /**
+     * This method is used to construct empty annotations.
+     *
+     * @return The annotations.
+     */
+    static Annotations annotations()
+    {
+        return FACTORY.annotations();
+    }
+
+    /**
+     * This method is used to construct annotations from a comment.
+     *
+     * @param comment The comment of the annotation
+     * @return The annotations.
+     */
+    static Annotations annotations(String comment)
+    {
+        return FACTORY.annotations(comment);
+    }
+
+    /**
+     * This method is used to construct a annotations from a highlight
+     * color.
+     *
+     * @param highlightColor The highlight color of the annotation
+     * @return The annotations.
+     */
+    static Annotations annotations(HighlightColor highlightColor)
+    {
+        return FACTORY.annotations(highlightColor);
+    }
+
+    /**
+     * This method is used to construct a annotations from a comment
+     * and a highlight color.
+     *
+     * @param comment        The comment of the annotation
+     * @param highlightColor The highlight color of the annotation
+     * @return The annotations.
+     */
+    static Annotations annotations(String comment, HighlightColor highlightColor)
+    {
+        return FACTORY.annotations(comment, highlightColor);
+    }
 }

@@ -303,7 +303,7 @@ public interface HttpRequest
      */
     static HttpRequest httpRequest()
     {
-        return httpRequest(null, "");
+        return FACTORY.httpRequest();
     }
 
     /**
@@ -315,7 +315,7 @@ public interface HttpRequest
      */
     static HttpRequest httpRequest(ByteArray request)
     {
-        return httpRequest(null, request);
+        return FACTORY.httpRequest(request);
     }
 
     /**
@@ -327,7 +327,7 @@ public interface HttpRequest
      */
     static HttpRequest httpRequest(String request)
     {
-        return httpRequest(null, request);
+        return FACTORY.httpRequest(request);
     }
 
     /**

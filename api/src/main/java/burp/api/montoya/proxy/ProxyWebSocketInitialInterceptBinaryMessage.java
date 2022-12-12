@@ -12,9 +12,6 @@ import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.websocket.Direction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.proxy.InitialInterceptAction.DO_NOT_INTERCEPT;
-import static burp.api.montoya.proxy.InitialInterceptAction.DROP;
-import static burp.api.montoya.proxy.InitialInterceptAction.INTERCEPT;
 
 /**
  * Extensions can implement this interface when returning a binary message from
@@ -39,7 +36,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      */
     static ProxyWebSocketInitialInterceptBinaryMessage interceptBinaryMessage(ByteArray payload)
     {
-        return FACTORY.proxyWebSocketBinaryMessage(payload, INTERCEPT);
+        return FACTORY.interceptInitialProxyBinaryMessage(payload);
     }
 
     /**
@@ -49,7 +46,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      */
     static ProxyWebSocketInitialInterceptBinaryMessage doNotInterceptBinaryMessage(ByteArray payload)
     {
-        return FACTORY.proxyWebSocketBinaryMessage(payload, DO_NOT_INTERCEPT);
+        return FACTORY.doNotInterceptInitialProxyBinaryMessage(payload);
     }
 
     /**
@@ -58,6 +55,6 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      */
     static ProxyWebSocketInitialInterceptBinaryMessage dropBinaryMessage()
     {
-        return FACTORY.proxyWebSocketBinaryMessage(null, DROP);
+        return FACTORY.dropInitialProxyBinaryMessage();
     }
 }

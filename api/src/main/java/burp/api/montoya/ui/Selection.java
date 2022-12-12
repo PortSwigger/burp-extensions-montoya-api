@@ -26,7 +26,7 @@ public interface Selection
      */
     static Selection selection(ByteArray selectionContents)
     {
-        return selection(selectionContents, -1, -1);
+        return FACTORY.selection(selectionContents);
     }
 
     /**
@@ -38,7 +38,7 @@ public interface Selection
      */
     static Selection selection(int startIndexInclusive, int endIndexExclusive)
     {
-        return selection(null, startIndexInclusive, endIndexExclusive);
+        return FACTORY.selection(startIndexInclusive, endIndexExclusive);
     }
 
     /**

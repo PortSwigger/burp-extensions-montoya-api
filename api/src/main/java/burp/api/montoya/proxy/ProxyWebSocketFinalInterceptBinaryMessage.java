@@ -12,8 +12,6 @@ import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.websocket.Direction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.proxy.FinalInterceptAction.CONTINUE;
-import static burp.api.montoya.proxy.FinalInterceptAction.DROP;
 
 /**
  * Extensions can implement this interface when returning a binary message from
@@ -38,7 +36,7 @@ public interface ProxyWebSocketFinalInterceptBinaryMessage
      */
     static ProxyWebSocketFinalInterceptBinaryMessage continueWithBinaryMessage(ByteArray payload)
     {
-        return FACTORY.proxyWebSocketBinaryMessage(payload, CONTINUE);
+        return FACTORY.continueWithFinalProxyBinaryMessage(payload);
     }
 
     /**
@@ -47,6 +45,6 @@ public interface ProxyWebSocketFinalInterceptBinaryMessage
      */
     static ProxyWebSocketFinalInterceptBinaryMessage dropBinaryMessage()
     {
-        return FACTORY.proxyWebSocketBinaryMessage(null, DROP);
+        return FACTORY.dropFinalProxyBinaryMessage();
     }
 }

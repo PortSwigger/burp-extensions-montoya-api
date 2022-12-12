@@ -127,7 +127,7 @@ public interface HttpRequestResponse
      */
     static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response)
     {
-        return httpRequestResponse(request, response, Annotations.annotations());
+        return FACTORY.httpRequestResponse(request, response);
     }
 
     /**

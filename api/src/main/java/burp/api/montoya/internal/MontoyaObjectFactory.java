@@ -86,6 +86,8 @@ public interface MontoyaObjectFactory
 
     HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response, Annotations annotations);
 
+    HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response);
+
     HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy);
 
     Range range(int startIndexInclusive, int endIndexExclusive);

@@ -14,6 +14,7 @@ import burp.api.montoya.persistence.support.PrimitivesSupport;
 import burp.api.montoya.persistence.support.RequestResponseSupport;
 
 import java.util.Optional;
+import java.util.Set;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -60,4 +61,11 @@ public interface PersistedObject extends PrimitivesSupport, PrimitiveListSupport
      * @param key the key whose mapping is to be deleted
      */
     void deleteChildObject(String key);
+
+    /**
+     * This method is used to retrieve all keys currently mapped for {@link PersistedObject} objects.
+     *
+     * @return Set of keys.
+     */
+    Set<String> childObjectKeys();
 }

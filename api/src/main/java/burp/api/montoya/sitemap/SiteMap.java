@@ -27,14 +27,14 @@ public interface SiteMap
      *               specific subset of the site map.
      * @return A list of filtered items from the site map.
      */
-    List<SiteMapHttpRequestResponse> requestResponses(SiteMapFilter filter);
+    List<HttpRequestResponse> requestResponses(SiteMapFilter filter);
 
     /**
      * This method returns details of all items in the site map.
      *
      * @return A list of all items from the site map.
      */
-    default List<SiteMapHttpRequestResponse> requestResponses()
+    default List<HttpRequestResponse> requestResponses()
     {
         return requestResponses(node -> true);
     }

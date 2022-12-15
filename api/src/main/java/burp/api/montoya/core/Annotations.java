@@ -10,9 +10,6 @@ package burp.api.montoya.core;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
-/**
- * This interface represents annotations that can be applied to a message.
- */
 public interface Annotations
 {
     /**
@@ -21,9 +18,23 @@ public interface Annotations
     String comment();
 
     /**
+     * Set (mutate) the current annotations comment value
+     *
+     * @param comment the comment to set on the current annotation
+     */
+    void setComment(String comment);
+
+    /**
      * @return the highlight color;
      */
     HighlightColor highlightColor();
+
+    /**
+     * Set (mutate) the current annotations highlight color value
+     *
+     * @param highlightColor the highlight color to set on the current annotation
+     */
+    void setHighlightColor(HighlightColor highlightColor);
 
     /**
      * This method is used to construct a copy of the annotations with

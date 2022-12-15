@@ -97,7 +97,6 @@ import burp.api.montoya.scope.ScopeChange;
 import burp.api.montoya.scope.ScopeChangeHandler;
 import burp.api.montoya.sitemap.SiteMap;
 import burp.api.montoya.sitemap.SiteMapFilter;
-import burp.api.montoya.sitemap.SiteMapHttpRequestResponse;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.ui.UserInterface;
 import burp.api.montoya.ui.editor.HttpRequestEditor;
@@ -453,8 +452,8 @@ public class TestExtension implements BurpExtension
         {
             System.out.println(requestResponse.finalRequest());
             System.out.println(requestResponse.originalResponse());
-            System.out.println(requestResponse.getAnnotations().comment());
-            System.out.println(requestResponse.getAnnotations().highlightColor());
+            System.out.println(requestResponse.annotations().comment());
+            System.out.println(requestResponse.annotations().highlightColor());
         }
     }
 
@@ -465,7 +464,7 @@ public class TestExtension implements BurpExtension
 
     private void getSiteMap()
     {
-        List<SiteMapHttpRequestResponse> httpRequestResponses = siteMap.requestResponses(SiteMapFilter.prefixFilter("https://example.org"));
+        List<HttpRequestResponse> httpRequestResponses = siteMap.requestResponses(SiteMapFilter.prefixFilter("https://example.org"));
     }
 
     private void getStderr()
@@ -567,6 +566,8 @@ public class TestExtension implements BurpExtension
             {
                 if (!event.selectedRequestResponses().isEmpty())
                 {
+                    event.messageEditorRequestResponse().ifPresent(a -> System.out.println(a.selectionContext()));
+
                     return List.of(new JMenuItem("barfoo"));
                 }
                 else
@@ -857,7 +858,7 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations modifiableAnnotations)
+            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
             {
                 String listenerInterface = interceptedRequest.listenerInterface();
                 int messageId = interceptedRequest.messageId();
@@ -1123,13 +1124,13 @@ public class TestExtension implements BurpExtension
         ProxyHttpRequestHandler handler = new ProxyHttpRequestHandler()
         {
             @Override
-            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations modifiableAnnotations)
+            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
             {
                 return RequestInitialInterceptResult.drop();
             }
 
             @Override
-            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations modifiableAnnotations)
+            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
             {
                 return RequestFinalInterceptResult.drop();
             }

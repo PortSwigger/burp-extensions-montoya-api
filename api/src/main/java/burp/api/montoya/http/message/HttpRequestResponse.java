@@ -134,9 +134,9 @@ public interface HttpRequestResponse
      * This is a helper method to create a new instance of {@link HttpRequestResponse}.
      * This object's data will be stored in temporary memory-mapped file.
      *
-     * @param httpRequest        The HTTP request.
-     * @param httpResponse       The HTTP response.
-     * @param annotations annotations.
+     * @param httpRequest  The HTTP request.
+     * @param httpResponse The HTTP response.
+     * @param annotations  annotations.
      * @return A new {@link HttpRequestResponse} instance.
      */
     static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)

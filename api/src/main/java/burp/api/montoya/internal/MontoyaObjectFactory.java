@@ -83,6 +83,8 @@ public interface MontoyaObjectFactory
 
     HttpRequest httpRequestFromUrl(String url);
 
+    HttpResponse httpResponse();
+
     HttpResponse httpResponse(String response);
 
     HttpResponse httpResponse(ByteArray response);

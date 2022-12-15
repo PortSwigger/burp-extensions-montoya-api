@@ -202,7 +202,7 @@ public class TestExtension implements BurpExtension
         utilities = api.utilities();
 
         httpRequest = httpRequest(httpService("example.org", true), "GET / HTTP/1.1\r\nHost: example.org\r\n\r\n");
-        httpResponse = httpResponse("HTTP/1.1 200 OK \r\n\r\n");
+        httpResponse = httpResponse("HTTP/1.1 200 OK\r\n\r\n");
         httpRequestResponse = HttpRequestResponse.httpRequestResponse(httpRequest, httpResponse);
 
         logging.logToOutput("Hello World!");

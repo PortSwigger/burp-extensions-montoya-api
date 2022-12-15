@@ -219,6 +219,16 @@ public interface HttpResponse
     HttpResponse withMarkers(Marker... markers);
 
     /**
+     * This is a helper method to create a new empty instance of {@link HttpResponse}.
+     *
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse()
+    {
+        return FACTORY.httpResponse();
+    }
+
+    /**
      * This is a helper method to create a new instance of {@link HttpResponse}.
      * This object's data will be stored in temporary memory-mapped file.
      *
@@ -229,7 +239,6 @@ public interface HttpResponse
     {
         return FACTORY.httpResponse(response);
     }
-
     /**
      * This is a helper method to create a new instance of {@link HttpResponse}.
      * This object's data will be stored in temporary memory-mapped file.

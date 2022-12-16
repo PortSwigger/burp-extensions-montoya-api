@@ -10,6 +10,7 @@ package burp.api.montoya.http.message.responses;
 
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.http.MimeType;
+import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.cookies.Cookie;
 import burp.api.montoya.http.message.headers.HttpHeader;
@@ -24,7 +25,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 /**
  * This interface is used to retrieve key details about an HTTP response.
  */
-public interface HttpResponse
+public interface HttpResponse extends HttpMessage
 {
     /**
      * This method is used to obtain the HTTP status code contained in the response.
@@ -53,6 +54,7 @@ public interface HttpResponse
      *
      * @return A list of HTTP headers.
      */
+    @Override
     List<HttpHeader> headers();
 
     /**
@@ -60,6 +62,7 @@ public interface HttpResponse
      *
      * @return The body of a message as a byte array.
      */
+    @Override
     ByteArray body();
 
     /**
@@ -67,12 +70,15 @@ public interface HttpResponse
      *
      * @return The body of a message as a {@code String}.
      */
+    @Override
     String bodyToString();
+
     /**
      * This method is used to obtain the offset within the message where the message body begins.
      *
      * @return The message body offset.
      */
+    @Override
     int bodyOffset();
 
     /**
@@ -80,6 +86,7 @@ public interface HttpResponse
      *
      * @return A list of HTTP headers.
      */
+    @Override
     List<Marker> markers();
 
     /**
@@ -124,6 +131,7 @@ public interface HttpResponse
      *
      * @return The message as a byte array.
      */
+    @Override
     ByteArray toByteArray();
 
     /**
@@ -134,6 +142,30 @@ public interface HttpResponse
     @Override
     String toString();
     
+    /**
+     * This is a helper method that builds a modified response with the provided status code.
+     *
+     * @param statusCode the new status code for response
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withStatusCode(short statusCode);
+
+    /**
+     * This is a helper method that builds a modified response with the new reason phrase.
+     *
+     * @param reasonPhrase the new reason phrase for response
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withReasonPhrase(String reasonPhrase);
+
+    /**
+     * This is a helper method that builds a modified response with the new http version.
+     *
+     * @param httpVersion the new http version for response
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withHttpVersion(String httpVersion);
+
     /**
      * This is a helper method that builds a modified response with the updated body.
      * Updates Content-Length header.

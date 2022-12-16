@@ -12,6 +12,7 @@ import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.http.ContentType;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.HttpTransformation;
+import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
@@ -24,7 +25,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 /**
  * This interface is used to retrieve key details about an HTTP request.
  */
-public interface HttpRequest
+public interface HttpRequest extends HttpMessage
 {
     /**
      * This method is used to retrieve the HTTP service for the request.
@@ -73,6 +74,7 @@ public interface HttpRequest
      *
      * @return A list of HTTP headers.
      */
+    @Override
     List<HttpHeader> headers();
 
     /**
@@ -90,6 +92,7 @@ public interface HttpRequest
      *
      * @return The body of a request as a byte array.
      */
+    @Override
     ByteArray body();
 
     /**
@@ -97,6 +100,7 @@ public interface HttpRequest
      *
      * @return The body of a message as a {@code String}.
      */
+    @Override
     String bodyToString();
 
     /**
@@ -105,6 +109,7 @@ public interface HttpRequest
      *
      * @return The message body offset.
      */
+    @Override
     int bodyOffset();
 
     /**
@@ -112,6 +117,7 @@ public interface HttpRequest
      *
      * @return A list of HTTP headers.
      */
+    @Override
     List<Marker> markers();
 
     /**
@@ -119,6 +125,7 @@ public interface HttpRequest
      *
      * @return The message as a byte array.
      */
+    @Override
     ByteArray toByteArray();
 
     /**

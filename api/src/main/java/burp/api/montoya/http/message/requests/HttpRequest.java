@@ -303,6 +303,13 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withMarkers(Marker... markers);
 
     /**
+     * Create a request with added default headers.
+     *
+     * @return a new (@code HttpRequest) with added default headers
+     */
+    HttpRequest withDefaultHeaders();
+
+    /**
      * This is a helper method to create a new empty {@link HttpRequest}.
      * This object's data will be stored in temporary memory-mapped file.
      *

@@ -77,6 +77,7 @@ import burp.api.montoya.proxy.RequestFinalInterceptResult;
 import burp.api.montoya.proxy.RequestInitialInterceptResult;
 import burp.api.montoya.proxy.ResponseFinalInterceptResult;
 import burp.api.montoya.proxy.ResponseInitialInterceptResult;
+import burp.api.montoya.scanner.AuditResult;
 import burp.api.montoya.scanner.ConsolidationAction;
 import burp.api.montoya.scanner.Crawl;
 import burp.api.montoya.scanner.InvalidLauncherConfigurationException;
@@ -901,11 +902,11 @@ public class TestExtension implements BurpExtension
         Registration registration = scanner.registerScanCheck(new ScanCheck()
         {
             @Override
-            public List<AuditIssue> activeAudit(HttpRequestResponse baseRequestResponse, AuditInsertionPoint auditInsertionPoint)
+            public AuditResult activeAudit(HttpRequestResponse baseRequestResponse, AuditInsertionPoint auditInsertionPoint)
             {
                 if (auditInsertionPoint.type() == AuditInsertionPointType.HEADER)
                 {
-                    return emptyList();
+                    return AuditResult.auditResult();
                 }
 
                 AuditIssue issue = auditIssue(
@@ -921,11 +922,11 @@ public class TestExtension implements BurpExtension
                         baseRequestResponse
                 );
 
-                return List.of(issue);
+                return AuditResult.auditResult(issue);
             }
 
             @Override
-            public List<AuditIssue> passiveAudit(HttpRequestResponse baseRequestResponse)
+            public AuditResult passiveAudit(HttpRequestResponse baseRequestResponse)
             {
                 AuditIssue issue = auditIssue(
                         "My Issue",
@@ -940,7 +941,7 @@ public class TestExtension implements BurpExtension
                         baseRequestResponse
                 );
 
-                return List.of(issue);
+                return AuditResult.auditResult(issue);
             }
 
             @Override

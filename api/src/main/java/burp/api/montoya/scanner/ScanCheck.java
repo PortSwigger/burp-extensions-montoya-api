@@ -12,8 +12,6 @@ import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
 
-import java.util.List;
-
 /**
  * Extensions can implement this interface and then call
  * {@link Scanner#registerScanCheck(ScanCheck)} to register a custom Scanner
@@ -43,7 +41,7 @@ public interface ScanCheck
      * @return A list of {@link AuditIssue} objects, or {@code null} if no
      * issues are identified.
      */
-    List<AuditIssue> activeAudit(HttpRequestResponse baseRequestResponse, AuditInsertionPoint auditInsertionPoint);
+    AuditResult activeAudit(HttpRequestResponse baseRequestResponse, AuditInsertionPoint auditInsertionPoint);
 
     /**
      * The Scanner invokes this method for each base request / response that is
@@ -56,7 +54,7 @@ public interface ScanCheck
      * @return A list of {@link AuditIssue} objects, or {@code null} if no
      * issues are identified.
      */
-    List<AuditIssue> passiveAudit(HttpRequestResponse baseRequestResponse);
+    AuditResult passiveAudit(HttpRequestResponse baseRequestResponse);
 
     /**
      * The Scanner invokes this method when the custom Scan check has

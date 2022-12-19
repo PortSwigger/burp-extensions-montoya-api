@@ -39,6 +39,7 @@ import burp.api.montoya.proxy.RequestFinalInterceptResult;
 import burp.api.montoya.proxy.RequestInitialInterceptResult;
 import burp.api.montoya.proxy.ResponseFinalInterceptResult;
 import burp.api.montoya.proxy.ResponseInitialInterceptResult;
+import burp.api.montoya.scanner.AuditResult;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
 import burp.api.montoya.scanner.audit.issues.AuditIssueConfidence;
@@ -64,13 +65,13 @@ public interface MontoyaObjectFactory
     HttpHeader httpHeader(String header);
 
     HttpParameter parameter(String name, String value, HttpParameterType type);
-    
+
     HttpRequest httpRequest();
 
     HttpRequest httpRequest(ByteArray request);
 
     HttpRequest httpRequest(String request);
-    
+
     HttpRequest httpRequest(HttpService service, ByteArray request);
 
     HttpRequest httpRequest(HttpService service, String request);
@@ -98,20 +99,30 @@ public interface MontoyaObjectFactory
     HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy);
 
     Range range(int startIndexInclusive, int endIndexExclusive);
-    
+
     Annotations annotations();
 
     Annotations annotations(String comment);
 
     Annotations annotations(HighlightColor highlightColor);
-    
+
     Annotations annotations(String comment, HighlightColor highlightColor);
 
     AuditInsertionPoint auditInsertionPoint(String name, HttpRequest baseRequest, int startIndexInclusive, int endIndexExclusive);
 
     AuditIssueDefinition auditIssueDefinition(String name, String background, String remediation, AuditIssueSeverity typicalSeverity);
 
-    AuditIssue auditIssue(String name, String detail, String remediation, String baseUrl, AuditIssueSeverity severity, AuditIssueConfidence confidence, String background, String remediationBackground, AuditIssueSeverity typicalSeverity, List<HttpRequestResponse> requestResponses);
+    AuditIssue auditIssue(
+            String name,
+            String detail,
+            String remediation,
+            String baseUrl,
+            AuditIssueSeverity severity,
+            AuditIssueConfidence confidence,
+            String background,
+            String remediationBackground,
+            AuditIssueSeverity typicalSeverity,
+            List<HttpRequestResponse> requestResponses);
 
     Selection selection(ByteArray selectionContents);
 
@@ -204,4 +215,8 @@ public interface MontoyaObjectFactory
     PersistedList<HttpResponse> persistedHttpResponseList();
 
     PersistedList<HttpRequestResponse> persistedHttpRequestResponseList();
+
+    AuditResult auditResult(List<AuditIssue> auditIssues);
+
+    AuditResult auditResult(AuditIssue... auditIssues);
 }

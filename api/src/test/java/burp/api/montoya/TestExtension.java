@@ -150,8 +150,8 @@ import static burp.api.montoya.http.message.requests.HttpRequest.http2Request;
 import static burp.api.montoya.http.message.requests.HttpRequest.httpRequest;
 import static burp.api.montoya.http.message.requests.HttpRequest.httpRequestFromUrl;
 import static burp.api.montoya.http.message.responses.HttpResponse.httpResponse;
-import static burp.api.montoya.scanner.BuiltInScanConfiguration.ACTIVE_AUDIT_CHECKS;
-import static burp.api.montoya.scanner.BuiltInScanConfiguration.PASSIVE_AUDIT_CHECKS;
+import static burp.api.montoya.scanner.BuiltInScanConfiguration.LEGACY_ACTIVE_AUDIT_CHECKS;
+import static burp.api.montoya.scanner.BuiltInScanConfiguration.LEGACY_PASSIVE_AUDIT_CHECKS;
 import static burp.api.montoya.scanner.ReportFormat.XML;
 import static burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint.auditInsertionPoint;
 import static burp.api.montoya.scanner.audit.issues.AuditIssue.auditIssue;
@@ -339,7 +339,7 @@ public class TestExtension implements BurpExtension
         Scan scan = scanner.createScan();
 
         scan.addRequest(httpRequest);
-        scan.addConfiguration(ACTIVE_AUDIT_CHECKS);
+        scan.addConfiguration(LEGACY_ACTIVE_AUDIT_CHECKS);
 
         Audit audit = scan.startAudit();
 
@@ -379,7 +379,7 @@ public class TestExtension implements BurpExtension
         Range range2 = range(23, 51);
 
         scan.addRequest(httpRequest, List.of(range1, range2));
-        scan.addConfiguration(ACTIVE_AUDIT_CHECKS);
+        scan.addConfiguration(LEGACY_ACTIVE_AUDIT_CHECKS);
 
         Audit audit = scan.startAudit();
     }
@@ -389,7 +389,7 @@ public class TestExtension implements BurpExtension
         Scan scan = scanner.createScan();
 
         scan.addRequestResponse(httpRequestResponse);
-        scan.addConfiguration(PASSIVE_AUDIT_CHECKS);
+        scan.addConfiguration(LEGACY_PASSIVE_AUDIT_CHECKS);
 
         Audit audit = scan.startAudit();
     }

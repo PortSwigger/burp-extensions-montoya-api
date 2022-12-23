@@ -9,11 +9,12 @@
 package burp.api.montoya.persistence;
 
 import burp.api.montoya.persistence.support.PrimitivesSupport;
+import burp.api.montoya.persistence.support.StringSupport;
 
 /**
  * This interface represents an instance of a class that allows data to be
  * stored and accessed from the java preference store. It has support for primitives.
  */
-public interface Preferences extends PrimitivesSupport
+public interface Preferences extends PrimitivesSupport, StringSupport
 {
 }

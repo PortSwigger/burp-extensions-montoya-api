@@ -9,9 +9,10 @@
 package burp.api.montoya.persistence;
 
 import burp.api.montoya.persistence.support.ByteArraySupport;
-import burp.api.montoya.persistence.support.PrimitiveListSupport;
+import burp.api.montoya.persistence.support.ListSupport;
 import burp.api.montoya.persistence.support.PrimitivesSupport;
 import burp.api.montoya.persistence.support.RequestResponseSupport;
+import burp.api.montoya.persistence.support.StringSupport;
 
 import java.util.Optional;
 import java.util.Set;
@@ -22,7 +23,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * This interface represents an instance of a class that allows data to be stored and accessed from the Burp project.
  * It has support for HTTP requests, HTTP responses, byte arrays, primitives, lists of all these, and object hierarchies.
  */
-public interface PersistedObject extends PrimitivesSupport, PrimitiveListSupport, ByteArraySupport, RequestResponseSupport
+public interface PersistedObject extends PrimitivesSupport, ListSupport, StringSupport, ByteArraySupport, RequestResponseSupport
 {
     /**
      * This is a helper method to create a new instance of {@link PersistedObject}.
@@ -51,7 +52,6 @@ public interface PersistedObject extends PrimitivesSupport, PrimitiveListSupport
      *
      * @param key         key with which the specified child object is to be associated
      * @param childObject the {@link PersistedObject} to be associated with the specified key.
-     *                    If this value is {@code null} then any value with the specified key will be removed
      */
     void setChildObject(String key, PersistedObject childObject);
 

@@ -13,6 +13,6 @@ package burp.api.montoya.scanner;
  */
 public enum BuiltInScanConfiguration
 {
-    PASSIVE_AUDIT_CHECKS,
-    ACTIVE_AUDIT_CHECKS
+    LEGACY_PASSIVE_AUDIT_CHECKS,
+    LEGACY_ACTIVE_AUDIT_CHECKS
 }

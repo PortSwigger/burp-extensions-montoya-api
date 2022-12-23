@@ -8,46 +8,44 @@
 
 package burp.api.montoya.persistence.support;
 
-import burp.api.montoya.core.ByteArray;
-
 import java.util.Set;
 
 /**
- * Add support for byte arrays
+ * Add support for String data type
  */
-public interface ByteArraySupport
+public interface StringSupport
 {
     /**
-     * Returns the {@link ByteArray} associated with the specified key,
+     * Returns the {@link String} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
-    ByteArray getByteArray(String key);
+    String getString(String key);
 
     /**
-     * Associates the specified {@code ByteArray} with the specified key in this map.
-     * If the map previously contained a mapping for the key, the old value is replaced
-     * by the specified value.
+     * Associates the specified {@link String} with the specified key in this map
+     * (optional operation).  If the map previously contained a mapping for
+     * the key, the old value is replaced by the specified value.
      *
      * @param key   key with which the specified value is to be associated
-     * @param value value to be associated with the specified key
+     * @param value value to be associated with the specified key.
      */
-    void setByteArray(String key, ByteArray value);
+    void setString(String key, String value);
 
     /**
-     * Removes the mapping from the specified key to the {@link ByteArray}.
+     * Removes the mapping from the specified key to the {@link String}.
      *
      * @param key the key whose mapping is to be deleted
      */
-    void deleteByteArray(String key);
+    void deleteString(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link ByteArray} values.
+     * This method is used to retrieve all keys currently mapped for {@link String} values.
      *
      * @return Set of keys.
      */
-    Set<String> byteArrayKeys();
+    Set<String> stringKeys();
 }

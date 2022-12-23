@@ -37,7 +37,6 @@ public interface RequestResponseSupport
      *
      * @param key   key with which the specified value is to be associated
      * @param value value to be associated with the specified key.
-     *              If this value is {@code null} then any value with the specified name will be removed.
      */
     void setHttpRequest(String key, HttpRequest value);
 
@@ -106,8 +105,7 @@ public interface RequestResponseSupport
      * the key, the old value is replaced by the specified value.
      *
      * @param key   key with which the specified value is to be associated
-     * @param value value to be associated with the specified key. If this value is {@code null} then any
-     *              value with the specified name will be removed.
+     * @param value value to be associated with the specified key.
      */
     void setHttpResponse(String key, HttpResponse value);
 
@@ -176,8 +174,7 @@ public interface RequestResponseSupport
      * the key, the old value is replaced by the specified value.
      *
      * @param key   key with which the specified value is to be associated
-     * @param value value to be associated with the specified key. If this value is {@code null} then any
-     *              value with the specified name will be removed.
+     * @param value value to be associated with the specified key.
      */
     void setHttpRequestResponse(String key, HttpRequestResponse value);
 

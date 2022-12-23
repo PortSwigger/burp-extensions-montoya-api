@@ -27,7 +27,7 @@ public interface PrimitivesSupport
     Boolean getBoolean(String key);
 
     /**
-     * Associates the specified {@link Boolean} with the specified key in this map
+     * Associates the specified {@code boolean} with the specified key in this map
      * (optional operation).  If the map previously contained a mapping for
      * the key, the old value is replaced by the specified value.
      *
@@ -35,7 +35,7 @@ public interface PrimitivesSupport
      * @param value value to be associated with the specified key.
      *              If this value is {@code null} then any value with the specified key will be removed.
      */
-    void setBoolean(String key, Boolean value);
+    void setBoolean(String key, boolean value);
 
     /**
      * Removes the mapping from the specified key to the {@link Boolean}.
@@ -62,7 +62,7 @@ public interface PrimitivesSupport
     Byte getByte(String key);
 
     /**
-     * Associates the specified {@link Byte} with the specified key in this map
+     * Associates the specified {@code byte} with the specified key in this map
      * (optional operation).  If the map previously contained a mapping for
      * the key, the old value is replaced by the specified value.
      *
@@ -70,7 +70,7 @@ public interface PrimitivesSupport
      * @param value value to be associated with the specified key.
      *              If this value is {@code null} then any value with the specified key will be removed.
      */
-    void setByte(String key, Byte value);
+    void setByte(String key, byte value);
 
     /**
      * Removes the mapping from the specified key to the {@link Byte}.
@@ -97,7 +97,7 @@ public interface PrimitivesSupport
     Short getShort(String key);
 
     /**
-     * Associates the specified {@link Short} with the specified key in this map
+     * Associates the specified short with the specified key in this map
      * (optional operation).  If the map previously contained a mapping for
      * the key, the old value is replaced by the specified value.
      *
@@ -105,7 +105,7 @@ public interface PrimitivesSupport
      * @param value value to be associated with the specified key.
      *              If this value is {@code null} then any value with the specified key will be removed.
      */
-    void setShort(String key, Short value);
+    void setShort(String key, short value);
 
     /**
      * Removes the mapping from the specified key to the {@link Short}.
@@ -132,7 +132,7 @@ public interface PrimitivesSupport
     Integer getInteger(String key);
 
     /**
-     * Associates the specified {@link Integer} with the specified key in this map
+     * Associates the specified {@code int}  with the specified key in this map
      * (optional operation).  If the map previously contained a mapping for
      * the key, the old value is replaced by the specified value.
      *
@@ -140,7 +140,7 @@ public interface PrimitivesSupport
      * @param value value to be associated with the specified key.
      *              If this value is {@code null} then any value with the specified key will be removed.
      */
-    void setInteger(String key, Integer value);
+    void setInteger(String key, int value);
 
     /**
      * Removes the mapping from the specified key to the {@link Integer}.
@@ -167,7 +167,7 @@ public interface PrimitivesSupport
     Long getLong(String key);
 
     /**
-     * Associates the specified {@link Long} with the specified key in this map
+     * Associates the specified {@code long} with the specified key in this map
      * (optional operation).  If the map previously contained a mapping for
      * the key, the old value is replaced by the specified value.
      *
@@ -175,7 +175,7 @@ public interface PrimitivesSupport
      * @param value value to be associated with the specified key.
      *              If this value is {@code null} then any value with the specified key will be removed.
      */
-    void setLong(String key, Long value);
+    void setLong(String key, long value);
 
     /**
      * Removes the mapping from the specified key to the {@link Long}.
@@ -190,39 +190,4 @@ public interface PrimitivesSupport
      * @return Set of keys.
      */
     Set<String> longKeys();
-
-    /**
-     * Returns the {@link String} associated with the specified key,
-     * or {@code null} if this map contains no mapping for the key.
-     *
-     * @param key the key whose associated value is to be returned
-     * @return the value associated with the specified key, or
-     * {@code null} if this map contains no mapping for the key
-     */
-    String getString(String key);
-
-    /**
-     * Associates the specified {@link String} with the specified key in this map
-     * (optional operation).  If the map previously contained a mapping for
-     * the key, the old value is replaced by the specified value.
-     *
-     * @param key   key with which the specified value is to be associated
-     * @param value value to be associated with the specified key.
-     *              If this value is {@code null} then any value with the specified key will be removed.
-     */
-    void setString(String key, String value);
-
-    /**
-     * Removes the mapping from the specified key to the {@link String}.
-     *
-     * @param key the key whose mapping is to be deleted
-     */
-    void deleteString(String key);
-
-    /**
-     * This method is used to retrieve all keys currently mapped for {@link String} values.
-     *
-     * @return Set of keys.
-     */
-    Set<String> stringKeys();
 }

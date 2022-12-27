@@ -30,7 +30,22 @@ public interface ProxyWebSocketInitialInterceptTextMessage
     String payload();
 
     /**
+     * This is a helper method to build a text WebSocket message to
+     * follow the current interception rules to determine the appropriate
+     * action to take for the message.
+     *
+     * @param payload The text message payload.
+     * @return The {@link ProxyWebSocketInitialInterceptTextMessage} that allows user rules to be
+     * followed.
+     */
+    static ProxyWebSocketInitialInterceptTextMessage followUserRulesTextMessage(String payload)
+    {
+        return FACTORY.followUserRulesInitialProxyTextMessage(payload);
+    }
+
+    /**
      * This is a helper method to build a text WebSocket message to be intercepted within the Proxy.
+     *
      * @param payload The text message payload.
      * @return The message.
      */
@@ -41,6 +56,7 @@ public interface ProxyWebSocketInitialInterceptTextMessage
 
     /**
      * This is a helper method to build a text WebSocket message to continue within the Proxy without interception.
+     *
      * @param payload The text message payload.
      * @return The message.
      */
@@ -51,6 +67,7 @@ public interface ProxyWebSocketInitialInterceptTextMessage
 
     /**
      * This is a helper method to build a text WebSocket message to be dropped.
+     *
      * @return The message to be dropped.
      */
     static ProxyWebSocketInitialInterceptTextMessage dropTextMessage()

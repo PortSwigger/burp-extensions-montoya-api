@@ -29,8 +29,24 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      */
     ByteArray payload();
 
+
+    /**
+     * This is a helper method to build a binary WebSocket message to
+     * follow the current interception rules to determine the appropriate
+     * action to take for the message.
+     *
+     * @param payload The binary message payload.
+     * @return The {@link ProxyWebSocketInitialInterceptBinaryMessage} that allows user rules to be
+     * followed.
+     */
+    static ProxyWebSocketInitialInterceptBinaryMessage followUserRulesBinaryMessage(ByteArray payload)
+    {
+        return FACTORY.followUserRulesInitialProxyBinaryMessage(payload);
+    }
+
     /**
      * This is a helper method to build a binary WebSocket message to be intercepted within the Proxy.
+     *
      * @param payload The binary message payload.
      * @return The message.
      */
@@ -41,6 +57,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
 
     /**
      * This is a helper method to build a binary WebSocket message to continue within the Proxy without interception.
+     *
      * @param payload The binary message payload.
      * @return The message.
      */
@@ -51,6 +68,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
 
     /**
      * This is a helper method to build a binary WebSocket message to be dropped.
+     *
      * @return The message to be dropped.
      */
     static ProxyWebSocketInitialInterceptBinaryMessage dropBinaryMessage()

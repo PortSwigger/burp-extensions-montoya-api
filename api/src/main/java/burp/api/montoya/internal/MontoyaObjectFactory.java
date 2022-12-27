@@ -176,6 +176,10 @@ public interface MontoyaObjectFactory
 
     WebSocketBinaryMessage dropBinaryMessage();
 
+    ProxyWebSocketInitialInterceptBinaryMessage followUserRulesInitialProxyBinaryMessage(ByteArray payload);
+
+    ProxyWebSocketInitialInterceptTextMessage followUserRulesInitialProxyTextMessage(String payload);
+
     ProxyWebSocketInitialInterceptBinaryMessage interceptInitialProxyBinaryMessage(ByteArray payload);
 
     ProxyWebSocketInitialInterceptTextMessage interceptInitialProxyTextMessage(String payload);

@@ -237,9 +237,9 @@ public interface ByteArray extends Iterable<Byte>
     int countMatches(String searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
 
     /**
-     * This method can be used to convert the bytes of the ByteArray into UTF-8 encoded String form.
+     * This method can be used to convert the bytes of the ByteArray into String form.
      *
-     * @return The converted data in UTF-8 encoding.
+     * @return The converted data in String form.
      */
     @Override
     String toString();
@@ -259,9 +259,9 @@ public interface ByteArray extends Iterable<Byte>
     ByteArray withAppended(int... data);
 
     /**
-     * This method creates a new {@code ByteArray} appended with the provided text as UTF-8 encoded bytes.
+     * This method creates a new {@code ByteArray} appended with the provided text as bytes.
      *
-     * @param text The UTF-8 encoded string to append.
+     * @param text The string to append.
      */
     ByteArray withAppended(String text);
 
@@ -309,11 +309,11 @@ public interface ByteArray extends Iterable<Byte>
     }
 
     /**
-     * Create a new {@code ByteArray} from the provided UTF-8 encoded text.
+     * Create a new {@code ByteArray} from the provided text.
      * This object's data will be stored in temporary memory-mapped file.
      *
-     * @param text UTF-8 encoded text.
-     * @return New {@code ByteArray} holding a copy of the text as UTF-8 encoded bytes.
+     * @param text the text for the byte array.
+     * @return New {@code ByteArray} holding a copy of the text as bytes.
      */
     static ByteArray byteArray(String text)
     {

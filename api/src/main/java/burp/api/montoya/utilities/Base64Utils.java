@@ -30,11 +30,11 @@ public interface Base64Utils
     ByteArray encode(ByteArray data, Base64EncodingOptions... options);
 
     /**
-     * Encodes all UTF-8 encoded bytes from the specified String into a newly-allocated
+     * Encodes all bytes from the specified String into a newly-allocated
      * byte array using the {@link Base64} encoding scheme. The returned byte
      * array is of the length of the resulting bytes.
      *
-     * @param data    the UTF-8 encoded string to encode.
+     * @param data    the string to encode.
      * @param options the options to use for encoding
      * @return A newly-allocated byte array containing the resulting
      * encoded bytes.
@@ -42,7 +42,7 @@ public interface Base64Utils
     ByteArray encode(String data, Base64EncodingOptions... options);
 
     /**
-     * Encodes all bytes from the specified byte array into a UTF-8 encoded String using the {@link Base64} encoding scheme.
+     * Encodes all bytes from the specified byte array into a String using the {@link Base64} encoding scheme.
      *
      * @param data    the byte array to encode
      * @param options the options to use for encoding
@@ -52,9 +52,9 @@ public interface Base64Utils
     String encodeToString(ByteArray data, Base64EncodingOptions... options);
 
     /**
-     * Encodes all UTF-8 encoded bytes from the specified String into a UTF-8 encoded String using the {@link Base64} encoding scheme.
+     * Encodes all bytes from the specified String into a String using the {@link Base64} encoding scheme.
      *
-     * @param data    the UTF-8 encoded string to encode.
+     * @param data    the string to encode.
      * @param options the options to use for encoding
      * @return A newly-allocated byte array containing the resulting
      * encoded bytes.
@@ -74,11 +74,11 @@ public interface Base64Utils
     ByteArray decode(ByteArray data, Base64DecodingOptions... options);
 
     /**
-     * Decodes all UTF-8 encoded bytes from the specified String into a newly-allocated
+     * Decodes all bytes from the specified String into a newly-allocated
      * byte array using the {@link Base64} decoding scheme. The returned byte
      * array is of the length of the resulting bytes.
      *
-     * @param data    the UTF-8 encoded string to decode.
+     * @param data    the string to decode.
      * @param options the options to use for decoding
      * @return A newly-allocated byte array containing the resulting
      * decoded bytes.

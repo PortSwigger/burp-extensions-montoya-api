@@ -14,8 +14,6 @@ package burp.api.montoya.utilities;
 public interface URLUtils
 {
     /**
-     * UTF-8 charset is assumed.
-     *
      * @param string {@code String} to be translated.
      * @return the translated {@code String}.
      * @see java.net.URLEncoder#encode(String, String)
@@ -23,8 +21,6 @@ public interface URLUtils
     String encode(String string);
 
     /**
-     * UTF-8 charset is assumed.
-     *
      * @param string the {@code String} to decode
      * @return the newly decoded {@code String}
      * @see java.net.URLDecoder#decode(String, String)

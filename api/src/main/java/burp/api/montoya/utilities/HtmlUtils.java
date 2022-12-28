@@ -15,7 +15,6 @@ public interface HtmlUtils
 {
     /**
      * Encode HTML text using {@link HtmlEncoding#STANDARD} encoding.
-     * UTF-8 charset is assumed.
      *
      * @param html {@code String} to be encoded.
      * @return the encoded {@code String}.
@@ -27,7 +26,6 @@ public interface HtmlUtils
 
     /**
      * Encode HTML text.
-     * UTF-8 charset is assumed.
      *
      * @param html     {@code String} to be encoded.
      * @param encoding {@link HtmlEncoding} to be used.
@@ -37,7 +35,6 @@ public interface HtmlUtils
 
     /**
      * Decode encoded HTML text.
-     * UTF-8 charset is assumed.
      *
      * @param encodedHtml {@code String} to be decoded.
      * @return the decoded {@code String}.

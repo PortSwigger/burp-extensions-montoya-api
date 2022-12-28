@@ -26,7 +26,7 @@ public interface Payload
     /**
      * This is a helper method to create a new {@link Payload} instance from a String payload value.
      *
-     * @param payload String payload value. UTF-8 charset is assumed.
+     * @param payload String payload value.
      * @return A new {@link Payload} instance.
      */
     static Payload from(String payload)

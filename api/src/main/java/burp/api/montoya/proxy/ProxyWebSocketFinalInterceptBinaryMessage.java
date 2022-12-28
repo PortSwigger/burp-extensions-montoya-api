@@ -9,13 +9,12 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.websocket.Direction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a binary message from
- * {@link ProxyWebSocketHandler#handleBinaryMessageToBeIssued(ByteArray, Direction)}.
+ * {@link ProxyWebSocketHandler#handleBinaryMessageToBeIssued(InterceptedBinaryMessage)}.
  */
 public interface ProxyWebSocketFinalInterceptBinaryMessage
 {

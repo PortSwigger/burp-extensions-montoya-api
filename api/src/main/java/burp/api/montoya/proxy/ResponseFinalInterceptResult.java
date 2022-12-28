@@ -9,14 +9,13 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
-import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a result from
- * {@link ProxyHttpResponseHandler#handleResponseToReturn(InterceptedHttpResponse, HttpRequest, Annotations)}.
+ * {@link ProxyHttpResponseHandler#handleResponseToReturn(InterceptedHttpResponse)}.
  */
 public interface ResponseFinalInterceptResult
 {

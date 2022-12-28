@@ -8,14 +8,12 @@
 
 package burp.api.montoya.proxy;
 
-import burp.api.montoya.websocket.Direction;
-
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 
 /**
  * Extensions can implement this interface when returning a text message from
- * {@link ProxyWebSocketHandler#handleTextMessageReceived(String, Direction)}.
+ * {@link ProxyWebSocketHandler#handleTextMessageReceived(InterceptedTextMessage)}.
  */
 public interface ProxyWebSocketInitialInterceptTextMessage
 {

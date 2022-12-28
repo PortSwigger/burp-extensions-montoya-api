@@ -15,7 +15,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a result from
- * {@link ProxyHttpRequestHandler#handleRequestToIssue(InterceptedHttpRequest, Annotations)}.
+ * {@link ProxyHttpRequestHandler#handleRequestToIssue(InterceptedHttpRequest)}.
  */
 public interface RequestFinalInterceptResult
 {

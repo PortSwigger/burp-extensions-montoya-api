@@ -8,12 +8,10 @@
 
 package burp.api.montoya.scanner;
 
-import burp.api.montoya.scanner.audit.Audit;
-
 /**
  * This interface represents an instance of a crawl and audit in the Burp
  * Scanner tool.
  */
-public interface CrawlAndAudit extends Crawl, Audit
+public interface CrawlAndAudit extends ScanTask
 {
 }

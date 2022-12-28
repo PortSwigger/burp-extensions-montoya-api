@@ -9,6 +9,7 @@
 package burp.api.montoya.scanner;
 
 import burp.api.montoya.core.Registration;
+import burp.api.montoya.scanner.audit.Audit;
 import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPointProvider;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
@@ -57,12 +58,18 @@ public interface Scanner
     Registration registerInsertionPointProvider(AuditInsertionPointProvider insertionPointProvider);
 
     /**
-     * This method can be used to create a scan that can be configured before
-     * being sent to the Burp Scanner tool.
+     * This method can be used to start a crawl in the Burp Scanner tool.
      *
-     * @return The {@link Scan} that can be configured.
+     * @return The {@link Crawl} started in the Burp Scanner tool.
      */
-    Scan createScan();
+    Crawl startCrawl(CrawlConfiguration crawlConfiguration);
+
+    /**
+     * This method can be used to start an audit in the Burp Scanner tool.
+     *
+     * @return The {@link Audit} started in the Burp Scanner tool.
+     */
+    Audit startAudit(AuditConfiguration auditConfiguration);
 
     /**
      * This method is used to generate a report for the specified Scanner

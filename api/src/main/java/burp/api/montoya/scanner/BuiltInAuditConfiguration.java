@@ -11,7 +11,7 @@ package burp.api.montoya.scanner;
 /**
  * This enum represents built in configurations for the Burp Scanner tool.
  */
-public enum BuiltInScanConfiguration
+public enum BuiltInAuditConfiguration
 {
     LEGACY_PASSIVE_AUDIT_CHECKS,
     LEGACY_ACTIVE_AUDIT_CHECKS

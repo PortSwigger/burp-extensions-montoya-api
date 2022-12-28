@@ -80,8 +80,6 @@ import burp.api.montoya.proxy.ResponseInitialInterceptResult;
 import burp.api.montoya.scanner.AuditResult;
 import burp.api.montoya.scanner.ConsolidationAction;
 import burp.api.montoya.scanner.Crawl;
-import burp.api.montoya.scanner.InvalidLauncherConfigurationException;
-import burp.api.montoya.scanner.Scan;
 import burp.api.montoya.scanner.ScanCheck;
 import burp.api.montoya.scanner.Scanner;
 import burp.api.montoya.scanner.audit.Audit;
@@ -150,8 +148,10 @@ import static burp.api.montoya.http.message.requests.HttpRequest.http2Request;
 import static burp.api.montoya.http.message.requests.HttpRequest.httpRequest;
 import static burp.api.montoya.http.message.requests.HttpRequest.httpRequestFromUrl;
 import static burp.api.montoya.http.message.responses.HttpResponse.httpResponse;
-import static burp.api.montoya.scanner.BuiltInScanConfiguration.LEGACY_ACTIVE_AUDIT_CHECKS;
-import static burp.api.montoya.scanner.BuiltInScanConfiguration.LEGACY_PASSIVE_AUDIT_CHECKS;
+import static burp.api.montoya.scanner.AuditConfiguration.auditConfiguration;
+import static burp.api.montoya.scanner.BuiltInAuditConfiguration.LEGACY_ACTIVE_AUDIT_CHECKS;
+import static burp.api.montoya.scanner.BuiltInAuditConfiguration.LEGACY_PASSIVE_AUDIT_CHECKS;
+import static burp.api.montoya.scanner.CrawlConfiguration.crawlConfiguration;
 import static burp.api.montoya.scanner.ReportFormat.XML;
 import static burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint.auditInsertionPoint;
 import static burp.api.montoya.scanner.audit.issues.AuditIssue.auditIssue;
@@ -334,16 +334,9 @@ public class TestExtension implements BurpExtension
         userInterface.applyThemeToComponent(panel);
     }
 
-    private void doActiveScan() throws InvalidLauncherConfigurationException
+    private void doActiveScan()
     {
-        Scan scan = scanner.createScan();
-
-        scan.addRequest(httpRequest);
-        scan.addConfiguration(LEGACY_ACTIVE_AUDIT_CHECKS);
-
-        Audit audit = scan.startAudit();
-
-        audit.delete();
+        Audit audit = scanner.startAudit(auditConfiguration(LEGACY_ACTIVE_AUDIT_CHECKS));
 
         List<AuditIssue> issues = audit.issues();
         for (AuditIssue issue : issues)
@@ -368,30 +361,22 @@ public class TestExtension implements BurpExtension
         int insertionPointCount = audit.insertionPointCount();
         int requestCount = audit.requestCount();
         String statusMessage = audit.statusMessage();
+
+        audit.delete();
     }
 
-    private void doActiveScanWithInsertionPoints() throws InvalidLauncherConfigurationException
+    private void doActiveScanWithInsertionPoints()
     {
-        Scan scan = scanner.createScan();
+        Audit audit = scanner.startAudit(auditConfiguration(LEGACY_ACTIVE_AUDIT_CHECKS));
 
-        Utilities utilities = this.utilities;
-        Range range1 = range(0, 10);
-        Range range2 = range(23, 51);
-
-        scan.addRequest(httpRequest, List.of(range1, range2));
-        scan.addConfiguration(LEGACY_ACTIVE_AUDIT_CHECKS);
-
-        Audit audit = scan.startAudit();
+        audit.addRequest(httpRequest, List.of(range(0, 10), range(23, 51)));
     }
 
-    private void doPassiveScan() throws InvalidLauncherConfigurationException
+    private void doPassiveScan()
     {
-        Scan scan = scanner.createScan();
+        Audit audit = scanner.startAudit(auditConfiguration(LEGACY_PASSIVE_AUDIT_CHECKS));
 
-        scan.addRequestResponse(httpRequestResponse);
-        scan.addConfiguration(LEGACY_PASSIVE_AUDIT_CHECKS);
-
-        Audit audit = scan.startAudit();
+        audit.addRequestResponse(httpRequestResponse);
     }
 
     private void excludeFromScope() throws Exception
@@ -1287,13 +1272,9 @@ public class TestExtension implements BurpExtension
         api.repeater().sendToRepeater(httpRequest);
     }
 
-    private void sendToSpider() throws InvalidLauncherConfigurationException
+    private void sendToSpider()
     {
-        Scan scan = scanner.createScan();
-
-        scan.addUrl("http://example.org/login");
-
-        Crawl crawl = scan.startCrawl();
+        Crawl crawl = scanner.startCrawl(crawlConfiguration("https://portswigger.net"));
     }
 
     private void setProxyInterceptionEnabled()

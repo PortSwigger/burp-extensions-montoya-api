@@ -39,7 +39,10 @@ import burp.api.montoya.proxy.RequestFinalInterceptResult;
 import burp.api.montoya.proxy.RequestInitialInterceptResult;
 import burp.api.montoya.proxy.ResponseFinalInterceptResult;
 import burp.api.montoya.proxy.ResponseInitialInterceptResult;
+import burp.api.montoya.scanner.AuditConfiguration;
 import burp.api.montoya.scanner.AuditResult;
+import burp.api.montoya.scanner.BuiltInAuditConfiguration;
+import burp.api.montoya.scanner.CrawlConfiguration;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
 import burp.api.montoya.scanner.audit.issues.AuditIssueConfidence;
@@ -223,4 +226,8 @@ public interface MontoyaObjectFactory
     AuditResult auditResult(List<AuditIssue> auditIssues);
 
     AuditResult auditResult(AuditIssue... auditIssues);
+
+    AuditConfiguration auditConfiguration(BuiltInAuditConfiguration builtInAuditConfiguration);
+
+    CrawlConfiguration crawlConfiguration(String... seedUrls);
 }

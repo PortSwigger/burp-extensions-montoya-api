@@ -9,6 +9,10 @@
 package burp.api.montoya.ui.editor;
 
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.ui.Selection;
+
+import javax.swing.JComponent;
+import java.util.Optional;
 
 /**
  * This interface provides extensions with an instance of Burp Suites HTTP request editor to use in their own user interface.
@@ -26,4 +30,34 @@ public interface HttpRequestEditor extends Editor
      * @param request The HTTP request to be set.
      */
     void setRequest(HttpRequest request);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    void setSearchExpression(String expression);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean isModified();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    int caretPosition();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    Optional<Selection> selection();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    JComponent uiComponent();
 }

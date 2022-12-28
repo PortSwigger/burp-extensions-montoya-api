@@ -50,41 +50,31 @@ public interface HttpResponse extends HttpMessage
     String httpVersion();
 
     /**
-     * This method is used to obtain the HTTP headers contained in the message.
-     *
-     * @return A list of HTTP headers.
+     * {@inheritDoc}
      */
     @Override
     List<HttpHeader> headers();
 
     /**
-     * This method is used to get the body of a message as a byte array.
-     *
-     * @return The body of a message as a byte array.
+     * {@inheritDoc}
      */
     @Override
     ByteArray body();
 
     /**
-     * This method is used to get the body of a message as a {@code String}.
-     *
-     * @return The body of a message as a {@code String}.
+     * {@inheritDoc}
      */
     @Override
     String bodyToString();
 
     /**
-     * This method is used to obtain the offset within the message where the message body begins.
-     *
-     * @return The message body offset.
+     * {@inheritDoc}
      */
     @Override
     int bodyOffset();
 
     /**
-     * This method is used to obtain the markers for the response.
-     *
-     * @return A list of HTTP headers.
+     * {@inheritDoc}
      */
     @Override
     List<Marker> markers();
@@ -127,17 +117,13 @@ public interface HttpResponse extends HttpMessage
     List<Attribute> attributes(AttributeType... types);
 
     /**
-     * This method is used to get the message as a byte array.
-     *
-     * @return The message as a byte array.
+     * {@inheritDoc}
      */
     @Override
     ByteArray toByteArray();
 
     /**
-     * This method is used to get the message as a {@code String}.
-     *
-     * @return The message as a {@code String}.
+     * {@inheritDoc}
      */
     @Override
     String toString();

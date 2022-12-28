@@ -14,4 +14,27 @@ package burp.api.montoya.scanner;
  */
 public interface CrawlAndAudit extends ScanTask
 {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    void delete();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String statusMessage();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    int requestCount();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    int errorCount();
 }

@@ -18,5 +18,8 @@ public interface Task
      */
     void delete();
 
+    /**
+     * @return the current status message of the task
+     */
     String statusMessage();
 }

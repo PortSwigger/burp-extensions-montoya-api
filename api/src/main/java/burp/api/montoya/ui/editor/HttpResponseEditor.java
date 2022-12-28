@@ -9,6 +9,10 @@
 package burp.api.montoya.ui.editor;
 
 import burp.api.montoya.http.message.responses.HttpResponse;
+import burp.api.montoya.ui.Selection;
+
+import javax.swing.JComponent;
+import java.util.Optional;
 
 /**
  * This interface provides extensions with an instance of Burp Suites HTTP response editor to use in their own user interface.
@@ -26,4 +30,34 @@ public interface HttpResponseEditor extends Editor
      * @param response The HTTP response to be set.
      */
     void setResponse(HttpResponse response);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    void setSearchExpression(String expression);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean isModified();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    int caretPosition();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    Optional<Selection> selection();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    JComponent uiComponent();
 }

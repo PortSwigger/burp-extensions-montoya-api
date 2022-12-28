@@ -59,4 +59,28 @@ public interface Audit extends ScanTask
      *                        audit.
      */
     void addRequestResponse(HttpRequestResponse requestResponse);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    int requestCount();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    int errorCount();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    void delete();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String statusMessage();
 }

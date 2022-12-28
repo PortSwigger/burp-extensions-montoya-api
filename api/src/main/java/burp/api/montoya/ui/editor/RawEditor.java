@@ -9,6 +9,10 @@
 package burp.api.montoya.ui.editor;
 
 import burp.api.montoya.core.ByteArray;
+import burp.api.montoya.ui.Selection;
+
+import javax.swing.JComponent;
+import java.util.Optional;
 
 /**
  * This interface provides extensions with an instance of Burp Suite's HTTP text editor to use in their own user interface.
@@ -31,4 +35,34 @@ public interface RawEditor extends Editor
      * @param contents The content to set in the text editor.
      */
     void setContents(ByteArray contents);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    void setSearchExpression(String expression);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean isModified();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    int caretPosition();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    Optional<Selection> selection();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    JComponent uiComponent();
 }

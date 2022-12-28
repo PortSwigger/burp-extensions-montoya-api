@@ -70,9 +70,7 @@ public interface HttpRequest extends HttpMessage
     String httpVersion();
 
     /**
-     * This method is used to obtain the HTTP headers contained in the request.
-     *
-     * @return A list of HTTP headers.
+     * {@inheritDoc}
      */
     @Override
     List<HttpHeader> headers();
@@ -88,50 +86,37 @@ public interface HttpRequest extends HttpMessage
     List<ParsedHttpParameter> parameters();
 
     /**
-     * This method is used to get the body of a request as a byte array.
-     *
-     * @return The body of a request as a byte array.
+     * {@inheritDoc}
      */
     @Override
     ByteArray body();
 
     /**
-     * This method is used to get the body of a response as a {@code String}.
-     *
-     * @return The body of a message as a {@code String}.
+     * {@inheritDoc}
      */
     @Override
     String bodyToString();
 
     /**
-     * This method is used to obtain the offset within the message where the response body begins.
-     * Returns zero for HTTP/2 responses.
-     *
-     * @return The message body offset.
+     * {@inheritDoc}
      */
     @Override
     int bodyOffset();
 
     /**
-     * This method is used to obtain the markers contained in the message.
-     *
-     * @return A list of HTTP headers.
+     * {@inheritDoc}
      */
     @Override
     List<Marker> markers();
 
     /**
-     * This method is used to get the message as a byte array.
-     *
-     * @return The message as a byte array.
+     * {@inheritDoc}
      */
     @Override
     ByteArray toByteArray();
 
     /**
-     * This method is used to get the message as a {@code String}.
-     *
-     * @return The message as a {@code String}.
+     * {@inheritDoc}
      */
     @Override
     String toString();

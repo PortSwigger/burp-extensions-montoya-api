@@ -31,4 +31,16 @@ public interface ScanTask extends Task
      * task.
      */
     int errorCount();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    void delete();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String statusMessage();
 }

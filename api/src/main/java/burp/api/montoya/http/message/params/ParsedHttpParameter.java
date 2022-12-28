@@ -16,6 +16,24 @@ import burp.api.montoya.core.Range;
 public interface ParsedHttpParameter extends HttpParameter
 {
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpParameterType type();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String name();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String value();
+
+    /**
      * This method is used to retrieve the offsets of the parameter name within the HTTP request.
      *
      * @return The parameter name offsets.

@@ -30,10 +30,33 @@ public interface RequestResult
     Annotations annotations();
 
     /**
-     * This is a helper method used to create a new instance of {@code RequestHandlerResult}.
+     * This is a helper method used to create a new instance of {@code RequestResult}.
+     * Request and Annotations will not be modified.
      *
-     * @param request    An HTTP request.
-     * @param annotations annotations.
+     * @return A new {@code RequestResult} instance.
+     */
+    static RequestResult requestResult()
+    {
+        return FACTORY.requestResult();
+    }
+
+    /**
+     * This is a helper method used to create a new instance of {@code RequestResult}.
+     * Annotations will not be modified.
+     *
+     * @param request An HTTP request.
+     * @return A new {@code RequestHandlerResult} instance.
+     */
+    static RequestResult requestResult(HttpRequest request)
+    {
+        return FACTORY.requestResult(request);
+    }
+
+    /**
+     * This is a helper method used to create a new instance of {@code RequestResult}.
+     *
+     * @param request     An HTTP request.
+     * @param annotations modified annotations.
      * @return A new {@code RequestHandlerResult} instance.
      */
     static RequestResult requestResult(HttpRequest request, Annotations annotations)

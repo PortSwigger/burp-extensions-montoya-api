@@ -34,10 +34,7 @@ public interface SiteMap
      *
      * @return A list of all items from the site map.
      */
-    default List<HttpRequestResponse> requestResponses()
-    {
-        return requestResponses(node -> true);
-    }
+    List<HttpRequestResponse> requestResponses();
 
     /**
      * This method returns current audit issues for URLs in the site map that are matched by the
@@ -54,10 +51,7 @@ public interface SiteMap
      *
      * @return A list of audit issues.
      */
-    default List<AuditIssue> issues()
-    {
-        return issues(node -> true);
-    }
+    List<AuditIssue> issues();
 
     /**
      * This method can be used to add an {@link HttpRequestResponse} item to Burp's site

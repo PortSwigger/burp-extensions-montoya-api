@@ -39,7 +39,7 @@ public interface HttpParameter
      */
     static HttpParameter urlParameter(String name, String value)
     {
-        return parameter(name, value, HttpParameterType.URL);
+        return FACTORY.urlParameter(name, value);
     }
 
     /**
@@ -51,7 +51,7 @@ public interface HttpParameter
      */
     static HttpParameter bodyParameter(String name, String value)
     {
-        return parameter(name, value, HttpParameterType.BODY);
+        return FACTORY.bodyParameter(name, value);
     }
 
     /**
@@ -63,7 +63,7 @@ public interface HttpParameter
      */
     static HttpParameter cookieParameter(String name, String value)
     {
-        return parameter(name, value, HttpParameterType.COOKIE);
+        return FACTORY.cookieParameter(name, value);
     }
 
     /**

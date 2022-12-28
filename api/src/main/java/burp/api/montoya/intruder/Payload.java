@@ -10,7 +10,7 @@ package burp.api.montoya.intruder;
 
 import burp.api.montoya.core.ByteArray;
 
-import static burp.api.montoya.core.ByteArray.byteArray;
+import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * This interface represents an Intruder payload.
@@ -34,9 +34,9 @@ public interface Payload
      * @param payload String payload value.
      * @return A new {@link Payload} instance.
      */
-    static Payload from(String payload)
+    static Payload payload(String payload)
     {
-        return from(byteArray(payload));
+        return FACTORY.payload(payload);
     }
 
     /**
@@ -45,8 +45,8 @@ public interface Payload
      * @param payload Byte array payload value.
      * @return A new {@link Payload} instance.
      */
-    static Payload from(ByteArray payload)
+    static Payload payload(ByteArray payload)
     {
-        return () -> payload;
+        return FACTORY.payload(payload);
     }
 }

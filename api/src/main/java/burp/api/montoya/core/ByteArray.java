@@ -101,10 +101,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm The value to be searched for.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(ByteArray searchTerm)
-    {
-        return indexOf(searchTerm, true, 0, length());
-    }
+    int indexOf(ByteArray searchTerm);
 
     /**
      * This method searches the data in the ByteArray for the first occurrence of a specified term.
@@ -113,10 +110,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm The value to be searched for.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(String searchTerm)
-    {
-        return indexOf(searchTerm, true, 0, length());
-    }
+    int indexOf(String searchTerm);
 
     /**
      * This method searches the data in the ByteArray for the first occurrence of a specified term.
@@ -126,10 +120,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive Flags whether the search is case-sensitive.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(ByteArray searchTerm, boolean caseSensitive)
-    {
-        return indexOf(searchTerm, caseSensitive, 0, length());
-    }
+     int indexOf(ByteArray searchTerm, boolean caseSensitive);
 
     /**
      * This method searches the data in the ByteArray for the first occurrence of a specified term.
@@ -139,10 +130,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive Flags whether the search is case-sensitive.
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(String searchTerm, boolean caseSensitive)
-    {
-        return indexOf(searchTerm, caseSensitive, 0, length());
-    }
+    int indexOf(String searchTerm, boolean caseSensitive);
 
     /**
      * This method searches the data in the ByteArray for the first occurrence of a specified term.
@@ -174,10 +162,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm The value to be searched for.
      * @return The count of all matches of the pattern
      */
-    default int countMatches(ByteArray searchTerm)
-    {
-        return countMatches(searchTerm, true, 0, length());
-    }
+    int countMatches(ByteArray searchTerm);
 
     /**
      * This method searches the data in the ByteArray and counts all matches for a specified term.
@@ -185,10 +170,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm The value to be searched for.
      * @return The count of all matches of the pattern
      */
-    default int countMatches(String searchTerm)
-    {
-        return countMatches(searchTerm, true, 0, length());
-    }
+    int countMatches(String searchTerm);
 
     /**
      * This method searches the data in the ByteArray and counts all matches for a specified term.
@@ -197,10 +179,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive Flags whether the search is case-sensitive.
      * @return The count of all matches of the pattern
      */
-    default int countMatches(ByteArray searchTerm, boolean caseSensitive)
-    {
-        return countMatches(searchTerm, caseSensitive, 0, length());
-    }
+    int countMatches(ByteArray searchTerm, boolean caseSensitive);
 
     /**
      * This method searches the data in the ByteArray and counts all matches for a specified term.
@@ -209,10 +188,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive Flags whether the search is case-sensitive.
      * @return The count of all matches of the pattern
      */
-    default int countMatches(String searchTerm, boolean caseSensitive)
-    {
-        return countMatches(searchTerm, caseSensitive, 0, length());
-    }
+     int countMatches(String searchTerm, boolean caseSensitive);
 
     /**
      * This method searches the data in the ByteArray and counts all matches for a specified term.

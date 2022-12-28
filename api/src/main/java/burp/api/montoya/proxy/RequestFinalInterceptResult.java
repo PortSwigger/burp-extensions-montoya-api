@@ -12,8 +12,6 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.proxy.FinalInterceptAction.CONTINUE;
-import static burp.api.montoya.proxy.FinalInterceptAction.DROP;
 
 /**
  * Extensions can implement this interface when returning a result from
@@ -56,23 +54,23 @@ public interface RequestFinalInterceptResult
      */
     static RequestFinalInterceptResult continueWith(HttpRequest request)
     {
-        return finalInterceptResult(request, Annotations.annotations(), CONTINUE);
+        return FACTORY.requestFinalInterceptResultContinueWith(request);
     }
 
     /**
      * This method can be used to create a result that causes Burp Proxy to
      * forward the request.
      *
-     * @param request    The {@link HttpRequest} to forward after any
-     *                   modifications by the extension.
+     * @param request     The {@link HttpRequest} to forward after any
+     *                    modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted
-     *                   HTTP request.
+     *                    HTTP request.
      * @return The {@link RequestFinalInterceptResult} that causes Burp Proxy
      * to forward the request.
      */
     static RequestFinalInterceptResult continueWith(HttpRequest request, Annotations annotations)
     {
-        return finalInterceptResult(request, annotations, CONTINUE);
+        return FACTORY.requestFinalInterceptResultContinueWith(request, annotations);
     }
 
     /**
@@ -84,18 +82,18 @@ public interface RequestFinalInterceptResult
      */
     static RequestFinalInterceptResult drop()
     {
-        return finalInterceptResult(null, Annotations.annotations(), DROP);
+        return FACTORY.requestFinalInterceptResultDrop();
     }
 
     /**
      * This method can be used to create a default implementation of a final
      * intercept result for an HTTP request.
      *
-     * @param request    The {@link HttpRequest} to forward after any
-     *                   modifications by the extension.
+     * @param request     The {@link HttpRequest} to forward after any
+     *                    modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted
-     *                   HTTP request.
-     * @param action     The {@link FinalInterceptAction} for the HTTP request.
+     *                    HTTP request. {@code null} will leave the annotations unmodified.
+     * @param action      The {@link FinalInterceptAction} for the HTTP request.
      * @return The {@link RequestFinalInterceptResult} including the HTTP
      * request, annotations and final intercept action.
      */

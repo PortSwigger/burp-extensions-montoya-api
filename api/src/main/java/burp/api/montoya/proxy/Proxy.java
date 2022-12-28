@@ -33,10 +33,7 @@ public interface Proxy
      * @return The list of all the {@link ProxyHttpRequestResponse} items in the
      * Proxy history.
      */
-    default List<ProxyHttpRequestResponse> history()
-    {
-        return history(requestResponse -> true);
-    }
+    List<ProxyHttpRequestResponse> history();
 
     /**
      * This method returns details of items in the Proxy history based on the

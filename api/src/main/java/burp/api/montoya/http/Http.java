@@ -48,10 +48,7 @@ public interface Http
      * @param request The full HTTP request.
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
-    default HttpRequestResponse issueRequest(HttpRequest request)
-    {
-        return issueRequest(request, HttpMode.AUTO, null);
-    }
+    HttpRequestResponse issueRequest(HttpRequest request);
 
     /**
      * This method can be used to issue HTTP requests and retrieve their responses.
@@ -60,10 +57,7 @@ public interface Http
      * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
-    default HttpRequestResponse issueRequest(HttpRequest request, HttpMode httpMode)
-    {
-        return issueRequest(request, httpMode, null);
-    }
+    HttpRequestResponse issueRequest(HttpRequest request, HttpMode httpMode);
 
     /**
      * This method can be used to issue HTTP requests and retrieve their responses.

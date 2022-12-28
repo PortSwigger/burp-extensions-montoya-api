@@ -13,10 +13,6 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.proxy.InitialInterceptAction.DO_NOT_INTERCEPT;
-import static burp.api.montoya.proxy.InitialInterceptAction.DROP;
-import static burp.api.montoya.proxy.InitialInterceptAction.FOLLOW_USER_RULES;
-import static burp.api.montoya.proxy.InitialInterceptAction.INTERCEPT;
 
 /**
  * Extensions can implement this interface when returning a result from
@@ -60,7 +56,7 @@ public interface ResponseInitialInterceptResult
      */
     static ResponseInitialInterceptResult intercept(HttpResponse response)
     {
-        return initialInterceptResult(response, Annotations.annotations(), INTERCEPT);
+        return FACTORY.responseInitialInterceptResultIntercept(response);
     }
 
     /**
@@ -77,7 +73,7 @@ public interface ResponseInitialInterceptResult
      */
     static ResponseInitialInterceptResult intercept(HttpResponse response, Annotations annotations)
     {
-        return initialInterceptResult(response, annotations, INTERCEPT);
+        return FACTORY.responseInitialInterceptResultIntercept(response, annotations);
     }
 
     /**
@@ -91,7 +87,7 @@ public interface ResponseInitialInterceptResult
      */
     static ResponseInitialInterceptResult doNotIntercept(HttpResponse response)
     {
-        return initialInterceptResult(response, Annotations.annotations(), DO_NOT_INTERCEPT);
+        return FACTORY.responseInitialInterceptResultDoNotIntercept(response);
     }
 
     /**
@@ -107,7 +103,7 @@ public interface ResponseInitialInterceptResult
      */
     static ResponseInitialInterceptResult doNotIntercept(HttpResponse response, Annotations annotations)
     {
-        return initialInterceptResult(response, annotations, DO_NOT_INTERCEPT);
+        return FACTORY.responseInitialInterceptResultDoNotIntercept(response, annotations);
     }
 
     /**
@@ -123,7 +119,7 @@ public interface ResponseInitialInterceptResult
      */
     static ResponseInitialInterceptResult followUserRules(HttpResponse response)
     {
-        return initialInterceptResult(response, Annotations.annotations(), FOLLOW_USER_RULES);
+        return FACTORY.responseInitialInterceptResultFollowUserRules(response);
     }
 
     /**
@@ -141,7 +137,7 @@ public interface ResponseInitialInterceptResult
      */
     static ResponseInitialInterceptResult followUserRules(HttpResponse response, Annotations annotations)
     {
-        return initialInterceptResult(response, annotations, FOLLOW_USER_RULES);
+        return FACTORY.responseInitialInterceptResultFollowUserRules(response, annotations);
     }
 
     /**
@@ -153,7 +149,7 @@ public interface ResponseInitialInterceptResult
      */
     static ResponseInitialInterceptResult drop()
     {
-        return initialInterceptResult(null, Annotations.annotations(), DROP);
+        return FACTORY.responseInitialInterceptResultDrop();
     }
 
     /**

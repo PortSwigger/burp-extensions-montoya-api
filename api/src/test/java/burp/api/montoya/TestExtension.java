@@ -635,7 +635,7 @@ public class TestExtension implements BurpExtension
 
                         boolean isEven = currentRequestCounter % 2 == 0;
 
-                        return Payload.from(isEven ? "Even-" + currentRequestCounter : "Odd-" + currentRequestCounter);
+                        return Payload.payload(isEven ? "Even-" + currentRequestCounter : "Odd-" + currentRequestCounter);
                     }
                 };
             }

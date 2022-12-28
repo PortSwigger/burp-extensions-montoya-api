@@ -29,12 +29,36 @@ public interface ResponseResult
      */
     Annotations annotations();
 
+
     /**
-     * This is a helper method used to create a new instance of {@code ResponseHandlerResult}.
+     * This is a helper method used to create a new instance of {@code ResponseResult}.
+     * Response and Annotations will not be modified.
      *
-     * @param response   An HTTP response.
-     * @param annotations annotations.
-     * @return A new {@code ResponseHandlerResult} instance.
+     * @return A new {@code ResponseResult} instance.
+     */
+    static ResponseResult responseResult()
+    {
+        return FACTORY.responseResult();
+    }
+
+    /**
+     * This is a helper method used to create a new instance of {@code ResponseResult}.
+     * Annotations will not be modified.
+     *
+     * @param response An HTTP response.
+     * @return A new {@code ResponseResult} instance.
+     */
+    static ResponseResult responseResult(HttpResponse response)
+    {
+        return FACTORY.responseResult(response);
+    }
+
+    /**
+     * This is a helper method used to create a new instance of {@code ResponseResult}.
+     *
+     * @param response    An HTTP response.
+     * @param annotations modified annotations.
+     * @return A new {@code ResponseResult} instance.
      */
     static ResponseResult responseResult(HttpResponse response, Annotations annotations)
     {

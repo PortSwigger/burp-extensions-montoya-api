@@ -13,8 +13,6 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
-import static burp.api.montoya.proxy.FinalInterceptAction.CONTINUE;
-import static burp.api.montoya.proxy.FinalInterceptAction.DROP;
 
 /**
  * Extensions can implement this interface when returning a result from
@@ -57,7 +55,7 @@ public interface ResponseFinalInterceptResult
      */
     static ResponseFinalInterceptResult continueWith(HttpResponse response)
     {
-        return finalInterceptResult(response, Annotations.annotations(), CONTINUE);
+       return FACTORY.responseFinalInterceptResultContinueWith(response);
     }
 
     /**
@@ -73,7 +71,7 @@ public interface ResponseFinalInterceptResult
      */
     static ResponseFinalInterceptResult continueWith(HttpResponse response, Annotations annotations)
     {
-        return finalInterceptResult(response, annotations, CONTINUE);
+        return FACTORY.responseFinalInterceptResultContinueWith(response, annotations);
     }
 
     /**
@@ -85,7 +83,7 @@ public interface ResponseFinalInterceptResult
      */
     static ResponseFinalInterceptResult drop()
     {
-        return finalInterceptResult(null, Annotations.annotations(), DROP);
+        return FACTORY.responseFinalInterceptResultDrop();
     }
 
     /**

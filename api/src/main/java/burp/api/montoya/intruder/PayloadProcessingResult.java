@@ -41,7 +41,7 @@ public interface PayloadProcessingResult
      */
     static PayloadProcessingResult usePayload(ByteArray processedPayload)
     {
-        return payloadProcessingResult(processedPayload, PayloadProcessingAction.USE_PAYLOAD);
+        return FACTORY.usePayload(processedPayload);
     }
 
     /**
@@ -52,10 +52,10 @@ public interface PayloadProcessingResult
      */
     static PayloadProcessingResult skipPayload()
     {
-        return payloadProcessingResult(null, PayloadProcessingAction.SKIP_PAYLOAD);
+        return FACTORY.skipPayload();
     }
 
-    private static PayloadProcessingResult payloadProcessingResult(ByteArray processedPayload, PayloadProcessingAction action)
+    static PayloadProcessingResult payloadProcessingResult(ByteArray processedPayload, PayloadProcessingAction action)
     {
         return FACTORY.payloadProcessingResult(processedPayload, action);
     }

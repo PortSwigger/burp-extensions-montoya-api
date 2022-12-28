@@ -25,6 +25,7 @@ import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.intruder.HttpRequestTemplate;
+import burp.api.montoya.intruder.Payload;
 import burp.api.montoya.intruder.PayloadProcessingAction;
 import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.persistence.PersistedList;
@@ -149,6 +150,8 @@ public interface MontoyaObjectFactory
 
     HttpRequestTemplate httpRequestTemplate(ByteArray content, List<Range> insertionPointOffsets);
 
+    HttpRequestTemplate httpRequestTemplate(HttpRequest request, List<Range> insertionPointOffsets);
+
     PayloadProcessingResult payloadProcessingResult(ByteArray processedPayload, PayloadProcessingAction action);
 
     InteractionFilter interactionIdFilter(String id);
@@ -230,4 +233,66 @@ public interface MontoyaObjectFactory
     AuditConfiguration auditConfiguration(BuiltInAuditConfiguration builtInAuditConfiguration);
 
     CrawlConfiguration crawlConfiguration(String... seedUrls);
+
+    HttpParameter urlParameter(String name, String value);
+
+    HttpParameter bodyParameter(String name, String value);
+
+    HttpParameter cookieParameter(String name, String value);
+
+    Payload payload(String payload);
+
+    Payload payload(ByteArray payload);
+
+    PayloadProcessingResult usePayload(ByteArray processedPayload);
+
+    PayloadProcessingResult skipPayload();
+
+    RequestFinalInterceptResult requestFinalInterceptResultContinueWith(HttpRequest request);
+
+    RequestFinalInterceptResult requestFinalInterceptResultContinueWith(HttpRequest request, Annotations annotations);
+
+    RequestFinalInterceptResult requestFinalInterceptResultDrop();
+
+    ResponseFinalInterceptResult responseFinalInterceptResultDrop();
+
+    ResponseFinalInterceptResult responseFinalInterceptResultContinueWith(HttpResponse response, Annotations annotations);
+
+    ResponseFinalInterceptResult responseFinalInterceptResultContinueWith(HttpResponse response);
+
+    ResponseInitialInterceptResult responseInitialInterceptResultIntercept(HttpResponse response);
+
+    ResponseInitialInterceptResult responseInitialInterceptResultIntercept(HttpResponse response, Annotations annotations);
+
+    ResponseInitialInterceptResult responseInitialInterceptResultDoNotIntercept(HttpResponse response);
+
+    ResponseInitialInterceptResult responseInitialInterceptResultDoNotIntercept(HttpResponse response, Annotations annotations);
+
+    ResponseInitialInterceptResult responseInitialInterceptResultFollowUserRules(HttpResponse response);
+
+    ResponseInitialInterceptResult responseInitialInterceptResultFollowUserRules(HttpResponse response, Annotations annotations);
+
+    ResponseInitialInterceptResult responseInitialInterceptResultDrop();
+
+    RequestInitialInterceptResult requestInitialInterceptResultIntercept(HttpRequest request);
+
+    RequestInitialInterceptResult requestInitialInterceptResultIntercept(HttpRequest request, Annotations annotations);
+
+    RequestInitialInterceptResult requestInitialInterceptResultDoNotIntercept(HttpRequest request);
+
+    RequestInitialInterceptResult requestInitialInterceptResultDoNotIntercept(HttpRequest request, Annotations annotations);
+
+    RequestInitialInterceptResult requestInitialInterceptResultFollowUserRules(HttpRequest request);
+
+    RequestInitialInterceptResult requestInitialInterceptResultFollowUserRules(HttpRequest request, Annotations annotations);
+
+    RequestInitialInterceptResult requestInitialInterceptResultDrop();
+
+    ResponseResult responseResult(HttpResponse response);
+
+    RequestResult requestResult(HttpRequest request);
+
+    ResponseResult responseResult();
+
+    RequestResult requestResult();
 }

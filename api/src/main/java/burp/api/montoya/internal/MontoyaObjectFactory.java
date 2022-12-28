@@ -295,4 +295,6 @@ public interface MontoyaObjectFactory
     ResponseResult responseResult();
 
     RequestResult requestResult();
+
+    HighlightColor highlightColor(String color);
 }

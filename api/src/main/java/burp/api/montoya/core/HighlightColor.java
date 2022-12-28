@@ -8,19 +8,47 @@
 
 package burp.api.montoya.core;
 
+import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
+
 /**
  * This enum represents colors that can be used for highlights in Burp Suite.
  */
 public enum HighlightColor
 {
-    NONE,
-    RED,
-    ORANGE,
-    YELLOW,
-    GREEN,
-    CYAN,
-    BLUE,
-    PINK,
-    MAGENTA,
-    GRAY
+    NONE("None"),
+    RED("Red"),
+    ORANGE("Orange"),
+    YELLOW("Yellow"),
+    GREEN("Green"),
+    CYAN("Cyan"),
+    BLUE("Blue"),
+    PINK("Pink"),
+    MAGENTA("Magenta"),
+    GRAY("Gray");
+
+    private final String displayName;
+
+    HighlightColor(String displayName)
+    {
+        this.displayName = displayName;
+    }
+
+    /**
+     * @return displayName of highlightColor
+     */
+    public String displayName()
+    {
+        return displayName;
+    }
+
+    /**
+     * Factory method to build HighlightColor from display name string
+     *
+     * @param colorName Color's display name
+     * @return highlight color instance
+     */
+    public static HighlightColor highlightColor(String colorName)
+    {
+        return FACTORY.highlightColor(colorName);
+    }
 }

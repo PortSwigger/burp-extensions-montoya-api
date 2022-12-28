@@ -6,11 +6,11 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.http.MimeType;
+import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.cookies.Cookie;
 import burp.api.montoya.http.message.headers.HttpHeader;
@@ -20,14 +20,9 @@ import burp.api.montoya.http.message.responses.analysis.Attribute;
 import burp.api.montoya.http.message.responses.analysis.AttributeType;
 import burp.api.montoya.http.message.responses.analysis.KeywordCount;
 
-import java.net.InetAddress;
 import java.util.List;
 
-/**
- * This interface represents an instance of an HTTP response intercepted by
- * Burp Proxy.
- */
-public interface InterceptedHttpResponse extends InterceptedMessage, HttpResponse
+public interface IncomingHttpResponse extends HttpResponse
 {
     /**
      * @return initiatingRequest The HTTP request that was issued.
@@ -38,6 +33,11 @@ public interface InterceptedHttpResponse extends InterceptedMessage, HttpRespons
      * @return Annotations for request/response.
      */
     Annotations annotations();
+
+    /**
+     * @return ToolSource which indicates which Burp tool issued the request.
+     */
+    ToolSource toolSource();
 
     /**
      * {@inheritDoc}
@@ -127,6 +127,12 @@ public interface InterceptedHttpResponse extends InterceptedMessage, HttpRespons
      * {@inheritDoc}
      */
     @Override
+    String toString();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     HttpResponse withStatusCode(short statusCode);
 
     /**
@@ -200,28 +206,4 @@ public interface InterceptedHttpResponse extends InterceptedMessage, HttpRespons
      */
     @Override
     HttpResponse withMarkers(Marker... markers);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    int messageId();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    String listenerInterface();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    InetAddress sourceIpAddress();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    InetAddress destinationIpAddress();
 }

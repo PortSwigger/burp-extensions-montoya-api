@@ -6,33 +6,30 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.http.ContentType;
-import burp.api.montoya.http.HttpService;
-import burp.api.montoya.http.HttpTransformation;
+import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
-import java.net.InetAddress;
 import java.util.List;
 
-/**
- * This interface represents an instance of an HTTP request intercepted by Burp
- * Proxy.
- */
-public interface InterceptedHttpRequest extends InterceptedMessage, HttpRequest
+public interface OutgoingHttpRequest extends HttpRequest
 {
-
     /**
-     * @return Annotations for request/response.
+     * @return annotations for request/response
      */
     Annotations annotations();
+
+    /**
+     * @return Indicates which Burp tool issued the request.
+     */
+    ToolSource toolSource();
 
     /**
      * {@inheritDoc}
@@ -111,6 +108,12 @@ public interface InterceptedHttpRequest extends InterceptedMessage, HttpRequest
      */
     @Override
     ByteArray toByteArray();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String toString();
 
     /**
      * {@inheritDoc}
@@ -237,28 +240,4 @@ public interface InterceptedHttpRequest extends InterceptedMessage, HttpRequest
      */
     @Override
     HttpRequest withDefaultHeaders();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    int messageId();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    String listenerInterface();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    InetAddress sourceIpAddress();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    InetAddress destinationIpAddress();
 }

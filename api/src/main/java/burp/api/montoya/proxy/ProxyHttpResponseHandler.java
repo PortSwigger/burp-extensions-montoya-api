@@ -8,9 +8,6 @@
 
 package burp.api.montoya.proxy;
 
-import burp.api.montoya.core.Annotations;
-import burp.api.montoya.http.message.requests.HttpRequest;
-
 /**
  * Extensions can implement this interface and then call
  * {@link Proxy#registerResponseHandler(ProxyHttpResponseHandler)} to register a
@@ -27,11 +24,9 @@ public interface ProxyHttpResponseHandler
      *                            that extensions can use to query and update details of the response, and
      *                            control whether the response should be intercepted and displayed to the
      *                            user for manual review or modification.
-     * @param initiatingRequest             The {@link HttpRequest} that was issued.
-     * @param annotations         The {@link Annotations} for the intercepted request.
      * @return The {@link ResponseInitialInterceptResult} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest initiatingRequest, Annotations annotations);
+    ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse);
 
     /**
      * This method is invoked when an HTTP response has been processed by the
@@ -39,9 +34,7 @@ public interface ProxyHttpResponseHandler
      *
      * @param interceptedResponse An {@link InterceptedHttpResponse} object
      *                            that extensions can use to query and update details of the response.
-     * @param initiatingRequest             The {@link HttpRequest} that was issued.
-     * @param annotations         The {@link Annotations} for the intercepted request.
      * @return The {@link ResponseFinalInterceptResult} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest initiatingRequest, Annotations annotations);
+    ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse);
 }

@@ -1,6 +1,5 @@
 package net.portswigger.burp.extensions.proxyhandler;
 
-import burp.api.montoya.core.Annotations;
 import burp.api.montoya.proxy.InterceptedHttpRequest;
 import burp.api.montoya.proxy.ProxyHttpRequestHandler;
 import burp.api.montoya.proxy.RequestFinalInterceptResult;
@@ -17,7 +16,7 @@ import static burp.api.montoya.proxy.RequestInitialInterceptResult.intercept;
 class MyProxyHttpRequestHandler implements ProxyHttpRequestHandler
 {
     @Override
-    public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+    public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest)
     {
         //Drop all post requests
         if (interceptedRequest.method().equals("POST"))
@@ -34,7 +33,7 @@ class MyProxyHttpRequestHandler implements ProxyHttpRequestHandler
         //If the content type is json, highlight the request and follow burp rules for interception
         if (interceptedRequest.contentType() == JSON)
         {
-            return followUserRules(interceptedRequest, annotations.withHighlightColor(RED));
+            return followUserRules(interceptedRequest, interceptedRequest.annotations().withHighlightColor(RED));
         }
 
         //Intercept all other requests
@@ -42,9 +41,9 @@ class MyProxyHttpRequestHandler implements ProxyHttpRequestHandler
     }
 
     @Override
-    public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+    public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest)
     {
         //Do nothing with the user modified request, continue as normal.
-        return continueWith(interceptedRequest, annotations);
+        return continueWith(interceptedRequest);
     }
 }

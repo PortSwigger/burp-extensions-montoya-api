@@ -10,16 +10,14 @@ package net.portswigger.burp.extensions.eventlisteners;
 
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
-import burp.api.montoya.core.Annotations;
 import burp.api.montoya.extension.Extension;
 import burp.api.montoya.extension.ExtensionUnloadingHandler;
 import burp.api.montoya.http.Http;
 import burp.api.montoya.http.HttpHandler;
-import burp.api.montoya.http.IncomingResponse;
-import burp.api.montoya.http.OutgoingRequest;
+import burp.api.montoya.http.IncomingHttpResponse;
+import burp.api.montoya.http.OutgoingHttpRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
-import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.logging.Logging;
 import burp.api.montoya.proxy.InterceptedHttpRequest;
 import burp.api.montoya.proxy.InterceptedHttpResponse;
@@ -76,26 +74,26 @@ public class EventListeners implements BurpExtension
     private class MyHttpHandler implements HttpHandler
     {
         @Override
-        public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
+        public RequestResult handleHttpRequest(OutgoingHttpRequest outgoingRequest)
         {
-            logging.logToOutput("HTTP request to " + outgoingRequest.request().httpService() + " [" + outgoingRequest.toolSource().toolType().toolName() + "]");
+            logging.logToOutput("HTTP request to " + outgoingRequest.httpService() + " [" + outgoingRequest.toolSource().toolType().toolName() + "]");
 
-            return requestResult(outgoingRequest.request(), outgoingRequest.annotations());
+            return requestResult(outgoingRequest, outgoingRequest.annotations());
         }
 
         @Override
-        public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
+        public ResponseResult handleHttpResponse(IncomingHttpResponse incomingResponse)
         {
             logging.logToOutput("HTTP response from " + incomingResponse.initiatingRequest().httpService() + " [" + incomingResponse.toolSource().toolType().toolName() + "]");
 
-            return responseResult(incomingResponse.response(), incomingResponse.annotations());
+            return responseResult(incomingResponse, incomingResponse.annotations());
         }
     }
 
     private class MyProxyHttpRequestHandler implements ProxyHttpRequestHandler
     {
         @Override
-        public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+        public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest)
         {
             logging.logToOutput("Initial intercepted proxy request to " + interceptedRequest.httpService());
 
@@ -103,7 +101,7 @@ public class EventListeners implements BurpExtension
         }
 
         @Override
-        public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+        public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest)
         {
             logging.logToOutput("Final intercepted proxy request to " + interceptedRequest.httpService());
 
@@ -114,17 +112,17 @@ public class EventListeners implements BurpExtension
     private class MyProxyHttpResponseHandler implements ProxyHttpResponseHandler
     {
         @Override
-        public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
+        public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse)
         {
-            logging.logToOutput("Initial intercepted proxy response from " + request.httpService());
+            logging.logToOutput("Initial intercepted proxy response from " + interceptedResponse.initiatingRequest().httpService());
 
             return followUserRules(interceptedResponse);
         }
 
         @Override
-        public ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
+        public ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse)
         {
-            logging.logToOutput("Final intercepted proxy response from " + request.httpService());
+            logging.logToOutput("Final intercepted proxy response from " + interceptedResponse.initiatingRequest().httpService());
 
             return continueWith(interceptedResponse);
         }

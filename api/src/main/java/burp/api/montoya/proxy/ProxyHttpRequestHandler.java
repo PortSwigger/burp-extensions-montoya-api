@@ -8,8 +8,6 @@
 
 package burp.api.montoya.proxy;
 
-import burp.api.montoya.core.Annotations;
-
 /**
  * Extensions can implement this interface and then call
  * {@link Proxy#registerRequestHandler(ProxyHttpRequestHandler)} to register a
@@ -26,10 +24,9 @@ public interface ProxyHttpRequestHandler
      *                           that extensions can use to query and update details of the request, and
      *                           control whether the request should be intercepted and displayed to the
      *                           user for manual review or modification.
-     * @param annotations        The {@link Annotations} for the intercepted request.
      * @return The {@link RequestInitialInterceptResult} containing the required action, HTTP request and annotations to be passed through.
      */
-    RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations);
+    RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest);
 
     /**
      * This method is invoked when an HTTP request has been processed by the
@@ -37,8 +34,7 @@ public interface ProxyHttpRequestHandler
      *
      * @param interceptedRequest An {@link InterceptedHttpRequest} object
      *                           that extensions can use to query and update details of the request.
-     * @param annotations        The {@link Annotations} for the intercepted request.
      * @return The {@link RequestFinalInterceptResult} containing the required action, HTTP request and annotations to be passed through.
      */
-    RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations);
+    RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest);
 }

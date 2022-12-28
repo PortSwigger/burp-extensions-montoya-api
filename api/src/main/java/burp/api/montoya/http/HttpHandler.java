@@ -21,7 +21,7 @@ public interface HttpHandler
      * @param outgoingRequest information about the HTTP request that is going to be sent.
      * @return An instance of {@link RequestResult}.
      */
-    RequestResult handleHttpRequest(OutgoingRequest outgoingRequest);
+    RequestResult handleHttpRequest(OutgoingHttpRequest outgoingRequest);
 
     /**
      * This method is invoked by Burp when an HTTP response has been received.
@@ -29,5 +29,5 @@ public interface HttpHandler
      * @param incomingResponse information about HTTP response that was received.
      * @return An instance of {@link ResponseResult}.
      */
-    ResponseResult handleHttpResponse(IncomingResponse incomingResponse);
+    ResponseResult handleHttpResponse(IncomingHttpResponse incomingResponse);
 }

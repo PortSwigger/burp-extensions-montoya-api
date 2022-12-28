@@ -37,8 +37,8 @@ import burp.api.montoya.http.HttpHandler;
 import burp.api.montoya.http.HttpProtocol;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.HttpTransformation;
-import burp.api.montoya.http.IncomingResponse;
-import burp.api.montoya.http.OutgoingRequest;
+import burp.api.montoya.http.IncomingHttpResponse;
+import burp.api.montoya.http.OutgoingHttpRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.HttpRequestResponse;
@@ -593,7 +593,7 @@ public class TestExtension implements BurpExtension
         http.registerHttpHandler(new HttpHandler()
         {
             @Override
-            public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
+            public RequestResult handleHttpRequest(OutgoingHttpRequest outgoingRequest)
             {
                 List<HttpParameter> parameters = List.of(urlParameter("foo", "bar"), bodyParameter("foo2", "bar2"));
 
@@ -603,9 +603,9 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
+            public ResponseResult handleHttpResponse(IncomingHttpResponse incomingResponse)
             {
-                return responseResult(incomingResponse.response(), incomingResponse.annotations());
+                return responseResult(incomingResponse);
             }
         });
     }
@@ -822,16 +822,16 @@ public class TestExtension implements BurpExtension
         proxy.registerRequestHandler(new ProxyHttpRequestHandler()
         {
             @Override
-            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest)
             {
-                String comment = annotations.comment();
+                String comment = interceptedRequest.annotations().comment();
 
                 if (comment == null)
                 {
                     comment = "Foo";
                 }
 
-                HighlightColor highlight = annotations.highlightColor();
+                HighlightColor highlight = interceptedRequest.annotations().highlightColor();
 
                 if (highlight == null)
                 {
@@ -846,7 +846,7 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest)
             {
                 String listenerInterface = interceptedRequest.listenerInterface();
                 int messageId = interceptedRequest.messageId();
@@ -861,18 +861,14 @@ public class TestExtension implements BurpExtension
         {
             @Override
             public ResponseInitialInterceptResult handleReceivedResponse(
-                    InterceptedHttpResponse interceptedResponse,
-                    HttpRequest httpRequest,
-                    Annotations modifiableAnnotations)
+                    InterceptedHttpResponse interceptedResponse)
             {
                 return ResponseInitialInterceptResult.followUserRules(interceptedResponse);
             }
 
             @Override
             public ResponseFinalInterceptResult handleResponseToReturn(
-                    InterceptedHttpResponse interceptedResponse,
-                    HttpRequest httpRequest,
-                    Annotations modifiableAnnotations)
+                    InterceptedHttpResponse interceptedResponse)
             {
                 return ResponseFinalInterceptResult.drop();
             }
@@ -1074,15 +1070,15 @@ public class TestExtension implements BurpExtension
         HttpHandler handler = new HttpHandler()
         {
             @Override
-            public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
+            public RequestResult handleHttpRequest(OutgoingHttpRequest outgoingRequest)
             {
                 return requestResult(httpRequest, outgoingRequest.annotations());
             }
 
             @Override
-            public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
+            public ResponseResult handleHttpResponse(IncomingHttpResponse incomingResponse)
             {
-                return responseResult(incomingResponse.response(), incomingResponse.annotations());
+                return responseResult(incomingResponse);
             }
         };
 
@@ -1112,13 +1108,13 @@ public class TestExtension implements BurpExtension
         ProxyHttpRequestHandler handler = new ProxyHttpRequestHandler()
         {
             @Override
-            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+            public RequestInitialInterceptResult handleReceivedRequest(InterceptedHttpRequest interceptedRequest)
             {
                 return RequestInitialInterceptResult.drop();
             }
 
             @Override
-            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest, Annotations annotations)
+            public RequestFinalInterceptResult handleRequestToIssue(InterceptedHttpRequest interceptedRequest)
             {
                 return RequestFinalInterceptResult.drop();
             }

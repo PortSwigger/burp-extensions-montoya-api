@@ -1,7 +1,5 @@
 package net.portswigger.burp.extensions.proxyhandler;
 
-import burp.api.montoya.core.Annotations;
-import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.proxy.InterceptedHttpResponse;
 import burp.api.montoya.proxy.ProxyHttpResponseHandler;
 import burp.api.montoya.proxy.ResponseFinalInterceptResult;
@@ -14,20 +12,20 @@ import static burp.api.montoya.proxy.ResponseInitialInterceptResult.followUserRu
 class MyProxyHttpResponseHandler implements ProxyHttpResponseHandler
 {
     @Override
-    public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
+    public ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse)
     {
         //Highlight all responses that have username in them
         if (interceptedResponse.bodyToString().contains("username"))
         {
-            return followUserRules(interceptedResponse, annotations.withHighlightColor(BLUE));
+            return followUserRules(interceptedResponse, interceptedResponse.annotations().withHighlightColor(BLUE));
         }
 
-        return followUserRules(interceptedResponse, annotations);
+        return followUserRules(interceptedResponse);
     }
 
     @Override
-    public ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse, HttpRequest request, Annotations annotations)
+    public ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse)
     {
-        return continueWith(interceptedResponse, annotations);
+        return continueWith(interceptedResponse);
     }
 }

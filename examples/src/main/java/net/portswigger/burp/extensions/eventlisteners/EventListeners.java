@@ -16,6 +16,7 @@ import burp.api.montoya.extension.Extension;
 import burp.api.montoya.extension.ExtensionUnloadingHandler;
 import burp.api.montoya.http.Http;
 import burp.api.montoya.http.HttpHandler;
+import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -76,11 +77,11 @@ public class EventListeners implements BurpExtension
     private class MyHttpHandler implements HttpHandler
     {
         @Override
-        public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
+        public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
         {
-            logging.logToOutput("HTTP request to " + request.httpService() + " [" + toolSource.toolType().toolName() + "]");
+            logging.logToOutput("HTTP request to " + outgoingRequest.request().httpService() + " [" + outgoingRequest.toolSource().toolType().toolName() + "]");
 
-            return requestResult(request, annotations);
+            return requestResult(outgoingRequest.request(), outgoingRequest.annotations());
         }
 
         @Override

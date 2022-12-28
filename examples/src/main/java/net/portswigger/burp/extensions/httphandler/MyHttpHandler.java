@@ -5,6 +5,7 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.HighlightColor;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpHandler;
+import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -25,17 +26,18 @@ class MyHttpHandler implements HttpHandler
     }
 
     @Override
-    public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
+    public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
     {
+        Annotations annotations = outgoingRequest.annotations();
         // If the request is a post, log the body and add a comment annotation.
-        if (request.method().equalsIgnoreCase("POST"))
+        if (outgoingRequest.request().method().equalsIgnoreCase("POST"))
         {
-            annotations = annotations.withComment("Request was a post");
-            logging.logToOutput(request.bodyToString());
+            annotations = outgoingRequest.annotations().withComment("Request was a post");
+            logging.logToOutput(outgoingRequest.request().bodyToString());
         }
 
         //Modify the request by adding a url param.
-        HttpRequest modifiedRequest = request.withAddedParameters(urlParameter("foo", "bar"));
+        HttpRequest modifiedRequest = outgoingRequest.request().withAddedParameters(urlParameter("foo", "bar"));
 
         //Return the modified request to burp with updated annotations.
         return requestResult(modifiedRequest, annotations);

@@ -23,12 +23,10 @@ public interface HttpHandler
     /**
      * This method is invoked by Burp when an HTTP request is about to be issued.
      *
-     * @param request     The HTTP request that is about to be sent.
-     * @param annotations annotations.
-     * @param toolSource  Indicates which Burp tool issued the request.
+     * @param outgoingRequest information about the request that is going to be sent.
      * @return An instance of {@link RequestResult}.
      */
-    RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource);
+    RequestResult handleHttpRequest(OutgoingRequest outgoingRequest);
 
     /**
      * This method is invoked by Burp when an HTTP response has been received.

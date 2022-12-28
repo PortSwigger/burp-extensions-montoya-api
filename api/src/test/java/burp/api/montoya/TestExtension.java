@@ -37,6 +37,7 @@ import burp.api.montoya.http.HttpHandler;
 import burp.api.montoya.http.HttpProtocol;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.HttpTransformation;
+import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.HttpRequestResponse;
@@ -591,13 +592,13 @@ public class TestExtension implements BurpExtension
         http.registerHttpHandler(new HttpHandler()
         {
             @Override
-            public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
+            public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
             {
                 List<HttpParameter> parameters = List.of(urlParameter("foo", "bar"), bodyParameter("foo2", "bar2"));
 
                 HttpRequest modifiedRequest = httpRequest.withAddedParameters(parameters);
 
-                return requestResult(modifiedRequest, annotations.withComment("new comment"));
+                return requestResult(modifiedRequest, outgoingRequest.annotations().withComment("new comment"));
             }
 
             @Override
@@ -1072,9 +1073,9 @@ public class TestExtension implements BurpExtension
         HttpHandler handler = new HttpHandler()
         {
             @Override
-            public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolContext)
+            public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
             {
-                return requestResult(httpRequest, annotations);
+                return requestResult(httpRequest, outgoingRequest.annotations());
             }
 
             @Override

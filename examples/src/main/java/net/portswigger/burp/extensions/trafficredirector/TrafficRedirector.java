@@ -14,6 +14,7 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpHandler;
 import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -42,18 +43,18 @@ public class TrafficRedirector implements BurpExtension
     private static class MyHttpHandler implements HttpHandler
     {
         @Override
-        public RequestResult handleHttpRequest(HttpRequest request, Annotations annotations, ToolSource toolSource)
+        public RequestResult handleHttpRequest(OutgoingRequest outgoingRequest)
         {
-            HttpService service = request.httpService();
+            HttpService service = outgoingRequest.request().httpService();
 
             if (HOST_FROM.equalsIgnoreCase(service.host()))
             {
-                HttpRequest newRequest = request.withService(httpService(HOST_TO, service.port(), service.secure()));
+                HttpRequest newRequest = outgoingRequest.request().withService(httpService(HOST_TO, service.port(), service.secure()));
 
-                return requestResult(newRequest, annotations);
+                return requestResult(newRequest, outgoingRequest.annotations());
             }
 
-            return requestResult(request, annotations);
+            return requestResult(outgoingRequest.request(), outgoingRequest.annotations());
         }
 
         @Override

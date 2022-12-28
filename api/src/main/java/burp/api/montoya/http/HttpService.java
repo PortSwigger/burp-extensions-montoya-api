@@ -17,6 +17,27 @@ public interface HttpService
 {
 
     /**
+     * @return The hostname or IP address for the service.
+     */
+    String host();
+
+    /**
+     * @return The port number for the service.
+     */
+    int port();
+
+    /**
+     * @return True is a secure protocol is used for the connection, false otherwise.
+     */
+    boolean secure();
+
+    /**
+     * @return The {@code String} representation of the service.
+     */
+    @Override
+    String toString();
+
+    /**
      * Create a new instance of {@code HttpService}.
      *
      * @param baseUrl The URL for the service.
@@ -52,25 +73,4 @@ public interface HttpService
     {
         return FACTORY.httpService(host, port, secure);
     }
-
-    /**
-     * @return The hostname or IP address for the service.
-     */
-    String host();
-
-    /**
-     * @return The port number for the service.
-     */
-    int port();
-
-    /**
-     * @return True is a secure protocol is used for the connection, false otherwise.
-     */
-    boolean secure();
-
-    /**
-     * @return The {@code String} representation of the service.
-     */
-    @Override
-    String toString();
 }

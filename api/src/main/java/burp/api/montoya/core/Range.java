@@ -16,6 +16,10 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface Range
 {
+    int startIndexInclusive();
+
+    int endIndexExclusive();
+
     /**
      * This method can be used to create a range object from two indices.
      *
@@ -27,8 +31,4 @@ public interface Range
     {
         return FACTORY.range(startIndexInclusive, endIndexExclusive);
     }
-
-    int startIndexInclusive();
-
-    int endIndexExclusive();
 }

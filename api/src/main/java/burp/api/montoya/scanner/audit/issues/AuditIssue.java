@@ -31,74 +31,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface AuditIssue
 {
     /**
-     * This method can be used to create a default implementation of an audit
-     * issue for a URL.
-     *
-     * @param name                  The name of the issue type.
-     * @param detail                The detailed information about the issue.
-     * @param remediation           The detailed information about the remediation for
-     *                              the issue.
-     * @param baseUrl               The base URL for which the issue is generated.
-     * @param severity              The {@link AuditIssueSeverity} level.
-     * @param confidence            The {@link AuditIssueConfidence} level.
-     * @param background            The background description for the type of issue.
-     * @param remediationBackground The background description of the
-     *                              remediation for this type of issue.
-     * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
-     * @param requestResponses      The {@link HttpRequestResponse} objects on the
-     *                              basis of which the issue is generated.
-     * @return The audit issue for the URL.
-     */
-    static AuditIssue auditIssue(
-            String name,
-            String detail,
-            String remediation,
-            String baseUrl,
-            AuditIssueSeverity severity,
-            AuditIssueConfidence confidence,
-            String background,
-            String remediationBackground,
-            AuditIssueSeverity typicalSeverity,
-            HttpRequestResponse... requestResponses)
-    {
-        return auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, Arrays.asList(requestResponses));
-    }
-
-    /**
-     * This method can be used to create a default implementation of an audit
-     * issue for a URL.
-     *
-     * @param name                  The name of the issue type.
-     * @param detail                The detailed information about the issue.
-     * @param remediation           The detailed information about the remediation for
-     *                              the issue.
-     * @param baseUrl               The base URL for which the issue is generated.
-     * @param severity              The {@link AuditIssueSeverity} level.
-     * @param confidence            The {@link AuditIssueConfidence} level.
-     * @param background            The background description for the type of issue.
-     * @param remediationBackground The background description of the
-     *                              remediation for this type of issue.
-     * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
-     * @param requestResponses      The list of {@link HttpRequestResponse} objects
-     *                              on the basis of which the issue is generated.
-     * @return The audit issue for the URL.
-     */
-    static AuditIssue auditIssue(
-            String name,
-            String detail,
-            String remediation,
-            String baseUrl,
-            AuditIssueSeverity severity,
-            AuditIssueConfidence confidence,
-            String background,
-            String remediationBackground,
-            AuditIssueSeverity typicalSeverity,
-            List<HttpRequestResponse> requestResponses)
-    {
-        return FACTORY.auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, requestResponses);
-    }
-
-    /**
      * This method returns the name of this issue type.
      *
      * @return The name of this issue type (e.g. "SQL injection").
@@ -166,4 +98,72 @@ public interface AuditIssue
      * @return The {@link AuditIssueDefinition} for this issue.
      */
     AuditIssueDefinition definition();
+
+    /**
+     * This method can be used to create a default implementation of an audit
+     * issue for a URL.
+     *
+     * @param name                  The name of the issue type.
+     * @param detail                The detailed information about the issue.
+     * @param remediation           The detailed information about the remediation for
+     *                              the issue.
+     * @param baseUrl               The base URL for which the issue is generated.
+     * @param severity              The {@link AuditIssueSeverity} level.
+     * @param confidence            The {@link AuditIssueConfidence} level.
+     * @param background            The background description for the type of issue.
+     * @param remediationBackground The background description of the
+     *                              remediation for this type of issue.
+     * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
+     * @param requestResponses      The {@link HttpRequestResponse} objects on the
+     *                              basis of which the issue is generated.
+     * @return The audit issue for the URL.
+     */
+    static AuditIssue auditIssue(
+            String name,
+            String detail,
+            String remediation,
+            String baseUrl,
+            AuditIssueSeverity severity,
+            AuditIssueConfidence confidence,
+            String background,
+            String remediationBackground,
+            AuditIssueSeverity typicalSeverity,
+            HttpRequestResponse... requestResponses)
+    {
+        return auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, Arrays.asList(requestResponses));
+    }
+
+    /**
+     * This method can be used to create a default implementation of an audit
+     * issue for a URL.
+     *
+     * @param name                  The name of the issue type.
+     * @param detail                The detailed information about the issue.
+     * @param remediation           The detailed information about the remediation for
+     *                              the issue.
+     * @param baseUrl               The base URL for which the issue is generated.
+     * @param severity              The {@link AuditIssueSeverity} level.
+     * @param confidence            The {@link AuditIssueConfidence} level.
+     * @param background            The background description for the type of issue.
+     * @param remediationBackground The background description of the
+     *                              remediation for this type of issue.
+     * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
+     * @param requestResponses      The list of {@link HttpRequestResponse} objects
+     *                              on the basis of which the issue is generated.
+     * @return The audit issue for the URL.
+     */
+    static AuditIssue auditIssue(
+            String name,
+            String detail,
+            String remediation,
+            String baseUrl,
+            AuditIssueSeverity severity,
+            AuditIssueConfidence confidence,
+            String background,
+            String remediationBackground,
+            AuditIssueSeverity typicalSeverity,
+            List<HttpRequestResponse> requestResponses)
+    {
+        return FACTORY.auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, requestResponses);
+    }
 }

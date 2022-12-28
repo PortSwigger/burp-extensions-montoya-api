@@ -20,6 +20,16 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface ResponseResult
 {
     /**
+     * @return The HTTP response.
+     */
+    HttpResponse response();
+
+    /**
+     * @return The annotations.
+     */
+    Annotations annotations();
+
+    /**
      * This is a helper method used to create a new instance of {@code ResponseHandlerResult}.
      *
      * @param response   An HTTP response.
@@ -30,14 +40,4 @@ public interface ResponseResult
     {
         return FACTORY.responseResult(response, annotations);
     }
-
-    /**
-     * @return The HTTP response.
-     */
-    HttpResponse response();
-
-    /**
-     * @return The annotations.
-     */
-    Annotations annotations();
 }

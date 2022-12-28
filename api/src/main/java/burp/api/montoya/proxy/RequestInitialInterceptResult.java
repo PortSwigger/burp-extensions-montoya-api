@@ -24,6 +24,30 @@ import static burp.api.montoya.proxy.InitialInterceptAction.INTERCEPT;
 public interface RequestInitialInterceptResult
 {
     /**
+     * This method retrieves the current initial intercept action.
+     *
+     * @return The {@link InitialInterceptAction}.
+     */
+    InitialInterceptAction action();
+
+    /**
+     * This method retrieves the current HTTP request to forward after any
+     * modifications by the extension.
+     *
+     * @return The {@link HttpRequest} to forward after any modifications by
+     * the extension.
+     */
+    HttpRequest request();
+
+    /**
+     * This method retrieves the annotations for the current request after any
+     * modifications by the extension.
+     *
+     * @return The {@link Annotations} for the intercepted HTTP request.
+     */
+    Annotations annotations();
+
+    /**
      * This method can be used to create a result that causes Burp Proxy to
      * present the request to the user for manual review or modification.
      *
@@ -144,28 +168,4 @@ public interface RequestInitialInterceptResult
     {
         return FACTORY.initialInterceptResult(request, annotations, action);
     }
-
-    /**
-     * This method retrieves the current initial intercept action.
-     *
-     * @return The {@link InitialInterceptAction}.
-     */
-    InitialInterceptAction action();
-
-    /**
-     * This method retrieves the current HTTP request to forward after any
-     * modifications by the extension.
-     *
-     * @return The {@link HttpRequest} to forward after any modifications by
-     * the extension.
-     */
-    HttpRequest request();
-
-    /**
-     * This method retrieves the annotations for the current request after any
-     * modifications by the extension.
-     *
-     * @return The {@link Annotations} for the intercepted HTTP request.
-     */
-    Annotations annotations();
 }

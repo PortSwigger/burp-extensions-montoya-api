@@ -22,6 +22,30 @@ import static burp.api.montoya.proxy.FinalInterceptAction.DROP;
 public interface RequestFinalInterceptResult
 {
     /**
+     * This method retrieves the current final intercept action.
+     *
+     * @return The {@link FinalInterceptAction}.
+     */
+    FinalInterceptAction action();
+
+    /**
+     * This method retrieves the current HTTP request to forward after any
+     * modifications by the extension.
+     *
+     * @return The {@link HttpRequest} to forward after any modifications by
+     * the extension.
+     */
+    HttpRequest request();
+
+    /**
+     * This method retrieves the annotations for the current request after any
+     * modifications by the extension.
+     *
+     * @return The {@link Annotations} for the intercepted HTTP request.
+     */
+    Annotations annotations();
+
+    /**
      * This method can be used to create a result that causes Burp Proxy to
      * forward the request.
      *
@@ -79,28 +103,4 @@ public interface RequestFinalInterceptResult
     {
         return FACTORY.finalInterceptResult(request, annotations, action);
     }
-
-    /**
-     * This method retrieves the current final intercept action.
-     *
-     * @return The {@link FinalInterceptAction}.
-     */
-    FinalInterceptAction action();
-
-    /**
-     * This method retrieves the current HTTP request to forward after any
-     * modifications by the extension.
-     *
-     * @return The {@link HttpRequest} to forward after any modifications by
-     * the extension.
-     */
-    HttpRequest request();
-
-    /**
-     * This method retrieves the annotations for the current request after any
-     * modifications by the extension.
-     *
-     * @return The {@link Annotations} for the intercepted HTTP request.
-     */
-    Annotations annotations();
 }

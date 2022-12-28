@@ -25,16 +25,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface PersistedObject
 {
     /**
-     * This is a helper method to create a new instance of {@link PersistedObject}.
-     *
-     * @return A new {@link PersistedObject} instance.
-     */
-    static PersistedObject persistedObject()
-    {
-        return FACTORY.persistedObject();
-    }
-
-    /**
      * Returns the {@link PersistedObject} associated with the specified key.
      * or {@link Optional#empty} if this map contains no mapping for the key.
      *
@@ -722,4 +712,14 @@ public interface PersistedObject
      * @return Set of keys.
      */
     Set<String> byteArrayListKeys();
+
+    /**
+     * This is a helper method to create a new instance of {@link PersistedObject}.
+     *
+     * @return A new {@link PersistedObject} instance.
+     */
+    static PersistedObject persistedObject()
+    {
+        return FACTORY.persistedObject();
+    }
 }

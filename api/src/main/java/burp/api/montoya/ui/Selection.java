@@ -20,6 +20,16 @@ public interface Selection
 {
     /**
      * A helper method to create an instance of {@link Selection} without positional data.
+     * @return The contents that are derived from within the user's selection range.
+     */
+     ByteArray contents();
+
+    /**
+     * @return The positional data of where the user has selected.
+     */
+    Range offsets();
+
+    /**
      *
      * @param selectionContents The contents of the selection.
      * @return A new instance of {@link Selection}
@@ -53,14 +63,4 @@ public interface Selection
     {
         return FACTORY.selection(selectionContents, startIndexInclusive, endIndexExclusive);
     }
-
-    /**
-     * @return The contents that are derived from within the user's selection range.
-     */
-    ByteArray contents();
-
-    /**
-     * @return The positional data of where the user has selected.
-     */
-    Range offsets();
 }

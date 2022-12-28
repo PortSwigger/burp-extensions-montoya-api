@@ -24,6 +24,11 @@ public interface Payload
     Payload END = () -> null;
 
     /**
+     * @return Payload value.
+     */
+    ByteArray value();
+
+    /**
      * This is a helper method to create a new {@link Payload} instance from a String payload value.
      *
      * @param payload String payload value.
@@ -44,9 +49,4 @@ public interface Payload
     {
         return () -> payload;
     }
-
-    /**
-     * @return Payload value.
-     */
-    ByteArray value();
 }

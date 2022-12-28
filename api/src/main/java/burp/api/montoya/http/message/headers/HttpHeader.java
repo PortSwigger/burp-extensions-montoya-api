@@ -16,6 +16,22 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface HttpHeader
 {
     /**
+     * @return The name of the header.
+     */
+    String name();
+
+    /**
+     * @return The value of the header.
+     */
+    String value();
+
+    /**
+     * @return The {@code String} representation of the header.
+     */
+    @Override
+    String toString();
+
+    /**
      * Create a new instance of {@code HttpHeader} from name and value.
      *
      * @param name  The name of the header.
@@ -38,20 +54,4 @@ public interface HttpHeader
     {
         return FACTORY.httpHeader(header);
     }
-
-    /**
-     * @return The name of the header.
-     */
-    String name();
-
-    /**
-     * @return The value of the header.
-     */
-    String value();
-
-    /**
-     * @return The {@code String} representation of the header.
-     */
-    @Override
-    String toString();
 }

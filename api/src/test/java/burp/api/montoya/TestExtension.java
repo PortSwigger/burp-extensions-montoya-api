@@ -55,6 +55,7 @@ import burp.api.montoya.http.message.responses.analysis.ResponseKeywordsAnalyzer
 import burp.api.montoya.http.message.responses.analysis.ResponseVariationsAnalyzer;
 import burp.api.montoya.http.sessions.CookieJar;
 import burp.api.montoya.http.sessions.SessionHandlingAction;
+import burp.api.montoya.http.sessions.SessionHandlingHttpRequest;
 import burp.api.montoya.intruder.AttackConfiguration;
 import burp.api.montoya.intruder.HttpRequestTemplate;
 import burp.api.montoya.intruder.Intruder;
@@ -1050,10 +1051,10 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public RequestResult handle(HttpRequest currentRequest, Annotations messageAnnotations, List<HttpRequestResponse> macroRequestResponses)
+            public RequestResult handle(SessionHandlingHttpRequest actionHttpRequest)
             {
-                HttpRequest updatedRequest = currentRequest.withRemovedParameters(bodyParameter("foo", "bar"));
-                Annotations updatedAnnotations = messageAnnotations.withComment("updated");
+                HttpRequest updatedRequest = actionHttpRequest.withRemovedParameters(bodyParameter("foo", "bar"));
+                Annotations updatedAnnotations = actionHttpRequest.annotations().withComment("updated");
 
                 return requestResult(updatedRequest, updatedAnnotations);
             }

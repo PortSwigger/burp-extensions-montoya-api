@@ -3,13 +3,12 @@ package net.portswigger.burp.extensions.httphandler;
 import burp.api.montoya.MontoyaApi;
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.HighlightColor;
-import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpHandler;
+import burp.api.montoya.http.IncomingResponse;
 import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.requests.HttpRequest;
-import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.logging.Logging;
 
 import static burp.api.montoya.http.RequestResult.requestResult;
@@ -44,14 +43,15 @@ class MyHttpHandler implements HttpHandler
     }
 
     @Override
-    public ResponseResult handleHttpResponse(HttpResponse response, HttpRequest request, Annotations annotations, ToolSource toolSource)
+    public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
     {
+        Annotations annotations = incomingResponse.annotations();
         //Highlight all responses where the request had a Content-Length header.
-        if (request.headers().stream().anyMatch(header -> header.name().equalsIgnoreCase("Content-Length")))
+        if (incomingResponse.initiatingRequest().headers().stream().anyMatch(header -> header.name().equalsIgnoreCase("Content-Length")))
         {
             annotations = annotations.withHighlightColor(HighlightColor.BLUE);
         }
 
-        return responseResult(response, annotations);
+        return responseResult(incomingResponse.response(), annotations);
     }
 }

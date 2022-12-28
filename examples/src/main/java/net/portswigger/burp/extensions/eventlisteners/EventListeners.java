@@ -11,16 +11,15 @@ package net.portswigger.burp.extensions.eventlisteners;
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
 import burp.api.montoya.core.Annotations;
-import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.extension.Extension;
 import burp.api.montoya.extension.ExtensionUnloadingHandler;
 import burp.api.montoya.http.Http;
 import burp.api.montoya.http.HttpHandler;
+import burp.api.montoya.http.IncomingResponse;
 import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.requests.HttpRequest;
-import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.logging.Logging;
 import burp.api.montoya.proxy.InterceptedHttpRequest;
 import burp.api.montoya.proxy.InterceptedHttpResponse;
@@ -85,11 +84,11 @@ public class EventListeners implements BurpExtension
         }
 
         @Override
-        public ResponseResult handleHttpResponse(HttpResponse response, HttpRequest initiatingRequest, Annotations annotations, ToolSource toolSource)
+        public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
         {
-            logging.logToOutput("HTTP response from " + initiatingRequest.httpService() + " [" + toolSource.toolType().toolName() + "]");
+            logging.logToOutput("HTTP response from " + incomingResponse.initiatingRequest().httpService() + " [" + incomingResponse.toolSource().toolType().toolName() + "]");
 
-            return responseResult(response, annotations);
+            return responseResult(incomingResponse.response(), incomingResponse.annotations());
         }
     }
 

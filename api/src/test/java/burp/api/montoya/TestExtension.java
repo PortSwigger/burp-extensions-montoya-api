@@ -37,6 +37,7 @@ import burp.api.montoya.http.HttpHandler;
 import burp.api.montoya.http.HttpProtocol;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.HttpTransformation;
+import burp.api.montoya.http.IncomingResponse;
 import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
@@ -602,9 +603,9 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public ResponseResult handleHttpResponse(HttpResponse response, HttpRequest initiatingRequest, Annotations annotations, ToolSource toolSource)
+            public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
             {
-                return responseResult(response, annotations);
+                return responseResult(incomingResponse.response(), incomingResponse.annotations());
             }
         });
     }
@@ -1079,9 +1080,9 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public ResponseResult handleHttpResponse(HttpResponse response, HttpRequest initiatingRequest, Annotations annotations, ToolSource toolSource)
+            public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
             {
-                return responseResult(response, annotations);
+                return responseResult(incomingResponse.response(), incomingResponse.annotations());
             }
         };
 

@@ -10,15 +10,13 @@ package net.portswigger.burp.extensions.trafficredirector;
 
 import burp.api.montoya.BurpExtension;
 import burp.api.montoya.MontoyaApi;
-import burp.api.montoya.core.Annotations;
-import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpHandler;
 import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.IncomingResponse;
 import burp.api.montoya.http.OutgoingRequest;
 import burp.api.montoya.http.RequestResult;
 import burp.api.montoya.http.ResponseResult;
 import burp.api.montoya.http.message.requests.HttpRequest;
-import burp.api.montoya.http.message.responses.HttpResponse;
 
 import static burp.api.montoya.http.HttpService.httpService;
 import static burp.api.montoya.http.RequestResult.requestResult;
@@ -58,9 +56,9 @@ public class TrafficRedirector implements BurpExtension
         }
 
         @Override
-        public ResponseResult handleHttpResponse(HttpResponse response, HttpRequest initiatingRequest, Annotations annotations, ToolSource toolSource)
+        public ResponseResult handleHttpResponse(IncomingResponse incomingResponse)
         {
-            return responseResult(response, annotations);
+            return responseResult(incomingResponse.response(), incomingResponse.annotations());
         }
     }
 }

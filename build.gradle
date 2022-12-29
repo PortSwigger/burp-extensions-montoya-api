@@ -37,3 +37,6 @@ publishing {
     }
 }
 
+
+
+apply(from: "portswigger.gradle")

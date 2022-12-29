@@ -55,11 +55,16 @@ signing {
     sign publishing.publications.mavenJava
 }
 
-task copyJavaDoc(type: Copy) {
+tasks.register("deleteJavaDoc", Delete) {
+    delete 'docs/javadoc/'
+    followSymlinks = true
+}
+
+tasks.register("copyJavaDoc", Copy) {
     group 'documentation'
-    dependsOn javadocJar
+    dependsOn tasks.named("deleteJavaDoc"), javadocJar
     from "build/docs"
-    into "../docs/"
+    into "docs/"
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
@@ -68,7 +73,7 @@ final JAVADOC_FIX_SEARCH_STR = '\n\n' +
         '    return \'\';\n' +
         '};\n'
 
-tasks.withType(Javadoc) {
+tasks.withType(Javadoc).configureEach {
     doLast {
         // Append the fix to the file
         def searchScript = new File(destinationDir.getAbsolutePath() + '/search.js')

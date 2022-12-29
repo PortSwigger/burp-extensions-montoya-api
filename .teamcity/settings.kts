@@ -45,7 +45,7 @@ object PublishToNexus : BuildType({
 
     steps {
         gradle {
-            tasks = ":api:publishMavenJavaPublicationToInternalRepository"
+            tasks = ":publishMavenJavaPublicationToInternalRepository"
             dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
             dockerPull = true
             dockerImagePlatform = GradleBuildStep.ImagePlatform.Linux

@@ -17,10 +17,10 @@ public interface PayloadGenerator
 {
     /**
      * This method is used by Burp to obtain the value of the next payload.
-     * This method should return {@link Payload#END} to signal to Burp that the generator has finished.
+     * This method should return {@link GeneratedPayload#end()} to signal to Burp that the generator has finished.
      *
      * @param insertionPoint Insertion point for the payload.
      * @return A generated Intruder payload.
      */
-    Payload generatePayloadFor(IntruderInsertionPoint insertionPoint);
+    GeneratedPayload generatePayloadFor(IntruderInsertionPoint insertionPoint);
 }

@@ -57,10 +57,11 @@ import burp.api.montoya.http.sessions.CookieJar;
 import burp.api.montoya.http.sessions.SessionHandlingAction;
 import burp.api.montoya.http.sessions.SessionHandlingHttpRequest;
 import burp.api.montoya.intruder.AttackConfiguration;
+import burp.api.montoya.intruder.GeneratedPayload;
 import burp.api.montoya.intruder.HttpRequestTemplate;
 import burp.api.montoya.intruder.Intruder;
 import burp.api.montoya.intruder.IntruderInsertionPoint;
-import burp.api.montoya.intruder.Payload;
+import burp.api.montoya.intruder.PayloadData;
 import burp.api.montoya.intruder.PayloadGenerator;
 import burp.api.montoya.intruder.PayloadGeneratorProvider;
 import burp.api.montoya.intruder.PayloadProcessingResult;
@@ -629,16 +630,16 @@ public class TestExtension implements BurpExtension
                     private int currentRequestCounter;
 
                     @Override
-                    public Payload generatePayloadFor(IntruderInsertionPoint insertionPoint)
+                    public GeneratedPayload generatePayloadFor(IntruderInsertionPoint insertionPoint)
                     {
                         if (currentRequestCounter >= 100)
                         {
-                            return Payload.END;
+                            return GeneratedPayload.end();
                         }
 
                         boolean isEven = currentRequestCounter % 2 == 0;
 
-                        return Payload.payload(isEven ? "Even-" + currentRequestCounter : "Odd-" + currentRequestCounter);
+                        return GeneratedPayload.payload(isEven ? "Even-" + currentRequestCounter : "Odd-" + currentRequestCounter);
                     }
                 };
             }
@@ -661,12 +662,9 @@ public class TestExtension implements BurpExtension
             }
 
             @Override
-            public PayloadProcessingResult processPayload(
-                    Payload currentPayload,
-                    Payload originalPayload,
-                    IntruderInsertionPoint insertionPoint)
+            public PayloadProcessingResult processPayload(PayloadData payloadData)
             {
-                ByteArray value = currentPayload.value();
+                ByteArray value = payloadData.currentPayload();
                 value.setByte(2, (byte) 0x01);
 
                 return PayloadProcessingResult.usePayload(value);

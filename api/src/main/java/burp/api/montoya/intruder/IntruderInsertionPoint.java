@@ -18,5 +18,5 @@ public interface IntruderInsertionPoint
     /**
      * @return The base value of the insertion point.
      */
-    ByteArray content();
+    ByteArray baseValue();
 }

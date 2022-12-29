@@ -24,8 +24,8 @@ import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
+import burp.api.montoya.intruder.GeneratedPayload;
 import burp.api.montoya.intruder.HttpRequestTemplate;
-import burp.api.montoya.intruder.Payload;
 import burp.api.montoya.intruder.PayloadProcessingAction;
 import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.persistence.PersistedList;
@@ -240,9 +240,11 @@ public interface MontoyaObjectFactory
 
     HttpParameter cookieParameter(String name, String value);
 
-    Payload payload(String payload);
+    GeneratedPayload payload(String payload);
 
-    Payload payload(ByteArray payload);
+    GeneratedPayload payload(ByteArray payload);
+
+    GeneratedPayload payloadEnd();
 
     PayloadProcessingResult usePayload(ByteArray processedPayload);
 

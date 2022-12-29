@@ -15,38 +15,42 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 /**
  * This interface represents an Intruder payload.
  */
-public interface Payload
+public interface GeneratedPayload
 {
-    /**
-     * A null payload. This should be returned by a {@link PayloadGenerator} when it has finished
-     * generating payloads.
-     */
-    Payload END = () -> null;
-
     /**
      * @return Payload value.
      */
     ByteArray value();
 
     /**
-     * This is a helper method to create a new {@link Payload} instance from a String payload value.
+     * Create a new {@link GeneratedPayload} instance from a String payload value.
      *
      * @param payload String payload value.
-     * @return A new {@link Payload} instance.
+     * @return A new {@link GeneratedPayload} instance.
      */
-    static Payload payload(String payload)
+    static GeneratedPayload payload(String payload)
     {
         return FACTORY.payload(payload);
     }
 
     /**
-     * This method is a helper method to create a new {@link Payload} instance from a byte array payload value.
+     * Create a new {@link GeneratedPayload} instance from a byte array payload value.
      *
      * @param payload Byte array payload value.
-     * @return A new {@link Payload} instance.
+     * @return A new {@link GeneratedPayload} instance.
      */
-    static Payload payload(ByteArray payload)
+    static GeneratedPayload payload(ByteArray payload)
     {
         return FACTORY.payload(payload);
+    }
+
+    /**
+     * Create a new {@link GeneratedPayload} instance to signify there are no more payloads.
+     *
+     * @return A new {@link GeneratedPayload} instance.
+     */
+    static GeneratedPayload end()
+    {
+        return FACTORY.payloadEnd();
     }
 }

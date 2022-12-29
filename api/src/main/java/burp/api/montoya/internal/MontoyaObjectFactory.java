@@ -51,8 +51,8 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueDefinition;
 import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
-import burp.api.montoya.websocket.WebSocketBinaryMessage;
-import burp.api.montoya.websocket.WebSocketTextMessage;
+import burp.api.montoya.websocket.BinaryMessageResult;
+import burp.api.montoya.websocket.TextMessageResult;
 
 import java.util.List;
 
@@ -174,13 +174,13 @@ public interface MontoyaObjectFactory
 
     ByteArray byteArray(ByteArray byteArrayToCopy);
 
-    WebSocketTextMessage continueWithTextMessage(String payload);
+    TextMessageResult continueWithTextMessage(String payload);
 
-    WebSocketTextMessage dropTextMessage();
+    TextMessageResult dropTextMessage();
 
-    WebSocketBinaryMessage continueWithBinaryMessage(ByteArray payload);
+    BinaryMessageResult continueWithBinaryMessage(ByteArray payload);
 
-    WebSocketBinaryMessage dropBinaryMessage();
+    BinaryMessageResult dropBinaryMessage();
 
     ProxyWebSocketInitialInterceptBinaryMessage followUserRulesInitialProxyBinaryMessage(ByteArray payload);
 

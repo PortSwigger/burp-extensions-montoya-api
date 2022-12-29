@@ -9,16 +9,19 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.websocket.Direction;
+import burp.api.montoya.websocket.TextMessage;
 
-public interface InterceptedTextMessage
+public interface InterceptedTextMessage extends TextMessage
 {
     /**
-     * @return Intercepted text-based WebSocket message.
+     * {@inheritDoc}
      */
-    String message();
+    @Override
+    String payload();
 
     /**
-     * @return The direction of the message.
+     * {@inheritDoc}
      */
+    @Override
     Direction direction();
 }

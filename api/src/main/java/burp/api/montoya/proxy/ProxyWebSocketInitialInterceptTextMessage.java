@@ -8,6 +8,8 @@
 
 package burp.api.montoya.proxy;
 
+import burp.api.montoya.websocket.TextMessage;
+
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 
@@ -42,6 +44,20 @@ public interface ProxyWebSocketInitialInterceptTextMessage
     }
 
     /**
+     * This is a helper method to build a text WebSocket message to
+     * follow the current interception rules to determine the appropriate
+     * action to take for the message.
+     *
+     * @param message The text message.
+     * @return The {@link ProxyWebSocketInitialInterceptTextMessage} that allows user rules to be
+     * followed.
+     */
+    static ProxyWebSocketInitialInterceptTextMessage followUserRulesTextMessage(TextMessage message)
+    {
+        return FACTORY.followUserRulesInitialProxyTextMessage(message.payload());
+    }
+
+    /**
      * This is a helper method to build a text WebSocket message to be intercepted within the Proxy.
      *
      * @param payload The text message payload.
@@ -53,22 +69,45 @@ public interface ProxyWebSocketInitialInterceptTextMessage
     }
 
     /**
+     * This is a helper method to build a text WebSocket message to be intercepted within the Proxy.
+     *
+     * @param message The text message.
+     * @return The message.
+     */
+    static ProxyWebSocketInitialInterceptTextMessage interceptTextMessage(TextMessage message)
+    {
+        return FACTORY.interceptInitialProxyTextMessage(message.payload());
+    }
+
+    /**
      * This is a helper method to build a text WebSocket message to continue within the Proxy without interception.
      *
      * @param payload The text message payload.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptTextMessage doNotInterceptTextMessage(String payload)
+    static ProxyWebSocketInitialInterceptTextMessage doNotIntercept(String payload)
     {
         return FACTORY.doNotInterceptInitialProxyTextMessage(payload);
     }
+
+    /**
+     * This is a helper method to build a text WebSocket message to continue within the Proxy without interception.
+     *
+     * @param message The text message payload.
+     * @return The message.
+     */
+    static ProxyWebSocketInitialInterceptTextMessage doNotIntercept(TextMessage message)
+    {
+        return FACTORY.doNotInterceptInitialProxyTextMessage(message.payload());
+    }
+
 
     /**
      * This is a helper method to build a text WebSocket message to be dropped.
      *
      * @return The message to be dropped.
      */
-    static ProxyWebSocketInitialInterceptTextMessage dropTextMessage()
+    static ProxyWebSocketInitialInterceptTextMessage dropInitialTextMessage()
     {
         return FACTORY.dropInitialProxyTextMessage();
     }

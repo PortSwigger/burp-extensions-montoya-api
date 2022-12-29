@@ -6,23 +6,19 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.websocket;
 
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.websocket.BinaryMessage;
-import burp.api.montoya.websocket.Direction;
 
-public interface InterceptedBinaryMessage extends BinaryMessage
+public interface BinaryMessage
 {
     /**
-     * {@inheritDoc}
+     * @return Binary based WebSocket payload.
      */
-    @Override
     ByteArray payload();
 
     /**
-     * {@inheritDoc}
+     * @return The direction of the message.
      */
-    @Override
     Direction direction();
 }

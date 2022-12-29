@@ -9,6 +9,7 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.ByteArray;
+import burp.api.montoya.websocket.BinaryMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -44,6 +45,20 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
     }
 
     /**
+     * This is a helper method to build a binary WebSocket message to
+     * follow the current interception rules to determine the appropriate
+     * action to take for the message.
+     *
+     * @param message The binary message.
+     * @return The {@link ProxyWebSocketInitialInterceptBinaryMessage} that allows user rules to be
+     * followed.
+     */
+    static ProxyWebSocketInitialInterceptBinaryMessage followUserRulesBinaryMessage(BinaryMessage message)
+    {
+        return FACTORY.followUserRulesInitialProxyBinaryMessage(message.payload());
+    }
+
+    /**
      * This is a helper method to build a binary WebSocket message to be intercepted within the Proxy.
      *
      * @param payload The binary message payload.
@@ -55,14 +70,36 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
     }
 
     /**
+     * This is a helper method to build a binary WebSocket message to be intercepted within the Proxy.
+     *
+     * @param message The binary message.
+     * @return The message.
+     */
+    static ProxyWebSocketInitialInterceptBinaryMessage interceptBinaryMessage(BinaryMessage message)
+    {
+        return FACTORY.interceptInitialProxyBinaryMessage(message.payload());
+    }
+
+    /**
      * This is a helper method to build a binary WebSocket message to continue within the Proxy without interception.
      *
      * @param payload The binary message payload.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage doNotInterceptBinaryMessage(ByteArray payload)
+    static ProxyWebSocketInitialInterceptBinaryMessage doNotIntercept(ByteArray payload)
     {
         return FACTORY.doNotInterceptInitialProxyBinaryMessage(payload);
+    }
+
+    /**
+     * This is a helper method to build a binary WebSocket message to continue within the Proxy without interception.
+     *
+     * @param message The binary message.
+     * @return The message.
+     */
+    static ProxyWebSocketInitialInterceptBinaryMessage doNotIntercept(BinaryMessage message)
+    {
+        return FACTORY.doNotInterceptInitialProxyBinaryMessage(message.payload());
     }
 
     /**
@@ -70,7 +107,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      *
      * @return The message to be dropped.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage dropBinaryMessage()
+    static ProxyWebSocketInitialInterceptBinaryMessage dropInitialBinaryMessage()
     {
         return FACTORY.dropInitialProxyBinaryMessage();
     }

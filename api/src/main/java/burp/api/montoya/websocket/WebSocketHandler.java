@@ -8,8 +8,6 @@
 
 package burp.api.montoya.websocket;
 
-import burp.api.montoya.core.ByteArray;
-
 /**
  * This interface allows an extension to be notified when messages are received or the WebSocket has been closed.
  */
@@ -21,10 +19,9 @@ public interface WebSocketHandler
      * sent to the application or processed by Burp.
      *
      * @param textMessage Intercepted text based WebSocket message.
-     * @param direction   The direction of the message.
      * @return The message.
      */
-    WebSocketTextMessage handleTextMessage(String textMessage, Direction direction);
+    TextMessageResult handleTextMessage(TextMessage textMessage);
 
     /**
      * Invoked when a binary message is sent or received from the application.
@@ -32,10 +29,9 @@ public interface WebSocketHandler
      * sent to the application or processed by Burp.
      *
      * @param binaryMessage Intercepted binary based WebSocket message.
-     * @param direction     The direction of the message.
      * @return The message.
      */
-    WebSocketBinaryMessage handleBinaryMessage(ByteArray binaryMessage, Direction direction);
+    BinaryMessageResult handleBinaryMessage(BinaryMessage binaryMessage);
 
     /**
      * Invoked when the WebSocket is closed.

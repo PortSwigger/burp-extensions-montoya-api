@@ -26,7 +26,6 @@ import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.HighlightColor;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.core.Registration;
-import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.core.ToolType;
 import burp.api.montoya.core.Version;
 import burp.api.montoya.extension.Extension;
@@ -112,12 +111,14 @@ import burp.api.montoya.ui.editor.extension.ExtensionHttpResponseEditor;
 import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
 import burp.api.montoya.utilities.Utilities;
+import burp.api.montoya.websocket.BinaryMessage;
+import burp.api.montoya.websocket.BinaryMessageResult;
 import burp.api.montoya.websocket.Direction;
-import burp.api.montoya.websocket.WebSocket;
-import burp.api.montoya.websocket.WebSocketBinaryMessage;
+import burp.api.montoya.websocket.TextMessage;
+import burp.api.montoya.websocket.TextMessageResult;
+import burp.api.montoya.websocket.WebSocketCreation;
 import burp.api.montoya.websocket.WebSocketCreationHandler;
 import burp.api.montoya.websocket.WebSocketHandler;
-import burp.api.montoya.websocket.WebSocketTextMessage;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -160,9 +161,8 @@ import static burp.api.montoya.scanner.ReportFormat.XML;
 import static burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPoint.auditInsertionPoint;
 import static burp.api.montoya.scanner.audit.issues.AuditIssue.auditIssue;
 import static burp.api.montoya.ui.Selection.selection;
-import static burp.api.montoya.websocket.WebSocketBinaryMessage.continueWithBinaryMessage;
-import static burp.api.montoya.websocket.WebSocketTextMessage.continueWithTextMessage;
-import static burp.api.montoya.websocket.WebSocketTextMessage.dropTextMessage;
+import static burp.api.montoya.websocket.BinaryMessageResult.continueWith;
+import static burp.api.montoya.websocket.TextMessageResult.dropTextMessage;
 
 import static java.util.Collections.emptyList;
 
@@ -1453,29 +1453,29 @@ public class TestExtension implements BurpExtension
         api.websockets().registerWebSocketCreationHandler(new WebSocketCreationHandler()
         {
             @Override
-            public void handleWebSocketCreated(WebSocket webSocket, HttpRequest upgradeRequest, ToolSource toolSource)
+            public void handleWebSocketCreated(WebSocketCreation webSocketCreation)
             {
-                if (upgradeRequest.url().contains("foo.bar"))
+                if (webSocketCreation.upgradeRequest().url().contains("foo.bar"))
                 {
-                    webSocket.registerHandler(new WebSocketHandler()
+                    webSocketCreation.webSocket().registerHandler(new WebSocketHandler()
                     {
                         @Override
-                        public WebSocketTextMessage handleTextMessage(String textMessage, Direction direction)
+                        public TextMessageResult handleTextMessage(TextMessage textMessage)
                         {
-                            if (textMessage.contains("zap"))
+                            if (textMessage.payload().contains("zap"))
                             {
                                 return dropTextMessage();
                             }
 
-                            String payload = direction == Direction.CLIENT_TO_SERVER ? textMessage + "foo" : textMessage + "bar";
+                            String payload = textMessage.direction() == Direction.CLIENT_TO_SERVER ? textMessage.payload() + "foo" : textMessage.payload() + "bar";
 
-                            return continueWithTextMessage(payload);
+                            return TextMessageResult.continueWith(payload);
                         }
 
                         @Override
-                        public WebSocketBinaryMessage handleBinaryMessage(ByteArray binaryMessage, Direction direction)
+                        public BinaryMessageResult handleBinaryMessage(BinaryMessage binaryMessage)
                         {
-                            return continueWithBinaryMessage(binaryMessage);
+                            return continueWith(binaryMessage.payload());
                         }
                     });
                 }

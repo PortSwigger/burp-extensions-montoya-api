@@ -6,9 +6,10 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.proxy.websocket;
 
 import burp.api.montoya.core.ByteArray;
+import burp.api.montoya.proxy.InitialInterceptAction;
 import burp.api.montoya.websocket.BinaryMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;

@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.proxy.websocket;
 
 import burp.api.montoya.websocket.Direction;
 import burp.api.montoya.websocket.TextMessage;

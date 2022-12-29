@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.proxy.websocket;
 
 /**
  * This interface allows an extension to be notified when messages are sent or received via the proxy WebSocket, or it has been closed.

@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;

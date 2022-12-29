@@ -9,6 +9,9 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Registration;
+import burp.api.montoya.proxy.http.ProxyHttpRequestHandler;
+import burp.api.montoya.proxy.http.ProxyHttpResponseHandler;
+import burp.api.montoya.proxy.websocket.ProxyWebSocketCreationHandler;
 
 import java.util.List;
 

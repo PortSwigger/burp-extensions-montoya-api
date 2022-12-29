@@ -6,10 +6,11 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.proxy;
+package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.proxy.InitialInterceptAction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 

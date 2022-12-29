@@ -5,7 +5,7 @@ This repository holds the Burp Suite Pro Extensions API for building user extens
 
 Supported Burp Suite Version
 --------
-Minimum required version of Burp Suite is **2022.11**
+Minimum required version of Burp Suite is **2023.1**
 
 Download
 --------
@@ -36,10 +36,4 @@ Documentation
 
 Examples
 --------
-
-* [Hello World](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/helloworld)
-* [HTTP Handlers](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/httphandler)
-* [Proxy Handlers](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/proxyhandler)
-* [Event Listeners](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/eventlisteners)
-* [Traffic Redirector](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/trafficredirector)
-* [Multi-API: Using both versions of the Api](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/examples/src/main/java/net/portswigger/burp/extensions/multiapi)
+https://github.com/PortSwigger/burp-extensions-montoya-api-examples

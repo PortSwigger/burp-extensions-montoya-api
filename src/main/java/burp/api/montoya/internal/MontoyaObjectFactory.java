@@ -53,6 +53,7 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.websocket.BinaryMessageAction;
+import burp.api.montoya.websocket.MessageAction;
 import burp.api.montoya.websocket.TextMessageAction;
 
 import java.util.List;
@@ -179,9 +180,13 @@ public interface MontoyaObjectFactory
 
     TextMessageAction dropTextMessage();
 
+    TextMessageAction textMessageAction(String payload, MessageAction action);
+
     BinaryMessageAction continueWithBinaryMessage(ByteArray payload);
 
     BinaryMessageAction dropBinaryMessage();
+
+    BinaryMessageAction binaryMessageAction(ByteArray payload, MessageAction action);
 
     BinaryMessageReceivedAction followUserRulesInitialProxyBinaryMessage(ByteArray payload);
 

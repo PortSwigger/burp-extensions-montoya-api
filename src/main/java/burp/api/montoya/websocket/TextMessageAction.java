@@ -50,4 +50,17 @@ public interface TextMessageAction
     {
         return FACTORY.dropTextMessage();
     }
+
+    /**
+     * Build a websocket text message action.
+     *
+     * @param payload the binary payload for the message
+     * @param action  the action to take for the message.
+     *
+     * @return The {@link TextMessageAction} containing the message and the action.
+     */
+    static TextMessageAction textMessageAction(String payload, MessageAction action)
+    {
+        return FACTORY.textMessageAction(payload, action);
+    }
 }

@@ -52,4 +52,18 @@ public interface BinaryMessageAction
     {
         return FACTORY.dropBinaryMessage();
     }
+
+    /**
+     * Build a binary websocket message action.
+     *
+     * @param payload the binary payload for the message
+     * @param action  the action to take for the message.
+     *
+     * @return The {@link BinaryMessageAction} containing the message and the action.
+     */
+    static BinaryMessageAction
+    binaryMessageAction(ByteArray payload, MessageAction action)
+    {
+        return FACTORY.binaryMessageAction(payload, action);
+    }
 }

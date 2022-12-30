@@ -17,7 +17,7 @@ import java.util.List;
 public interface ContextMenuItemsProvider
 {
     /**
-     * This method is invoked by Burp Suite when the user requests a context menu anywhere in the user interface.
+     * Invoked by Burp Suite when the user requests a context menu anywhere in the user interface.
      * Extensions should return {@code null} from this method, to indicate that no menu items are required.
      *
      * @param event This object can be queried to find out about HTTP request/responses or issues that are associated with the context menu invocation.

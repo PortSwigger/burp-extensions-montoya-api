@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message.responses.analysis;
 
 /**
- * This interface is used to hold details about HTTP response attributes.
+ * Burp attribute able to retrieve to hold details about HTTP response attributes.
  */
 public interface Attribute
 {

@@ -12,13 +12,12 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * This interface represents an instance of a class that allows data to be
- * stored and accessed from the java preference store. It has support for primitives.
+ * Allows data to be stored and accessed from the java preference store. It has support for primitives.
  */
 public interface Preferences
 {
     /**
-     * Returns the {@link String} associated with the specified key,
+     * {@link String} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -46,14 +45,14 @@ public interface Preferences
     void deleteString(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link String} values.
+     * Retrieve all keys currently mapped for {@link String} values.
      *
      * @return Set of keys.
      */
     Set<String> stringKeys();
 
     /**
-     * Returns the {@link Boolean} associated with the specified key,
+     * {@link Boolean} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -82,14 +81,14 @@ public interface Preferences
     void deleteBoolean(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Boolean} values.
+     * Retrieve all keys currently mapped for {@link Boolean} values.
      *
      * @return Set of keys.
      */
     Set<String> booleanKeys();
 
     /**
-     * Returns the {@link Byte} associated with the specified key,
+     * {@link Byte} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -118,14 +117,14 @@ public interface Preferences
     void deleteByte(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Byte} values.
+     * Retrieve all keys currently mapped for {@link Byte} values.
      *
      * @return Set of keys.
      */
     Set<String> byteKeys();
 
     /**
-     * Returns the {@link Short} associated with the specified key,
+     * {@link Short} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -154,14 +153,14 @@ public interface Preferences
     void deleteShort(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Short} values.
+     * Retrieve all keys currently mapped for {@link Short} values.
      *
      * @return Set of keys.
      */
     Set<String> shortKeys();
 
     /**
-     * Returns the {@link Integer} associated with the specified key,
+     * {@link Integer} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -190,14 +189,14 @@ public interface Preferences
     void deleteInteger(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Integer} values.
+     * Retrieve all keys currently mapped for {@link Integer} values.
      *
      * @return Set of keys.
      */
     Set<String> integerKeys();
 
     /**
-     * Returns the {@link Long} associated with the specified key,
+     * {@link Long} associated with the specified key,
      * or {@link Optional#empty}} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -226,7 +225,7 @@ public interface Preferences
     void deleteLong(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Long} values.
+     * Retrieve all keys currently mapped for {@link Long} values.
      *
      * @return Set of keys.
      */

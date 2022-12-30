@@ -11,7 +11,7 @@ package burp.api.montoya.repeater;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
 /**
- * This interface provides access to the functionality of the Repeater tool.
+ * Provides access to the functionality of the Repeater tool.
  */
 public interface Repeater
 {

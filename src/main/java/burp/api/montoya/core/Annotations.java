@@ -10,6 +10,9 @@ package burp.api.montoya.core;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
+/**
+ * Annotations stored with requests and responses in Burp Suite.
+ */
 public interface Annotations
 {
     /**
@@ -37,8 +40,7 @@ public interface Annotations
     void setHighlightColor(HighlightColor highlightColor);
 
     /**
-     * This method is used to construct a copy of the annotations with
-     * a new comment.
+     * Create a copy of the annotations with a new comment.
      *
      * @param comment The new comment.
      *
@@ -47,8 +49,7 @@ public interface Annotations
     Annotations withComment(String comment);
 
     /**
-     * This method is used to construct a copy of the annotations with
-     * a new highlight color.
+     * Create a copy of the annotations with a new highlight color.
      *
      * @param highlightColor The new highlight color.
      *
@@ -57,7 +58,7 @@ public interface Annotations
     Annotations withHighlightColor(HighlightColor highlightColor);
 
     /**
-     * This method is used to construct empty annotations.
+     * Create a new empty annotations.
      *
      * @return The annotations.
      */
@@ -67,7 +68,7 @@ public interface Annotations
     }
 
     /**
-     * This method is used to construct annotations from a comment.
+     * Create a new annotations with a comment.
      *
      * @param comment The comment of the annotation
      *
@@ -79,8 +80,7 @@ public interface Annotations
     }
 
     /**
-     * This method is used to construct a annotations from a highlight
-     * color.
+     * Create a new annotations with a highlight color.
      *
      * @param highlightColor The highlight color of the annotation
      *
@@ -92,8 +92,7 @@ public interface Annotations
     }
 
     /**
-     * This method is used to construct a annotations from a comment
-     * and a highlight color.
+     * Create a new annotations with a comment and a highlight color.
      *
      * @param comment        The comment of the annotation
      * @param highlightColor The highlight color of the annotation

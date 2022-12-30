@@ -19,7 +19,7 @@ public interface AuditIssueDefinition
 {
 
     /**
-     * This method returns the name of this issue type.
+     * Name of this issue type.
      *
      * @return The name of this issue type (e.g. "SQL injection").
      */
@@ -44,7 +44,7 @@ public interface AuditIssueDefinition
     String remediation();
 
     /**
-     * This method returns the typical issue severity level.
+     * Typical issue severity level.
      *
      * @return The typical {@link AuditIssueSeverity} level.
      */

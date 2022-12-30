@@ -10,12 +10,12 @@ package burp.api.montoya.collaborator;
 
 
 /**
- * This interface represents a Burp Collaborator interaction id.
+ * Burp Collaborator interaction id.
  */
 public interface InteractionId
 {
     /**
-     * Returns a string containing the interaction id.
+     * Interaction id.
      *
      * @return The interaction id string.
      */

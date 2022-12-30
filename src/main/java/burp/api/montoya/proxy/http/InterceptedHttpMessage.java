@@ -11,8 +11,7 @@ package burp.api.montoya.proxy.http;
 import java.net.InetAddress;
 
 /**
- * This interface represents an instance of an HTTP message intercepted by Burp
- * Proxy.
+ * HTTP message intercepted by Burp Proxy.
  */
 public interface InterceptedHttpMessage
 {

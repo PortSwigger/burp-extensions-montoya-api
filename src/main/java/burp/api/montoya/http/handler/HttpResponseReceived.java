@@ -23,6 +23,9 @@ import burp.api.montoya.http.message.responses.analysis.KeywordCount;
 
 import java.util.List;
 
+/**
+ * Burp {@link HttpResponse} with additional methods to retrieve initiating {@link HttpRequest} as well as the {@link Annotations} and {@link ToolSource} of the request.
+ */
 public interface HttpResponseReceived extends HttpResponse
 {
     /**

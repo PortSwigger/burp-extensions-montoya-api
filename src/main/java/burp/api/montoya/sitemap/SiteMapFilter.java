@@ -16,7 +16,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface SiteMapFilter
 {
     /**
-     * This method is called by Burp to check whether a given site map node matches the filter.
+     * Invoked by Burp to check whether a given site map node matches the filter.
      *
      * @param node Site map node to match.
      *

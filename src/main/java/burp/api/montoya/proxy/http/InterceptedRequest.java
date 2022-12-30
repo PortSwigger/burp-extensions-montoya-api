@@ -23,8 +23,7 @@ import java.net.InetAddress;
 import java.util.List;
 
 /**
- * This interface represents an instance of an HTTP request intercepted by Burp
- * Proxy.
+ * HTTP request intercepted by Burp Proxy.
  */
 public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
 {

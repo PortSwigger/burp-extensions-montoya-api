@@ -9,10 +9,16 @@
 package burp.api.montoya.intruder;
 
 /**
- * An enum to describe instructions that the payload processor can give Intruder for the current payload.
+ * Instructions that the payload processor can give Intruder for the current payload.
  */
 public enum PayloadProcessingAction
 {
+    /**
+     * Skip the current payload
+     */
     SKIP_PAYLOAD,
+    /**
+     * Use the current payload
+     */
     USE_PAYLOAD
 }

@@ -22,19 +22,19 @@ import java.util.List;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface is used to retrieve key details about an HTTP request.
+ * Burp HTTP request able to retrieve and modify details of an HTTP request.
  */
 public interface HttpRequest extends HttpMessage
 {
     /**
-     * This method is used to retrieve the HTTP service for the request.
+     * HTTP service for the request.
      *
      * @return An {@link HttpService} object containing details of the HTTP service.
      */
     HttpService httpService();
 
     /**
-     * This method is used to retrieve the URL for the request.
+     * URL for the request.
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The URL in the request.
@@ -44,7 +44,7 @@ public interface HttpRequest extends HttpMessage
     String url();
 
     /**
-     * This method is used to retrieve the HTTP method for the request.
+     * HTTP method for the request.
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The HTTP method used in the request.
@@ -54,7 +54,7 @@ public interface HttpRequest extends HttpMessage
     String method();
 
     /**
-     * This method is used to retrieve the path for the request.
+     * Path and File for the request.
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return the path and file in the request
@@ -64,7 +64,7 @@ public interface HttpRequest extends HttpMessage
     String path();
 
     /**
-     * This method is used to return the HTTP Version text parsed from the request line for HTTP 1 messages.
+     * HTTP Version text parsed from the request line for HTTP 1 messages.
      * HTTP 2 messages will return "HTTP/2"
      *
      * @return Version string
@@ -124,7 +124,7 @@ public interface HttpRequest extends HttpMessage
     String toString();
 
     /**
-     * This is a helper method that builds a modified request with the new service.
+     * Create a copy of the {@code HttpRequest} with the new service.
      *
      * @param service An {@link HttpService} reference to add.
      *
@@ -133,7 +133,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withService(HttpService service);
 
     /**
-     * This is a helper method that builds a modified request with the new path.
+     * Create a copy of the {@code HttpRequest} with the new path.
      *
      * @param path The path to use.
      *
@@ -142,7 +142,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withPath(String path);
 
     /**
-     * This is a helper method that builds a modified request with the new method.
+     * Create a copy of the {@code HttpRequest} with the new method.
      *
      * @param method the method to use
      *
@@ -151,7 +151,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withMethod(String method);
 
     /**
-     * This is a helper method that builds a modified request with the added HTTP parameters.
+     * Create a copy of the {@code HttpRequest} with the added HTTP parameters.
      *
      * @param parameters HTTP parameters to add.
      *
@@ -160,7 +160,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withAddedParameters(List<HttpParameter> parameters);
 
     /**
-     * This is a helper method that builds a modified request with the added HTTP parameters.
+     * Create a copy of the {@code HttpRequest} with the added HTTP parameters.
      *
      * @param parameters HTTP parameters to add.
      *
@@ -169,7 +169,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withAddedParameters(HttpParameter... parameters);
 
     /**
-     * This is a helper method that builds a modified request with the removed HTTP parameters.
+     * Create a copy of the {@code HttpRequest} with the removed HTTP parameters.
      *
      * @param parameters HTTP parameters to remove.
      *
@@ -178,7 +178,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withRemovedParameters(List<HttpParameter> parameters);
 
     /**
-     * This is a helper method that builds a modified request with the removed HTTP parameters.
+     * Create a copy of the {@code HttpRequest} with the removed HTTP parameters.
      *
      * @param parameters HTTP parameters to remove.
      *
@@ -187,7 +187,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withRemovedParameters(HttpParameter... parameters);
 
     /**
-     * This is a helper method that builds a modified request with the updated HTTP parameters.
+     * Create a copy of the {@code HttpRequest} with the updated HTTP parameters.<br>
      * If a parameter does not exist in the request, a new one will be added.
      *
      * @param parameters HTTP parameters to update.
@@ -197,7 +197,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withUpdatedParameters(List<HttpParameter> parameters);
 
     /**
-     * This is a helper method that builds a modified request with the updated HTTP parameters.
+     * Create a copy of the {@code HttpRequest} with the updated HTTP parameters.<br>
      * If a parameter does not exist in the request, a new one will be added.
      *
      * @param parameters HTTP parameters to update.
@@ -207,7 +207,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withUpdatedParameters(HttpParameter... parameters);
 
     /**
-     * This is a helper method that builds a modified request with the transformation applied.
+     * Create a copy of the {@code HttpRequest} with the transformation applied.
      *
      * @param transformation Transformation to apply.
      *
@@ -216,7 +216,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withTransformationApplied(HttpTransformation transformation);
 
     /**
-     * This is a helper method that builds a modified request with the updated body.
+     * Create a copy of the {@code HttpRequest} with the updated body.<br>
      * Updates Content-Length header.
      *
      * @param body the new body for the request
@@ -226,7 +226,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withBody(String body);
 
     /**
-     * This is a helper method that builds a modified request with the updated body.
+     * Create a copy of the {@code HttpRequest} with the updated body.<br>
      * Updates Content-Length header.
      *
      * @param body the new body for the request
@@ -236,7 +236,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withBody(ByteArray body);
 
     /**
-     * Adds an HTTP header to the current request.
+     * Create a copy of the {@code HttpRequest} with the added header.
      *
      * @param name  The name of the header.
      * @param value The value of the header.
@@ -246,7 +246,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withAddedHeader(String name, String value);
 
     /**
-     * Adds an HTTP header to the current request.
+     * Create a copy of the {@code HttpRequest} with the added header.
      *
      * @param header The {@link HttpHeader} to add to the HTTP request.
      *
@@ -255,7 +255,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withAddedHeader(HttpHeader header);
 
     /**
-     * Updates an existing HTTP header in the request with a new value.
+     * Create a copy of the {@code HttpRequest} with the updated header.
      *
      * @param name  The name of the header to update the value of.
      * @param value The new value of the specified HTTP header.
@@ -265,7 +265,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withUpdatedHeader(String name, String value);
 
     /**
-     * Updates an existing HTTP header in the request with a new value.
+     * Create a copy of the {@code HttpRequest} with the updated header.
      *
      * @param header The {@link HttpHeader} to update containing the new value.
      *
@@ -292,7 +292,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withRemovedHeader(HttpHeader header);
 
     /**
-     * This is a helper method used to add request markers to the {@code HttpRequest} instance.
+     * Create a copy of the {@code HttpRequest} with the added markers.
      *
      * @param markers Request markers to add.
      *
@@ -301,7 +301,7 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withMarkers(List<Marker> markers);
 
     /**
-     * This is a helper method used create a new instance with markers to the {@code HttpRequest} instance.
+     * Create a copy of the {@code HttpRequest} with the added markers.
      *
      * @param markers Request markers to add.
      *
@@ -310,14 +310,14 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withMarkers(Marker... markers);
 
     /**
-     * Create a request with added default headers.
+     * Create a copy of the {@code HttpRequest} with added default headers.
      *
      * @return a new (@code HttpRequest) with added default headers
      */
     HttpRequest withDefaultHeaders();
 
     /**
-     * This is a helper method to create a new empty {@link HttpRequest}.
+     * Create a new empty instance of {@link HttpRequest}.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @return A new {@link HttpRequest} instance.
@@ -328,7 +328,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
+     * Create a new instance of {@link HttpRequest}.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request
@@ -341,7 +341,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
+     * Create a new instance of {@link HttpRequest}.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request.
@@ -354,7 +354,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
+     * Create a new instance of {@link HttpRequest}.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
@@ -368,7 +368,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
+     * Create a new instance of {@link HttpRequest}.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
@@ -382,7 +382,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest} from the given {@link HttpRequest}.
+     * Create a new instance of {@link HttpRequest} from the given {@link HttpRequest}.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param httpRequestToCopy source HTTP request.
@@ -395,7 +395,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest}.
+     * Create a new instance of {@link HttpRequest}.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param url A URL for the request.
@@ -408,7 +408,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.
+     * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
@@ -423,7 +423,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * This is a helper method to create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.
+     * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.

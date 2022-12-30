@@ -11,7 +11,7 @@ package burp.api.montoya.intruder;
 import burp.api.montoya.core.ByteArray;
 
 /**
- * This interface is used to represent an Intruder insertion point for attack payloads.
+ * Intruder insertion point for attack payloads.
  */
 public interface IntruderInsertionPoint
 {

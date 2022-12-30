@@ -13,19 +13,19 @@ import burp.api.montoya.http.HttpService;
 import java.util.Optional;
 
 /**
- * This interface is used to represent an Intruder attack configuration.
+ * Intruder attack configuration.
  */
 public interface AttackConfiguration
 {
     /**
-     * This method returns an {@link Optional#empty} if the target template contains payload markers.
+     * {@link HttpService} for the attack.
      *
-     * @return An {@link Optional} of {@link HttpService} instance derived from this attack configuration.
+     * @return An {@link Optional} of {@link HttpService} instance derived from this attack configuration or {@link Optional#empty} if the target template contains payload markers.
      */
     Optional<HttpService> httpService();
 
     /**
-     * This method is used to retrieve the HTTP request template and insertion point offsets in a
+     * HTTP request template and insertion point offsets in a
      * form of an {@link HttpRequestTemplate} instance.
      *
      * @return An instance of {@link HttpRequestTemplate}.

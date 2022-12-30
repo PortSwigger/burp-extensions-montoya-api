@@ -11,7 +11,7 @@ package burp.api.montoya.collaborator;
 import java.util.List;
 
 /**
- * This interface represents an instance of a Burp Collaborator client
+ * Burp Collaborator client
  * that can be used to generate Burp Collaborator payloads and poll the
  * Collaborator server for any network interactions that result from using
  * those payloads. Extensions can obtain new instances of this class by
@@ -24,7 +24,7 @@ import java.util.List;
 public interface CollaboratorClient
 {
     /**
-     * This method is used to generate new Burp Collaborator payloads. Options
+     * Generate new Burp Collaborator payloads. Options
      * can be specified to alter the way the payloads are generated. If no
      * options are specified, generated payloads will include the server
      * location.
@@ -38,7 +38,7 @@ public interface CollaboratorClient
     CollaboratorPayload generatePayload(PayloadOption... options);
 
     /**
-     * This method is used to generate new Burp Collaborator payloads with custom data.
+     * Generate new Burp Collaborator payloads with custom data.
      * The custom data can be retrieved from any {@link Interaction} triggered.
      * Options can be specified to alter the way the payloads are generated. If no
      * options are specified, generated payloads will include the server location.
@@ -53,7 +53,7 @@ public interface CollaboratorClient
     CollaboratorPayload generatePayload(String customData, PayloadOption... options);
 
     /**
-     * This method is used to retrieve all Collaborator server interactions
+     * Retrieve all Collaborator server interactions
      * resulting from payloads that were generated for this client.
      *
      * @return The Collaborator interactions that have occurred resulting from
@@ -64,7 +64,7 @@ public interface CollaboratorClient
     List<Interaction> getAllInteractions();
 
     /**
-     * This method is used to retrieve filtered Collaborator server
+     * Retrieve filtered Collaborator server
      * interactions resulting from payloads that were generated for this
      * client. Only interactions matching the supplied filter will be returned.
      *
@@ -78,7 +78,7 @@ public interface CollaboratorClient
     List<Interaction> getInteractions(InteractionFilter filter);
 
     /**
-     * This method is used to retrieve the details of the Collaborator server
+     * Retrieve the details of the Collaborator server
      * associated with this client.
      *
      * @return The Collaborator server details.
@@ -88,7 +88,7 @@ public interface CollaboratorClient
     CollaboratorServer server();
 
     /**
-     * This provides the secret key that is associated with this client context.
+     * Secret key that is associated with this client context.
      * The key can be used to re-create this client again with the interaction data if required.
      *
      * @return The {@link SecretKey} that is associated with this Collaborator client.

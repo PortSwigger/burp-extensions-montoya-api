@@ -9,7 +9,7 @@
 package burp.api.montoya.http.handler;
 
 /**
- * This enum represents the action to be taken when intercepting HTTP requests.
+ * Action to be taken when intercepting HTTP requests.
  */
 public enum HttpRequestAction
 {

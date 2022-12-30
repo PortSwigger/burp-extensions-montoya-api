@@ -18,7 +18,7 @@ import burp.api.montoya.http.Http;
 public interface HttpHandler
 {
     /**
-     * This method is invoked by Burp when an HTTP request is about to be sent.
+     * Invoked by Burp when an HTTP request is about to be sent.
      *
      * @param requestToSend information about the HTTP request that is going to be sent.
      *
@@ -27,7 +27,7 @@ public interface HttpHandler
     RequestToSendAction handleHttpRequestToSend(HttpRequestToSend requestToSend);
 
     /**
-     * This method is invoked by Burp when an HTTP response has been received.
+     * Invoked by Burp when an HTTP response has been received.
      *
      * @param responseReceived information about HTTP response that was received.
      *

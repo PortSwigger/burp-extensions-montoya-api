@@ -11,7 +11,7 @@ package burp.api.montoya.http;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface is used to provide details about an HTTP service, to which HTTP requests can be sent.
+ * Burp HTTP service providing details about an HTTP service, to which HTTP requests can be sent.
  */
 public interface HttpService
 {

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * This interface provides useful information when generating context menu items from a {@link ContextMenuItemsProvider}.
+ * Provides useful information when generating context menu items from a {@link ContextMenuItemsProvider}.
  */
 public interface ContextMenuEvent extends ComponentEvent, ToolSource, InvocationSource
 {

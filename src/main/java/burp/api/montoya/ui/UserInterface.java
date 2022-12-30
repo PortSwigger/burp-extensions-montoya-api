@@ -28,7 +28,7 @@ import java.awt.Component;
 public interface UserInterface
 {
     /**
-     * This method is used to add a custom tab to the main Burp Suite window.
+     * Add a custom tab to the main Burp Suite window.
      *
      * @param title     The text to be displayed in the tab heading.
      * @param component The component that will be rendered within the custom tab.
@@ -65,7 +65,7 @@ public interface UserInterface
     Registration registerHttpResponseEditorProvider(HttpResponseEditorProvider provider);
 
     /**
-     * This method is used to create a new instance of Burp's plain text editor, for the extension to use in its own UI.
+     * Create a new instance of Burp's plain text editor, for the extension to use in its own UI.
      *
      * @param options Optional options to apply to the editor.
      *
@@ -74,7 +74,7 @@ public interface UserInterface
     RawEditor createRawEditor(EditorOptions... options);
 
     /**
-     * This method is used to create a new instance of Burp's HTTP request editor, for the extension to use in its own UI.
+     * Create a new instance of Burp's HTTP request editor, for the extension to use in its own UI.
      *
      * @param options Optional options to apply to the editor.
      *
@@ -83,7 +83,7 @@ public interface UserInterface
     HttpRequestEditor createHttpRequestEditor(EditorOptions... options);
 
     /**
-     * This method is used to create a new instance of Burp's HTTP response editor, for the extension to use in its own UI.
+     * Create a new instance of Burp's HTTP response editor, for the extension to use in its own UI.
      *
      * @param options Optional options to apply to the editor.
      *
@@ -92,7 +92,7 @@ public interface UserInterface
     HttpResponseEditor createHttpResponseEditor(EditorOptions... options);
 
     /**
-     * This method is used to customize UI components in line with Burp's UI style, including font size, colors, table line spacing, etc.
+     * Customize UI components in line with Burp's UI style, including font size, colors, table line spacing, etc.
      * The action is performed recursively on any child components of the passed-in component.
      *
      * @param component The component to be customized.
@@ -100,7 +100,7 @@ public interface UserInterface
     void applyThemeToComponent(Component component);
 
     /**
-     * This method is used to identify the theme currently being used.
+     * Identify the theme currently being used.
      *
      * @return the current {@link Theme}
      */

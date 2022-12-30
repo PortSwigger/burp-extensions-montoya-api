@@ -17,7 +17,7 @@ import burp.api.montoya.proxy.Proxy;
 public interface ProxyWebSocketCreationHandler
 {
     /**
-     * This method is invoked by Burp when a WebSocket is being created by the Proxy tool.<br>
+     * Invoked by Burp when a WebSocket is being created by the Proxy tool.<br>
      * <b>Note</b> that the client side of the connection will not be upgraded until after this method completes.
      *
      * @param webSocketCreation {@link ProxyWebSocketCreation} containing information about the proxy websocket that is being created

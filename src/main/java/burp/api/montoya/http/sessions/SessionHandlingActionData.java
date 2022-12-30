@@ -14,6 +14,9 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 
 import java.util.List;
 
+/**
+ * Information required for session handling.
+ */
 public interface SessionHandlingActionData
 {
     /**

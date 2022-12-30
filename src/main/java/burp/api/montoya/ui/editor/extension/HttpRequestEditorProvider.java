@@ -14,7 +14,7 @@ package burp.api.montoya.ui.editor.extension;
 public interface HttpRequestEditorProvider
 {
     /**
-     * This method is invoked by Burp when a new HTTP request editor is required from the extension.
+     * Invoked by Burp when a new HTTP request editor is required from the extension.
      *
      * @param creationContext details about the context that is requiring a request editor
      *

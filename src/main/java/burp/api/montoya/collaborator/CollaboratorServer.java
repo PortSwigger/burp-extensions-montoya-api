@@ -9,13 +9,13 @@
 package burp.api.montoya.collaborator;
 
 /**
- * This interface provides details of the Collaborator server associated with
+ * Provides details of the Collaborator server associated with
  * this client.
  */
 public interface CollaboratorServer
 {
     /**
-     * Returns the address of the Collaborator server.
+     * Address of the Collaborator server.
      *
      * @return The hostname or IP address of the Collaborator server.
      */

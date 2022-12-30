@@ -11,7 +11,7 @@ package burp.api.montoya.http.message.params;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface is used to hold details about an HTTP request parameter.
+ * Burp HTTP parameter able to retrieve to hold details about an HTTP request parameter.
  */
 public interface HttpParameter
 {

@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message;
 
 /**
- * This enum defines MIME types that are recognised by Burp.
+ * MIME types that are recognised by Burp.
  */
 public enum MimeType
 {

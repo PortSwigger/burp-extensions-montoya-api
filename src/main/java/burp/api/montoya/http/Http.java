@@ -20,12 +20,12 @@ import burp.api.montoya.http.sessions.SessionHandlingAction;
 import java.util.List;
 
 /**
- * This interface is used to access HTTP related functionality of Burp.
+ * Provides access HTTP related functionality of Burp.
  */
 public interface Http
 {
     /**
-     * This method is used to register a handler which will perform an action when a request is about to be sent
+     * Register a handler which will perform an action when a request is about to be sent
      * or a response was received by any Burp tool.
      *
      * @param handler An object created by the extension that implements {@link HttpHandler} interface.
@@ -35,7 +35,7 @@ public interface Http
     Registration registerHttpHandler(HttpHandler handler);
 
     /**
-     * This method is used to register a custom session handler. Each registered handler will be available
+     * Register a custom session handler. Each registered handler will be available
      * within the session handling rule UI for the user to select as a rule action. Users can choose to invoke a
      * handler directly in its own right, or following execution of a macro.
      *
@@ -46,7 +46,7 @@ public interface Http
     Registration registerSessionHandlingAction(SessionHandlingAction sessionHandlingAction);
 
     /**
-     * This method can be used to send HTTP requests and retrieve their responses.
+     * Send HTTP requests and retrieve their responses.
      *
      * @param request The full HTTP request.
      *
@@ -55,7 +55,7 @@ public interface Http
     HttpRequestResponse sendRequest(HttpRequest request);
 
     /**
-     * This method can be used to send HTTP requests and retrieve their responses.
+     * Send HTTP requests and retrieve their responses.
      *
      * @param request  The full HTTP request.
      * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
@@ -65,7 +65,7 @@ public interface Http
     HttpRequestResponse sendRequest(HttpRequest request, HttpMode httpMode);
 
     /**
-     * This method can be used to send HTTP requests and retrieve their responses.
+     * Send HTTP requests and retrieve their responses.
      *
      * @param request      The full HTTP request.
      * @param httpMode     An {@link HttpMode} enum value which indicates how a request should be sent.
@@ -76,7 +76,7 @@ public interface Http
     HttpRequestResponse sendRequest(HttpRequest request, HttpMode httpMode, String connectionId);
 
     /**
-     * This method is used to create a new response keyword analyzer.
+     * Create a new response keyword analyzer.
      *
      * @param keywords A list of keywords the analyzer will look for.
      *
@@ -85,14 +85,14 @@ public interface Http
     ResponseKeywordsAnalyzer createResponseKeywordsAnalyzer(List<String> keywords);
 
     /**
-     * This method is used to create a new response variations analyzer.
+     * Create a new response variations analyzer.
      *
      * @return A new {@link ResponseKeywordsAnalyzer} instance.
      */
     ResponseVariationsAnalyzer createResponseVariationsAnalyzer();
 
     /**
-     * This method is used to access the Cookie Jar.
+     * Access the Cookie Jar.
      *
      * @return The {@link CookieJar} instance.
      */

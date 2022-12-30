@@ -11,17 +11,22 @@ package burp.api.montoya.core;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface represents a range of integer values between two values
- * in which the range includes the start value but excludes the end value.
+ * Range of integer values between two values in which the range includes the start value but excludes the end value.
  */
 public interface Range
 {
+    /**
+     * @return the inclusive start index
+     */
     int startIndexInclusive();
 
+    /**
+     * @return the exclusive end index
+     */
     int endIndexExclusive();
 
     /**
-     * This method can be used to create a range object from two indices.
+     * Create a range object from two indices.
      *
      * @param startIndexInclusive The start index of the range inclusive of this value.
      * @param endIndexExclusive   The end index of the range exclusive of this value.

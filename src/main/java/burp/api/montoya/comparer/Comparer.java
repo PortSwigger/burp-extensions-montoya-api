@@ -11,12 +11,12 @@ package burp.api.montoya.comparer;
 import burp.api.montoya.core.ByteArray;
 
 /**
- * This interface provides access to the functionality of the Comparer tool.
+ * Provides access to the functionality of the Comparer tool.
  */
 public interface Comparer
 {
     /**
-     * This method can be used to send data to the Comparer tool.
+     * Send data to the Comparer tool.
      *
      * @param data The data to be sent to Comparer.
      */

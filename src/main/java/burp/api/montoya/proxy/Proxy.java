@@ -16,7 +16,7 @@ import burp.api.montoya.proxy.websocket.ProxyWebSocketCreationHandler;
 import java.util.List;
 
 /**
- * This interface provides access to the functionality of the Proxy tool.
+ * Provides access to the functionality of the Proxy tool.
  */
 public interface Proxy
 {
@@ -51,7 +51,7 @@ public interface Proxy
     List<ProxyHttpRequestResponse> history(ProxyHistoryFilter filter);
 
     /**
-     * This method is used to register a handler which will be notified of
+     * Register a handler which will be notified of
      * requests being processed by the Proxy tool. Extensions can perform
      * custom analysis or modification of these messages, and control in-UI
      * message interception.
@@ -64,7 +64,7 @@ public interface Proxy
     Registration registerRequestHandler(ProxyRequestHandler handler);
 
     /**
-     * This method is used to register a handler which will be notified of
+     * Register a handler which will be notified of
      * responses being processed by the Proxy tool. Extensions can perform
      * custom analysis or modification of these messages, and control in-UI
      * message interception.
@@ -77,7 +77,7 @@ public interface Proxy
     Registration registerResponseHandler(ProxyResponseHandler handler);
 
     /**
-     * This method is used to register a handler which will be invoked whenever a WebSocket is being created by the Proxy tool.
+     * Register a handler which will be invoked whenever a WebSocket is being created by the Proxy tool.
      *
      * @param handler An object created by the extension that implements {@link ProxyWebSocketCreationHandler} interface.
      *

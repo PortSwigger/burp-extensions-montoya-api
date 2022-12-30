@@ -15,7 +15,7 @@ import burp.api.montoya.scanner.audit.issues.AuditIssue;
 import java.util.List;
 
 /**
- * This interface provides methods for querying and modifying Burp's site map.
+ * Provides methods for querying and modifying Burp's site map.
  */
 public interface SiteMap
 {
@@ -65,7 +65,7 @@ public interface SiteMap
     void add(HttpRequestResponse requestResponse);
 
     /**
-     * This method is used to register a new Audit issue. Note: Wherever possible, extensions
+     * Register a new Audit issue. Note: Wherever possible, extensions
      * should implement custom Scanner checks using {@link ScanCheck} and report issues
      * via those checks, to integrate with Burp's user-driven workflow, and ensure proper
      * consolidation of duplicate reported issues. This method is only designed for tasks

@@ -12,20 +12,20 @@ import burp.api.montoya.http.HttpProtocol;
 import burp.api.montoya.http.message.HttpRequestResponse;
 
 /**
- * This interface provides information about an HTTP interaction detected by
+ * Provides information about an HTTP interaction detected by
  * Burp Collaborator.
  */
 public interface HttpDetails
 {
     /**
-     * Returns the HTTP protocol.
+     * HTTP protocol.
      *
      * @return The HTTP protocol used by the interaction.
      */
     HttpProtocol protocol();
 
     /**
-     * Returns the HTTP request and response.
+     * HTTP request and response.
      *
      * @return The HTTP request sent to the Collaborator server and the
      * server's response.

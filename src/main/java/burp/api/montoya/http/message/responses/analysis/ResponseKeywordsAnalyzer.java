@@ -13,7 +13,7 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 import java.util.Set;
 
 /**
- * This interface is used to analyze HTTP responses and retrieve keywords.
+ * Analyze HTTP responses and retrieve keywords.
  */
 public interface ResponseKeywordsAnalyzer
 {
@@ -28,7 +28,7 @@ public interface ResponseKeywordsAnalyzer
     Set<String> invariantKeywords();
 
     /**
-     * This method is used to update the analysis based on an additional response.
+     * Update the analysis based on an additional response.
      *
      * @param response The new response to include in the analysis.
      */

@@ -13,8 +13,7 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 /**
- * This interface represents an instance of an HTTP request and response
- * intercepted by the Proxy.
+ * HTTP request and response intercepted by the Proxy.
  */
 public interface ProxyHttpRequestResponse
 {

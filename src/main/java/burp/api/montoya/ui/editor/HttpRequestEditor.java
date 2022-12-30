@@ -15,7 +15,7 @@ import javax.swing.JComponent;
 import java.util.Optional;
 
 /**
- * This interface provides extensions with an instance of Burp Suites HTTP request editor to use in their own user interface.
+ * Provides extensions with an instance of Burp Suites HTTP request editor to use in their own user interface.
  */
 public interface HttpRequestEditor extends Editor
 {
@@ -25,7 +25,7 @@ public interface HttpRequestEditor extends Editor
     HttpRequest getRequest();
 
     /**
-     * This method is used to display the contents of an HTTP request in the editor.
+     * Display the contents of an HTTP request in the editor.
      *
      * @param request The HTTP request to be set.
      */

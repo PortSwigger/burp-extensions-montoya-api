@@ -9,7 +9,7 @@
 package burp.api.montoya.scanner;
 
 /**
- * This interface represents configurations for the Burp Scanner tool.
+ * Configurations for the Burp Scanner tool.
  */
 public interface ScanConfiguration
 {

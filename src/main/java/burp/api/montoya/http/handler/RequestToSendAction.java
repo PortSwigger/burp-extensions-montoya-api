@@ -37,7 +37,7 @@ public interface RequestToSendAction
     Annotations annotations();
 
     /**
-     * This is a helper method used to create a new instance of {@code RequestResult}. Annotations will not be modified.
+     * Create a new instance of {@code RequestResult}. Annotations will not be modified.
      *
      * @param request An HTTP request.
      *
@@ -49,7 +49,7 @@ public interface RequestToSendAction
     }
 
     /**
-     * This is a helper method used to create a new instance of {@code RequestResult}.
+     * Create a new instance of {@code RequestResult}.
      *
      * @param request     An HTTP request.
      * @param annotations modified annotations.

@@ -37,7 +37,7 @@ public interface ResponseReceivedAction
     Annotations annotations();
 
     /**
-     * This is a helper method used to create a new instance of {@code ResponseResult}. Annotations will not be modified.
+     * Create a new instance of {@code ResponseResult}. Annotations will not be modified.
      *
      * @param response An HTTP response.
      *
@@ -49,7 +49,7 @@ public interface ResponseReceivedAction
     }
 
     /**
-     * This is a helper method used to create a new instance of {@code ResponseResult}.
+     * Create a new instance of {@code ResponseResult}.
      *
      * @param response    An HTTP response.
      * @param annotations modified annotations.

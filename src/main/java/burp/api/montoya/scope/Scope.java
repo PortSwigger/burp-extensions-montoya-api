@@ -11,7 +11,7 @@ package burp.api.montoya.scope;
 import burp.api.montoya.core.Registration;
 
 /**
- * This interface provides access to the functionality related to Burp's
+ * Provides access to the functionality related to Burp's
  * Suite-wide target scope.
  */
 public interface Scope
@@ -44,7 +44,7 @@ public interface Scope
     void excludeFromScope(String url);
 
     /**
-     * This method is used to register a handler which will be notified of
+     * Register a handler which will be notified of
      * changes to Burp's Suite-wide target scope.
      *
      * @param handler An object created by the extension that implements the

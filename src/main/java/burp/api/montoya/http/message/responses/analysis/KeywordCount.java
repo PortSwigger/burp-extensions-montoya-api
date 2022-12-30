@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message.responses.analysis;
 
 /**
- * This interface is used to store the number of types a given keyword appeared in a response.
+ * Stores the number of types a given keyword appeared in a response.
  */
 public interface KeywordCount
 {

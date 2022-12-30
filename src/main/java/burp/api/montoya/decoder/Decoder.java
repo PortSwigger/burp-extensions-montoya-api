@@ -11,12 +11,12 @@ package burp.api.montoya.decoder;
 import burp.api.montoya.core.ByteArray;
 
 /**
- * This interface provides access to the functionality of the Decoder tool.
+ * Provides access to the functionality of the Decoder tool.
  */
 public interface Decoder
 {
     /**
-     * This method can be used to send data to the Decoder tool.
+     * Send data to the Decoder tool.
      *
      * @param data The data to be sent to Decoder.
      */

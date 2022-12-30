@@ -10,6 +10,9 @@ package burp.api.montoya.core;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
+/**
+ * Marker containing a range representing interesting data in requests and responses.
+ */
 public interface Marker
 {
     /**
@@ -18,7 +21,7 @@ public interface Marker
     Range range();
 
     /**
-     * This method can be used to create a marker object with a range.
+     * Create a marker object with a range.
      *
      * @param range The range of the marker.
      *
@@ -30,7 +33,7 @@ public interface Marker
     }
 
     /**
-     * This method can be used to create a marker object from two indices representing a range.
+     * Create a marker object from two indices representing a range.
      *
      * @param startIndexInclusive The start index of the range inclusive of this value.
      * @param endIndexExclusive   The end index of the range exclusive of this value.

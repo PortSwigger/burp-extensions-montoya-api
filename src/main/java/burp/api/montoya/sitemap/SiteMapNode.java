@@ -14,7 +14,7 @@ package burp.api.montoya.sitemap;
 public interface SiteMapNode
 {
     /**
-     * This method is used to retrieve the URL associated with the site map's node.
+     * Retrieve the URL associated with the site map's node.
      *
      * @return The URL of the node.
      */

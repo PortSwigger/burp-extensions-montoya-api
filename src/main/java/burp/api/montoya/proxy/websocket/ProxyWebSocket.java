@@ -12,7 +12,7 @@ import burp.api.montoya.core.Registration;
 import burp.api.montoya.websocket.Direction;
 
 /**
- * This interface represents a ProxyWebSocket within Burp.
+ * ProxyWebSocket within Burp.
  */
 public interface ProxyWebSocket
 {
@@ -30,7 +30,7 @@ public interface ProxyWebSocket
     void close();
 
     /**
-     * This method is used to register a handler which will perform actions when messages are sent or received by the WebSocket.
+     * Register a handler which will perform actions when messages are sent or received by the WebSocket.
      *
      * @param handler An object created by the extension that implements {@link ProxyMessageHandler} interface.
      *

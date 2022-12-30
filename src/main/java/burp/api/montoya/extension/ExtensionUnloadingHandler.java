@@ -11,9 +11,10 @@ package burp.api.montoya.extension;
 
 /**
  * Extensions can implement this interface and then call
- * {@link Extension#registerUnloadingHandler(ExtensionUnloadingHandler)} (ExtensionUnloadingHandler)} to
+ * {@link Extension#registerUnloadingHandler(ExtensionUnloadingHandler)}  to
  * register an extension unload handler. The handler will be notified when an
- * extension is unloaded. <b>Note:</b> Any extensions that start background
+ * extension is unloaded.<br>
+ * <b>Note:</b> Any extensions that start background
  * threads or open system resources (such as files or database connections)
  * should register a handler and terminate threads / close resources when the
  * extension is unloaded.
@@ -21,7 +22,7 @@ package burp.api.montoya.extension;
 public interface ExtensionUnloadingHandler
 {
     /**
-     * This method is called when the extension is unloaded.
+     * This method is invoked when the extension is unloaded.
      */
     void extensionUnloaded();
 }

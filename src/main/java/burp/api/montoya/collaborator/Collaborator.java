@@ -9,12 +9,12 @@
 package burp.api.montoya.collaborator;
 
 /**
- * This interface provides access to the facilities of Burp Collaborator.
+ * Provides access to the facilities of Burp Collaborator.
  */
 public interface Collaborator
 {
     /**
-     * This method is used to create a new Burp Collaborator client
+     * Create a new Burp Collaborator client
      * that can be used to generate Burp Collaborator payloads and poll the
      * Collaborator server for any network interactions that result from using
      * those payloads.
@@ -25,7 +25,7 @@ public interface Collaborator
     CollaboratorClient createClient();
 
     /**
-     * This method is used to restore a {@link CollaboratorClient} from a previous
+     * Restore a {@link CollaboratorClient} from a previous
      * session. This allows you to retrieve the interactions that were identified
      * from a specific payloads.
      *

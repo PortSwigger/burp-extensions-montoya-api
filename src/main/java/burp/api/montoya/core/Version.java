@@ -9,40 +9,41 @@
 package burp.api.montoya.core;
 
 /**
- * This interface represents a product version.
+ * Product version.<br>
+ * e.g. Burp Suite Professional 2022.8.1-9320
  */
 public interface Version
 {
     /**
-     * This method returns the product name (e.g. Burp Suite Professional).
+     * The product name (e.g. Burp Suite Professional).
      *
      * @return The product name.
      */
     String name();
 
     /**
-     * This method returns the major version (e.g. 2022.8).
+     * The major version (e.g. 2022.8).
      *
      * @return The major version.
      */
     String major();
 
     /**
-     * This method returns the minor version (e.g. 1).
+     * The minor version (e.g. 1).
      *
      * @return The minor version.
      */
     String minor();
 
     /**
-     * This method returns the build number (e.g. 9320).
+     * The build number (e.g. 9320).
      *
      * @return The build number.
      */
     String build();
 
     /**
-     * This method returns the edition of Burp Suite
+     * The edition of Burp Suite
      *
      * @return The edition of Burp Suite
      */

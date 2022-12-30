@@ -9,8 +9,7 @@
 package burp.api.montoya.scanner;
 
 /**
- * This interface represents an instance of a crawl and audit in the Burp
- * Scanner tool.
+ * Crawl and audit in the Burp Scanner tool.
  */
 public interface CrawlAndAudit extends ScanTask
 {

@@ -9,11 +9,20 @@
 package burp.api.montoya.collaborator;
 
 /**
- * This enum defines the possible types of interaction with Burp Collaborator.
+ * Possible types of interaction with Burp Collaborator.
  */
 public enum InteractionType
 {
+    /**
+     * Domain Name System
+     */
     DNS,
+    /**
+     * Hypertext Transfer Protocol
+     */
     HTTP,
+    /**
+     * Simple Mail Transfer Protocol
+     */
     SMTP
 }

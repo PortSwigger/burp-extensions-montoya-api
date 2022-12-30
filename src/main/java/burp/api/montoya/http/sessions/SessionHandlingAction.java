@@ -23,7 +23,7 @@ public interface SessionHandlingAction
     String name();
 
     /**
-     * This method is invoked when the session handling action should be executed.<br>
+     * Invoked when the session handling action should be executed.<br>
      * This may happen as an action in its own right, or as a sub-action following execution of a macro.<br>
      * It can issue additional requests of its own if necessary, and can return a modified base request in the {@link ActionResult}
      *

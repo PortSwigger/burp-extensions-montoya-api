@@ -9,12 +9,12 @@
 package burp.api.montoya.persistence;
 
 /**
- * This interface provides access to the functionality related to persistence.
+ * Provides access to the functionality related to persistence.
  */
 public interface Persistence
 {
     /**
-     * This method is used to access the functionality related to
+     * Access the functionality related to
      * storing of data in the Burp project. When Burp is started without
      * a project file, the data will be stored in memory.
      *
@@ -24,7 +24,7 @@ public interface Persistence
     PersistedObject extensionData();
 
     /**
-     * This method is used to access the functionality related to java preference store
+     * Access the functionality related to java preference store
      * in a way that survives reloads of the extension and of Burp Suite.
      *
      * @return An implementation of the {@link Preferences} interface

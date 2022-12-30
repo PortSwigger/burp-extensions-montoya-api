@@ -13,13 +13,12 @@ import burp.api.montoya.core.Version;
 import java.util.List;
 
 /**
- * This interface provides access to functionality related to
- * the Burp Suite application.
+ * Provides access to functionality related to the Burp Suite application.
  */
 public interface BurpSuite
 {
     /**
-     * This method retrieves information about the version of Burp in which the
+     * Retrieve information about the version of Burp in which the
      * extension is running. It can be used by extensions to dynamically adjust
      * their behavior depending on the functionality and APIs supported by the
      * current version.
@@ -29,8 +28,8 @@ public interface BurpSuite
     Version version();
 
     /**
-     * This method causes Burp to save its current project-level configuration
-     * in JSON format. This is the same format that can be saved and loaded via
+     * Export current project-level configuration in JSON format.
+     * This is the same format that can be saved and loaded via
      * the Burp user interface. To include only certain sections of the
      * configuration, you can optionally supply the path to each section that
      * should be included, for example: "project_options.connections". If no
@@ -44,8 +43,8 @@ public interface BurpSuite
     String exportProjectOptionsAsJson(String... paths);
 
     /**
-     * This method causes Burp to load a new project-level configuration from
-     * the JSON String provided. This is the same format that can be saved and
+     * Import a new project-level configuration from the JSON String provided.
+     * This is the same format that can be saved and
      * loaded via the Burp user interface. Partial configurations are
      * acceptable, and any settings not specified will be left unmodified.
      * <p>
@@ -57,20 +56,19 @@ public interface BurpSuite
     void importProjectOptionsFromJson(String json);
 
     /**
-     * This method returns the command line arguments that were passed to Burp
-     * on startup.
+     * Command line arguments that were passed to Burp on startup.
      *
      * @return The command line arguments that were passed to Burp on startup.
      */
     List<String> commandLineArguments();
 
     /**
-     * This method can be used to shut down Burp programmatically.
+     * Shut down Burp programmatically.
      *
      * @param options The shutdown options for shutting down Burp
      *                programmatically. For example {@link ShutdownOptions#PROMPT_USER} will
      *                display a dialog to the user allowing them to confirm or cancel the
-     *                shut down.
+     *                shutdown.
      */
     void shutdown(ShutdownOptions... options);
 }

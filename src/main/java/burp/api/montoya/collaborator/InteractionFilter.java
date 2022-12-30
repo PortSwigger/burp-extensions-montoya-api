@@ -11,7 +11,7 @@ package burp.api.montoya.collaborator;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface provides a filtering mechanism for use when retrieving
+ * Provides a filtering mechanism for use when retrieving
  * interactions from the Burp Collaborator server.
  * Helper methods are provided to create filters based on the interaction id
  * and the payload.
@@ -19,7 +19,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface InteractionFilter
 {
     /**
-     * This method will be called for each interaction retrieved from the
+     * This method is invoked for each interaction retrieved from the
      * Collaborator server and determines whether the interaction should be
      * included in the list of interactions returned.
      *
@@ -32,7 +32,7 @@ public interface InteractionFilter
     boolean matches(CollaboratorServer server, Interaction interaction);
 
     /**
-     * This method constructs an InteractionFilter that matches any
+     * Construct a InteractionFilter that matches any
      * interaction with the specified interaction id.
      *
      * @param id The interaction id.
@@ -46,7 +46,7 @@ public interface InteractionFilter
     }
 
     /**
-     * This method constructs an InteractionFilter that matches any
+     * Construct an InteractionFilter that matches any
      * interaction with the specified payload.
      *
      * @param payload The payload.

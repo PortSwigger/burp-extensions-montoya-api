@@ -3,7 +3,7 @@ package burp.api.montoya.websocket;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface represents a text WebSocket message.
+ * Text WebSocket message.
  */
 public interface TextMessageAction
 {

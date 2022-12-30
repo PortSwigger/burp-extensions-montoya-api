@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message;
 
 /**
- * This enum defines content types recognised by Burp.
+ * Content types recognised by Burp.
  */
 public enum ContentType
 {

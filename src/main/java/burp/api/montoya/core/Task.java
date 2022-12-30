@@ -9,12 +9,12 @@
 package burp.api.montoya.core;
 
 /**
- * This interface represents a task on the Dashboard.
+ * Task on the Dashboard.
  */
 public interface Task
 {
     /**
-     * This method is used to delete the task.
+     * Delete the task.
      */
     void delete();
 

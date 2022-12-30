@@ -15,7 +15,7 @@ import javax.swing.JComponent;
 import java.util.Optional;
 
 /**
- * This interface provides extensions with an instance of Burp Suite's HTTP text editor to use in their own user interface.
+ * Provides extensions with an instance of Burp Suite's HTTP text editor to use in their own user interface.
  */
 public interface RawEditor extends Editor
 {

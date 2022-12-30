@@ -9,8 +9,7 @@
 package burp.api.montoya.scope;
 
 /**
- * This interface represents an instance of a change to Burp's Suite-wide
- * target scope.
+ * Change to Burp's Suite-wide target scope.
  */
 public interface ScopeChange
 {

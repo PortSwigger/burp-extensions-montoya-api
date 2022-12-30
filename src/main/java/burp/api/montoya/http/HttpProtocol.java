@@ -9,10 +9,16 @@
 package burp.api.montoya.http;
 
 /**
- * This enum defines HTTP protocols.
+ * HTTP protocols.
  */
 public enum HttpProtocol
 {
+    /**
+     * Hypertext Transfer Protocol
+     */
     HTTP,
+    /**
+     * Hypertext Transfer Protocol Secure
+     */
     HTTPS
 }

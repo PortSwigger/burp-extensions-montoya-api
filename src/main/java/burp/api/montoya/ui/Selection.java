@@ -14,7 +14,7 @@ import burp.api.montoya.core.Range;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface provides helpful information and functionality relating to a user's selection within the user interface.
+ * Provides helpful information and functionality relating to a user's selection within the user interface.
  */
 public interface Selection
 {

@@ -15,7 +15,7 @@ package burp.api.montoya.intruder;
 public interface PayloadProcessor
 {
     /**
-     * This method returns the name Burp will use when displaying the payload processor
+     * Name Burp will use when displaying the payload processor
      * in a dropdown list in the UI.
      *
      * @return Name of the payload processor
@@ -23,7 +23,7 @@ public interface PayloadProcessor
     String displayName();
 
     /**
-     * This method is invoked by Burp each time the processor should be applied to an Intruder payload.
+     * Invoked by Burp each time the processor should be applied to an Intruder payload.
      *
      * @param payloadData Information about the current payload to be processed
      *

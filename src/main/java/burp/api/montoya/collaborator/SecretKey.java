@@ -3,12 +3,12 @@ package burp.api.montoya.collaborator;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface represents a secret key that is associated with a {@link CollaboratorClient}
+ * Secret key that is associated with a {@link CollaboratorClient}
  */
 public interface SecretKey
 {
     /**
-     * This provides the secret key in string form.
+     * Secret key in string form.
      *
      * @return The base64 encoded secret key.
      */
@@ -16,7 +16,7 @@ public interface SecretKey
     String toString();
 
     /**
-     * This method allows you to create an instance of {@link SecretKey} which
+     * Create an instance of {@link SecretKey} which
      * you will be able to use to restore a previously created {@link CollaboratorClient}
      * with the {@link Collaborator#restoreClient(SecretKey)} method.
      *

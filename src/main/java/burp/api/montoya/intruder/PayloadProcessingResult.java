@@ -24,7 +24,7 @@ public interface PayloadProcessingResult
     ByteArray processedPayload();
 
     /**
-     * This method is called by Burp to see what action it should perform with the payload. If the value
+     * Invoked by Burp to see what action it should perform with the payload. If the value
      * is {@link PayloadProcessingAction#USE_PAYLOAD}, Burp will use the payload in the attack or skip it
      * if the value is {@link PayloadProcessingAction#SKIP_PAYLOAD}.
      *
@@ -33,7 +33,7 @@ public interface PayloadProcessingResult
     PayloadProcessingAction action();
 
     /**
-     * This method is a helper method to create a new instance of {@link PayloadProcessingResult} with a
+     * Create a new instance of {@link PayloadProcessingResult} with a
      * {@link PayloadProcessingAction#USE_PAYLOAD} action.
      *
      * @param processedPayload Processed payload value
@@ -46,7 +46,7 @@ public interface PayloadProcessingResult
     }
 
     /**
-     * This method is a helper method to create a new instance of {@link PayloadProcessingResult} with a
+     * Create a new instance of {@link PayloadProcessingResult} with a
      * {@link PayloadProcessingAction#SKIP_PAYLOAD} action.
      *
      * @return A new {@link PayloadProcessingResult} instance.

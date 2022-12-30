@@ -26,7 +26,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface AuditInsertionPoint
 {
     /**
-     * This method returns the name of this insertion point.
+     * Name of this insertion point.
      *
      * @return The name of this insertion point (for example, a description of
      * a particular request parameter).
@@ -34,7 +34,7 @@ public interface AuditInsertionPoint
     String name();
 
     /**
-     * This method returns the base value for this insertion point.
+     * Base value for this insertion point.
      *
      * @return the base value that appears in this insertion point in the base
      * request being audited, or {@code null} if there is no value in the base
@@ -43,7 +43,7 @@ public interface AuditInsertionPoint
     String baseValue();
 
     /**
-     * This method is used to build a request with the specified payload placed
+     * Vuild a request with the specified payload placed
      * into the insertion point. There is no requirement for extension-provided
      * insertion points to adjust the Content-Length header in requests if the
      * body length has changed, although Burp-provided insertion points will
@@ -63,7 +63,7 @@ public interface AuditInsertionPoint
     HttpRequest buildHttpRequestWithPayload(ByteArray payload);
 
     /**
-     * This method is used to determine the offsets of the payload value within
+     * Determine the offsets of the payload value within
      * the request, when it is placed into the insertion point. Scan checks may
      * invoke this method when reporting issues, so as to highlight the
      * relevant part of the request within the UI.
@@ -80,7 +80,7 @@ public interface AuditInsertionPoint
     List<Range> issueHighlights(ByteArray payload);
 
     /**
-     * This method returns the type of this insertion point.
+     * Type of this insertion point.
      *
      * @return The {@link AuditInsertionPointType} for this insertion point.
      */

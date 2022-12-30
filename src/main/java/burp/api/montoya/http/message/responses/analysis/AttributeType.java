@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message.responses.analysis;
 
 /**
- * This enum defines various options that Burp can use to query attributes of HTTP responses.
+ * Otions that Burp can use to query attributes of HTTP responses.
  */
 public enum AttributeType
 {

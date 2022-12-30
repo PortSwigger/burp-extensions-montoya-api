@@ -18,7 +18,7 @@ import java.util.List;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface represents a list that has been persisted in the project.
+ * List that has been persisted in the project.
  * The methods of this list operate on the underlying persisted data.
  */
 public interface PersistedList<T> extends List<T>

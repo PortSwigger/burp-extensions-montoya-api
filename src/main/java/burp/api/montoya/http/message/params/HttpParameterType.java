@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message.params;
 
 /**
- * An enum to define HTTP parameter types.
+ * HTTP parameter types.
  */
 public enum HttpParameterType
 {

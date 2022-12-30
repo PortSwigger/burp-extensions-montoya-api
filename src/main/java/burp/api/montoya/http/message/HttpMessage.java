@@ -17,54 +17,54 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 import java.util.List;
 
 /**
- * This interface is used to retrieve common information shared by {@link HttpRequest} and {@link HttpResponse} interfaces.
+ * Burp message retrieve common information shared by {@link HttpRequest} and {@link HttpResponse}.
  */
 public interface HttpMessage
 {
     /**
-     * This method is used to obtain the HTTP headers contained in the message.
+     * HTTP headers contained in the message.
      *
      * @return A list of HTTP headers.
      */
     List<HttpHeader> headers();
 
     /**
-     * This method is used to obtain the offset within the message where the message body begins.
+     * Offset within the message where the message body begins.
      *
      * @return The message body offset.
      */
     int bodyOffset();
 
     /**
-     * This method is used to get the body of a message as a byte array.
+     * Body of a message as a byte array.
      *
      * @return The body of a message as a byte array.
      */
     ByteArray body();
 
     /**
-     * This method is used to get the body of a message as a {@code String}.
+     * Body of a message as a {@code String}.
      *
      * @return The body of a message as a {@code String}.
      */
     String bodyToString();
 
     /**
-     * This method is used to obtain the markers for the response.
+     * Markers for the message.
      *
-     * @return A list of HTTP headers.
+     * @return A list of markers.
      */
     List<Marker> markers();
 
     /**
-     * This method is used to get the message as a byte array.
+     * Message as a byte array.
      *
      * @return The message as a byte array.
      */
     ByteArray toByteArray();
 
     /**
-     * This method is used to get the message as a {@code String}.
+     * Message as a {@code String}.
      *
      * @return The message as a {@code String}.
      */

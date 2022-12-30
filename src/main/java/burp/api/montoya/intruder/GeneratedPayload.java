@@ -13,7 +13,7 @@ import burp.api.montoya.core.ByteArray;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface represents an Intruder payload.
+ * Intruder payload.
  */
 public interface GeneratedPayload
 {

@@ -22,6 +22,9 @@ import burp.api.montoya.http.message.requests.HttpTransformation;
 
 import java.util.List;
 
+/**
+ * Burp {@link HttpRequest) with additonal methods to retrieve {@link Annotations} and {@link ToolSource} of the request.
+ */
 public interface HttpRequestToSend extends HttpRequest
 {
     /**

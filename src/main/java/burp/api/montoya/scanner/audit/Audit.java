@@ -17,7 +17,7 @@ import burp.api.montoya.scanner.audit.issues.AuditIssue;
 import java.util.List;
 
 /**
- * This interface represents an instance of an audit in the Burp Scanner tool.
+ * Audit in the Burp Scanner tool.
  */
 public interface Audit extends ScanTask
 {

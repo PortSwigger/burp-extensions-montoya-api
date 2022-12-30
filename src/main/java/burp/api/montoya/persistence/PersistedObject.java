@@ -19,13 +19,13 @@ import java.util.Set;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface represents an instance of a class that allows data to be stored and accessed from the Burp project.
+ * Allows data to be stored and accessed from the Burp project.
  * It has support for HTTP requests, HTTP responses, byte arrays, primitives, lists of all these, and object hierarchies.
  */
 public interface PersistedObject
 {
     /**
-     * Returns the {@link PersistedObject} associated with the specified key.
+     * {@link PersistedObject} associated with the specified key.
      * or {@link Optional#empty} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -53,14 +53,14 @@ public interface PersistedObject
     void deleteChildObject(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link PersistedObject} objects.
+     * Retrieve all keys currently mapped for {@link PersistedObject} objects.
      *
      * @return Set of keys.
      */
     Set<String> childObjectKeys();
 
     /**
-     * Returns the {@link String} associated with the specified key,
+     * {@link String} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -88,14 +88,14 @@ public interface PersistedObject
     void deleteString(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link String} values.
+     * Retrieve all keys currently mapped for {@link String} values.
      *
      * @return Set of keys.
      */
     Set<String> stringKeys();
 
     /**
-     * Returns the {@link Boolean} associated with the specified key,
+     * {@link Boolean} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -124,14 +124,14 @@ public interface PersistedObject
     void deleteBoolean(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Boolean} values.
+     * Retrieve all keys currently mapped for {@link Boolean} values.
      *
      * @return Set of keys.
      */
     Set<String> booleanKeys();
 
     /**
-     * Returns the {@link Byte} associated with the specified key,
+     * {@link Byte} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -160,14 +160,14 @@ public interface PersistedObject
     void deleteByte(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Byte} values.
+     * Retrieve all keys currently mapped for {@link Byte} values.
      *
      * @return Set of keys.
      */
     Set<String> byteKeys();
 
     /**
-     * Returns the {@link Short} associated with the specified key,
+     * {@link Short} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -196,14 +196,14 @@ public interface PersistedObject
     void deleteShort(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Short} values.
+     * Retrieve all keys currently mapped for {@link Short} values.
      *
      * @return Set of keys.
      */
     Set<String> shortKeys();
 
     /**
-     * Returns the {@link Integer} associated with the specified key,
+     * {@link Integer} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -232,14 +232,14 @@ public interface PersistedObject
     void deleteInteger(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Integer} values.
+     * Retrieve all keys currently mapped for {@link Integer} values.
      *
      * @return Set of keys.
      */
     Set<String> integerKeys();
 
     /**
-     * Returns the {@link Long} associated with the specified key,
+     * {@link Long} associated with the specified key,
      * or {@link Optional#empty}} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -268,14 +268,14 @@ public interface PersistedObject
     void deleteLong(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Long} values.
+     * Retrieve all keys currently mapped for {@link Long} values.
      *
      * @return Set of keys.
      */
     Set<String> longKeys();
 
     /**
-     * Returns the {@link ByteArray} associated with the specified key,
+     * {@link ByteArray} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
@@ -303,14 +303,14 @@ public interface PersistedObject
     void deleteByteArray(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link ByteArray} values.
+     * Retrieve all keys currently mapped for {@link ByteArray} values.
      *
      * @return Set of keys.
      */
     Set<String> byteArrayKeys();
 
     /**
-     * Returns the {@link HttpRequest} associated with the specified key,
+     * {@link HttpRequest} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -338,14 +338,14 @@ public interface PersistedObject
     void deleteHttpRequest(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link HttpRequest} values.
+     * Retrieve all keys currently mapped for {@link HttpRequest} values.
      *
      * @return Set of keys.
      */
     Set<String> httpRequestKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link HttpRequest} associated with the specified key,
+     * {@link PersistedList} of {@link HttpRequest} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -374,14 +374,14 @@ public interface PersistedObject
     void deleteHttpRequestList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link HttpRequest} Lists.
+     * Retrieve all keys currently mapped for {@link HttpRequest} Lists.
      *
      * @return Set of keys.
      */
     Set<String> httpRequestListKeys();
 
     /**
-     * Returns the {@link HttpResponse} associated with the specified key,
+     * {@link HttpResponse} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -409,14 +409,14 @@ public interface PersistedObject
     void deleteHttpResponse(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link HttpResponse} values.
+     * Retrieve all keys currently mapped for {@link HttpResponse} values.
      *
      * @return Set of keys.
      */
     Set<String> httpResponseKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link HttpResponse} associated with the specified key,
+     * {@link PersistedList} of {@link HttpResponse} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -445,14 +445,14 @@ public interface PersistedObject
     void deleteHttpResponseList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link HttpResponse} Lists.
+     * Retrieve all keys currently mapped for {@link HttpResponse} Lists.
      *
      * @return Set of keys.
      */
     Set<String> httpResponseListKeys();
 
     /**
-     * Returns the {@link HttpRequestResponse} associated with the specified key,
+     * {@link HttpRequestResponse} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -480,14 +480,14 @@ public interface PersistedObject
     void deleteHttpRequestResponse(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link HttpRequestResponse} values.
+     * Retrieve all keys currently mapped for {@link HttpRequestResponse} values.
      *
      * @return Set of keys.
      */
     Set<String> httpRequestResponseKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link HttpRequestResponse} associated with the specified key,
+     * {@link PersistedList} of {@link HttpRequestResponse} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -516,14 +516,14 @@ public interface PersistedObject
     void deleteHttpRequestResponseList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link HttpRequestResponse} Lists.
+     * Retrieve all keys currently mapped for {@link HttpRequestResponse} Lists.
      *
      * @return Set of keys.
      */
     Set<String> httpRequestResponseListKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link Boolean} associated with the specified key,
+     * {@link PersistedList} of {@link Boolean} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -551,14 +551,14 @@ public interface PersistedObject
     void deleteBooleanList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Boolean} Lists.
+     * Retrieve all keys currently mapped for {@link Boolean} Lists.
      *
      * @return Set of keys.
      */
     Set<String> booleanListKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link Short} associated with the specified key,
+     * {@link PersistedList} of {@link Short} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -586,14 +586,14 @@ public interface PersistedObject
     void deleteShortList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Short} Lists.
+     * Retrieve all keys currently mapped for {@link Short} Lists.
      *
      * @return Set of keys.
      */
     Set<String> shortListKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link Integer} associated with the specified key,
+     * {@link PersistedList} of {@link Integer} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -621,14 +621,14 @@ public interface PersistedObject
     void deleteIntegerList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Integer} Lists.
+     * Retrieve all keys currently mapped for {@link Integer} Lists.
      *
      * @return Set of keys.
      */
     Set<String> integerListKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link Long} associated with the specified key,
+     * {@link PersistedList} of {@link Long} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -656,14 +656,14 @@ public interface PersistedObject
     void deleteLongList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link Long} Lists.
+     * Retrieve all keys currently mapped for {@link Long} Lists.
      *
      * @return Set of keys.
      */
     Set<String> longListKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link String} associated with the specified key,
+     * {@link PersistedList} of {@link String} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -691,14 +691,14 @@ public interface PersistedObject
     void deleteStringList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link String} Lists.
+     * Retrieve all keys currently mapped for {@link String} Lists.
      *
      * @return Set of keys.
      */
     Set<String> stringListKeys();
 
     /**
-     * Returns the {@link PersistedList} of {@link ByteArray} associated with the specified key,
+     * {@link PersistedList} of {@link ByteArray} associated with the specified key,
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
@@ -727,7 +727,7 @@ public interface PersistedObject
     void deleteByteArrayList(String key);
 
     /**
-     * This method is used to retrieve all keys currently mapped for {@link ByteArray} Lists.
+     * Retrieve all keys currently mapped for {@link ByteArray} Lists.
      *
      * @return Set of keys.
      */

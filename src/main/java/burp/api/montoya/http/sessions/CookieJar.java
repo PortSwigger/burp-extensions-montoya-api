@@ -14,12 +14,12 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
- * This interface is used to access Burp's Cookie Jar functionality.
+ * Provides access to Burp's Cookie Jar functionality.
  */
 public interface CookieJar
 {
     /**
-     * This method is used to add a new HTTP cookie to the Cookie Jar.
+     * Add a new HTTP cookie to the Cookie Jar.
      *
      * @param name       The name of the cookie.
      * @param value      The value of the cookie.

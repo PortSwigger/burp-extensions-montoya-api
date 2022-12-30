@@ -17,8 +17,7 @@ import java.util.List;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface is used to represent an Intruder request template, which contains the
- * HTTP request and insertion point offsets.
+ * Intruder request template, which contains the HTTP request and insertion point offsets.
  */
 public interface HttpRequestTemplate
 {
@@ -28,14 +27,14 @@ public interface HttpRequestTemplate
     ByteArray content();
 
     /**
-     * This method is used to obtain insertion point offsets for an Intruder attack.
+     * Insertion point offsets for an Intruder attack.
      *
      * @return A list of {@link Range} objects representing insertion point offsets.
      */
     List<Range> insertionPointOffsets();
 
     /**
-     * This method is a helper method used to generate a new {@link HttpRequestTemplate} instance
+     * Create a new {@link HttpRequestTemplate} instance
      * from an {@link HttpRequest} object and a list of insertion point offsets.
      *
      * @param request               An instance of {@link HttpRequest}.
@@ -49,7 +48,7 @@ public interface HttpRequestTemplate
     }
 
     /**
-     * This method is a helper method used to generate new {@link HttpRequestTemplate} instance
+     * Create a new {@link HttpRequestTemplate} instance
      * from an HTTP request in a byte array form and a list of insertion point offsets.
      *
      * @param content               An HTTP request in a byte array form.

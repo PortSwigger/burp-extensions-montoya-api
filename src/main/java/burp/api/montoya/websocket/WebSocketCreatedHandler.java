@@ -15,7 +15,7 @@ package burp.api.montoya.websocket;
 public interface WebSocketCreatedHandler
 {
     /**
-     * This method is invoked by Burp when an application WebSocket has been created.
+     * Invoked by Burp when an application WebSocket has been created.
      *
      * @param webSocketCreated {@link WebSocketCreated} containing information about the application websocket that is being created
      */

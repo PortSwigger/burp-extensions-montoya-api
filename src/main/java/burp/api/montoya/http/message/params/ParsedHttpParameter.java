@@ -11,7 +11,7 @@ package burp.api.montoya.http.message.params;
 import burp.api.montoya.core.Range;
 
 /**
- * This interface is used to hold additional details about an HTTP request parameter that has been parsed by Burp.
+ * Burp {@link HttpParameter} with additional details about an HTTP request parameter that has been parsed by Burp.
  */
 public interface ParsedHttpParameter extends HttpParameter
 {
@@ -34,14 +34,14 @@ public interface ParsedHttpParameter extends HttpParameter
     String value();
 
     /**
-     * This method is used to retrieve the offsets of the parameter name within the HTTP request.
+     * Offsets of the parameter name within the HTTP request.
      *
      * @return The parameter name offsets.
      */
     Range nameOffsets();
 
     /**
-     * This method is used to retrieve the offsets of the parameter value within the HTTP request.
+     * Offsets of the parameter value within the HTTP request.
      *
      * @return The parameter value offsets.
      */

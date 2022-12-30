@@ -9,15 +9,17 @@
 package burp.api.montoya.core;
 
 /**
- * This interface represents the tool that is the source of an object.
+ * Tool that is the source of an object.
  */
 public interface ToolSource
 {
+    /**
+     * @return the tool type.
+     */
     ToolType toolType();
 
     /**
-     * This method is used to determine whether this tool source is from a
-     * specified tool.
+     * Determine whether this tool source is from a specified tool.
      *
      * @param toolType The tool types to check.
      *

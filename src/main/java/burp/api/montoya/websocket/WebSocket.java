@@ -11,7 +11,7 @@ package burp.api.montoya.websocket;
 import burp.api.montoya.core.Registration;
 
 /**
- * This interface represents a WebSocket within Burp.
+ * WebSocket within Burp.
  */
 public interface WebSocket
 {
@@ -28,7 +28,7 @@ public interface WebSocket
     void close();
 
     /**
-     * This method is used to register a handler which will perform an action when a message is sent to or received from the application.
+     * Register a handler which will perform an action when a message is sent to or received from the application.
      *
      * @param handler An object created by the extension that implements {@link MessageHandler} interface.
      *

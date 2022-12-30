@@ -9,15 +9,15 @@
 package burp.api.montoya.intruder;
 
 /**
- * This interface is used for custom Intruder payload generators. Extensions that have registered
+ * Intruder payload generator. Extensions that have registered
  * a {@link PayloadGeneratorProvider} must return a new instance of this interface when required as part
  * of a new Intruder attack.
  */
 public interface PayloadGenerator
 {
     /**
-     * This method is used by Burp to obtain the value of the next payload.
-     * This method should return {@link GeneratedPayload#end()} to signal to Burp that the generator has finished.
+     * Invoked by Burp to obtain the value of the next payload.
+     * Should return {@link GeneratedPayload#end()} instance to signal to Burp that the generator has finished.
      *
      * @param insertionPoint Insertion point for the payload.
      *

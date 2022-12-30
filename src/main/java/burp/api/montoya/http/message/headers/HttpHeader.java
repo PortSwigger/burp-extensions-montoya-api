@@ -11,7 +11,7 @@ package burp.api.montoya.http.message.headers;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface is used to hold details about an HTTP/2 header.
+ * Burp HTTP header able to retrieve to hold details about an HTTP header.
  */
 public interface HttpHeader
 {

@@ -11,7 +11,7 @@ package burp.api.montoya.core;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This enum represents colors that can be used for highlights in Burp Suite.
+ * Colors that can be used for highlights in Burp Suite.
  */
 public enum HighlightColor
 {
@@ -42,7 +42,7 @@ public enum HighlightColor
     }
 
     /**
-     * Factory method to build HighlightColor from display name string
+     * Create HighlightColor from display name string
      *
      * @param colorName Color's display name
      *

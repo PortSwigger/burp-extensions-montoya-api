@@ -9,7 +9,7 @@
 package burp.api.montoya.core;
 
 /**
- * This enum represents tools in Burp Suite.
+ * Tools in Burp Suite.
  */
 public enum ToolType
 {
@@ -33,11 +33,17 @@ public enum ToolType
         this.toolName = toolName;
     }
 
+    /**
+     * @return The tool name.
+     */
     public String toolName()
     {
         return toolName;
     }
 
+    /**
+     * @return The tool name.
+     */
     @Override
     public String toString()
     {

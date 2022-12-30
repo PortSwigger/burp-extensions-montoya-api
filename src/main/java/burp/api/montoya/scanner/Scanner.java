@@ -18,12 +18,12 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * This interface provides access to the functionality of the Scanner tool.
+ * Provides access to the functionality of the Scanner tool.
  */
 public interface Scanner
 {
     /**
-     * This method is used to register a handler which will be notified of new
+     * Register a handler which will be notified of new
      * audit issues that are reported by the Scanner tool. Extensions can
      * perform custom analysis or logging of audit issues by registering an
      * audit issue handler.
@@ -36,7 +36,7 @@ public interface Scanner
     Registration registerAuditIssueHandler(AuditIssueHandler auditIssueHandler);
 
     /**
-     * This method is used to register a custom Scanner check. When performing
+     * Register a custom Scanner check. When performing
      * scanning, Burp will ask the check to perform active or passive scanning
      * on the base request, and report any Scanner issues that are identified.
      *
@@ -48,7 +48,7 @@ public interface Scanner
     Registration registerScanCheck(ScanCheck scanCheck);
 
     /**
-     * This method is used to register a provider of Scanner insertion points.
+     * Register a provider of Scanner insertion points.
      * For each base request that is actively scanned, Burp will ask the
      * provider to provide any custom Scanner insertion points that are
      * appropriate for the request.
@@ -75,7 +75,7 @@ public interface Scanner
     Audit startAudit(AuditConfiguration auditConfiguration);
 
     /**
-     * This method is used to generate a report for the specified Scanner
+     * Generate a report for the specified Scanner
      * issues. The report format can be specified. For all other reporting
      * options, the default settings that appear in the reporting UI wizard are
      * used.

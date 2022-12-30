@@ -15,7 +15,7 @@ package burp.api.montoya.intruder;
 public interface PayloadGeneratorProvider
 {
     /**
-     * This method returns the name Burp will use when displaying the payload generator
+     * Name Burp will use when displaying the payload generator
      * in a dropdown list in the UI.
      *
      * @return Name of the payload generator.
@@ -23,7 +23,7 @@ public interface PayloadGeneratorProvider
     String displayName();
 
     /**
-     * This method is called by Burp to obtain an instance of {@link PayloadGenerator}
+     * Invoked by Burp to obtain an instance of {@link PayloadGenerator}
      * to add to Intruder.
      *
      * @param attackConfiguration An object containing information about the currently

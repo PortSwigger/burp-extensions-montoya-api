@@ -31,7 +31,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface AuditIssue
 {
     /**
-     * This method returns the name of this issue type.
+     * Name of this issue type.
      *
      * @return The name of this issue type (e.g. "SQL injection").
      */
@@ -57,35 +57,35 @@ public interface AuditIssue
     String remediation();
 
     /**
-     * This method returns the HTTP service for which the issue was generated.
+     * HTTP service for which the issue was generated.
      *
      * @return The HTTP service for which the issue was generated.
      */
     HttpService httpService();
 
     /**
-     * This method returns the base URL for which this issue was generated.
+     * Base URL for which this issue was generated.
      *
      * @return The base URL for which this issue was generated.
      */
     String baseUrl();
 
     /**
-     * This method returns the issue severity level.
+     * Issue severity level.
      *
      * @return The {@link AuditIssueSeverity} level.
      */
     AuditIssueSeverity severity();
 
     /**
-     * This method returns the issue confidence level.
+     * Issue confidence level.
      *
      * @return The {@link AuditIssueConfidence} level.
      */
     AuditIssueConfidence confidence();
 
     /**
-     * This method returns the HTTP request/response messages that caused the issue to be generated.
+     * HTTP request/response messages that caused the issue to be generated.
      *
      * @return The list of {@link HttpRequestResponse} objects on the basis of
      * which the issue was generated.
@@ -93,7 +93,7 @@ public interface AuditIssue
     List<HttpRequestResponse> requestResponses();
 
     /**
-     * This method returns the definition for this issue.
+     * Definition for this issue.
      *
      * @return The {@link AuditIssueDefinition} for this issue.
      */

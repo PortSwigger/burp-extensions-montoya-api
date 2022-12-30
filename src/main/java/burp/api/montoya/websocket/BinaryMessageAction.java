@@ -5,7 +5,7 @@ import burp.api.montoya.core.ByteArray;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * This interface represents a binary WebSocket message.
+ * Binary WebSocket message.
  */
 public interface BinaryMessageAction
 {

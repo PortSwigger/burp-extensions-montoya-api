@@ -13,5 +13,10 @@ package burp.api.montoya.http.message.requests;
  */
 public enum HttpTransformation
 {
+    /**
+     * Convert a GET request into a POST request<br>
+     * or<br>
+     * Convert a POST request into a GET request<br>
+     */
     TOGGLE_METHOD
 }

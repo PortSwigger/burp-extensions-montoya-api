@@ -14,12 +14,12 @@ import javax.swing.JComponent;
 import java.util.Optional;
 
 /**
- * This interface provides the shared behaviour between the different editor types available from the Extensions API.
+ * Provides the shared behaviour between the different editor types available from the Extensions API.
  */
 public interface Editor
 {
     /**
-     * This method is used to update the search expression that is shown in the search bar below the editor.
+     * Update the search expression that is shown in the search bar below the editor.
      *
      * @param expression The search expression.
      */

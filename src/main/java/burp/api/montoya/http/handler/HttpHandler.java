@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.http.intercept;
+package burp.api.montoya.http.handler;
 
 import burp.api.montoya.http.Http;
 
@@ -20,18 +20,18 @@ public interface HttpHandler
     /**
      * This method is invoked by Burp when an HTTP request is about to be sent.
      *
-     * @param httpRequestToSend information about the HTTP request that is going to be sent.
+     * @param requestToSend information about the HTTP request that is going to be sent.
      *
      * @return An instance of {@link RequestToSendAction}.
      */
-    RequestToSendAction handleHttpRequestToSend(HttpRequestToSend httpRequestToSend);
+    RequestToSendAction handleHttpRequestToSend(HttpRequestToSend requestToSend);
 
     /**
      * This method is invoked by Burp when an HTTP response has been received.
      *
-     * @param httpResponseReceived information about HTTP response that was received.
+     * @param responseReceived information about HTTP response that was received.
      *
      * @return An instance of {@link ResponseReceivedAction}.
      */
-    ResponseReceivedAction handleHttpResponseReceived(HttpResponseReceived httpResponseReceived);
+    ResponseReceivedAction handleHttpResponseReceived(HttpResponseReceived responseReceived);
 }

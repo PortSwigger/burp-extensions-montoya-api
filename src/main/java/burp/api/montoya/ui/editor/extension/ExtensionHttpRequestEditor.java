@@ -23,14 +23,14 @@ public interface ExtensionHttpRequestEditor
     /**
      * @return An instance of {@link HttpRequest} derived from the content of the HTTP request editor.
      */
-    HttpRequest getHttpRequest();
+    HttpRequest getRequest();
 
     /**
      * Sets the provided {@link HttpRequestResponse} object within the editor component.
      *
      * @param requestResponse The request and response to set in the editor.
      */
-    void setHttpRequestResponse(HttpRequestResponse requestResponse);
+    void setRequestResponse(HttpRequestResponse requestResponse);
 
     /**
      * A check to determine if the HTTP message editor is enabled for a specific {@link HttpRequestResponse}

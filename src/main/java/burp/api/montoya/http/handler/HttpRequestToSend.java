@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.http.intercept;
+package burp.api.montoya.http.handler;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;

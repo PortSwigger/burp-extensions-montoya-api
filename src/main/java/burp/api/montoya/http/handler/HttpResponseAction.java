@@ -6,15 +6,15 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.http.intercept;
+package burp.api.montoya.http.handler;
 
 /**
- * This enum represents the action to be taken when intercepting HTTP requests.
+ * This enum represents the action to be taken when intercepting HTTP responses.
  */
-public enum HttpRequestAction
+public enum HttpResponseAction
 {
     /**
-     * Causes Burp Proxy to send the request.
+     * Causes Burp Proxy to send the response.
      */
     CONTINUE
 }

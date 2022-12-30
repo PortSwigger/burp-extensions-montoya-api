@@ -169,7 +169,7 @@ public interface HttpResponse extends HttpMessage
     HttpResponse withBody(String body);
 
     /**
-     * Create a copy of the {@code HttpResponse} with the updated body.<bt></bt>
+     * Create a copy of the {@code HttpResponse} with the updated body.<br>
      * Updates Content-Length header.
      *
      * @param body the new body for the response

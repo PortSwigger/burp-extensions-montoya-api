@@ -30,16 +30,16 @@ import burp.api.montoya.intruder.PayloadProcessingAction;
 import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.persistence.PersistedList;
 import burp.api.montoya.persistence.PersistedObject;
-import burp.api.montoya.proxy.FinalInterceptAction;
-import burp.api.montoya.proxy.InitialInterceptAction;
-import burp.api.montoya.proxy.http.RequestFinalInterceptResult;
-import burp.api.montoya.proxy.http.RequestInitialInterceptResult;
-import burp.api.montoya.proxy.http.ResponseFinalInterceptResult;
-import burp.api.montoya.proxy.http.ResponseInitialInterceptResult;
-import burp.api.montoya.proxy.websocket.ProxyWebSocketFinalInterceptBinaryMessage;
-import burp.api.montoya.proxy.websocket.ProxyWebSocketFinalInterceptTextMessage;
-import burp.api.montoya.proxy.websocket.ProxyWebSocketInitialInterceptBinaryMessage;
-import burp.api.montoya.proxy.websocket.ProxyWebSocketInitialInterceptTextMessage;
+import burp.api.montoya.proxy.ReceivedAction;
+import burp.api.montoya.proxy.SendAction;
+import burp.api.montoya.proxy.http.RequestReceivedAction;
+import burp.api.montoya.proxy.http.RequestToSendAction;
+import burp.api.montoya.proxy.http.ResponseReceivedAction;
+import burp.api.montoya.proxy.http.ResponseToSendAction;
+import burp.api.montoya.proxy.websocket.BinaryMessageReceivedAction;
+import burp.api.montoya.proxy.websocket.BinaryMessageToSendAction;
+import burp.api.montoya.proxy.websocket.TextMessageReceivedAction;
+import burp.api.montoya.proxy.websocket.TextMessageToSendAction;
 import burp.api.montoya.scanner.AuditConfiguration;
 import burp.api.montoya.scanner.AuditResult;
 import burp.api.montoya.scanner.BuiltInAuditConfiguration;
@@ -51,8 +51,8 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueDefinition;
 import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
-import burp.api.montoya.websocket.BinaryMessageResult;
-import burp.api.montoya.websocket.TextMessageResult;
+import burp.api.montoya.websocket.BinaryMessageAction;
+import burp.api.montoya.websocket.TextMessageAction;
 
 import java.util.List;
 
@@ -136,13 +136,13 @@ public interface MontoyaObjectFactory
 
     SecretKey secretKey(String encodedKey);
 
-    RequestInitialInterceptResult initialInterceptResult(HttpRequest request, Annotations annotations, InitialInterceptAction action);
+    RequestReceivedAction requestReceivedAction(HttpRequest request, Annotations annotations, ReceivedAction action);
 
-    RequestFinalInterceptResult finalInterceptResult(HttpRequest request, Annotations annotations, FinalInterceptAction action);
+    RequestToSendAction requestToSendAction(HttpRequest request, Annotations annotations, SendAction action);
 
-    ResponseFinalInterceptResult finalInterceptResult(HttpResponse response, Annotations annotations, FinalInterceptAction action);
+    ResponseToSendAction responseToReturnAction(HttpResponse response, Annotations annotations, SendAction action);
 
-    ResponseInitialInterceptResult initialInterceptResult(HttpResponse response, Annotations annotations, InitialInterceptAction action);
+    ResponseReceivedAction responseReceivedAction(HttpResponse response, Annotations annotations, ReceivedAction action);
 
     RequestResult requestResult(HttpRequest request, Annotations annotations);
 
@@ -174,37 +174,37 @@ public interface MontoyaObjectFactory
 
     ByteArray byteArray(ByteArray byteArrayToCopy);
 
-    TextMessageResult continueWithTextMessage(String payload);
+    TextMessageAction continueWithTextMessage(String payload);
 
-    TextMessageResult dropTextMessage();
+    TextMessageAction dropTextMessage();
 
-    BinaryMessageResult continueWithBinaryMessage(ByteArray payload);
+    BinaryMessageAction continueWithBinaryMessage(ByteArray payload);
 
-    BinaryMessageResult dropBinaryMessage();
+    BinaryMessageAction dropBinaryMessage();
 
-    ProxyWebSocketInitialInterceptBinaryMessage followUserRulesInitialProxyBinaryMessage(ByteArray payload);
+    BinaryMessageReceivedAction followUserRulesInitialProxyBinaryMessage(ByteArray payload);
 
-    ProxyWebSocketInitialInterceptTextMessage followUserRulesInitialProxyTextMessage(String payload);
+    TextMessageReceivedAction followUserRulesInitialProxyTextMessage(String payload);
 
-    ProxyWebSocketInitialInterceptBinaryMessage interceptInitialProxyBinaryMessage(ByteArray payload);
+    BinaryMessageReceivedAction interceptInitialProxyBinaryMessage(ByteArray payload);
 
-    ProxyWebSocketInitialInterceptTextMessage interceptInitialProxyTextMessage(String payload);
+    TextMessageReceivedAction interceptInitialProxyTextMessage(String payload);
 
-    ProxyWebSocketInitialInterceptBinaryMessage dropInitialProxyBinaryMessage();
+    BinaryMessageReceivedAction dropInitialProxyBinaryMessage();
 
-    ProxyWebSocketInitialInterceptTextMessage dropInitialProxyTextMessage();
+    TextMessageReceivedAction dropInitialProxyTextMessage();
 
-    ProxyWebSocketInitialInterceptBinaryMessage doNotInterceptInitialProxyBinaryMessage(ByteArray payload);
+    BinaryMessageReceivedAction doNotInterceptInitialProxyBinaryMessage(ByteArray payload);
 
-    ProxyWebSocketInitialInterceptTextMessage doNotInterceptInitialProxyTextMessage(String payload);
+    TextMessageReceivedAction doNotInterceptInitialProxyTextMessage(String payload);
 
-    ProxyWebSocketFinalInterceptBinaryMessage continueWithFinalProxyBinaryMessage(ByteArray payload);
+    BinaryMessageToSendAction continueWithFinalProxyBinaryMessage(ByteArray payload);
 
-    ProxyWebSocketFinalInterceptTextMessage continueWithFinalProxyTextMessage(String payload);
+    TextMessageToSendAction continueWithFinalProxyTextMessage(String payload);
 
-    ProxyWebSocketFinalInterceptBinaryMessage dropFinalProxyBinaryMessage();
+    BinaryMessageToSendAction dropFinalProxyBinaryMessage();
 
-    ProxyWebSocketFinalInterceptTextMessage dropFinalProxyTextMessage();
+    TextMessageToSendAction dropFinalProxyTextMessage();
 
     PersistedObject persistedObject();
 
@@ -250,45 +250,45 @@ public interface MontoyaObjectFactory
 
     PayloadProcessingResult skipPayload();
 
-    RequestFinalInterceptResult requestFinalInterceptResultContinueWith(HttpRequest request);
+    RequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request);
 
-    RequestFinalInterceptResult requestFinalInterceptResultContinueWith(HttpRequest request, Annotations annotations);
+    RequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request, Annotations annotations);
 
-    RequestFinalInterceptResult requestFinalInterceptResultDrop();
+    RequestToSendAction requestFinalInterceptResultDrop();
 
-    ResponseFinalInterceptResult responseFinalInterceptResultDrop();
+    ResponseToSendAction responseFinalInterceptResultDrop();
 
-    ResponseFinalInterceptResult responseFinalInterceptResultContinueWith(HttpResponse response, Annotations annotations);
+    ResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response, Annotations annotations);
 
-    ResponseFinalInterceptResult responseFinalInterceptResultContinueWith(HttpResponse response);
+    ResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response);
 
-    ResponseInitialInterceptResult responseInitialInterceptResultIntercept(HttpResponse response);
+    ResponseReceivedAction responseInitialInterceptResultIntercept(HttpResponse response);
 
-    ResponseInitialInterceptResult responseInitialInterceptResultIntercept(HttpResponse response, Annotations annotations);
+    ResponseReceivedAction responseInitialInterceptResultIntercept(HttpResponse response, Annotations annotations);
 
-    ResponseInitialInterceptResult responseInitialInterceptResultDoNotIntercept(HttpResponse response);
+    ResponseReceivedAction responseInitialInterceptResultDoNotIntercept(HttpResponse response);
 
-    ResponseInitialInterceptResult responseInitialInterceptResultDoNotIntercept(HttpResponse response, Annotations annotations);
+    ResponseReceivedAction responseInitialInterceptResultDoNotIntercept(HttpResponse response, Annotations annotations);
 
-    ResponseInitialInterceptResult responseInitialInterceptResultFollowUserRules(HttpResponse response);
+    ResponseReceivedAction responseInitialInterceptResultFollowUserRules(HttpResponse response);
 
-    ResponseInitialInterceptResult responseInitialInterceptResultFollowUserRules(HttpResponse response, Annotations annotations);
+    ResponseReceivedAction responseInitialInterceptResultFollowUserRules(HttpResponse response, Annotations annotations);
 
-    ResponseInitialInterceptResult responseInitialInterceptResultDrop();
+    ResponseReceivedAction responseInitialInterceptResultDrop();
 
-    RequestInitialInterceptResult requestInitialInterceptResultIntercept(HttpRequest request);
+    RequestReceivedAction requestInitialInterceptResultIntercept(HttpRequest request);
 
-    RequestInitialInterceptResult requestInitialInterceptResultIntercept(HttpRequest request, Annotations annotations);
+    RequestReceivedAction requestInitialInterceptResultIntercept(HttpRequest request, Annotations annotations);
 
-    RequestInitialInterceptResult requestInitialInterceptResultDoNotIntercept(HttpRequest request);
+    RequestReceivedAction requestInitialInterceptResultDoNotIntercept(HttpRequest request);
 
-    RequestInitialInterceptResult requestInitialInterceptResultDoNotIntercept(HttpRequest request, Annotations annotations);
+    RequestReceivedAction requestInitialInterceptResultDoNotIntercept(HttpRequest request, Annotations annotations);
 
-    RequestInitialInterceptResult requestInitialInterceptResultFollowUserRules(HttpRequest request);
+    RequestReceivedAction requestInitialInterceptResultFollowUserRules(HttpRequest request);
 
-    RequestInitialInterceptResult requestInitialInterceptResultFollowUserRules(HttpRequest request, Annotations annotations);
+    RequestReceivedAction requestInitialInterceptResultFollowUserRules(HttpRequest request, Annotations annotations);
 
-    RequestInitialInterceptResult requestInitialInterceptResultDrop();
+    RequestReceivedAction requestInitialInterceptResultDrop();
 
     ResponseResult responseResult(HttpResponse response);
 

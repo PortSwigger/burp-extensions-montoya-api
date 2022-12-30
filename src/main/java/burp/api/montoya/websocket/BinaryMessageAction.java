@@ -7,7 +7,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 /**
  * This interface represents a binary WebSocket message.
  */
-public interface BinaryMessageResult
+public interface BinaryMessageAction
 {
     /**
      * @return The action associated with this message.
@@ -23,9 +23,9 @@ public interface BinaryMessageResult
      * This is a helper method to build a binary WebSocket message to be processed.
      *
      * @param payload The binary message payload.
-     * @return The message to be processed.
+     * @return The {@link BinaryMessageAction} containing the message to be processed.
      */
-    static BinaryMessageResult continueWith(ByteArray payload)
+    static BinaryMessageAction continueWith(ByteArray payload)
     {
         return FACTORY.continueWithBinaryMessage(payload);
     }
@@ -34,9 +34,9 @@ public interface BinaryMessageResult
      * This is a helper method to build a binary WebSocket message to be processed.
      *
      * @param binaryMessage The binary message payload.
-     * @return The message to be processed.
+     * @return The {@link BinaryMessageAction} containing the message to be processed.
      */
-    static BinaryMessageResult continueWith(BinaryMessage binaryMessage)
+    static BinaryMessageAction continueWith(BinaryMessage binaryMessage)
     {
         return FACTORY.continueWithBinaryMessage(binaryMessage.payload());
     }
@@ -44,9 +44,9 @@ public interface BinaryMessageResult
     /**
      * This is a helper method to build a binary WebSocket message to be dropped.
      *
-     * @return The message to be dropped.
+     * @return The {@link BinaryMessageAction} dropping the message.
      */
-    static BinaryMessageResult dropBinaryMessage()
+    static BinaryMessageAction drop()
     {
         return FACTORY.dropBinaryMessage();
     }

@@ -9,21 +9,21 @@
 package burp.api.montoya.proxy.websocket;
 
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.proxy.InitialInterceptAction;
+import burp.api.montoya.proxy.ReceivedAction;
 import burp.api.montoya.websocket.BinaryMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a binary message from
- * {@link ProxyWebSocketHandler#handleBinaryMessageReceived(InterceptedBinaryMessage)}.
+ * {@link ProxyMessageHandler#handleBinaryMessageReceived(InterceptedBinaryMessage)}.
  */
-public interface ProxyWebSocketInitialInterceptBinaryMessage
+public interface BinaryMessageReceivedAction
 {
     /**
      * @return The action associated with this message.
      */
-    InitialInterceptAction action();
+    ReceivedAction action();
 
     /**
      * @return The payload of this message.
@@ -37,10 +37,10 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      * action to take for the message.
      *
      * @param payload The binary message payload.
-     * @return The {@link ProxyWebSocketInitialInterceptBinaryMessage} that allows user rules to be
+     * @return The {@link BinaryMessageReceivedAction} that allows user rules to be
      * followed.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage followUserRulesBinaryMessage(ByteArray payload)
+    static BinaryMessageReceivedAction continueWith(ByteArray payload)
     {
         return FACTORY.followUserRulesInitialProxyBinaryMessage(payload);
     }
@@ -51,10 +51,10 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      * action to take for the message.
      *
      * @param message The binary message.
-     * @return The {@link ProxyWebSocketInitialInterceptBinaryMessage} that allows user rules to be
+     * @return The {@link BinaryMessageReceivedAction} that allows user rules to be
      * followed.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage followUserRulesBinaryMessage(BinaryMessage message)
+    static BinaryMessageReceivedAction continueWith(BinaryMessage message)
     {
         return FACTORY.followUserRulesInitialProxyBinaryMessage(message.payload());
     }
@@ -65,7 +65,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      * @param payload The binary message payload.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage interceptBinaryMessage(ByteArray payload)
+    static BinaryMessageReceivedAction intercept(ByteArray payload)
     {
         return FACTORY.interceptInitialProxyBinaryMessage(payload);
     }
@@ -76,7 +76,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      * @param message The binary message.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage interceptBinaryMessage(BinaryMessage message)
+    static BinaryMessageReceivedAction intercept(BinaryMessage message)
     {
         return FACTORY.interceptInitialProxyBinaryMessage(message.payload());
     }
@@ -87,7 +87,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      * @param payload The binary message payload.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage doNotIntercept(ByteArray payload)
+    static BinaryMessageReceivedAction doNotIntercept(ByteArray payload)
     {
         return FACTORY.doNotInterceptInitialProxyBinaryMessage(payload);
     }
@@ -98,7 +98,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      * @param message The binary message.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage doNotIntercept(BinaryMessage message)
+    static BinaryMessageReceivedAction doNotIntercept(BinaryMessage message)
     {
         return FACTORY.doNotInterceptInitialProxyBinaryMessage(message.payload());
     }
@@ -108,7 +108,7 @@ public interface ProxyWebSocketInitialInterceptBinaryMessage
      *
      * @return The message to be dropped.
      */
-    static ProxyWebSocketInitialInterceptBinaryMessage dropInitialBinaryMessage()
+    static BinaryMessageReceivedAction drop()
     {
         return FACTORY.dropInitialProxyBinaryMessage();
     }

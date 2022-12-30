@@ -50,5 +50,5 @@ public interface Scope
      *                {@link ScopeChangeHandler} interface.
      * @return The {@link Registration} for the handler.
      */
-    Registration registerHandler(ScopeChangeHandler handler);
+    Registration registerScopeChangeHandler(ScopeChangeHandler handler);
 }

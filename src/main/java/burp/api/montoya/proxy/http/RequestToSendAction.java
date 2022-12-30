@@ -10,22 +10,22 @@ package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.requests.HttpRequest;
-import burp.api.montoya.proxy.FinalInterceptAction;
+import burp.api.montoya.proxy.SendAction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a result from
- * {@link ProxyHttpRequestHandler#handleRequestToIssue(InterceptedHttpRequest)}.
+ * {@link RequestHandler#handleRequestToSend(InterceptedRequest)}.
  */
-public interface RequestFinalInterceptResult
+public interface RequestToSendAction
 {
     /**
      * This method retrieves the current final intercept action.
      *
-     * @return The {@link FinalInterceptAction}.
+     * @return The {@link SendAction}.
      */
-    FinalInterceptAction action();
+    SendAction action();
 
     /**
      * This method retrieves the current HTTP request to forward after any
@@ -46,14 +46,15 @@ public interface RequestFinalInterceptResult
 
     /**
      * This method can be used to create a result that causes Burp Proxy to
-     * forward the request.
+     * forward the request.<br>
+     * Annotations are not modified.
      *
      * @param request The {@link HttpRequest} to forward after any
      *                modifications by the extension.
-     * @return The {@link RequestFinalInterceptResult} that causes Burp Proxy
+     * @return The {@link RequestToSendAction} that causes Burp Proxy
      * to forward the request.
      */
-    static RequestFinalInterceptResult continueWith(HttpRequest request)
+    static RequestToSendAction continueWith(HttpRequest request)
     {
         return FACTORY.requestFinalInterceptResultContinueWith(request);
     }
@@ -66,10 +67,10 @@ public interface RequestFinalInterceptResult
      *                    modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
-     * @return The {@link RequestFinalInterceptResult} that causes Burp Proxy
+     * @return The {@link RequestToSendAction} that causes Burp Proxy
      * to forward the request.
      */
-    static RequestFinalInterceptResult continueWith(HttpRequest request, Annotations annotations)
+    static RequestToSendAction continueWith(HttpRequest request, Annotations annotations)
     {
         return FACTORY.requestFinalInterceptResultContinueWith(request, annotations);
     }
@@ -78,10 +79,10 @@ public interface RequestFinalInterceptResult
      * This method can be used to create a result that causes Burp Proxy to
      * drop the request.
      *
-     * @return The {@link RequestFinalInterceptResult} that causes Burp Proxy
+     * @return The {@link RequestToSendAction} that causes Burp Proxy
      * to drop the request.
      */
-    static RequestFinalInterceptResult drop()
+    static RequestToSendAction drop()
     {
         return FACTORY.requestFinalInterceptResultDrop();
     }
@@ -90,16 +91,14 @@ public interface RequestFinalInterceptResult
      * This method can be used to create a default implementation of a final
      * intercept result for an HTTP request.
      *
-     * @param request     The {@link HttpRequest} to forward after any
-     *                    modifications by the extension.
-     * @param annotations The {@link Annotations} for the intercepted
-     *                    HTTP request. {@code null} will leave the annotations unmodified.
-     * @param action      The {@link FinalInterceptAction} for the HTTP request.
-     * @return The {@link RequestFinalInterceptResult} including the HTTP
+     * @param request     The {@link HttpRequest} to forward after any modifications by the extension.
+     * @param annotations The {@link Annotations} for the intercepted HTTP request. {@code null} value will leave the annotations unmodified.
+     * @param action      The {@link SendAction} for the HTTP request.
+     * @return The {@link RequestToSendAction} including the HTTP
      * request, annotations and final intercept action.
      */
-    static RequestFinalInterceptResult finalInterceptResult(HttpRequest request, Annotations annotations, FinalInterceptAction action)
+    static RequestToSendAction requestToSendAction(HttpRequest request, Annotations annotations, SendAction action)
     {
-        return FACTORY.finalInterceptResult(request, annotations, action);
+        return FACTORY.requestToSendAction(request, annotations, action);
     }
 }

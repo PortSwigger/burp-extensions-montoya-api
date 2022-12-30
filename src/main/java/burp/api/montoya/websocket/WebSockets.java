@@ -18,8 +18,8 @@ public interface WebSockets
     /**
      * This method is used to register a handler which will be invoked whenever a WebSocket is created by any Burp tool.
      *
-     * @param handler An object created by the extension that implements {@link WebSocketCreationHandler} interface.
+     * @param handler An object created by the extension that implements {@link WebSocketCreatedHandler} interface.
      * @return The {@link Registration} for the handler.
      */
-    Registration registerWebSocketCreationHandler(WebSocketCreationHandler handler);
+    Registration registerWebSocketCreatedHandler(WebSocketCreatedHandler handler);
 }

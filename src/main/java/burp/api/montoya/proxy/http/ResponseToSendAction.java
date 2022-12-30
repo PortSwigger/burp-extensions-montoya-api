@@ -10,22 +10,22 @@ package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.responses.HttpResponse;
-import burp.api.montoya.proxy.FinalInterceptAction;
+import burp.api.montoya.proxy.SendAction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a result from
- * {@link ProxyHttpResponseHandler#handleResponseToReturn(InterceptedHttpResponse)}.
+ * {@link ResponseHandler#handleResponseToSend(InterceptedResponse)}.
  */
-public interface ResponseFinalInterceptResult
+public interface ResponseToSendAction
 {
     /**
      * This method retrieves the current final intercept action.
      *
-     * @return The {@link FinalInterceptAction}.
+     * @return The {@link SendAction}.
      */
-    FinalInterceptAction action();
+    SendAction action();
 
     /**
      * This method retrieves the current HTTP response to forward after any
@@ -46,30 +46,29 @@ public interface ResponseFinalInterceptResult
 
     /**
      * This method can be used to create a result that causes Burp Proxy to
-     * forward the response.
+     * forward the response.<br>
+     * Annotations are not modified.
      *
      * @param response The {@link HttpResponse} to forward after any
      *                 modifications by the extension.
-     * @return The {@link ResponseFinalInterceptResult} that causes Burp Proxy
+     * @return The {@link ResponseToSendAction} that causes Burp Proxy
      * to forward the response.
      */
-    static ResponseFinalInterceptResult continueWith(HttpResponse response)
+    static ResponseToSendAction continueWith(HttpResponse response)
     {
-       return FACTORY.responseFinalInterceptResultContinueWith(response);
+        return FACTORY.responseFinalInterceptResultContinueWith(response);
     }
 
     /**
      * This method can be used to create a result that causes Burp Proxy to
      * forward the response.
      *
-     * @param response   The {@link HttpResponse} to forward after any
-     *                   modifications by the extension.
-     * @param annotations The {@link Annotations} for the intercepted
-     *                   HTTP response.
-     * @return The {@link ResponseFinalInterceptResult} that causes Burp Proxy
+     * @param response    The {@link HttpResponse} to forward after any modifications by the extension.
+     * @param annotations The {@link Annotations} for the intercepted HTTP response.
+     * @return The {@link ResponseToSendAction} that causes Burp Proxy
      * to forward the response.
      */
-    static ResponseFinalInterceptResult continueWith(HttpResponse response, Annotations annotations)
+    static ResponseToSendAction continueWith(HttpResponse response, Annotations annotations)
     {
         return FACTORY.responseFinalInterceptResultContinueWith(response, annotations);
     }
@@ -78,10 +77,10 @@ public interface ResponseFinalInterceptResult
      * This method can be used to create a result that causes Burp Proxy to
      * drop the response.
      *
-     * @return The {@link ResponseFinalInterceptResult} that causes Burp Proxy
+     * @return The {@link ResponseToSendAction} that causes Burp Proxy
      * to drop the response.
      */
-    static ResponseFinalInterceptResult drop()
+    static ResponseToSendAction drop()
     {
         return FACTORY.responseFinalInterceptResultDrop();
     }
@@ -90,16 +89,14 @@ public interface ResponseFinalInterceptResult
      * This method can be used to create a default implementation of a final
      * intercept result for an HTTP response.
      *
-     * @param response   The {@link HttpResponse} to forward after any
-     *                   modifications by the extension.
-     * @param annotations The {@link Annotations} for the intercepted
-     *                   HTTP response.
-     * @param action     The {@link FinalInterceptAction} for the HTTP response.
-     * @return The {@link ResponseFinalInterceptResult} including the HTTP
+     * @param response    The {@link HttpResponse} to forward after any modifications by the extension.
+     * @param annotations The {@link Annotations} for the intercepted HTTP response. {@code null} value will leave the annotations unmodified.
+     * @param action      The {@link SendAction} for the HTTP response.
+     * @return The {@link ResponseToSendAction} including the HTTP
      * response, annotations and final intercept action.
      */
-    static ResponseFinalInterceptResult finalInterceptResult(HttpResponse response, Annotations annotations, FinalInterceptAction action)
+    static ResponseToSendAction responseToReturnAction(HttpResponse response, Annotations annotations, SendAction action)
     {
-        return FACTORY.finalInterceptResult(response, annotations, action);
+        return FACTORY.responseToReturnAction(response, annotations, action);
     }
 }

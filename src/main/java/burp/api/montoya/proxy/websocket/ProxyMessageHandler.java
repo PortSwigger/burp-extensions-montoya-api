@@ -11,7 +11,7 @@ package burp.api.montoya.proxy.websocket;
 /**
  * This interface allows an extension to be notified when messages are sent or received via the proxy WebSocket, or it has been closed.
  */
-public interface ProxyWebSocketHandler
+public interface ProxyMessageHandler
 {
     /**
      * Invoked when a text message is received from either the client or server.
@@ -19,19 +19,19 @@ public interface ProxyWebSocketHandler
      * processed by Burp.
      *
      * @param interceptedTextMessage Intercepted text WebSocket message.
-     * @return The {@link ProxyWebSocketInitialInterceptTextMessage} containing the required action and text message to be passed through.
+     * @return The {@link TextMessageReceivedAction} containing the required action and text message to be passed through.
      */
-    ProxyWebSocketInitialInterceptTextMessage handleTextMessageReceived(InterceptedTextMessage interceptedTextMessage);
+    TextMessageReceivedAction handleTextMessageReceived(InterceptedTextMessage interceptedTextMessage);
 
     /**
      * Invoked when a text message is about to be sent to either the client or server.
      * This gives the extension the ability to modify the message before it is
-     * issued.
+     * sent.
      *
      * @param interceptedTextMessage Intercepted text WebSocket message.
-     * @return The {@link ProxyWebSocketInitialInterceptTextMessage} containing the required action and text message to be passed through.
+     * @return The {@link TextMessageReceivedAction} containing the required action and text message to be passed through.
      */
-    ProxyWebSocketFinalInterceptTextMessage handleTextMessageToBeIssued(InterceptedTextMessage interceptedTextMessage);
+    TextMessageToSendAction handleTextMessageToSend(InterceptedTextMessage interceptedTextMessage);
 
     /**
      * Invoked when a binary message is received from either the client or server.
@@ -39,19 +39,19 @@ public interface ProxyWebSocketHandler
      * processed by Burp.
      *
      * @param interceptedBinaryMessage Intercepted binary WebSocket message.
-     * @return The {@link ProxyWebSocketInitialInterceptBinaryMessage} containing the required action and binary message to be passed through.
+     * @return The {@link BinaryMessageReceivedAction} containing the required action and binary message to be passed through.
      */
-    ProxyWebSocketInitialInterceptBinaryMessage handleBinaryMessageReceived(InterceptedBinaryMessage interceptedBinaryMessage);
+    BinaryMessageReceivedAction handleBinaryMessageReceived(InterceptedBinaryMessage interceptedBinaryMessage);
 
     /**
      * Invoked when a binary message is about to be sent to either the client or server.
      * This gives the extension the ability to modify the message before it is
-     * issued.
+     * sent.
      *
      * @param interceptedBinaryMessage Intercepted binary WebSocket message.
-     * @return The {@link ProxyWebSocketInitialInterceptBinaryMessage} containing the required action and binary message to be passed through.
+     * @return The {@link BinaryMessageReceivedAction} containing the required action and binary message to be passed through.
      */
-    ProxyWebSocketFinalInterceptBinaryMessage handleBinaryMessageToBeIssued(InterceptedBinaryMessage interceptedBinaryMessage);
+    BinaryMessageToSendAction handleBinaryMessageToSend(InterceptedBinaryMessage interceptedBinaryMessage);
 
     /**
      * Invoked when the WebSocket is closed.

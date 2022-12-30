@@ -10,7 +10,7 @@ package burp.api.montoya.scope;
 
 /**
  * Extensions can implement this interface and then call
- * {@link Scope#registerHandler(ScopeChangeHandler)} to register a scope change
+ * {@link Scope#registerScopeChangeHandler(ScopeChangeHandler)} to register a scope change
  * handler. The handler will be notified whenever a change occurs to Burp's
  * Suite-wide target scope.
  */

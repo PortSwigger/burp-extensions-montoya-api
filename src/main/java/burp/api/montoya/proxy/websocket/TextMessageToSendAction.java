@@ -8,7 +8,7 @@
 
 package burp.api.montoya.proxy.websocket;
 
-import burp.api.montoya.proxy.FinalInterceptAction;
+import burp.api.montoya.proxy.SendAction;
 import burp.api.montoya.websocket.TextMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
@@ -16,14 +16,14 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a text message from
- * {@link ProxyWebSocketHandler#handleTextMessageToBeIssued(InterceptedTextMessage)}.
+ * {@link ProxyMessageHandler#handleTextMessageToSend(InterceptedTextMessage)}.
  */
-public interface ProxyWebSocketFinalInterceptTextMessage
+public interface TextMessageToSendAction
 {
     /**
      * @return The action associated with this message.
      */
-    FinalInterceptAction action();
+    SendAction action();
 
     /**
      * @return The payload of this message.
@@ -36,7 +36,7 @@ public interface ProxyWebSocketFinalInterceptTextMessage
      * @param payload The text message payload.
      * @return The message.
      */
-    static ProxyWebSocketFinalInterceptTextMessage continueWith(String payload)
+    static TextMessageToSendAction continueWith(String payload)
     {
         return FACTORY.continueWithFinalProxyTextMessage(payload);
     }
@@ -47,7 +47,7 @@ public interface ProxyWebSocketFinalInterceptTextMessage
      * @param message The text message.
      * @return The message.
      */
-    static ProxyWebSocketFinalInterceptTextMessage continueWith(TextMessage message)
+    static TextMessageToSendAction continueWith(TextMessage message)
     {
         return FACTORY.continueWithFinalProxyTextMessage(message.payload());
     }
@@ -57,7 +57,7 @@ public interface ProxyWebSocketFinalInterceptTextMessage
      *
      * @return The message to be dropped.
      */
-    static ProxyWebSocketFinalInterceptTextMessage dropFinalTextMessage()
+    static TextMessageToSendAction drop()
     {
         return FACTORY.dropFinalProxyTextMessage();
     }

@@ -26,9 +26,9 @@ public interface ProxyHttpRequestResponse
     Annotations annotations();
 
     /**
-     * This method retrieves the HTTP request that was issued by Burp Proxy.
+     * This method retrieves the HTTP request that was sent by Burp Proxy.
      *
-     * @return The {@link HttpRequest} that was issued by Burp Proxy.
+     * @return The {@link HttpRequest} that was sent by Burp Proxy.
      */
     HttpRequest finalRequest();
 

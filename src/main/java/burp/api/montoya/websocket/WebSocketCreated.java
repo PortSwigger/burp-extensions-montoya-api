@@ -11,7 +11,7 @@ package burp.api.montoya.websocket;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.message.requests.HttpRequest;
 
-public interface WebSocketCreation
+public interface WebSocketCreated
 {
     /**
      * @return The WebSocket that was created.

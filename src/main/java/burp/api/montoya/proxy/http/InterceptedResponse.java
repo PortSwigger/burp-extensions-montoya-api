@@ -27,10 +27,10 @@ import java.util.List;
  * This interface represents an instance of an HTTP response intercepted by
  * Burp Proxy.
  */
-public interface InterceptedHttpResponse extends InterceptedMessage, HttpResponse
+public interface InterceptedResponse extends InterceptedMessage, HttpResponse
 {
     /**
-     * @return initiatingRequest The HTTP request that was issued.
+     * @return initiatingRequest The HTTP request that was sent.
      */
     HttpRequest initiatingRequest();
 

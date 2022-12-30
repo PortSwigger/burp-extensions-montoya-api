@@ -9,15 +9,15 @@
 package burp.api.montoya.websocket;
 
 /**
- * Extensions can implement this interface and then call {@link WebSockets#registerWebSocketCreationHandler} to register a WebSocket handler.
+ * Extensions can implement this interface and then call {@link WebSockets#registerWebSocketCreatedHandler} to register a WebSocket handler.
  * The handler will be notified of new WebSockets created by any Burp tool.
  */
-public interface WebSocketCreationHandler
+public interface WebSocketCreatedHandler
 {
     /**
      * This method is invoked by Burp when an application WebSocket has been created.
      *
-     * @param webSocketCreation {@link WebSocketCreation} containing information about the application websocket that is being created
+     * @param webSocketCreated {@link WebSocketCreated} containing information about the application websocket that is being created
      */
-    void handleWebSocketCreated(WebSocketCreation webSocketCreation);
+    void handleWebSocketCreated(WebSocketCreated webSocketCreated);
 }

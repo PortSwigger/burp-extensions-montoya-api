@@ -8,7 +8,7 @@
 
 package burp.api.montoya.proxy.websocket;
 
-import burp.api.montoya.proxy.InitialInterceptAction;
+import burp.api.montoya.proxy.ReceivedAction;
 import burp.api.montoya.websocket.TextMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
@@ -16,14 +16,14 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a text message from
- * {@link ProxyWebSocketHandler#handleTextMessageReceived(InterceptedTextMessage)}.
+ * {@link ProxyMessageHandler#handleTextMessageReceived(InterceptedTextMessage)}.
  */
-public interface ProxyWebSocketInitialInterceptTextMessage
+public interface TextMessageReceivedAction
 {
     /**
      * @return The action associated with this message.
      */
-    InitialInterceptAction action();
+    ReceivedAction action();
 
     /**
      * @return The payload of this message.
@@ -36,10 +36,10 @@ public interface ProxyWebSocketInitialInterceptTextMessage
      * action to take for the message.
      *
      * @param payload The text message payload.
-     * @return The {@link ProxyWebSocketInitialInterceptTextMessage} that allows user rules to be
+     * @return The {@link TextMessageReceivedAction} that allows user rules to be
      * followed.
      */
-    static ProxyWebSocketInitialInterceptTextMessage followUserRulesTextMessage(String payload)
+    static TextMessageReceivedAction continueWith(String payload)
     {
         return FACTORY.followUserRulesInitialProxyTextMessage(payload);
     }
@@ -50,10 +50,10 @@ public interface ProxyWebSocketInitialInterceptTextMessage
      * action to take for the message.
      *
      * @param message The text message.
-     * @return The {@link ProxyWebSocketInitialInterceptTextMessage} that allows user rules to be
+     * @return The {@link TextMessageReceivedAction} that allows user rules to be
      * followed.
      */
-    static ProxyWebSocketInitialInterceptTextMessage followUserRulesTextMessage(TextMessage message)
+    static TextMessageReceivedAction continueWith(TextMessage message)
     {
         return FACTORY.followUserRulesInitialProxyTextMessage(message.payload());
     }
@@ -64,7 +64,7 @@ public interface ProxyWebSocketInitialInterceptTextMessage
      * @param payload The text message payload.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptTextMessage interceptTextMessage(String payload)
+    static TextMessageReceivedAction intercept(String payload)
     {
         return FACTORY.interceptInitialProxyTextMessage(payload);
     }
@@ -75,7 +75,7 @@ public interface ProxyWebSocketInitialInterceptTextMessage
      * @param message The text message.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptTextMessage interceptTextMessage(TextMessage message)
+    static TextMessageReceivedAction intercept(TextMessage message)
     {
         return FACTORY.interceptInitialProxyTextMessage(message.payload());
     }
@@ -86,7 +86,7 @@ public interface ProxyWebSocketInitialInterceptTextMessage
      * @param payload The text message payload.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptTextMessage doNotIntercept(String payload)
+    static TextMessageReceivedAction doNotIntercept(String payload)
     {
         return FACTORY.doNotInterceptInitialProxyTextMessage(payload);
     }
@@ -97,7 +97,7 @@ public interface ProxyWebSocketInitialInterceptTextMessage
      * @param message The text message payload.
      * @return The message.
      */
-    static ProxyWebSocketInitialInterceptTextMessage doNotIntercept(TextMessage message)
+    static TextMessageReceivedAction doNotIntercept(TextMessage message)
     {
         return FACTORY.doNotInterceptInitialProxyTextMessage(message.payload());
     }
@@ -108,7 +108,7 @@ public interface ProxyWebSocketInitialInterceptTextMessage
      *
      * @return The message to be dropped.
      */
-    static ProxyWebSocketInitialInterceptTextMessage dropInitialTextMessage()
+    static TextMessageReceivedAction drop()
     {
         return FACTORY.dropInitialProxyTextMessage();
     }

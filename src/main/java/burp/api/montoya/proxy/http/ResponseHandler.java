@@ -12,31 +12,31 @@ import burp.api.montoya.proxy.Proxy;
 
 /**
  * Extensions can implement this interface and then call
- * {@link Proxy#registerResponseHandler(ProxyHttpResponseHandler)} to register a
+ * {@link Proxy#registerResponseHandler(ResponseHandler)} to register a
  * Proxy response handler. The handler will be notified of responses being
  * processed by the Proxy tool. Extensions can perform custom analysis or
  * modification of these responses, and control in-UI message interception.
  */
-public interface ProxyHttpResponseHandler
+public interface ResponseHandler
 {
     /**
      * This method is invoked when an HTTP response is received in the Proxy.
      *
-     * @param interceptedResponse An {@link InterceptedHttpResponse} object
+     * @param interceptedResponse An {@link InterceptedResponse} object
      *                            that extensions can use to query and update details of the response, and
      *                            control whether the response should be intercepted and displayed to the
      *                            user for manual review or modification.
-     * @return The {@link ResponseInitialInterceptResult} containing the required action, HTTP response and annotations to be passed through.
+     * @return The {@link ResponseReceivedAction} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseInitialInterceptResult handleReceivedResponse(InterceptedHttpResponse interceptedResponse);
+    ResponseReceivedAction handleResponseReceived(InterceptedResponse interceptedResponse);
 
     /**
      * This method is invoked when an HTTP response has been processed by the
      * Proxy before it is returned to the client.
      *
-     * @param interceptedResponse An {@link InterceptedHttpResponse} object
+     * @param interceptedResponse An {@link InterceptedResponse} object
      *                            that extensions can use to query and update details of the response.
-     * @return The {@link ResponseFinalInterceptResult} containing the required action, HTTP response and annotations to be passed through.
+     * @return The {@link ResponseToSendAction} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseFinalInterceptResult handleResponseToReturn(InterceptedHttpResponse interceptedResponse);
+    ResponseToSendAction handleResponseToSend(InterceptedResponse interceptedResponse);
 }

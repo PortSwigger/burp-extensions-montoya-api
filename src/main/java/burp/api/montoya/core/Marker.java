@@ -21,6 +21,7 @@ public interface Marker
      * This method can be used to create a marker object with a range.
      *
      * @param range The range of the marker.
+     *
      * @return The marker with the range.
      */
     static Marker marker(Range range)
@@ -33,6 +34,7 @@ public interface Marker
      *
      * @param startIndexInclusive The start index of the range inclusive of this value.
      * @param endIndexExclusive   The end index of the range exclusive of this value.
+     *
      * @return The marker with the range.
      */
     static Marker marker(int startIndexInclusive, int endIndexExclusive)

@@ -27,8 +27,7 @@ public interface SessionHandlingAction
      * This may happen as an action in its own right, or as a sub-action following execution of a macro.<br>
      * It can issue additional requests of its own if necessary, and can return a modified base request in the {@link ActionResult}
      *
-     * @param actionData
-     *         {@link SessionHandlingActionData} The action can query this object to obtain details about the base request.
+     * @param actionData {@link SessionHandlingActionData} The action can query this object to obtain details about the base request.
      *
      * @return A new {@link ActionResult} instance.
      */

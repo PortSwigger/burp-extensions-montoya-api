@@ -30,6 +30,7 @@ public interface Collaborator
      * from a specific payloads.
      *
      * @param secretKey The key to restore the {@link CollaboratorClient} from the previous session.
+     *
      * @return A new instance of {@link CollaboratorClient} that can be used to
      * generate Collaborator payloads and retrieve interactions.
      */

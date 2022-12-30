@@ -19,6 +19,7 @@ public interface SiteMapFilter
      * This method is called by Burp to check whether a given site map node matches the filter.
      *
      * @param node Site map node to match.
+     *
      * @return Returns true if the site map node matches the filter.
      */
     boolean matches(SiteMapNode node);
@@ -29,6 +30,7 @@ public interface SiteMapFilter
      *
      * @param prefix Case-sensitive URL prefix used to match site tree nodes. If {@code null} is
      *               passed, the resulting filter will match all site map nodes.
+     *
      * @return A site map filter object that matches nodes via a URL prefix
      */
     static SiteMapFilter prefixFilter(String prefix)

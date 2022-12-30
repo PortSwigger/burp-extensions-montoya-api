@@ -41,7 +41,9 @@ public interface HttpService
      * Create a new instance of {@code HttpService}.
      *
      * @param baseUrl The URL for the service.
+     *
      * @return A new {@code HttpService} instance.
+     *
      * @throws IllegalArgumentException If the provided URL is invalid.
      */
     static HttpService httpService(String baseUrl)
@@ -54,6 +56,7 @@ public interface HttpService
      *
      * @param host   The hostname or IP address for the service.
      * @param secure True is the secure connection is to be used.
+     *
      * @return A new {@code HttpService} instance.
      */
     static HttpService httpService(String host, boolean secure)
@@ -67,6 +70,7 @@ public interface HttpService
      * @param host   The hostname or IP address for the service.
      * @param port   The port number for the service.
      * @param secure True is the secure connection is to be used.
+     *
      * @return A new {@code HttpService} instance.
      */
     static HttpService httpService(String host, int port, boolean secure)

@@ -20,6 +20,7 @@ public interface ToolSource
      * specified tool.
      *
      * @param toolType The tool types to check.
+     *
      * @return Returns {@code true} if this tool source is from any of the
      * specified tool types.
      */

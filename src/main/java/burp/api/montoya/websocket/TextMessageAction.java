@@ -21,6 +21,7 @@ public interface TextMessageAction
      * This is a helper method to build a text WebSocket message to be processed.
      *
      * @param payload The text message payload.
+     *
      * @return The {@link TextMessageAction} containing the message to be processed.
      */
     static TextMessageAction continueWith(String payload)
@@ -32,6 +33,7 @@ public interface TextMessageAction
      * This is a helper method to build a text WebSocket message to be processed.
      *
      * @param textMessage the text message payload
+     *
      * @return The {@link TextMessageAction} containing the message to be processed.
      */
     static TextMessageAction continueWith(TextMessage textMessage)

@@ -22,6 +22,7 @@ public interface ProxyHistoryFilter
      * @param requestResponse A {@link ProxyHttpRequestResponse} object that
      *                        extensions can use to determine whether the item should be included in
      *                        the filtered list of items.
+     *
      * @return Return {@code true} if the item should be included in the
      * filtered list of items.
      */

@@ -20,6 +20,7 @@ public interface PayloadGenerator
      * This method should return {@link GeneratedPayload#end()} to signal to Burp that the generator has finished.
      *
      * @param insertionPoint Insertion point for the payload.
+     *
      * @return A generated Intruder payload.
      */
     GeneratedPayload generatePayloadFor(IntruderInsertionPoint insertionPoint);

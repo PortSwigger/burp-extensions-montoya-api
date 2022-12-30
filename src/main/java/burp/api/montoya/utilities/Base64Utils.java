@@ -24,6 +24,7 @@ public interface Base64Utils
      *
      * @param data    the byte array to encode
      * @param options the options to use for encoding
+     *
      * @return A newly-allocated byte array containing the resulting
      * encoded bytes.
      */
@@ -36,6 +37,7 @@ public interface Base64Utils
      *
      * @param data    the string to encode.
      * @param options the options to use for encoding
+     *
      * @return A newly-allocated byte array containing the resulting
      * encoded bytes.
      */
@@ -46,6 +48,7 @@ public interface Base64Utils
      *
      * @param data    the byte array to encode
      * @param options the options to use for encoding
+     *
      * @return A newly-allocated byte array containing the resulting
      * encoded bytes.
      */
@@ -56,6 +59,7 @@ public interface Base64Utils
      *
      * @param data    the string to encode.
      * @param options the options to use for encoding
+     *
      * @return A newly-allocated byte array containing the resulting
      * encoded bytes.
      */
@@ -68,6 +72,7 @@ public interface Base64Utils
      *
      * @param data    the bytes to decode.
      * @param options the options to use for decoding
+     *
      * @return A newly-allocated byte array containing the resulting
      * decoded bytes.
      */
@@ -80,6 +85,7 @@ public interface Base64Utils
      *
      * @param data    the string to decode.
      * @param options the options to use for decoding
+     *
      * @return A newly-allocated byte array containing the resulting
      * decoded bytes.
      */

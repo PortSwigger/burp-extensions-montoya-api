@@ -26,6 +26,7 @@ public interface CrawlConfiguration
      * Build a crawl configuration with seed urls
      *
      * @param seedUrls used by the crawler
+     *
      * @return crawl configuration required by the crawler.
      */
     static CrawlConfiguration crawlConfiguration(String... seedUrls)

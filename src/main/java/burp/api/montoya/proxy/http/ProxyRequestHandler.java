@@ -27,6 +27,7 @@ public interface ProxyRequestHandler
      * Can drop the request.<br>
      *
      * @param interceptedRequest An {@link InterceptedRequest} object that extensions can use to query and update details of the request.
+     *
      * @return The {@link ProxyRequestReceivedAction} containing the required action, annotations and HTTP request to be passed through the proxy.
      */
     ProxyRequestReceivedAction handleRequestReceived(InterceptedRequest interceptedRequest);
@@ -38,6 +39,7 @@ public interface ProxyRequestHandler
      * Can control whether the request is sent or dropped.<br>
      *
      * @param interceptedRequest An {@link InterceptedRequest} object that extensions can use to query and update details of the intercepted request.
+     *
      * @return The {@link ProxyRequestToSendAction} containing the required action, annotations and HTTP request to be sent from the proxy.
      */
     ProxyRequestToSendAction handleRequestToSend(InterceptedRequest interceptedRequest);

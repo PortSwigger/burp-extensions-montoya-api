@@ -15,6 +15,7 @@ public interface NumberUtils
 {
     /**
      * @param binaryString the binary string to convert
+     *
      * @return string containing the octal representation
      */
     default String convertBinaryToOctal(String binaryString)
@@ -24,6 +25,7 @@ public interface NumberUtils
 
     /**
      * @param binaryString the binary string to convert
+     *
      * @return string containing the decimal representation
      */
     default String convertBinaryToDecimal(String binaryString)
@@ -33,6 +35,7 @@ public interface NumberUtils
 
     /**
      * @param binaryString the binary string to convert
+     *
      * @return string containing the hex representation
      */
     default String convertBinaryToHex(String binaryString)
@@ -42,6 +45,7 @@ public interface NumberUtils
 
     /**
      * @param octalString the octal string to convert
+     *
      * @return string containing the binary representation
      */
     default String convertOctalToBinary(String octalString)
@@ -51,6 +55,7 @@ public interface NumberUtils
 
     /**
      * @param octalString the octal string to convert
+     *
      * @return string containing the decimal representation
      */
     default String convertOctalToDecimal(String octalString)
@@ -60,6 +65,7 @@ public interface NumberUtils
 
     /**
      * @param octalString the octal string to convert
+     *
      * @return string containing the hex representation
      */
     default String convertOctalToHex(String octalString)
@@ -69,6 +75,7 @@ public interface NumberUtils
 
     /**
      * @param decimalString the decimal string to convert
+     *
      * @return string containing the binary representation
      */
     default String convertDecimalToBinary(String decimalString)
@@ -78,6 +85,7 @@ public interface NumberUtils
 
     /**
      * @param decimalString the decimal string to convert
+     *
      * @return string containing the octal representation
      */
     default String convertDecimalToOctal(String decimalString)
@@ -87,6 +95,7 @@ public interface NumberUtils
 
     /**
      * @param decimalString the decimal string to convert
+     *
      * @return string containing the hex representation
      */
     default String convertDecimalToHex(String decimalString)
@@ -96,6 +105,7 @@ public interface NumberUtils
 
     /**
      * @param hexString the hex string to convert
+     *
      * @return string containing the binary representation
      */
     default String convertHexToBinary(String hexString)
@@ -105,6 +115,7 @@ public interface NumberUtils
 
     /**
      * @param hexString the hex string to convert
+     *
      * @return string containing the octal representation
      */
     default String convertHexToOctal(String hexString)
@@ -114,6 +125,7 @@ public interface NumberUtils
 
     /**
      * @param hexString the hex string to convert
+     *
      * @return string containing the decimal representation
      */
     default String convertHexToDecimal(String hexString)
@@ -124,6 +136,7 @@ public interface NumberUtils
     /**
      * @param binaryString the binary string to convert
      * @param radix        the radix to convert to
+     *
      * @return string containing the representation in the specified radix
      */
     String convertBinary(String binaryString, int radix);
@@ -131,6 +144,7 @@ public interface NumberUtils
     /**
      * @param octalString the octal string to convert
      * @param radix       the radix to convert to
+     *
      * @return string containing the representation in the specified radix
      */
     String convertOctal(String octalString, int radix);
@@ -138,6 +152,7 @@ public interface NumberUtils
     /**
      * @param decimalString the decimal string to convert
      * @param radix         the radix to convert to
+     *
      * @return string containing the representation in the specified radix
      */
     String convertDecimal(String decimalString, int radix);
@@ -145,6 +160,7 @@ public interface NumberUtils
     /**
      * @param hexString the hex string to convert
      * @param radix     the radix to convert to
+     *
      * @return string containing the representation in the specified radix
      */
     String convertHex(String hexString, int radix);

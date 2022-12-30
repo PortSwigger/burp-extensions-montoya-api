@@ -26,6 +26,7 @@ public interface PayloadProcessor
      * This method is invoked by Burp each time the processor should be applied to an Intruder payload.
      *
      * @param payloadData Information about the current payload to be processed
+     *
      * @return The value of the processed payload.
      */
     PayloadProcessingResult processPayload(PayloadData payloadData);

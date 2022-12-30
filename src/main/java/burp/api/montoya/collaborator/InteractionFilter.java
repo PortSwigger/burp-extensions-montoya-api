@@ -25,6 +25,7 @@ public interface InteractionFilter
      *
      * @param server      The collaborator server that received the interaction.
      * @param interaction The interaction details.
+     *
      * @return {@code true} if the interaction should be included,
      * {@code false} if not.
      */
@@ -35,6 +36,7 @@ public interface InteractionFilter
      * interaction with the specified interaction id.
      *
      * @param id The interaction id.
+     *
      * @return {@code true} if the interaction has the specified id,
      * {@code false} if not.
      */
@@ -48,6 +50,7 @@ public interface InteractionFilter
      * interaction with the specified payload.
      *
      * @param payload The payload.
+     *
      * @return {@code true} if the interaction has the specified payload,
      * {@code false} if not.
      */

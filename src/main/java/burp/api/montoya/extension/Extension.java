@@ -55,6 +55,7 @@ public interface Extension
      *
      * @param handler An object created by the extension that implements the
      *                {@link ExtensionUnloadingHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerUnloadingHandler(ExtensionUnloadingHandler handler);

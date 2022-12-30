@@ -26,6 +26,7 @@ public interface ProxyResponseHandler
      *                            that extensions can use to query and update details of the response, and
      *                            control whether the response should be intercepted and displayed to the
      *                            user for manual review or modification.
+     *
      * @return The {@link ProxyResponseReceivedAction} containing the required action, HTTP response and annotations to be passed through.
      */
     ProxyResponseReceivedAction handleResponseReceived(InterceptedResponse interceptedResponse);
@@ -36,6 +37,7 @@ public interface ProxyResponseHandler
      *
      * @param interceptedResponse An {@link InterceptedResponse} object
      *                            that extensions can use to query and update details of the response.
+     *
      * @return The {@link ProxyResponseToSendAction} containing the required action, HTTP response and annotations to be passed through.
      */
     ProxyResponseToSendAction handleResponseToSend(InterceptedResponse interceptedResponse);

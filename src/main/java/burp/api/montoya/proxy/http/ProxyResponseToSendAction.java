@@ -49,9 +49,8 @@ public interface ProxyResponseToSendAction
      * forward the response.<br>
      * Annotations are not modified.
      *
-     * @param response
-     *         The {@link HttpResponse} to forward after any
-     *         modifications by the extension.
+     * @param response The {@link HttpResponse} to forward after any
+     *                 modifications by the extension.
      *
      * @return The {@link ProxyResponseToSendAction} that causes Burp Proxy
      * to forward the response.
@@ -65,10 +64,8 @@ public interface ProxyResponseToSendAction
      * This method can be used to create a result that causes Burp Proxy to
      * forward the response.
      *
-     * @param response
-     *         The {@link HttpResponse} to forward after any modifications by the extension.
-     * @param annotations
-     *         The {@link Annotations} for the intercepted HTTP response.
+     * @param response    The {@link HttpResponse} to forward after any modifications by the extension.
+     * @param annotations The {@link Annotations} for the intercepted HTTP response.
      *
      * @return The {@link ProxyResponseToSendAction} that causes Burp Proxy
      * to forward the response.
@@ -94,12 +91,9 @@ public interface ProxyResponseToSendAction
      * This method can be used to create a default implementation of a final
      * intercept result for an HTTP response.
      *
-     * @param response
-     *         The {@link HttpResponse} to forward after any modifications by the extension.
-     * @param annotations
-     *         The {@link Annotations} for the intercepted HTTP response. {@code null} value will leave the annotations unmodified.
-     * @param action
-     *         The {@link MessageSendAction} for the HTTP response.
+     * @param response    The {@link HttpResponse} to forward after any modifications by the extension.
+     * @param annotations The {@link Annotations} for the intercepted HTTP response. {@code null} value will leave the annotations unmodified.
+     * @param action      The {@link MessageSendAction} for the HTTP response.
      *
      * @return The {@link ProxyResponseToSendAction} including the HTTP
      * response, annotations and final intercept action.

@@ -19,6 +19,7 @@ public interface AuditConfiguration
      * This method can be used to create a built-in audit configuration.
      *
      * @param configuration The {@link BuiltInAuditConfiguration} to use for the audit.
+     *
      * @return a {@code AuditConfiguration} based on a built-in configuration
      */
     static AuditConfiguration auditConfiguration(BuiltInAuditConfiguration configuration)

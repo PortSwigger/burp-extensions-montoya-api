@@ -39,8 +39,7 @@ public interface RequestToSendAction
     /**
      * This is a helper method used to create a new instance of {@code RequestResult}. Annotations will not be modified.
      *
-     * @param request
-     *         An HTTP request.
+     * @param request An HTTP request.
      *
      * @return A new {@code RequestHandlerResult} instance.
      */
@@ -52,10 +51,8 @@ public interface RequestToSendAction
     /**
      * This is a helper method used to create a new instance of {@code RequestResult}.
      *
-     * @param request
-     *         An HTTP request.
-     * @param annotations
-     *         modified annotations.
+     * @param request     An HTTP request.
+     * @param annotations modified annotations.
      *
      * @return A new {@code RequestHandlerResult} instance.
      */

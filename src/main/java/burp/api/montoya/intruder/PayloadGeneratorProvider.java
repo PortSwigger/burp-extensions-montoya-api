@@ -28,6 +28,7 @@ public interface PayloadGeneratorProvider
      *
      * @param attackConfiguration An object containing information about the currently
      *                            selected attack configuration tab.
+     *
      * @return An instance of an object that implements the {@link PayloadGenerator} interface.
      */
     PayloadGenerator providePayloadGenerator(AttackConfiguration attackConfiguration);

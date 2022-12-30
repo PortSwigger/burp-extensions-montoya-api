@@ -32,6 +32,7 @@ public interface UserInterface
      *
      * @param title     The text to be displayed in the tab heading.
      * @param component The component that will be rendered within the custom tab.
+     *
      * @return A {@link Registration} of the custom suite tab.
      */
     Registration registerSuiteTab(String title, Component component);
@@ -40,6 +41,7 @@ public interface UserInterface
      * This method can be used to register a provider of custom context menu items.
      *
      * @param provider The provider to register.
+     *
      * @return A {@link Registration} of the context menu item provider.
      */
     Registration registerContextMenuItemsProvider(ContextMenuItemsProvider provider);
@@ -48,6 +50,7 @@ public interface UserInterface
      * This method can be used to register a provider of custom HTTP request editors.
      *
      * @param provider The provider to register.
+     *
      * @return A {@link Registration} of the HTTP request editor provider.
      */
     Registration registerHttpRequestEditorProvider(HttpRequestEditorProvider provider);
@@ -56,6 +59,7 @@ public interface UserInterface
      * This method can be used to register a provider of custom HTTP response editors.
      *
      * @param provider The provider to register.
+     *
      * @return A {@link Registration} of the HTTP response editor provider.
      */
     Registration registerHttpResponseEditorProvider(HttpResponseEditorProvider provider);
@@ -64,6 +68,7 @@ public interface UserInterface
      * This method is used to create a new instance of Burp's plain text editor, for the extension to use in its own UI.
      *
      * @param options Optional options to apply to the editor.
+     *
      * @return An instance of the {@link RawEditor} interface.
      */
     RawEditor createRawEditor(EditorOptions... options);
@@ -72,6 +77,7 @@ public interface UserInterface
      * This method is used to create a new instance of Burp's HTTP request editor, for the extension to use in its own UI.
      *
      * @param options Optional options to apply to the editor.
+     *
      * @return An instance of the {@link HttpRequestEditor} interface.
      */
     HttpRequestEditor createHttpRequestEditor(EditorOptions... options);
@@ -80,6 +86,7 @@ public interface UserInterface
      * This method is used to create a new instance of Burp's HTTP response editor, for the extension to use in its own UI.
      *
      * @param options Optional options to apply to the editor.
+     *
      * @return An instance of the {@link HttpResponseEditor} interface.
      */
     HttpResponseEditor createHttpResponseEditor(EditorOptions... options);

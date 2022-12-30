@@ -33,6 +33,7 @@ public interface ProxyWebSocket
      * This method is used to register a handler which will perform actions when messages are sent or received by the WebSocket.
      *
      * @param handler An object created by the extension that implements {@link ProxyMessageHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerProxyMessageHandler(ProxyMessageHandler handler);

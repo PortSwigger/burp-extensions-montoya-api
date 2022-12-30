@@ -30,7 +30,9 @@ public interface CollaboratorClient
      * location.
      *
      * @param options The optional payload options to apply
+     *
      * @return The generated payload.
+     *
      * @throws IllegalStateException if Burp Collaborator is disabled
      */
     CollaboratorPayload generatePayload(PayloadOption... options);
@@ -42,8 +44,10 @@ public interface CollaboratorClient
      * options are specified, generated payloads will include the server location.
      *
      * @param customData The custom data to add to the payload. Maximum size is 16 characters. Must be alphanumeric.
-     * @param options The optional payload options to apply
+     * @param options    The optional payload options to apply
+     *
      * @return The generated payload.
+     *
      * @throws IllegalStateException if Burp Collaborator is disabled
      */
     CollaboratorPayload generatePayload(String customData, PayloadOption... options);
@@ -54,6 +58,7 @@ public interface CollaboratorClient
      *
      * @return The Collaborator interactions that have occurred resulting from
      * payloads that were generated for this client.
+     *
      * @throws IllegalStateException if Burp Collaborator is disabled
      */
     List<Interaction> getAllInteractions();
@@ -64,8 +69,10 @@ public interface CollaboratorClient
      * client. Only interactions matching the supplied filter will be returned.
      *
      * @param filter The filter that will be applied to each interaction.
+     *
      * @return The filtered Collaborator interactions resulting from payloads
      * that were generated for this client.
+     *
      * @throws IllegalStateException if Burp Collaborator is disabled
      */
     List<Interaction> getInteractions(InteractionFilter filter);
@@ -75,6 +82,7 @@ public interface CollaboratorClient
      * associated with this client.
      *
      * @return The Collaborator server details.
+     *
      * @throws IllegalStateException if Burp Collaborator is disabled
      */
     CollaboratorServer server();

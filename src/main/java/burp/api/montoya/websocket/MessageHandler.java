@@ -19,6 +19,7 @@ public interface MessageHandler
      * sent to the application or processed by Burp.
      *
      * @param textMessage Intercepted text based WebSocket message.
+     *
      * @return The message.
      */
     TextMessageAction handleTextMessage(TextMessage textMessage);
@@ -29,6 +30,7 @@ public interface MessageHandler
      * sent to the application or processed by Burp.
      *
      * @param binaryMessage Intercepted binary based WebSocket message.
+     *
      * @return The message.
      */
     BinaryMessageAction handleBinaryMessage(BinaryMessage binaryMessage);

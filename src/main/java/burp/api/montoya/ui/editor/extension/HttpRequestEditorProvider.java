@@ -17,6 +17,7 @@ public interface HttpRequestEditorProvider
      * This method is invoked by Burp when a new HTTP request editor is required from the extension.
      *
      * @param creationContext details about the context that is requiring a request editor
+     *
      * @return An instance of {@link ExtensionHttpRequestEditor}
      */
     ExtensionHttpRequestEditor provideHttpRequestEditor(EditorCreationContext creationContext);

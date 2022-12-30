@@ -12,6 +12,7 @@ public interface ByteArray extends Iterable<Byte>
      * This method returns a byte stored at the provided index.
      *
      * @param index Index of the byte to be retrieved.
+     *
      * @return The byte at the index.
      */
     byte getByte(int index);
@@ -75,6 +76,7 @@ public interface ByteArray extends Iterable<Byte>
      *
      * @param startIndexInclusive The inclusive start index of retrieved range.
      * @param endIndexExclusive   The exclusive end index of retrieved range.
+     *
      * @return ByteArray containing all bytes in the specified range.
      */
     ByteArray subArray(int startIndexInclusive, int endIndexExclusive);
@@ -83,6 +85,7 @@ public interface ByteArray extends Iterable<Byte>
      * This method returns a new ByteArray with all bytes in the specified range.
      *
      * @param range The {@link Range} of bytes to be returned.
+     *
      * @return ByteArray containing all bytes in the specified range.
      */
     ByteArray subArray(Range range);
@@ -99,6 +102,7 @@ public interface ByteArray extends Iterable<Byte>
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
      * @param searchTerm The value to be searched for.
+     *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
     int indexOf(ByteArray searchTerm);
@@ -108,6 +112,7 @@ public interface ByteArray extends Iterable<Byte>
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
      * @param searchTerm The value to be searched for.
+     *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
     int indexOf(String searchTerm);
@@ -118,9 +123,10 @@ public interface ByteArray extends Iterable<Byte>
      *
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
+     *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-     int indexOf(ByteArray searchTerm, boolean caseSensitive);
+    int indexOf(ByteArray searchTerm, boolean caseSensitive);
 
     /**
      * This method searches the data in the ByteArray for the first occurrence of a specified term.
@@ -128,6 +134,7 @@ public interface ByteArray extends Iterable<Byte>
      *
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
+     *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
     int indexOf(String searchTerm, boolean caseSensitive);
@@ -140,6 +147,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
      * @param endIndexExclusive   The exclusive end index for the search.
+     *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
     int indexOf(ByteArray searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
@@ -152,6 +160,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
      * @param endIndexExclusive   The exclusive end index for the search.
+     *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
     int indexOf(String searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
@@ -160,6 +169,7 @@ public interface ByteArray extends Iterable<Byte>
      * This method searches the data in the ByteArray and counts all matches for a specified term.
      *
      * @param searchTerm The value to be searched for.
+     *
      * @return The count of all matches of the pattern
      */
     int countMatches(ByteArray searchTerm);
@@ -168,6 +178,7 @@ public interface ByteArray extends Iterable<Byte>
      * This method searches the data in the ByteArray and counts all matches for a specified term.
      *
      * @param searchTerm The value to be searched for.
+     *
      * @return The count of all matches of the pattern
      */
     int countMatches(String searchTerm);
@@ -177,6 +188,7 @@ public interface ByteArray extends Iterable<Byte>
      *
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
+     *
      * @return The count of all matches of the pattern
      */
     int countMatches(ByteArray searchTerm, boolean caseSensitive);
@@ -186,9 +198,10 @@ public interface ByteArray extends Iterable<Byte>
      *
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
+     *
      * @return The count of all matches of the pattern
      */
-     int countMatches(String searchTerm, boolean caseSensitive);
+    int countMatches(String searchTerm, boolean caseSensitive);
 
     /**
      * This method searches the data in the ByteArray and counts all matches for a specified term.
@@ -197,6 +210,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
      * @param endIndexExclusive   The exclusive end index for the search.
+     *
      * @return The count of all matches of the pattern within the specified bounds
      */
     int countMatches(ByteArray searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
@@ -208,6 +222,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param caseSensitive       Flags whether the search is case-sensitive.
      * @param startIndexInclusive The inclusive start index for the search.
      * @param endIndexExclusive   The exclusive end index for the search.
+     *
      * @return The count of all matches of the pattern within the specified bounds
      */
     int countMatches(String searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
@@ -253,6 +268,7 @@ public interface ByteArray extends Iterable<Byte>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param length array length.
+     *
      * @return New {@code ByteArray} with the provided length.
      */
     static ByteArray byteArrayOfLength(int length)
@@ -265,6 +281,7 @@ public interface ByteArray extends Iterable<Byte>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data byte[] to wrap, or sequence of bytes to wrap.
+     *
      * @return New {@code ByteArray} wrapping the provided byte array.
      */
     static ByteArray byteArray(byte... data)
@@ -277,6 +294,7 @@ public interface ByteArray extends Iterable<Byte>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data int[] to wrap or sequence of integers to wrap.
+     *
      * @return New {@code ByteArray} wrapping the provided data after a narrowing primitive conversion to bytes.
      */
     static ByteArray byteArray(int... data)
@@ -289,6 +307,7 @@ public interface ByteArray extends Iterable<Byte>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param text the text for the byte array.
+     *
      * @return New {@code ByteArray} holding a copy of the text as bytes.
      */
     static ByteArray byteArray(String text)
@@ -301,6 +320,7 @@ public interface ByteArray extends Iterable<Byte>
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param byteArrayToCopy source byte array.
+     *
      * @return New {@code ByteArray} holding a copy of the data in the source byte array.
      */
     static ByteArray byteArray(ByteArray byteArrayToCopy)

@@ -17,6 +17,7 @@ public interface RandomUtils
      * Generate a random string using alphanumeric characters
      *
      * @param length length of the resulting random string
+     *
      * @return randomly generated string
      */
     default String randomString(int length)
@@ -29,6 +30,7 @@ public interface RandomUtils
      *
      * @param length length of the resulting random string
      * @param chars  the characters to use to generate the string
+     *
      * @return randomly generated string
      */
     default String randomString(int length, String chars)
@@ -41,6 +43,7 @@ public interface RandomUtils
      *
      * @param length        length of the resulting random string
      * @param characterSets the list {@code CharacterSet} to use to generate the string
+     *
      * @return randomly generated string
      */
     default String randomString(int length, CharacterSet... characterSets)
@@ -54,6 +57,7 @@ public interface RandomUtils
      * @param minLength the inclusive minimum length of the generated string
      * @param maxLength the inclusive maximum length of the generated string
      * @param chars     the characters to use to generate the string
+     *
      * @return randomly generated string
      */
     String randomString(int minLength, int maxLength, String chars);
@@ -64,6 +68,7 @@ public interface RandomUtils
      * @param minLength     the inclusive minimum length of the generated string
      * @param maxLength     the inclusive maximum length of the generated string
      * @param characterSets the list {@code CharacterSet} to use to generate the string
+     *
      * @return randomly generated string
      */
     String randomString(int minLength, int maxLength, CharacterSet... characterSets);

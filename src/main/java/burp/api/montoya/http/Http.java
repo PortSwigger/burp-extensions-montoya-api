@@ -29,6 +29,7 @@ public interface Http
      * or a response was received by any Burp tool.
      *
      * @param handler An object created by the extension that implements {@link HttpHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerHttpHandler(HttpHandler handler);
@@ -39,6 +40,7 @@ public interface Http
      * handler directly in its own right, or following execution of a macro.
      *
      * @param sessionHandlingAction An object created by the extension that implements {@link SessionHandlingAction} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerSessionHandlingAction(SessionHandlingAction sessionHandlingAction);
@@ -47,6 +49,7 @@ public interface Http
      * This method can be used to send HTTP requests and retrieve their responses.
      *
      * @param request The full HTTP request.
+     *
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
     HttpRequestResponse sendRequest(HttpRequest request);
@@ -56,6 +59,7 @@ public interface Http
      *
      * @param request  The full HTTP request.
      * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
+     *
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
     HttpRequestResponse sendRequest(HttpRequest request, HttpMode httpMode);
@@ -66,6 +70,7 @@ public interface Http
      * @param request      The full HTTP request.
      * @param httpMode     An {@link HttpMode} enum value which indicates how a request should be sent.
      * @param connectionId The identifier for the connection you want to use.
+     *
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
     HttpRequestResponse sendRequest(HttpRequest request, HttpMode httpMode, String connectionId);
@@ -74,6 +79,7 @@ public interface Http
      * This method is used to create a new response keyword analyzer.
      *
      * @param keywords A list of keywords the analyzer will look for.
+     *
      * @return A new {@link ResponseKeywordsAnalyzer} instance.
      */
     ResponseKeywordsAnalyzer createResponseKeywordsAnalyzer(List<String> keywords);

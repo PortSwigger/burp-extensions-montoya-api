@@ -20,9 +20,10 @@ public interface Selection
 {
     /**
      * A helper method to create an instance of {@link Selection} without positional data.
+     *
      * @return The contents that are derived from within the user's selection range.
      */
-     ByteArray contents();
+    ByteArray contents();
 
     /**
      * @return The positional data of where the user has selected.
@@ -30,8 +31,8 @@ public interface Selection
     Range offsets();
 
     /**
-     *
      * @param selectionContents The contents of the selection.
+     *
      * @return A new instance of {@link Selection}
      */
     static Selection selection(ByteArray selectionContents)
@@ -44,6 +45,7 @@ public interface Selection
      *
      * @param startIndexInclusive The start position of the selection range.
      * @param endIndexExclusive   The end position of the selection range.
+     *
      * @return A new instance of {@link Selection}
      */
     static Selection selection(int startIndexInclusive, int endIndexExclusive)
@@ -57,6 +59,7 @@ public interface Selection
      * @param selectionContents   The contents of the selection.
      * @param startIndexInclusive The start position of the selection range.
      * @param endIndexExclusive   The end position of the selection range.
+     *
      * @return A new instance of {@link Selection}
      */
     static Selection selection(ByteArray selectionContents, int startIndexInclusive, int endIndexExclusive)

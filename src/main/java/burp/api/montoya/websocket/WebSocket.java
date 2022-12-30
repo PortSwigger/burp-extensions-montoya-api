@@ -31,6 +31,7 @@ public interface WebSocket
      * This method is used to register a handler which will perform an action when a message is sent to or received from the application.
      *
      * @param handler An object created by the extension that implements {@link MessageHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerMessageHandler(MessageHandler handler);

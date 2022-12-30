@@ -36,6 +36,7 @@ public interface HttpHeader
      *
      * @param name  The name of the header.
      * @param value The value of the header.
+     *
      * @return A new {@code HttpHeader} instance.
      */
     static HttpHeader httpHeader(String name, String value)
@@ -48,6 +49,7 @@ public interface HttpHeader
      * It will be parsed according to the HTTP/1.1 specification for headers.
      *
      * @param header The {@code String} header representation.
+     *
      * @return A new {@code HttpHeader} instance.
      */
     static HttpHeader httpHeader(String header)

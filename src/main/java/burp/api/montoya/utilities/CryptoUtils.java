@@ -20,6 +20,7 @@ public interface CryptoUtils
      *
      * @param data      the data to generate the digest from
      * @param algorithm the message {@link DigestAlgorithm} to use
+     *
      * @return the generated message digest
      */
     ByteArray generateDigest(ByteArray data, DigestAlgorithm algorithm);

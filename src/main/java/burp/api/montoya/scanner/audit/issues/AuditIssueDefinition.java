@@ -67,6 +67,7 @@ public interface AuditIssueDefinition
      * @param remediation     The background description of the remediation for
      *                        this type of issue.
      * @param typicalSeverity The typical {@link AuditIssueSeverity} level.
+     *
      * @return The audit issue definition.
      */
     static AuditIssueDefinition auditIssueDefinition(String name, String background, String remediation, AuditIssueSeverity typicalSeverity)

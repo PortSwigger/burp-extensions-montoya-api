@@ -38,6 +38,7 @@ public interface HttpRequest extends HttpMessage
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The URL in the request.
+     *
      * @throws MalformedRequestException if request is malformed.
      */
     String url();
@@ -47,6 +48,7 @@ public interface HttpRequest extends HttpMessage
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The HTTP method used in the request.
+     *
      * @throws MalformedRequestException if request is malformed.
      */
     String method();
@@ -56,6 +58,7 @@ public interface HttpRequest extends HttpMessage
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return the path and file in the request
+     *
      * @throws MalformedRequestException if request is malformed.
      */
     String path();
@@ -124,6 +127,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the new service.
      *
      * @param service An {@link HttpService} reference to add.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withService(HttpService service);
@@ -132,6 +136,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the new path.
      *
      * @param path The path to use.
+     *
      * @return A new {@code HttpRequest} instance with updated path.
      */
     HttpRequest withPath(String path);
@@ -140,6 +145,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the new method.
      *
      * @param method the method to use
+     *
      * @return a new {@code HttpRequest} instance with updated method.
      */
     HttpRequest withMethod(String method);
@@ -148,6 +154,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the added HTTP parameters.
      *
      * @param parameters HTTP parameters to add.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withAddedParameters(List<HttpParameter> parameters);
@@ -156,6 +163,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the added HTTP parameters.
      *
      * @param parameters HTTP parameters to add.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withAddedParameters(HttpParameter... parameters);
@@ -164,6 +172,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the removed HTTP parameters.
      *
      * @param parameters HTTP parameters to remove.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withRemovedParameters(List<HttpParameter> parameters);
@@ -172,6 +181,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the removed HTTP parameters.
      *
      * @param parameters HTTP parameters to remove.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withRemovedParameters(HttpParameter... parameters);
@@ -181,6 +191,7 @@ public interface HttpRequest extends HttpMessage
      * If a parameter does not exist in the request, a new one will be added.
      *
      * @param parameters HTTP parameters to update.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withUpdatedParameters(List<HttpParameter> parameters);
@@ -190,6 +201,7 @@ public interface HttpRequest extends HttpMessage
      * If a parameter does not exist in the request, a new one will be added.
      *
      * @param parameters HTTP parameters to update.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withUpdatedParameters(HttpParameter... parameters);
@@ -198,6 +210,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method that builds a modified request with the transformation applied.
      *
      * @param transformation Transformation to apply.
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withTransformationApplied(HttpTransformation transformation);
@@ -207,6 +220,7 @@ public interface HttpRequest extends HttpMessage
      * Updates Content-Length header.
      *
      * @param body the new body for the request
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withBody(String body);
@@ -216,6 +230,7 @@ public interface HttpRequest extends HttpMessage
      * Updates Content-Length header.
      *
      * @param body the new body for the request
+     *
      * @return A new {@code HttpRequest} instance.
      */
     HttpRequest withBody(ByteArray body);
@@ -225,6 +240,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @param name  The name of the header.
      * @param value The value of the header.
+     *
      * @return The updated HTTP request with the added header.
      */
     HttpRequest withAddedHeader(String name, String value);
@@ -233,6 +249,7 @@ public interface HttpRequest extends HttpMessage
      * Adds an HTTP header to the current request.
      *
      * @param header The {@link HttpHeader} to add to the HTTP request.
+     *
      * @return The updated HTTP request with the added header.
      */
     HttpRequest withAddedHeader(HttpHeader header);
@@ -242,6 +259,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @param name  The name of the header to update the value of.
      * @param value The new value of the specified HTTP header.
+     *
      * @return The updated request containing the updated header.
      */
     HttpRequest withUpdatedHeader(String name, String value);
@@ -250,6 +268,7 @@ public interface HttpRequest extends HttpMessage
      * Updates an existing HTTP header in the request with a new value.
      *
      * @param header The {@link HttpHeader} to update containing the new value.
+     *
      * @return The updated request containing the updated header.
      */
     HttpRequest withUpdatedHeader(HttpHeader header);
@@ -258,6 +277,7 @@ public interface HttpRequest extends HttpMessage
      * Removes an existing HTTP header from the current request.
      *
      * @param name The name of the HTTP header to remove from the request.
+     *
      * @return The updated request containing the removed header.
      */
     HttpRequest withRemovedHeader(String name);
@@ -266,6 +286,7 @@ public interface HttpRequest extends HttpMessage
      * Removes an existing HTTP header from the current request.
      *
      * @param header The {@link HttpHeader} to remove from the request.
+     *
      * @return The updated request containing the removed header.
      */
     HttpRequest withRemovedHeader(HttpHeader header);
@@ -274,6 +295,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method used to add request markers to the {@code HttpRequest} instance.
      *
      * @param markers Request markers to add.
+     *
      * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     HttpRequest withMarkers(List<Marker> markers);
@@ -282,6 +304,7 @@ public interface HttpRequest extends HttpMessage
      * This is a helper method used create a new instance with markers to the {@code HttpRequest} instance.
      *
      * @param markers Request markers to add.
+     *
      * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     HttpRequest withMarkers(Marker... markers);
@@ -309,6 +332,7 @@ public interface HttpRequest extends HttpMessage
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request
+     *
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequest(ByteArray request)
@@ -321,6 +345,7 @@ public interface HttpRequest extends HttpMessage
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request.
+     *
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequest(String request)
@@ -334,6 +359,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
+     *
      * @return A new {@link HttpRequest} instance. A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequest(HttpService service, ByteArray request)
@@ -347,6 +373,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
+     *
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequest(HttpService service, String request)
@@ -359,6 +386,7 @@ public interface HttpRequest extends HttpMessage
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param httpRequestToCopy source HTTP request.
+     *
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequest(HttpRequest httpRequestToCopy)
@@ -371,6 +399,7 @@ public interface HttpRequest extends HttpMessage
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param url A URL for the request.
+     *
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequestFromUrl(String url)
@@ -385,6 +414,7 @@ public interface HttpRequest extends HttpMessage
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP 2 headers.
      * @param body    A body of the HTTP 2 request.
+     *
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body)
@@ -399,6 +429,7 @@ public interface HttpRequest extends HttpMessage
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP 2 headers.
      * @param body    A body of the HTTP 2 request.
+     *
      * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body)

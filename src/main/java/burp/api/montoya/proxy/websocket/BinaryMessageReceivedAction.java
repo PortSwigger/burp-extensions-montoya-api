@@ -30,13 +30,13 @@ public interface BinaryMessageReceivedAction
      */
     ByteArray payload();
 
-
     /**
      * This is a helper method to build a binary WebSocket message to
      * follow the current interception rules to determine the appropriate
      * action to take for the message.
      *
      * @param payload The binary message payload.
+     *
      * @return The {@link BinaryMessageReceivedAction} that allows user rules to be
      * followed.
      */
@@ -51,6 +51,7 @@ public interface BinaryMessageReceivedAction
      * action to take for the message.
      *
      * @param message The binary message.
+     *
      * @return The {@link BinaryMessageReceivedAction} that allows user rules to be
      * followed.
      */
@@ -63,6 +64,7 @@ public interface BinaryMessageReceivedAction
      * This is a helper method to build a binary WebSocket message to be intercepted within the Proxy.
      *
      * @param payload The binary message payload.
+     *
      * @return The message.
      */
     static BinaryMessageReceivedAction intercept(ByteArray payload)
@@ -74,6 +76,7 @@ public interface BinaryMessageReceivedAction
      * This is a helper method to build a binary WebSocket message to be intercepted within the Proxy.
      *
      * @param message The binary message.
+     *
      * @return The message.
      */
     static BinaryMessageReceivedAction intercept(BinaryMessage message)
@@ -85,6 +88,7 @@ public interface BinaryMessageReceivedAction
      * This is a helper method to build a binary WebSocket message to continue within the Proxy without interception.
      *
      * @param payload The binary message payload.
+     *
      * @return The message.
      */
     static BinaryMessageReceivedAction doNotIntercept(ByteArray payload)
@@ -96,6 +100,7 @@ public interface BinaryMessageReceivedAction
      * This is a helper method to build a binary WebSocket message to continue within the Proxy without interception.
      *
      * @param message The binary message.
+     *
      * @return The message.
      */
     static BinaryMessageReceivedAction doNotIntercept(BinaryMessage message)

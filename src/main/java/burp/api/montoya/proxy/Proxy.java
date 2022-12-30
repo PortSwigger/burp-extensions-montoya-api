@@ -44,6 +44,7 @@ public interface Proxy
      *
      * @param filter An instance of {@link ProxyHistoryFilter} that can be used
      *               to filter the items in the Proxy history.
+     *
      * @return The list of {@link ProxyHttpRequestResponse} items in the Proxy
      * history that matched the filter.
      */
@@ -57,6 +58,7 @@ public interface Proxy
      *
      * @param handler An object created by the extension that implements the
      *                {@link ProxyRequestHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerRequestHandler(ProxyRequestHandler handler);
@@ -69,6 +71,7 @@ public interface Proxy
      *
      * @param handler An object created by the extension that implements the
      *                {@link ProxyResponseHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerResponseHandler(ProxyResponseHandler handler);
@@ -77,6 +80,7 @@ public interface Proxy
      * This method is used to register a handler which will be invoked whenever a WebSocket is being created by the Proxy tool.
      *
      * @param handler An object created by the extension that implements {@link ProxyWebSocketCreationHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerWebSocketCreationHandler(ProxyWebSocketCreationHandler handler);

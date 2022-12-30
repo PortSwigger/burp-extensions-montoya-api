@@ -25,6 +25,7 @@ public interface SiteMap
      *
      * @param filter This parameter can be used to specify a filter, in order to extract a
      *               specific subset of the site map.
+     *
      * @return A list of filtered items from the site map.
      */
     List<HttpRequestResponse> requestResponses(SiteMapFilter filter);
@@ -42,6 +43,7 @@ public interface SiteMap
      *
      * @param filter This parameter can be used to specify a filter, in order to extract issues
      *               for a specific subset of the site map.
+     *
      * @return A filtered list of audit issues.
      */
     List<AuditIssue> issues(SiteMapFilter filter);

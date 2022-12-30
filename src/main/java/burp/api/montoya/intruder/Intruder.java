@@ -24,6 +24,7 @@ public interface Intruder
      *
      * @param payloadProcessor An object created by the extension that implements the
      *                         {@link PayloadProcessor} interface.
+     *
      * @return The {@link Registration} for the payload processor.
      */
     Registration registerPayloadProcessor(PayloadProcessor payloadProcessor);
@@ -37,6 +38,7 @@ public interface Intruder
      *
      * @param payloadGeneratorProvider An object created by the extension that implements the
      *                                 PayloadGeneratorProvider interface.
+     *
      * @return The {@link Registration} for the payload generator provider.
      */
     Registration registerPayloadGeneratorProvider(PayloadGeneratorProvider payloadGeneratorProvider);

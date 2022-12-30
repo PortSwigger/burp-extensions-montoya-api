@@ -32,8 +32,7 @@ public interface ActionResult
      * This is a helper method used to create a new instance of {@code ActionResult}.<br>
      * Annotations will not be modified.
      *
-     * @param request
-     *         An HTTP request.
+     * @param request An HTTP request.
      *
      * @return A new {@code ActionResult} instance.
      */
@@ -45,10 +44,8 @@ public interface ActionResult
     /**
      * This is a helper method used to create a new instance of {@code ActionResult}.
      *
-     * @param request
-     *         An HTTP request.
-     * @param annotations
-     *         modified annotations.
+     * @param request     An HTTP request.
+     * @param annotations modified annotations.
      *
      * @return A new {@code ActionResult} instance.
      */

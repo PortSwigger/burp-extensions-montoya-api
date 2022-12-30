@@ -21,6 +21,7 @@ public interface ContextMenuItemsProvider
      * Extensions should return {@code null} from this method, to indicate that no menu items are required.
      *
      * @param event This object can be queried to find out about HTTP request/responses or issues that are associated with the context menu invocation.
+     *
      * @return A list of custom menu items (which may include sub-menus, checkbox menu items, etc.) that should be displayed.
      */
     List<JComponent> provideMenuItems(ContextMenuEvent event);

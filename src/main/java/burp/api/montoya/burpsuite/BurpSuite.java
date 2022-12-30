@@ -38,6 +38,7 @@ public interface BurpSuite
      *
      * @param paths A list of Strings representing the path to each
      *              configuration section that should be included.
+     *
      * @return A String representing the current configuration in JSON format.
      */
     String exportProjectOptionsAsJson(String... paths);

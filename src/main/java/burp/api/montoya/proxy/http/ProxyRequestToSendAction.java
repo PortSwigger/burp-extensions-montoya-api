@@ -51,6 +51,7 @@ public interface ProxyRequestToSendAction
      *
      * @param request The {@link HttpRequest} to forward after any
      *                modifications by the extension.
+     *
      * @return The {@link ProxyRequestToSendAction} that causes Burp Proxy
      * to forward the request.
      */
@@ -67,6 +68,7 @@ public interface ProxyRequestToSendAction
      *                    modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
+     *
      * @return The {@link ProxyRequestToSendAction} that causes Burp Proxy
      * to forward the request.
      */
@@ -94,6 +96,7 @@ public interface ProxyRequestToSendAction
      * @param request     The {@link HttpRequest} to forward after any modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted HTTP request. {@code null} value will leave the annotations unmodified.
      * @param action      The {@link MessageSendAction} for the HTTP request.
+     *
      * @return The {@link ProxyRequestToSendAction} including the HTTP
      * request, annotations and final intercept action.
      */

@@ -22,6 +22,7 @@ public interface InvocationSource
      * A helper method to allow the extension to ask if the context is within a set of locations.
      *
      * @param invocationType One or more instances of {@link InvocationType} to check.
+     *
      * @return True if the context menu is being invoked from one of the types that is being checked.
      */
     boolean isFrom(InvocationType... invocationType);

@@ -44,6 +44,7 @@ public interface HttpRequestResponse
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The URL in the request.
+     *
      * @throws MalformedRequestException if request is malformed.
      */
     String url();
@@ -81,6 +82,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add annotations to the {@code HttpRequestResponse} instance.
      *
      * @param annotations annotations to add.
+     *
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withAnnotations(Annotations annotations);
@@ -89,6 +91,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
      *
      * @param requestMarkers Request markers to add.
+     *
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withRequestMarkers(List<Marker> requestMarkers);
@@ -97,6 +100,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add request markers to the {@code HttpRequestResponse} instance.
      *
      * @param requestMarkers Request markers to add.
+     *
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withRequestMarkers(Marker... requestMarkers);
@@ -105,6 +109,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add response markers to the {@code HttpRequestResponse} instance.
      *
      * @param responseMarkers Response markers to add.
+     *
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withResponseMarkers(List<Marker> responseMarkers);
@@ -113,6 +118,7 @@ public interface HttpRequestResponse
      * This is a helper method used to add response markers to the {@code HttpRequestResponse} instance.
      *
      * @param responseMarkers Response markers to add.
+     *
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withResponseMarkers(Marker... responseMarkers);
@@ -123,6 +129,7 @@ public interface HttpRequestResponse
      *
      * @param request  The HTTP request.
      * @param response The HTTP response.
+     *
      * @return A new {@link HttpRequestResponse} instance.
      */
     static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response)
@@ -137,6 +144,7 @@ public interface HttpRequestResponse
      * @param httpRequest  The HTTP request.
      * @param httpResponse The HTTP response.
      * @param annotations  annotations.
+     *
      * @return A new {@link HttpRequestResponse} instance.
      */
     static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
@@ -149,6 +157,7 @@ public interface HttpRequestResponse
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param httpRequestResponseToCopy source HTTP request response.
+     *
      * @return A new {@link HttpRequestResponse} instance.
      */
     static HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy)

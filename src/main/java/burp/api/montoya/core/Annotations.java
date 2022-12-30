@@ -41,6 +41,7 @@ public interface Annotations
      * a new comment.
      *
      * @param comment The new comment.
+     *
      * @return The new annotations.
      */
     Annotations withComment(String comment);
@@ -50,6 +51,7 @@ public interface Annotations
      * a new highlight color.
      *
      * @param highlightColor The new highlight color.
+     *
      * @return The new annotations.
      */
     Annotations withHighlightColor(HighlightColor highlightColor);
@@ -68,6 +70,7 @@ public interface Annotations
      * This method is used to construct annotations from a comment.
      *
      * @param comment The comment of the annotation
+     *
      * @return The annotations.
      */
     static Annotations annotations(String comment)
@@ -80,6 +83,7 @@ public interface Annotations
      * color.
      *
      * @param highlightColor The highlight color of the annotation
+     *
      * @return The annotations.
      */
     static Annotations annotations(HighlightColor highlightColor)
@@ -93,6 +97,7 @@ public interface Annotations
      *
      * @param comment        The comment of the annotation
      * @param highlightColor The highlight color of the annotation
+     *
      * @return The annotations.
      */
     static Annotations annotations(String comment, HighlightColor highlightColor)

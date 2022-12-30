@@ -21,6 +21,7 @@ public interface Scope
      * current Suite-wide target scope.
      *
      * @param url The URL to query.
+     *
      * @return Returns {@code true} if the URL is within the current Suite-wide
      * target scope.
      */
@@ -48,6 +49,7 @@ public interface Scope
      *
      * @param handler An object created by the extension that implements the
      *                {@link ScopeChangeHandler} interface.
+     *
      * @return The {@link Registration} for the handler.
      */
     Registration registerScopeChangeHandler(ScopeChangeHandler handler);

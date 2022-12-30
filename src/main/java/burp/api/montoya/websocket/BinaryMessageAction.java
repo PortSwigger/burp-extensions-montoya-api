@@ -23,6 +23,7 @@ public interface BinaryMessageAction
      * This is a helper method to build a binary WebSocket message to be processed.
      *
      * @param payload The binary message payload.
+     *
      * @return The {@link BinaryMessageAction} containing the message to be processed.
      */
     static BinaryMessageAction continueWith(ByteArray payload)
@@ -34,6 +35,7 @@ public interface BinaryMessageAction
      * This is a helper method to build a binary WebSocket message to be processed.
      *
      * @param binaryMessage The binary message payload.
+     *
      * @return The {@link BinaryMessageAction} containing the message to be processed.
      */
     static BinaryMessageAction continueWith(BinaryMessage binaryMessage)

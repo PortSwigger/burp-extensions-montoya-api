@@ -22,6 +22,7 @@ public interface Preferences
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -56,6 +57,7 @@ public interface Preferences
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -91,6 +93,7 @@ public interface Preferences
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -126,6 +129,7 @@ public interface Preferences
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -161,6 +165,7 @@ public interface Preferences
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -196,6 +201,7 @@ public interface Preferences
      * or {@link Optional#empty}} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */

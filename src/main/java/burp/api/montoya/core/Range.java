@@ -25,6 +25,7 @@ public interface Range
      *
      * @param startIndexInclusive The start index of the range inclusive of this value.
      * @param endIndexExclusive   The end index of the range exclusive of this value.
+     *
      * @return The range.
      */
     static Range range(int startIndexInclusive, int endIndexExclusive)

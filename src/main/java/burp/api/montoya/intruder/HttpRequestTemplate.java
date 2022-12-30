@@ -40,6 +40,7 @@ public interface HttpRequestTemplate
      *
      * @param request               An instance of {@link HttpRequest}.
      * @param insertionPointOffsets List of insertion point offsets.
+     *
      * @return A new instance of {@link HttpRequestTemplate}.
      */
     static HttpRequestTemplate httpRequestTemplate(HttpRequest request, List<Range> insertionPointOffsets)
@@ -53,6 +54,7 @@ public interface HttpRequestTemplate
      *
      * @param content               An HTTP request in a byte array form.
      * @param insertionPointOffsets List of insertion point offsets.
+     *
      * @return A new instance of {@link HttpRequestTemplate}.
      */
     static HttpRequestTemplate httpRequestTemplate(ByteArray content, List<Range> insertionPointOffsets)

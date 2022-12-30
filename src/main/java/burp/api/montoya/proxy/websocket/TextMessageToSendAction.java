@@ -34,6 +34,7 @@ public interface TextMessageToSendAction
      * This is a helper method to build a text WebSocket message to continue through Burp.
      *
      * @param payload The text message payload.
+     *
      * @return The message.
      */
     static TextMessageToSendAction continueWith(String payload)
@@ -45,6 +46,7 @@ public interface TextMessageToSendAction
      * This is a helper method to build a text WebSocket message to continue through Burp.
      *
      * @param message The text message.
+     *
      * @return The message.
      */
     static TextMessageToSendAction continueWith(TextMessage message)

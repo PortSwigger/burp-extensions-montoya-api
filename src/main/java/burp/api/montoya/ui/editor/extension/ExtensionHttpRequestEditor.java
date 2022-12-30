@@ -36,6 +36,7 @@ public interface ExtensionHttpRequestEditor
      * A check to determine if the HTTP message editor is enabled for a specific {@link HttpRequestResponse}
      *
      * @param requestResponse The {@link HttpRequestResponse} to check.
+     *
      * @return True if the HTTP message editor is enabled for the provided request and response.
      */
     boolean isEnabledFor(HttpRequestResponse requestResponse);

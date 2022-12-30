@@ -34,6 +34,7 @@ public interface BinaryMessageToSendAction
      * This is a helper method to build a binary WebSocket message to continue through Burp.
      *
      * @param payload The binary message payload.
+     *
      * @return The message.
      */
     static BinaryMessageToSendAction continueWith(ByteArray payload)
@@ -45,6 +46,7 @@ public interface BinaryMessageToSendAction
      * This is a helper method to build a binary WebSocket message to continue through Burp.
      *
      * @param message The binary message.
+     *
      * @return The message.
      */
     static BinaryMessageToSendAction continueWith(BinaryMessage message)

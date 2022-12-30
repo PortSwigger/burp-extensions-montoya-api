@@ -26,6 +26,7 @@ public interface GeneratedPayload
      * Create a new {@link GeneratedPayload} instance from a String payload value.
      *
      * @param payload String payload value.
+     *
      * @return A new {@link GeneratedPayload} instance.
      */
     static GeneratedPayload payload(String payload)
@@ -37,6 +38,7 @@ public interface GeneratedPayload
      * Create a new {@link GeneratedPayload} instance from a byte array payload value.
      *
      * @param payload Byte array payload value.
+     *
      * @return A new {@link GeneratedPayload} instance.
      */
     static GeneratedPayload payload(ByteArray payload)

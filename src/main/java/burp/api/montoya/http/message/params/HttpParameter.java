@@ -35,6 +35,7 @@ public interface HttpParameter
      *
      * @param name  The parameter name.
      * @param value The parameter value.
+     *
      * @return A new {@code HttpParameter} instance.
      */
     static HttpParameter urlParameter(String name, String value)
@@ -47,6 +48,7 @@ public interface HttpParameter
      *
      * @param name  The parameter name.
      * @param value The parameter value.
+     *
      * @return A new {@code HttpParameter} instance.
      */
     static HttpParameter bodyParameter(String name, String value)
@@ -59,6 +61,7 @@ public interface HttpParameter
      *
      * @param name  The parameter name.
      * @param value The parameter value.
+     *
      * @return A new {@code HttpParameter} instance.
      */
     static HttpParameter cookieParameter(String name, String value)
@@ -72,6 +75,7 @@ public interface HttpParameter
      * @param name  The parameter name.
      * @param value The parameter value.
      * @param type  The header type.
+     *
      * @return A new {@code HttpParameter} instance.
      */
     static HttpParameter parameter(String name, String value, HttpParameterType type)

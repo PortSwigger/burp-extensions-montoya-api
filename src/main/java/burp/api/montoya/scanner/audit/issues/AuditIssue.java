@@ -116,6 +116,7 @@ public interface AuditIssue
      * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
      * @param requestResponses      The {@link HttpRequestResponse} objects on the
      *                              basis of which the issue is generated.
+     *
      * @return The audit issue for the URL.
      */
     static AuditIssue auditIssue(
@@ -150,6 +151,7 @@ public interface AuditIssue
      * @param typicalSeverity       The typical {@link AuditIssueSeverity} level.
      * @param requestResponses      The list of {@link HttpRequestResponse} objects
      *                              on the basis of which the issue is generated.
+     *
      * @return The audit issue for the URL.
      */
     static AuditIssue auditIssue(

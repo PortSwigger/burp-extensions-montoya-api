@@ -26,6 +26,7 @@ public interface SwingUtils
      * Retrieve the top-level {@code Window} containing the supplied component.
      *
      * @param component the component.
+     *
      * @return the top-level {@code Window} containing the component.
      */
     Window windowForComponent(Component component);

@@ -38,6 +38,7 @@ public interface ScanCheck
      * @param auditInsertionPoint An {@link AuditInsertionPoint} object that
      *                            can be queried to obtain details of the insertion point being tested, and
      *                            can be used to build requests for particular payloads.
+     *
      * @return A list of {@link AuditIssue} objects, or {@code null} if no
      * issues are identified.
      */
@@ -51,6 +52,7 @@ public interface ScanCheck
      *
      * @param baseRequestResponse The base {@link HttpRequestResponse} that
      *                            should be passively audited.
+     *
      * @return A list of {@link AuditIssue} objects, or {@code null} if no
      * issues are identified.
      */
@@ -70,6 +72,7 @@ public interface ScanCheck
      *                      newly reported by this Scan check.
      * @param existingIssue An {@link AuditIssue} that was previously reported
      *                      by this Scan check.
+     *
      * @return A {@link ConsolidationAction} to determine which issue(s) should
      * be reported in the main Scanner results.
      */

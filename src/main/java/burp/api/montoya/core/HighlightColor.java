@@ -45,6 +45,7 @@ public enum HighlightColor
      * Factory method to build HighlightColor from display name string
      *
      * @param colorName Color's display name
+     *
      * @return highlight color instance
      */
     public static HighlightColor highlightColor(String colorName)

@@ -37,6 +37,7 @@ public interface PayloadProcessingResult
      * {@link PayloadProcessingAction#USE_PAYLOAD} action.
      *
      * @param processedPayload Processed payload value
+     *
      * @return A new {@link PayloadProcessingResult} instance.
      */
     static PayloadProcessingResult usePayload(ByteArray processedPayload)

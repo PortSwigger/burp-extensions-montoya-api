@@ -37,6 +37,7 @@ public interface HttpResponse extends HttpMessage
     /**
      * This method is used to obtain the HTTP reason phrase contained in the response for HTTP 1 messages.
      * HTTP 2 messages will return a mapped phrase based on the status code.
+     *
      * @return HTTP Reason phrase.
      */
     String reasonPhrase();
@@ -104,6 +105,7 @@ public interface HttpResponse extends HttpMessage
      * This method is used to retrieve the number of types given keywords appear in the response.
      *
      * @param keywords Keywords to count.
+     *
      * @return List of keyword counts in the order they were provided.
      */
     List<KeywordCount> keywordCounts(String... keywords);
@@ -112,6 +114,7 @@ public interface HttpResponse extends HttpMessage
      * This method is used to retrieve the values of response attributes.
      *
      * @param types Response attributes to retrieve values for.
+     *
      * @return List of {@link Attribute} objects.
      */
     List<Attribute> attributes(AttributeType... types);
@@ -127,11 +130,12 @@ public interface HttpResponse extends HttpMessage
      */
     @Override
     String toString();
-    
+
     /**
      * This is a helper method that builds a modified response with the provided status code.
      *
      * @param statusCode the new status code for response
+     *
      * @return A new {@code HttpResponse} instance.
      */
     HttpResponse withStatusCode(short statusCode);
@@ -140,6 +144,7 @@ public interface HttpResponse extends HttpMessage
      * This is a helper method that builds a modified response with the new reason phrase.
      *
      * @param reasonPhrase the new reason phrase for response
+     *
      * @return A new {@code HttpResponse} instance.
      */
     HttpResponse withReasonPhrase(String reasonPhrase);
@@ -148,6 +153,7 @@ public interface HttpResponse extends HttpMessage
      * This is a helper method that builds a modified response with the new http version.
      *
      * @param httpVersion the new http version for response
+     *
      * @return A new {@code HttpResponse} instance.
      */
     HttpResponse withHttpVersion(String httpVersion);
@@ -157,6 +163,7 @@ public interface HttpResponse extends HttpMessage
      * Updates Content-Length header.
      *
      * @param body the new body for the response
+     *
      * @return A new {@code HttpResponse} instance.
      */
     HttpResponse withBody(String body);
@@ -166,6 +173,7 @@ public interface HttpResponse extends HttpMessage
      * Updates Content-Length header.
      *
      * @param body the new body for the response
+     *
      * @return A new {@code HttpResponse} instance.
      */
     HttpResponse withBody(ByteArray body);
@@ -174,6 +182,7 @@ public interface HttpResponse extends HttpMessage
      * Adds an HTTP header to the response.
      *
      * @param header The {@link HttpHeader} to add to the response.
+     *
      * @return The updated response containing the added header.
      */
     HttpResponse withAddedHeader(HttpHeader header);
@@ -183,6 +192,7 @@ public interface HttpResponse extends HttpMessage
      *
      * @param name  The name of the header.
      * @param value The value of the header.
+     *
      * @return The updated response containing the added header.
      */
     HttpResponse withAddedHeader(String name, String value);
@@ -191,6 +201,7 @@ public interface HttpResponse extends HttpMessage
      * Updates an existing HTTP header in the response with a new value.
      *
      * @param header The {@link HttpHeader} to update containing the new value.
+     *
      * @return The updated response containing the updated header.
      */
     HttpResponse withUpdatedHeader(HttpHeader header);
@@ -200,6 +211,7 @@ public interface HttpResponse extends HttpMessage
      *
      * @param name  The name of the header to update the value of.
      * @param value The new value of the specified HTTP header.
+     *
      * @return The updated response containing the updated header.
      */
     HttpResponse withUpdatedHeader(String name, String value);
@@ -208,6 +220,7 @@ public interface HttpResponse extends HttpMessage
      * Removes an existing HTTP header from the current response.
      *
      * @param header The {@link HttpHeader} to remove from the response.
+     *
      * @return The updated response containing the removed header.
      */
     HttpResponse withRemovedHeader(HttpHeader header);
@@ -216,6 +229,7 @@ public interface HttpResponse extends HttpMessage
      * Removes an existing HTTP header from the current response.
      *
      * @param name The name of the HTTP header to remove from the response.
+     *
      * @return The updated response containing the removed header.
      */
     HttpResponse withRemovedHeader(String name);
@@ -224,6 +238,7 @@ public interface HttpResponse extends HttpMessage
      * This is a helper method used to add request markers to the {@code HttpResponse} instance.
      *
      * @param markers Request markers to add.
+     *
      * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     HttpResponse withMarkers(List<Marker> markers);
@@ -232,6 +247,7 @@ public interface HttpResponse extends HttpMessage
      * This is a helper method used create a new instance with markers to the {@code HttpResponse} instance.
      *
      * @param markers Request markers to add.
+     *
      * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     HttpResponse withMarkers(Marker... markers);
@@ -251,17 +267,20 @@ public interface HttpResponse extends HttpMessage
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
+     *
      * @return A new {@link HttpResponse} instance.
      */
     static HttpResponse httpResponse(ByteArray response)
     {
         return FACTORY.httpResponse(response);
     }
+
     /**
      * This is a helper method to create a new instance of {@link HttpResponse}.
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
+     *
      * @return A new {@link HttpResponse} instance.
      */
     static HttpResponse httpResponse(String response)
@@ -274,6 +293,7 @@ public interface HttpResponse extends HttpMessage
      * This object's data will be stored in temporary memory-mapped file.
      *
      * @param httpResponseToCopy source HTTP response.
+     *
      * @return A new {@link HttpResponse} instance.
      */
     static HttpResponse httpResponse(HttpResponse httpResponseToCopy)

@@ -13,7 +13,8 @@ package burp.api.montoya.http.message.requests;
  */
 public class MalformedRequestException extends RuntimeException
 {
-    public MalformedRequestException(String message) {
+    public MalformedRequestException(String message)
+    {
         super(message);
     }
 }

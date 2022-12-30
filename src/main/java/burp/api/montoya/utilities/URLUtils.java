@@ -15,14 +15,18 @@ public interface URLUtils
 {
     /**
      * @param string {@code String} to be translated.
+     *
      * @return the translated {@code String}.
+     *
      * @see java.net.URLEncoder#encode(String, String)
      */
     String encode(String string);
 
     /**
      * @param string the {@code String} to decode
+     *
      * @return the newly decoded {@code String}
+     *
      * @see java.net.URLDecoder#decode(String, String)
      */
     String decode(String string);

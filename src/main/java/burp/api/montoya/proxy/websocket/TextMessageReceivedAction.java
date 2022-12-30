@@ -36,6 +36,7 @@ public interface TextMessageReceivedAction
      * action to take for the message.
      *
      * @param payload The text message payload.
+     *
      * @return The {@link TextMessageReceivedAction} that allows user rules to be
      * followed.
      */
@@ -50,6 +51,7 @@ public interface TextMessageReceivedAction
      * action to take for the message.
      *
      * @param message The text message.
+     *
      * @return The {@link TextMessageReceivedAction} that allows user rules to be
      * followed.
      */
@@ -62,6 +64,7 @@ public interface TextMessageReceivedAction
      * This is a helper method to build a text WebSocket message to be intercepted within the Proxy.
      *
      * @param payload The text message payload.
+     *
      * @return The message.
      */
     static TextMessageReceivedAction intercept(String payload)
@@ -73,6 +76,7 @@ public interface TextMessageReceivedAction
      * This is a helper method to build a text WebSocket message to be intercepted within the Proxy.
      *
      * @param message The text message.
+     *
      * @return The message.
      */
     static TextMessageReceivedAction intercept(TextMessage message)
@@ -84,6 +88,7 @@ public interface TextMessageReceivedAction
      * This is a helper method to build a text WebSocket message to continue within the Proxy without interception.
      *
      * @param payload The text message payload.
+     *
      * @return The message.
      */
     static TextMessageReceivedAction doNotIntercept(String payload)
@@ -95,13 +100,13 @@ public interface TextMessageReceivedAction
      * This is a helper method to build a text WebSocket message to continue within the Proxy without interception.
      *
      * @param message The text message payload.
+     *
      * @return The message.
      */
     static TextMessageReceivedAction doNotIntercept(TextMessage message)
     {
         return FACTORY.doNotInterceptInitialProxyTextMessage(message.payload());
     }
-
 
     /**
      * This is a helper method to build a text WebSocket message to be dropped.

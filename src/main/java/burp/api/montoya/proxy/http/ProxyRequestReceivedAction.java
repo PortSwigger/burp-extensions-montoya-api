@@ -52,6 +52,7 @@ public interface ProxyRequestReceivedAction
      *
      * @param request The {@link HttpRequest} received after any modifications
      *                by the extension.
+     *
      * @return The {@link ProxyRequestReceivedAction} that allows user rules to be
      * followed.
      */
@@ -69,6 +70,7 @@ public interface ProxyRequestReceivedAction
      *                    by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
+     *
      * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to follow the current interception rules to determine the appropriate
      * action to take for the request.
@@ -85,6 +87,7 @@ public interface ProxyRequestReceivedAction
      *
      * @param request The {@link HttpRequest} received after any modifications
      *                by the extension.
+     *
      * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to present the request to the user for manual review or modification.
      */
@@ -101,6 +104,7 @@ public interface ProxyRequestReceivedAction
      *                    by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
+     *
      * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to present the request to the user for manual review or modification.
      */
@@ -116,6 +120,7 @@ public interface ProxyRequestReceivedAction
      *
      * @param request The {@link HttpRequest} received after any modifications
      *                by the extension.
+     *
      * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to forward the request without presenting it to the user.
      */
@@ -132,6 +137,7 @@ public interface ProxyRequestReceivedAction
      *                    by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
+     *
      * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to forward the request without presenting it to the user.
      */
@@ -159,6 +165,7 @@ public interface ProxyRequestReceivedAction
      * @param request     The {@link HttpRequest} received after any modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted HTTP request. {@code null} value will leave the annotations unmodified.
      * @param action      The {@link MessageReceivedAction} for the HTTP request.
+     *
      * @return The {@link ProxyRequestReceivedAction} including the HTTP
      * request, annotations and initial intercept action.
      */

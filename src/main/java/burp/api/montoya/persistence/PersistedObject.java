@@ -29,6 +29,7 @@ public interface PersistedObject
      * or {@link Optional#empty} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value to which the specified key is mapped, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -63,6 +64,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -97,6 +99,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -132,6 +135,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -167,6 +171,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -202,6 +207,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -237,6 +243,7 @@ public interface PersistedObject
      * or {@link Optional#empty}} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -272,6 +279,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -306,6 +314,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -340,6 +349,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -375,6 +385,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -409,6 +420,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -444,6 +456,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -478,6 +491,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -513,6 +527,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value to which the specified key is mapped, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -523,7 +538,7 @@ public interface PersistedObject
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
      */
     void setBooleanList(String key, PersistedList<Boolean> value);
@@ -547,6 +562,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value to which the specified key is mapped, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -557,7 +573,7 @@ public interface PersistedObject
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
      */
     void setShortList(String key, PersistedList<Short> value);
@@ -581,6 +597,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value to which the specified key is mapped, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -591,7 +608,7 @@ public interface PersistedObject
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
      */
     void setIntegerList(String key, PersistedList<Integer> value);
@@ -615,6 +632,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value to which the specified key is mapped, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -625,7 +643,7 @@ public interface PersistedObject
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
      */
     void setLongList(String key, PersistedList<Long> value);
@@ -649,6 +667,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value to which the specified key is mapped, or
      * {@code null} if this map contains no mapping for the key
      */
@@ -659,7 +678,7 @@ public interface PersistedObject
      * If the map previously contained a mapping for the key,
      * the old value is replaced by the specified value.
      *
-     * @param key the key with which the specified value is to be associated
+     * @param key   the key with which the specified value is to be associated
      * @param value the value to be associated with the specified key.
      */
     void setStringList(String key, PersistedList<String> value);
@@ -683,6 +702,7 @@ public interface PersistedObject
      * or {@code null} if this map contains no mapping for the key
      *
      * @param key the key whose associated value is to be returned
+     *
      * @return the value associated with the specified key, or
      * {@code null} if this map contains no mapping for the key
      */

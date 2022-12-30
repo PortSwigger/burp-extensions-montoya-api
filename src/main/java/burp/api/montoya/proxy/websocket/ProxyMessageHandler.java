@@ -19,6 +19,7 @@ public interface ProxyMessageHandler
      * processed by Burp.
      *
      * @param interceptedTextMessage Intercepted text WebSocket message.
+     *
      * @return The {@link TextMessageReceivedAction} containing the required action and text message to be passed through.
      */
     TextMessageReceivedAction handleTextMessageReceived(InterceptedTextMessage interceptedTextMessage);
@@ -29,6 +30,7 @@ public interface ProxyMessageHandler
      * sent.
      *
      * @param interceptedTextMessage Intercepted text WebSocket message.
+     *
      * @return The {@link TextMessageReceivedAction} containing the required action and text message to be passed through.
      */
     TextMessageToSendAction handleTextMessageToSend(InterceptedTextMessage interceptedTextMessage);
@@ -39,6 +41,7 @@ public interface ProxyMessageHandler
      * processed by Burp.
      *
      * @param interceptedBinaryMessage Intercepted binary WebSocket message.
+     *
      * @return The {@link BinaryMessageReceivedAction} containing the required action and binary message to be passed through.
      */
     BinaryMessageReceivedAction handleBinaryMessageReceived(InterceptedBinaryMessage interceptedBinaryMessage);
@@ -49,6 +52,7 @@ public interface ProxyMessageHandler
      * sent.
      *
      * @param interceptedBinaryMessage Intercepted binary WebSocket message.
+     *
      * @return The {@link BinaryMessageReceivedAction} containing the required action and binary message to be passed through.
      */
     BinaryMessageToSendAction handleBinaryMessageToSend(InterceptedBinaryMessage interceptedBinaryMessage);

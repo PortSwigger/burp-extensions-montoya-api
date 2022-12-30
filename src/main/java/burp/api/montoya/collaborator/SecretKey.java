@@ -21,9 +21,11 @@ public interface SecretKey
      * with the {@link Collaborator#restoreClient(SecretKey)} method.
      *
      * @param encodedKey The base64 encoded raw secret key.
+     *
      * @return An instance of {@link SecretKey} wrapping the provided secret key.
      */
-    static SecretKey secretKey(String encodedKey) {
+    static SecretKey secretKey(String encodedKey)
+    {
         return FACTORY.secretKey(encodedKey);
     }
 }

@@ -21,6 +21,7 @@ public interface HttpHandler
      * This method is invoked by Burp when an HTTP request is about to be sent.
      *
      * @param httpRequestToSend information about the HTTP request that is going to be sent.
+     *
      * @return An instance of {@link RequestToSendAction}.
      */
     RequestToSendAction handleHttpRequestToSend(HttpRequestToSend httpRequestToSend);
@@ -29,6 +30,7 @@ public interface HttpHandler
      * This method is invoked by Burp when an HTTP response has been received.
      *
      * @param httpResponseReceived information about HTTP response that was received.
+     *
      * @return An instance of {@link ResponseReceivedAction}.
      */
     ResponseReceivedAction handleHttpResponseReceived(HttpResponseReceived httpResponseReceived);

@@ -9,7 +9,7 @@
 package burp.api.montoya.proxy.websocket;
 
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.proxy.SendAction;
+import burp.api.montoya.proxy.MessageSendAction;
 import burp.api.montoya.websocket.BinaryMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
@@ -23,7 +23,7 @@ public interface BinaryMessageToSendAction
     /**
      * @return The action associated with this message.
      */
-    SendAction action();
+    MessageSendAction action();
 
     /**
      * @return The payload of this message.

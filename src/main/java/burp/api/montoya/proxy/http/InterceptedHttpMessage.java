@@ -14,7 +14,7 @@ import java.net.InetAddress;
  * This interface represents an instance of an HTTP message intercepted by Burp
  * Proxy.
  */
-public interface InterceptedMessage
+public interface InterceptedHttpMessage
 {
     /**
      * This method retrieves a unique ID for this request/response.

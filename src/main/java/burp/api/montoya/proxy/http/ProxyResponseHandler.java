@@ -12,12 +12,12 @@ import burp.api.montoya.proxy.Proxy;
 
 /**
  * Extensions can implement this interface and then call
- * {@link Proxy#registerResponseHandler(ResponseHandler)} to register a
+ * {@link Proxy#registerResponseHandler(ProxyResponseHandler)} to register a
  * Proxy response handler. The handler will be notified of responses being
  * processed by the Proxy tool. Extensions can perform custom analysis or
  * modification of these responses, and control in-UI message interception.
  */
-public interface ResponseHandler
+public interface ProxyResponseHandler
 {
     /**
      * This method is invoked when an HTTP response is received in the Proxy.
@@ -26,9 +26,9 @@ public interface ResponseHandler
      *                            that extensions can use to query and update details of the response, and
      *                            control whether the response should be intercepted and displayed to the
      *                            user for manual review or modification.
-     * @return The {@link ResponseReceivedAction} containing the required action, HTTP response and annotations to be passed through.
+     * @return The {@link ProxyResponseReceivedAction} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseReceivedAction handleResponseReceived(InterceptedResponse interceptedResponse);
+    ProxyResponseReceivedAction handleResponseReceived(InterceptedResponse interceptedResponse);
 
     /**
      * This method is invoked when an HTTP response has been processed by the
@@ -36,7 +36,7 @@ public interface ResponseHandler
      *
      * @param interceptedResponse An {@link InterceptedResponse} object
      *                            that extensions can use to query and update details of the response.
-     * @return The {@link ResponseToSendAction} containing the required action, HTTP response and annotations to be passed through.
+     * @return The {@link ProxyResponseToSendAction} containing the required action, HTTP response and annotations to be passed through.
      */
-    ResponseToSendAction handleResponseToSend(InterceptedResponse interceptedResponse);
+    ProxyResponseToSendAction handleResponseToSend(InterceptedResponse interceptedResponse);
 }

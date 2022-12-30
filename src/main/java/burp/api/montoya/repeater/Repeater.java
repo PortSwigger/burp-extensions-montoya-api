@@ -18,7 +18,7 @@ public interface Repeater
     /**
      * This method can be used to send an HTTP request to the Burp Repeater
      * tool. The request will be displayed in the user interface using a
-     * default tab index, but will not be issued until the user initiates
+     * default tab index, but will not be sent until the user initiates
      * this action.
      *
      * @param request The full HTTP request.

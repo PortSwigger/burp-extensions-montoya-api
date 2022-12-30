@@ -10,22 +10,22 @@ package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.requests.HttpRequest;
-import burp.api.montoya.proxy.ReceivedAction;
+import burp.api.montoya.proxy.MessageReceivedAction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a result from
- * {@link RequestHandler#handleReceivedRequest(InterceptedRequest)}.
+ * {@link ProxyRequestHandler#handleRequestReceived(InterceptedRequest)}.
  */
-public interface RequestReceivedAction
+public interface ProxyRequestReceivedAction
 {
     /**
      * This method retrieves the current initial intercept action.
      *
-     * @return The {@link ReceivedAction}.
+     * @return The {@link MessageReceivedAction}.
      */
-    ReceivedAction action();
+    MessageReceivedAction action();
 
     /**
      * This method retrieves the current HTTP request to forward after any
@@ -52,10 +52,10 @@ public interface RequestReceivedAction
      *
      * @param request The {@link HttpRequest} received after any modifications
      *                by the extension.
-     * @return The {@link RequestReceivedAction} that allows user rules to be
+     * @return The {@link ProxyRequestReceivedAction} that allows user rules to be
      * followed.
      */
-    static RequestReceivedAction continueWith(HttpRequest request)
+    static ProxyRequestReceivedAction continueWith(HttpRequest request)
     {
         return FACTORY.requestInitialInterceptResultFollowUserRules(request);
     }
@@ -69,11 +69,11 @@ public interface RequestReceivedAction
      *                    by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
-     * @return The {@link RequestReceivedAction} that causes Burp Proxy
+     * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to follow the current interception rules to determine the appropriate
      * action to take for the request.
      */
-    static RequestReceivedAction continueWith(HttpRequest request, Annotations annotations)
+    static ProxyRequestReceivedAction continueWith(HttpRequest request, Annotations annotations)
     {
         return FACTORY.requestInitialInterceptResultFollowUserRules(request, annotations);
     }
@@ -85,10 +85,10 @@ public interface RequestReceivedAction
      *
      * @param request The {@link HttpRequest} received after any modifications
      *                by the extension.
-     * @return The {@link RequestReceivedAction} that causes Burp Proxy
+     * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to present the request to the user for manual review or modification.
      */
-    static RequestReceivedAction intercept(HttpRequest request)
+    static ProxyRequestReceivedAction intercept(HttpRequest request)
     {
         return FACTORY.requestInitialInterceptResultIntercept(request);
     }
@@ -101,10 +101,10 @@ public interface RequestReceivedAction
      *                    by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
-     * @return The {@link RequestReceivedAction} that causes Burp Proxy
+     * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to present the request to the user for manual review or modification.
      */
-    static RequestReceivedAction intercept(HttpRequest request, Annotations annotations)
+    static ProxyRequestReceivedAction intercept(HttpRequest request, Annotations annotations)
     {
         return FACTORY.requestInitialInterceptResultIntercept(request, annotations);
     }
@@ -116,10 +116,10 @@ public interface RequestReceivedAction
      *
      * @param request The {@link HttpRequest} received after any modifications
      *                by the extension.
-     * @return The {@link RequestReceivedAction} that causes Burp Proxy
+     * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to forward the request without presenting it to the user.
      */
-    static RequestReceivedAction doNotIntercept(HttpRequest request)
+    static ProxyRequestReceivedAction doNotIntercept(HttpRequest request)
     {
         return FACTORY.requestInitialInterceptResultDoNotIntercept(request);
     }
@@ -132,10 +132,10 @@ public interface RequestReceivedAction
      *                    by the extension.
      * @param annotations The {@link Annotations} for the intercepted
      *                    HTTP request.
-     * @return The {@link RequestReceivedAction} that causes Burp Proxy
+     * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to forward the request without presenting it to the user.
      */
-    static RequestReceivedAction doNotIntercept(HttpRequest request, Annotations annotations)
+    static ProxyRequestReceivedAction doNotIntercept(HttpRequest request, Annotations annotations)
     {
         return FACTORY.requestInitialInterceptResultDoNotIntercept(request, annotations);
     }
@@ -144,10 +144,10 @@ public interface RequestReceivedAction
      * This method can be used to create a result that causes Burp Proxy to
      * drop the request.
      *
-     * @return The {@link RequestReceivedAction} that causes Burp Proxy
+     * @return The {@link ProxyRequestReceivedAction} that causes Burp Proxy
      * to drop the request.
      */
-    static RequestReceivedAction drop()
+    static ProxyRequestReceivedAction drop()
     {
         return FACTORY.requestInitialInterceptResultDrop();
     }
@@ -158,12 +158,12 @@ public interface RequestReceivedAction
      *
      * @param request     The {@link HttpRequest} received after any modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted HTTP request. {@code null} value will leave the annotations unmodified.
-     * @param action      The {@link ReceivedAction} for the HTTP request.
-     * @return The {@link RequestReceivedAction} including the HTTP
+     * @param action      The {@link MessageReceivedAction} for the HTTP request.
+     * @return The {@link ProxyRequestReceivedAction} including the HTTP
      * request, annotations and initial intercept action.
      */
-    static RequestReceivedAction requestReceivedAction(HttpRequest request, Annotations annotations, ReceivedAction action)
+    static ProxyRequestReceivedAction proxyRequestReceivedAction(HttpRequest request, Annotations annotations, MessageReceivedAction action)
     {
-        return FACTORY.requestReceivedAction(request, annotations, action);
+        return FACTORY.proxyRequestReceivedAction(request, annotations, action);
     }
 }

@@ -6,12 +6,15 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.http;
+package burp.api.montoya.http.intercept;
 
 /**
- * This enum defines transformations that Burp can apply to an HTTP request.
+ * This enum represents the action to be taken when intercepting HTTP responses.
  */
-public enum HttpTransformation
+public enum HttpResponseAction
 {
-    TOGGLE_METHOD
+    /**
+     * Causes Burp Proxy to send the response.
+     */
+    CONTINUE
 }

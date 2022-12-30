@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message;
 
 import burp.api.montoya.core.Annotations;
-import burp.api.montoya.http.ContentType;
+import burp.api.montoya.core.Marker;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;

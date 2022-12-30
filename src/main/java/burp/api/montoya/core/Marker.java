@@ -6,9 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.http.message;
-
-import burp.api.montoya.core.Range;
+package burp.api.montoya.core;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 

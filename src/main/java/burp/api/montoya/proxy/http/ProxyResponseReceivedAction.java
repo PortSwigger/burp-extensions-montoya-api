@@ -10,22 +10,22 @@ package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.responses.HttpResponse;
-import burp.api.montoya.proxy.ReceivedAction;
+import burp.api.montoya.proxy.MessageReceivedAction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a result from
- * {@link ResponseHandler#handleResponseReceived(InterceptedResponse)}.
+ * {@link ProxyResponseHandler#handleResponseReceived(InterceptedResponse)}.
  */
-public interface ResponseReceivedAction
+public interface ProxyResponseReceivedAction
 {
     /**
      * This method retrieves the current initial intercept action.
      *
-     * @return The {@link ReceivedAction}.
+     * @return The {@link MessageReceivedAction}.
      */
-    ReceivedAction action();
+    MessageReceivedAction action();
 
     /**
      * This method retrieves the current HTTP response to forward after any
@@ -50,13 +50,15 @@ public interface ResponseReceivedAction
      * action to take for the response.<br>
      * Annotations are not modified.
      *
-     * @param response The {@link HttpResponse} received after any
-     *                 modifications by the extension.
-     * @return The {@link ResponseReceivedAction} that causes Burp
+     * @param response
+     *         The {@link HttpResponse} received after any
+     *         modifications by the extension.
+     *
+     * @return The {@link ProxyResponseReceivedAction} that causes Burp
      * Proxy to follow the current interception rules to determine the
      * appropriate action to take for the response.
      */
-    static ResponseReceivedAction continueWith(HttpResponse response)
+    static ProxyResponseReceivedAction continueWith(HttpResponse response)
     {
         return FACTORY.responseInitialInterceptResultFollowUserRules(response);
     }
@@ -66,15 +68,18 @@ public interface ResponseReceivedAction
      * follow the current interception rules to determine the appropriate
      * action to take for the response.
      *
-     * @param response    The {@link HttpResponse} received after any
-     *                    modifications by the extension.
-     * @param annotations The {@link Annotations} for the intercepted
-     *                    HTTP response.
-     * @return The {@link ResponseReceivedAction} that causes Burp
+     * @param response
+     *         The {@link HttpResponse} received after any
+     *         modifications by the extension.
+     * @param annotations
+     *         The {@link Annotations} for the intercepted
+     *         HTTP response.
+     *
+     * @return The {@link ProxyResponseReceivedAction} that causes Burp
      * Proxy to follow the current interception rules to determine the
      * appropriate action to take for the response.
      */
-    static ResponseReceivedAction continueWith(HttpResponse response, Annotations annotations)
+    static ProxyResponseReceivedAction continueWith(HttpResponse response, Annotations annotations)
     {
         return FACTORY.responseInitialInterceptResultFollowUserRules(response, annotations);
     }
@@ -84,13 +89,15 @@ public interface ResponseReceivedAction
      * present the response to the user for manual review or modification.<br>
      * Annotations are not modified.
      *
-     * @param response The {@link HttpResponse} received after any
-     *                 modifications by the extension.
-     * @return The {@link ResponseReceivedAction} that causes Burp
+     * @param response
+     *         The {@link HttpResponse} received after any
+     *         modifications by the extension.
+     *
+     * @return The {@link ProxyResponseReceivedAction} that causes Burp
      * Proxy to present the response to the user for manual review or
      * modification.
      */
-    static ResponseReceivedAction intercept(HttpResponse response)
+    static ProxyResponseReceivedAction intercept(HttpResponse response)
     {
         return FACTORY.responseInitialInterceptResultIntercept(response);
     }
@@ -99,15 +106,18 @@ public interface ResponseReceivedAction
      * This method can be used to create an action that causes Burp Proxy to
      * present the response to the user for manual review or modification.
      *
-     * @param response    The {@link HttpResponse} received after any
-     *                    modifications by the extension.
-     * @param annotations The {@link Annotations} for the intercepted
-     *                    HTTP response.
-     * @return The {@link ResponseReceivedAction} that causes Burp
+     * @param response
+     *         The {@link HttpResponse} received after any
+     *         modifications by the extension.
+     * @param annotations
+     *         The {@link Annotations} for the intercepted
+     *         HTTP response.
+     *
+     * @return The {@link ProxyResponseReceivedAction} that causes Burp
      * Proxy to present the response to the user for manual review or
      * modification.
      */
-    static ResponseReceivedAction intercept(HttpResponse response, Annotations annotations)
+    static ProxyResponseReceivedAction intercept(HttpResponse response, Annotations annotations)
     {
         return FACTORY.responseInitialInterceptResultIntercept(response, annotations);
     }
@@ -117,12 +127,14 @@ public interface ResponseReceivedAction
      * forward the response without presenting it to the user.<br>
      * Annotations are not modified.
      *
-     * @param response The {@link HttpResponse} received after any
-     *                 modifications by the extension.
-     * @return The {@link ResponseReceivedAction} that causes Burp
+     * @param response
+     *         The {@link HttpResponse} received after any
+     *         modifications by the extension.
+     *
+     * @return The {@link ProxyResponseReceivedAction} that causes Burp
      * Proxy to forward the response without presenting it to the user.
      */
-    static ResponseReceivedAction doNotIntercept(HttpResponse response)
+    static ProxyResponseReceivedAction doNotIntercept(HttpResponse response)
     {
         return FACTORY.responseInitialInterceptResultDoNotIntercept(response);
     }
@@ -131,14 +143,17 @@ public interface ResponseReceivedAction
      * This method can be used to create an action that causes Burp Proxy to
      * forward the response without presenting it to the user.
      *
-     * @param response    The {@link HttpResponse} received after any
-     *                    modifications by the extension.
-     * @param annotations The {@link Annotations} for the intercepted
-     *                    HTTP response.
-     * @return The {@link ResponseReceivedAction} that causes Burp
+     * @param response
+     *         The {@link HttpResponse} received after any
+     *         modifications by the extension.
+     * @param annotations
+     *         The {@link Annotations} for the intercepted
+     *         HTTP response.
+     *
+     * @return The {@link ProxyResponseReceivedAction} that causes Burp
      * Proxy to forward the response without presenting it to the user.
      */
-    static ResponseReceivedAction doNotIntercept(HttpResponse response, Annotations annotations)
+    static ProxyResponseReceivedAction doNotIntercept(HttpResponse response, Annotations annotations)
     {
         return FACTORY.responseInitialInterceptResultDoNotIntercept(response, annotations);
     }
@@ -147,26 +162,29 @@ public interface ResponseReceivedAction
      * This method can be used to create an action that causes Burp Proxy to
      * drop the response.
      *
-     * @return The {@link ResponseReceivedAction} that causes Burp
+     * @return The {@link ProxyResponseReceivedAction} that causes Burp
      * Proxy to drop the response.
      */
-    static ResponseReceivedAction drop()
+    static ProxyResponseReceivedAction drop()
     {
         return FACTORY.responseInitialInterceptResultDrop();
     }
 
     /**
-     * This method can be used to create a default implementation of a {@code ReceivedResponseAction}
+     * This method can be used to create a default implementation of a {@link ProxyResponseReceivedAction}
      * for an HTTP response.
      *
-     * @param response    The {@link HttpResponse} received after any modifications by the extension.
-     * @param annotations The {@link Annotations} for the intercepted HTTP response. {@code null} value will leave the annotations unmodified.
-     * @param action      The {@link ReceivedAction} for the HTTP response.
-     * @return The {@link ResponseReceivedAction} including the HTTP
-     * response, annotations and intercept action.
+     * @param response
+     *         The {@link HttpResponse} received after any modifications by the extension.
+     * @param annotations
+     *         The {@link Annotations} for the intercepted HTTP response. {@code null} value will leave the annotations unmodified.
+     * @param action
+     *         The {@link MessageReceivedAction} for the HTTP response.
+     *
+     * @return The {@link ProxyResponseReceivedAction} including the HTTP response, annotations and intercept action.
      */
-    static ResponseReceivedAction responseReceivedAction(HttpResponse response, Annotations annotations, ReceivedAction action)
+    static ProxyResponseReceivedAction proxyResponseReceivedAction(HttpResponse response, Annotations annotations, MessageReceivedAction action)
     {
-        return FACTORY.responseReceivedAction(response, annotations, action);
+        return FACTORY.proxyResponseReceivedAction(response, annotations, action);
     }
 }

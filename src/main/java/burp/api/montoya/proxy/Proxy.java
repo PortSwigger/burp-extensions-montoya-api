@@ -9,8 +9,8 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Registration;
-import burp.api.montoya.proxy.http.RequestHandler;
-import burp.api.montoya.proxy.http.ResponseHandler;
+import burp.api.montoya.proxy.http.ProxyRequestHandler;
+import burp.api.montoya.proxy.http.ProxyResponseHandler;
 import burp.api.montoya.proxy.websocket.ProxyWebSocketCreationHandler;
 
 import java.util.List;
@@ -56,10 +56,10 @@ public interface Proxy
      * message interception.
      *
      * @param handler An object created by the extension that implements the
-     *                {@link RequestHandler} interface.
+     *                {@link ProxyRequestHandler} interface.
      * @return The {@link Registration} for the handler.
      */
-    Registration registerRequestHandler(RequestHandler handler);
+    Registration registerRequestHandler(ProxyRequestHandler handler);
 
     /**
      * This method is used to register a handler which will be notified of
@@ -68,10 +68,10 @@ public interface Proxy
      * message interception.
      *
      * @param handler An object created by the extension that implements the
-     *                {@link ResponseHandler} interface.
+     *                {@link ProxyResponseHandler} interface.
      * @return The {@link Registration} for the handler.
      */
-    Registration registerResponseHandler(ResponseHandler handler);
+    Registration registerResponseHandler(ProxyResponseHandler handler);
 
     /**
      * This method is used to register a handler which will be invoked whenever a WebSocket is being created by the Proxy tool.

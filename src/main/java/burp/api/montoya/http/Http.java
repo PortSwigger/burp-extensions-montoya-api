@@ -9,6 +9,7 @@
 package burp.api.montoya.http;
 
 import burp.api.montoya.core.Registration;
+import burp.api.montoya.http.intercept.HttpHandler;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.analysis.ResponseKeywordsAnalyzer;
@@ -24,7 +25,7 @@ import java.util.List;
 public interface Http
 {
     /**
-     * This method is used to register a handler which will perform an action when a request is about to be issued
+     * This method is used to register a handler which will perform an action when a request is about to be sent
      * or a response was received by any Burp tool.
      *
      * @param handler An object created by the extension that implements {@link HttpHandler} interface.
@@ -33,41 +34,41 @@ public interface Http
     Registration registerHttpHandler(HttpHandler handler);
 
     /**
-     * This method is used to register a custom session handling action. Each registered action will be available
-     * within the session handling rule UI for the user to select as a rule action. Users can choose to invoke an
-     * action directly in its own right, or following execution of a macro.
+     * This method is used to register a custom session handler. Each registered handler will be available
+     * within the session handling rule UI for the user to select as a rule action. Users can choose to invoke a
+     * handler directly in its own right, or following execution of a macro.
      *
-     * @param action An object created by the extension that implements {@link SessionHandlingAction} interface.
+     * @param sessionHandlingAction An object created by the extension that implements {@link SessionHandlingAction} interface.
      * @return The {@link Registration} for the handler.
      */
-    Registration registerSessionHandlingAction(SessionHandlingAction action);
+    Registration registerSessionHandlingAction(SessionHandlingAction sessionHandlingAction);
 
     /**
-     * This method can be used to issue HTTP requests and retrieve their responses.
+     * This method can be used to send HTTP requests and retrieve their responses.
      *
      * @param request The full HTTP request.
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
-    HttpRequestResponse issueRequest(HttpRequest request);
+    HttpRequestResponse sendRequest(HttpRequest request);
 
     /**
-     * This method can be used to issue HTTP requests and retrieve their responses.
+     * This method can be used to send HTTP requests and retrieve their responses.
      *
      * @param request  The full HTTP request.
      * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
-    HttpRequestResponse issueRequest(HttpRequest request, HttpMode httpMode);
+    HttpRequestResponse sendRequest(HttpRequest request, HttpMode httpMode);
 
     /**
-     * This method can be used to issue HTTP requests and retrieve their responses.
+     * This method can be used to send HTTP requests and retrieve their responses.
      *
      * @param request      The full HTTP request.
      * @param httpMode     An {@link HttpMode} enum value which indicates how a request should be sent.
      * @param connectionId The identifier for the connection you want to use.
      * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
      */
-    HttpRequestResponse issueRequest(HttpRequest request, HttpMode httpMode, String connectionId);
+    HttpRequestResponse sendRequest(HttpRequest request, HttpMode httpMode, String connectionId);
 
     /**
      * This method is used to create a new response keyword analyzer.

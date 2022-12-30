@@ -10,8 +10,8 @@ package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.http.MimeType;
-import burp.api.montoya.http.message.Marker;
+import burp.api.montoya.core.Marker;
+import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.cookies.Cookie;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -27,7 +27,7 @@ import java.util.List;
  * This interface represents an instance of an HTTP response intercepted by
  * Burp Proxy.
  */
-public interface InterceptedResponse extends InterceptedMessage, HttpResponse
+public interface InterceptedResponse extends InterceptedHttpMessage, HttpResponse
 {
     /**
      * @return initiatingRequest The HTTP request that was sent.

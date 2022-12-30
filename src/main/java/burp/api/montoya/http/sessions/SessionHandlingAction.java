@@ -9,12 +9,11 @@
 package burp.api.montoya.http.sessions;
 
 import burp.api.montoya.http.Http;
-import burp.api.montoya.http.RequestResult;
 
 /**
- * Extensions can implement this interface and then call {@link Http#registerSessionHandlingAction} to register a custom session handling action.
- * Each registered action will be available within the session handling rule UI for the user to select as a rule action. Users can choose to
- * invoke an action directly in its own right, or following execution of a macro.
+ * Extensions can implement this interface and then call {@link Http#registerSessionHandlingAction} to register a custom session handling action. Each registered action will be
+ * available within the session handling rule UI for the user to select as a rule action. Users can choose to invoke an action directly in its own right, or following execution of
+ * a macro.
  */
 public interface SessionHandlingAction
 {
@@ -24,11 +23,14 @@ public interface SessionHandlingAction
     String name();
 
     /**
-     * This method is invoked when the session handling action should be executed.
+     * This method is invoked when the session handling action should be executed.<br>
+     * This may happen as an action in its own right, or as a sub-action following execution of a macro.<br>
+     * It can issue additional requests of its own if necessary, and can return a modified base request in the {@link ActionResult}
      *
-     * @param actionHttpRequest {@link SessionHandlingHttpRequest} The base request that is currently being processed.
-     *                          The action can query this object to obtain details about the base request.
-     * @return A new {@link RequestResult} instance.
+     * @param actionData
+     *         {@link SessionHandlingActionData} The action can query this object to obtain details about the base request.
+     *
+     * @return A new {@link ActionResult} instance.
      */
-    RequestResult handle(SessionHandlingHttpRequest actionHttpRequest);
+    ActionResult performAction(SessionHandlingActionData actionData);
 }

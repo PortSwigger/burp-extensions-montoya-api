@@ -13,29 +13,30 @@ import burp.api.montoya.collaborator.SecretKey;
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.HighlightColor;
+import burp.api.montoya.core.Marker;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.HttpService;
-import burp.api.montoya.http.RequestResult;
-import burp.api.montoya.http.ResponseResult;
+import burp.api.montoya.http.intercept.RequestToSendAction;
+import burp.api.montoya.http.intercept.ResponseReceivedAction;
 import burp.api.montoya.http.message.HttpRequestResponse;
-import burp.api.montoya.http.message.Marker;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
+import burp.api.montoya.http.sessions.ActionResult;
 import burp.api.montoya.intruder.GeneratedPayload;
 import burp.api.montoya.intruder.HttpRequestTemplate;
 import burp.api.montoya.intruder.PayloadProcessingAction;
 import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.persistence.PersistedList;
 import burp.api.montoya.persistence.PersistedObject;
-import burp.api.montoya.proxy.ReceivedAction;
-import burp.api.montoya.proxy.SendAction;
-import burp.api.montoya.proxy.http.RequestReceivedAction;
-import burp.api.montoya.proxy.http.RequestToSendAction;
-import burp.api.montoya.proxy.http.ResponseReceivedAction;
-import burp.api.montoya.proxy.http.ResponseToSendAction;
+import burp.api.montoya.proxy.MessageReceivedAction;
+import burp.api.montoya.proxy.MessageSendAction;
+import burp.api.montoya.proxy.http.ProxyRequestReceivedAction;
+import burp.api.montoya.proxy.http.ProxyRequestToSendAction;
+import burp.api.montoya.proxy.http.ProxyResponseReceivedAction;
+import burp.api.montoya.proxy.http.ProxyResponseToSendAction;
 import burp.api.montoya.proxy.websocket.BinaryMessageReceivedAction;
 import burp.api.montoya.proxy.websocket.BinaryMessageToSendAction;
 import burp.api.montoya.proxy.websocket.TextMessageReceivedAction;
@@ -136,17 +137,17 @@ public interface MontoyaObjectFactory
 
     SecretKey secretKey(String encodedKey);
 
-    RequestReceivedAction requestReceivedAction(HttpRequest request, Annotations annotations, ReceivedAction action);
+    ProxyRequestReceivedAction proxyRequestReceivedAction(HttpRequest request, Annotations annotations, MessageReceivedAction action);
 
-    RequestToSendAction requestToSendAction(HttpRequest request, Annotations annotations, SendAction action);
+    ProxyRequestToSendAction proxyRequestToSendAction(HttpRequest request, Annotations annotations, MessageSendAction action);
 
-    ResponseToSendAction responseToReturnAction(HttpResponse response, Annotations annotations, SendAction action);
+    ProxyResponseToSendAction proxyResponseToReturnAction(HttpResponse response, Annotations annotations, MessageSendAction action);
 
-    ResponseReceivedAction responseReceivedAction(HttpResponse response, Annotations annotations, ReceivedAction action);
+    ProxyResponseReceivedAction proxyResponseReceivedAction(HttpResponse response, Annotations annotations, MessageReceivedAction action);
 
-    RequestResult requestResult(HttpRequest request, Annotations annotations);
+    RequestToSendAction requestResult(HttpRequest request, Annotations annotations);
 
-    ResponseResult responseResult(HttpResponse response, Annotations annotations);
+    ResponseReceivedAction responseResult(HttpResponse response, Annotations annotations);
 
     HttpRequestTemplate httpRequestTemplate(ByteArray content, List<Range> insertionPointOffsets);
 
@@ -250,53 +251,53 @@ public interface MontoyaObjectFactory
 
     PayloadProcessingResult skipPayload();
 
-    RequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request);
+    ProxyRequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request);
 
-    RequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request, Annotations annotations);
+    ProxyRequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request, Annotations annotations);
 
-    RequestToSendAction requestFinalInterceptResultDrop();
+    ProxyRequestToSendAction requestFinalInterceptResultDrop();
 
-    ResponseToSendAction responseFinalInterceptResultDrop();
+    ProxyResponseToSendAction responseFinalInterceptResultDrop();
 
-    ResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response, Annotations annotations);
+    ProxyResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response, Annotations annotations);
 
-    ResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response);
+    ProxyResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response);
 
-    ResponseReceivedAction responseInitialInterceptResultIntercept(HttpResponse response);
+    ProxyResponseReceivedAction responseInitialInterceptResultIntercept(HttpResponse response);
 
-    ResponseReceivedAction responseInitialInterceptResultIntercept(HttpResponse response, Annotations annotations);
+    ProxyResponseReceivedAction responseInitialInterceptResultIntercept(HttpResponse response, Annotations annotations);
 
-    ResponseReceivedAction responseInitialInterceptResultDoNotIntercept(HttpResponse response);
+    ProxyResponseReceivedAction responseInitialInterceptResultDoNotIntercept(HttpResponse response);
 
-    ResponseReceivedAction responseInitialInterceptResultDoNotIntercept(HttpResponse response, Annotations annotations);
+    ProxyResponseReceivedAction responseInitialInterceptResultDoNotIntercept(HttpResponse response, Annotations annotations);
 
-    ResponseReceivedAction responseInitialInterceptResultFollowUserRules(HttpResponse response);
+    ProxyResponseReceivedAction responseInitialInterceptResultFollowUserRules(HttpResponse response);
 
-    ResponseReceivedAction responseInitialInterceptResultFollowUserRules(HttpResponse response, Annotations annotations);
+    ProxyResponseReceivedAction responseInitialInterceptResultFollowUserRules(HttpResponse response, Annotations annotations);
 
-    ResponseReceivedAction responseInitialInterceptResultDrop();
+    ProxyResponseReceivedAction responseInitialInterceptResultDrop();
 
-    RequestReceivedAction requestInitialInterceptResultIntercept(HttpRequest request);
+    ProxyRequestReceivedAction requestInitialInterceptResultIntercept(HttpRequest request);
 
-    RequestReceivedAction requestInitialInterceptResultIntercept(HttpRequest request, Annotations annotations);
+    ProxyRequestReceivedAction requestInitialInterceptResultIntercept(HttpRequest request, Annotations annotations);
 
-    RequestReceivedAction requestInitialInterceptResultDoNotIntercept(HttpRequest request);
+    ProxyRequestReceivedAction requestInitialInterceptResultDoNotIntercept(HttpRequest request);
 
-    RequestReceivedAction requestInitialInterceptResultDoNotIntercept(HttpRequest request, Annotations annotations);
+    ProxyRequestReceivedAction requestInitialInterceptResultDoNotIntercept(HttpRequest request, Annotations annotations);
 
-    RequestReceivedAction requestInitialInterceptResultFollowUserRules(HttpRequest request);
+    ProxyRequestReceivedAction requestInitialInterceptResultFollowUserRules(HttpRequest request);
 
-    RequestReceivedAction requestInitialInterceptResultFollowUserRules(HttpRequest request, Annotations annotations);
+    ProxyRequestReceivedAction requestInitialInterceptResultFollowUserRules(HttpRequest request, Annotations annotations);
 
-    RequestReceivedAction requestInitialInterceptResultDrop();
+    ProxyRequestReceivedAction requestInitialInterceptResultDrop();
 
-    ResponseResult responseResult(HttpResponse response);
+    ResponseReceivedAction responseResult(HttpResponse response);
 
-    RequestResult requestResult(HttpRequest request);
-
-    ResponseResult responseResult();
-
-    RequestResult requestResult();
+    RequestToSendAction requestResult(HttpRequest request);
 
     HighlightColor highlightColor(String color);
+
+    ActionResult actionResult(HttpRequest request);
+
+    ActionResult actionResult(HttpRequest request, Annotations annotations);
 }

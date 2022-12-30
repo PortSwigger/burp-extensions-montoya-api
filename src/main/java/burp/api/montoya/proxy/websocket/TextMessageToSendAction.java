@@ -8,7 +8,7 @@
 
 package burp.api.montoya.proxy.websocket;
 
-import burp.api.montoya.proxy.SendAction;
+import burp.api.montoya.proxy.MessageSendAction;
 import burp.api.montoya.websocket.TextMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
@@ -23,7 +23,7 @@ public interface TextMessageToSendAction
     /**
      * @return The action associated with this message.
      */
-    SendAction action();
+    MessageSendAction action();
 
     /**
      * @return The payload of this message.

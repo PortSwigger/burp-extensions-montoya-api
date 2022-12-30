@@ -6,12 +6,13 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.http;
+package burp.api.montoya.http.intercept;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;
+import burp.api.montoya.core.Marker;
 import burp.api.montoya.core.ToolSource;
-import burp.api.montoya.http.message.Marker;
+import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.cookies.Cookie;
 import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -22,10 +23,10 @@ import burp.api.montoya.http.message.responses.analysis.KeywordCount;
 
 import java.util.List;
 
-public interface IncomingHttpResponse extends HttpResponse
+public interface HttpResponseReceived extends HttpResponse
 {
     /**
-     * @return initiatingRequest The HTTP request that was issued.
+     * @return initiatingRequest The HTTP request that was sent.
      */
     HttpRequest initiatingRequest();
 
@@ -35,7 +36,7 @@ public interface IncomingHttpResponse extends HttpResponse
     Annotations annotations();
 
     /**
-     * @return ToolSource which indicates which Burp tool issued the request.
+     * @return ToolSource which indicates which Burp tool sent the request.
      */
     ToolSource toolSource();
 

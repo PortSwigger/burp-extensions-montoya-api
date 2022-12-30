@@ -12,7 +12,7 @@ package burp.api.montoya.proxy;
  * This enum represents the final action to be taken when intercepting HTTP and WebSocket
  * messages in the Proxy.
  */
-public enum SendAction
+public enum MessageSendAction
 {
     /**
      * Causes Burp Proxy to forward the message.

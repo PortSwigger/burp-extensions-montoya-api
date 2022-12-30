@@ -6,7 +6,7 @@
  * license terms for those products.
  */
 
-package burp.api.montoya.http;
+package burp.api.montoya.http.message;
 
 /**
  * This enum defines content types recognised by Burp.

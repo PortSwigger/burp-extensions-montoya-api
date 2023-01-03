@@ -10,7 +10,6 @@ package burp.api.montoya.http.message;
 
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.Marker;
-import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 

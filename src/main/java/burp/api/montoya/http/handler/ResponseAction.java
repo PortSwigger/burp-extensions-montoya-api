@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ * Copyright (c) 2022-2023. PortSwigger Ltd. All rights reserved.
  *
  * This code may be used to extend the functionality of Burp Suite Community Edition
  * and Burp Suite Professional, provided that this usage does not violate the
@@ -11,10 +11,10 @@ package burp.api.montoya.http.handler;
 /**
  * Action to be taken when intercepting HTTP responses.
  */
-public enum HttpResponseAction
+public enum ResponseAction
 {
     /**
-     * Causes Burp Proxy to send the response.
+     * Causes Burp to send the response.
      */
     CONTINUE
 }

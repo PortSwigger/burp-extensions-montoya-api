@@ -14,7 +14,7 @@ import burp.api.montoya.core.Marker;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.ContentType;
-import burp.api.montoya.http.message.headers.HttpHeader;
+import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Burp {@link HttpRequest} with additonal methods to retrieve {@link Annotations} and {@link ToolSource} of the request.
  */
-public interface HttpRequestToSend extends HttpRequest
+public interface HttpRequestToBeSent extends HttpRequest
 {
     /**
      * @return annotations for request/response

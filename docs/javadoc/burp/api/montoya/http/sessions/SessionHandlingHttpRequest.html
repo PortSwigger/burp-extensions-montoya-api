@@ -167,7 +167,7 @@ extends <a href="../message/requests/HttpRequest.html" title="interface in burp.
 <div class="block">This method is used to retrieve the URL for the request.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#withAddedHeader(burp.api.montoya.http.message.headers.HttpHeader)" class="member-name-link">withAddedHeader</a><wbr>(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#withAddedHeader(burp.api.montoya.http.message.HttpHeader)" class="member-name-link">withAddedHeader</a><wbr>(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Adds an HTTP header to the current request.</div>
 </div>
@@ -223,7 +223,7 @@ extends <a href="../message/requests/HttpRequest.html" title="interface in burp.
 <div class="block">This is a helper method that builds a modified request with the new path.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#withRemovedHeader(burp.api.montoya.http.message.headers.HttpHeader)" class="member-name-link">withRemovedHeader</a><wbr>(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#withRemovedHeader(burp.api.montoya.http.message.HttpHeader)" class="member-name-link">withRemovedHeader</a><wbr>(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Removes an existing HTTP header from the current request.</div>
 </div>
@@ -253,7 +253,7 @@ extends <a href="../message/requests/HttpRequest.html" title="interface in burp.
 <div class="block">This is a helper method that builds a modified request with the transformation applied.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#withUpdatedHeader(burp.api.montoya.http.message.headers.HttpHeader)" class="member-name-link">withUpdatedHeader</a><wbr>(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#withUpdatedHeader(burp.api.montoya.http.message.HttpHeader)" class="member-name-link">withUpdatedHeader</a><wbr>(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Updates an existing HTTP header in the request with a new value.</div>
 </div>
@@ -712,13 +712,13 @@ extends <a href="../message/requests/HttpRequest.html" title="interface in burp.
 </section>
 </li>
 <li>
-<section class="detail" id="withAddedHeader(burp.api.montoya.http.message.headers.HttpHeader)">
+<section class="detail" id="withAddedHeader(burp.api.montoya.http.message.HttpHeader)">
 <h3>withAddedHeader</h3>
 <div class="member-signature"><span class="return-type"><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></span>&nbsp;<span class="element-name">withAddedHeader</span><wbr><span class="parameters">(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</span></div>
 <div class="block">Adds an HTTP header to the current request.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../message/requests/HttpRequest.html#withAddedHeader(burp.api.montoya.http.message.headers.HttpHeader)">withAddedHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></dd>
+<dd><code><a href="../message/requests/HttpRequest.html#withAddedHeader(burp.api.montoya.http.message.HttpHeader)">withAddedHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>header</code> - The <a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers"><code>HttpHeader</code></a> to add to the HTTP request.</dd>
 <dt>Returns:</dt>
@@ -744,13 +744,13 @@ extends <a href="../message/requests/HttpRequest.html" title="interface in burp.
 </section>
 </li>
 <li>
-<section class="detail" id="withUpdatedHeader(burp.api.montoya.http.message.headers.HttpHeader)">
+<section class="detail" id="withUpdatedHeader(burp.api.montoya.http.message.HttpHeader)">
 <h3>withUpdatedHeader</h3>
 <div class="member-signature"><span class="return-type"><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></span>&nbsp;<span class="element-name">withUpdatedHeader</span><wbr><span class="parameters">(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</span></div>
 <div class="block">Updates an existing HTTP header in the request with a new value.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../message/requests/HttpRequest.html#withUpdatedHeader(burp.api.montoya.http.message.headers.HttpHeader)">withUpdatedHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></dd>
+<dd><code><a href="../message/requests/HttpRequest.html#withUpdatedHeader(burp.api.montoya.http.message.HttpHeader)">withUpdatedHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>header</code> - The <a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers"><code>HttpHeader</code></a> to update containing the new value.</dd>
 <dt>Returns:</dt>
@@ -774,13 +774,13 @@ extends <a href="../message/requests/HttpRequest.html" title="interface in burp.
 </section>
 </li>
 <li>
-<section class="detail" id="withRemovedHeader(burp.api.montoya.http.message.headers.HttpHeader)">
+<section class="detail" id="withRemovedHeader(burp.api.montoya.http.message.HttpHeader)">
 <h3>withRemovedHeader</h3>
 <div class="member-signature"><span class="return-type"><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></span>&nbsp;<span class="element-name">withRemovedHeader</span><wbr><span class="parameters">(<a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers">HttpHeader</a>&nbsp;header)</span></div>
 <div class="block">Removes an existing HTTP header from the current request.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../message/requests/HttpRequest.html#withRemovedHeader(burp.api.montoya.http.message.headers.HttpHeader)">withRemovedHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></dd>
+<dd><code><a href="../message/requests/HttpRequest.html#withRemovedHeader(burp.api.montoya.http.message.HttpHeader)">withRemovedHeader</a></code>&nbsp;in interface&nbsp;<code><a href="../message/requests/HttpRequest.html" title="interface in burp.api.montoya.http.message.requests">HttpRequest</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>header</code> - The <a href="../message/headers/HttpHeader.html" title="interface in burp.api.montoya.http.message.headers"><code>HttpHeader</code></a> to remove from the request.</dd>
 <dt>Returns:</dt>

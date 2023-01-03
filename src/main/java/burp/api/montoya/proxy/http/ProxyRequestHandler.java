@@ -40,7 +40,7 @@ public interface ProxyRequestHandler
      *
      * @param interceptedRequest An {@link InterceptedRequest} object that extensions can use to query and update details of the intercepted request.
      *
-     * @return The {@link ProxyRequestToSendAction} containing the required action, annotations and HTTP request to be sent from the proxy.
+     * @return The {@link ProxyRequestToBeSentAction} containing the required action, annotations and HTTP request to be sent from the proxy.
      */
-    ProxyRequestToSendAction handleRequestToSend(InterceptedRequest interceptedRequest);
+    ProxyRequestToBeSentAction handleRequestToBeSent(InterceptedRequest interceptedRequest);
 }

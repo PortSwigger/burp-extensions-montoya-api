@@ -21,9 +21,9 @@ public interface ResponseReceivedAction
     /**
      * @return the action.
      */
-    default HttpResponseAction action()
+    default ResponseAction action()
     {
-        return HttpResponseAction.CONTINUE;
+        return ResponseAction.CONTINUE;
     }
 
     /**

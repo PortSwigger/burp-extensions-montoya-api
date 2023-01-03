@@ -10,22 +10,22 @@ package burp.api.montoya.proxy.http;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.responses.HttpResponse;
-import burp.api.montoya.proxy.MessageSendAction;
+import burp.api.montoya.proxy.MessageToBeSentAction;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a result from
- * {@link ProxyResponseHandler#handleResponseToSend(InterceptedResponse)}.
+ * {@link ProxyResponseHandler#handleResponseToBeSent(InterceptedResponse)}.
  */
-public interface ProxyResponseToSendAction
+public interface ProxyResponseToBeSentAction
 {
     /**
      * This method retrieves the current final intercept action.
      *
-     * @return The {@link MessageSendAction}.
+     * @return The {@link MessageToBeSentAction}.
      */
-    MessageSendAction action();
+    MessageToBeSentAction action();
 
     /**
      * This method retrieves the current HTTP response to forward after any
@@ -52,10 +52,10 @@ public interface ProxyResponseToSendAction
      * @param response The {@link HttpResponse} to forward after any
      *                 modifications by the extension.
      *
-     * @return The {@link ProxyResponseToSendAction} that causes Burp Proxy
+     * @return The {@link ProxyResponseToBeSentAction} that causes Burp Proxy
      * to forward the response.
      */
-    static ProxyResponseToSendAction continueWith(HttpResponse response)
+    static ProxyResponseToBeSentAction continueWith(HttpResponse response)
     {
         return FACTORY.responseFinalInterceptResultContinueWith(response);
     }
@@ -67,10 +67,10 @@ public interface ProxyResponseToSendAction
      * @param response    The {@link HttpResponse} to forward after any modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted HTTP response.
      *
-     * @return The {@link ProxyResponseToSendAction} that causes Burp Proxy
+     * @return The {@link ProxyResponseToBeSentAction} that causes Burp Proxy
      * to forward the response.
      */
-    static ProxyResponseToSendAction continueWith(HttpResponse response, Annotations annotations)
+    static ProxyResponseToBeSentAction continueWith(HttpResponse response, Annotations annotations)
     {
         return FACTORY.responseFinalInterceptResultContinueWith(response, annotations);
     }
@@ -79,10 +79,10 @@ public interface ProxyResponseToSendAction
      * This method can be used to create a result that causes Burp Proxy to
      * drop the response.
      *
-     * @return The {@link ProxyResponseToSendAction} that causes Burp Proxy
+     * @return The {@link ProxyResponseToBeSentAction} that causes Burp Proxy
      * to drop the response.
      */
-    static ProxyResponseToSendAction drop()
+    static ProxyResponseToBeSentAction drop()
     {
         return FACTORY.responseFinalInterceptResultDrop();
     }
@@ -93,12 +93,12 @@ public interface ProxyResponseToSendAction
      *
      * @param response    The {@link HttpResponse} to forward after any modifications by the extension.
      * @param annotations The {@link Annotations} for the intercepted HTTP response. {@code null} value will leave the annotations unmodified.
-     * @param action      The {@link MessageSendAction} for the HTTP response.
+     * @param action      The {@link MessageToBeSentAction} for the HTTP response.
      *
-     * @return The {@link ProxyResponseToSendAction} including the HTTP
+     * @return The {@link ProxyResponseToBeSentAction} including the HTTP
      * response, annotations and final intercept action.
      */
-    static ProxyResponseToSendAction proxyResponseToReturnAction(HttpResponse response, Annotations annotations, MessageSendAction action)
+    static ProxyResponseToBeSentAction proxyResponseToReturnAction(HttpResponse response, Annotations annotations, MessageToBeSentAction action)
     {
         return FACTORY.proxyResponseToReturnAction(response, annotations, action);
     }

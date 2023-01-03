@@ -8,7 +8,7 @@
 
 package burp.api.montoya.http.sessions;
 
-import burp.api.montoya.http.message.cookies.Cookie;
+import burp.api.montoya.http.message.Cookie;
 
 import java.time.ZonedDateTime;
 import java.util.List;

@@ -20,11 +20,11 @@ public interface HttpHandler
     /**
      * Invoked by Burp when an HTTP request is about to be sent.
      *
-     * @param requestToSend information about the HTTP request that is going to be sent.
+     * @param requestToBeSent information about the HTTP request that is going to be sent.
      *
-     * @return An instance of {@link RequestToSendAction}.
+     * @return An instance of {@link RequestToBeSentAction}.
      */
-    RequestToSendAction handleHttpRequestToSend(HttpRequestToSend requestToSend);
+    RequestToBeSentAction handleHttpRequestToBeSent(HttpRequestToBeSent requestToBeSent);
 
     /**
      * Invoked by Burp when an HTTP response has been received.

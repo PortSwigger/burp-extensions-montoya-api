@@ -61,8 +61,7 @@ public interface BinaryMessageAction
      *
      * @return The {@link BinaryMessageAction} containing the message and the action.
      */
-    static BinaryMessageAction
-    binaryMessageAction(ByteArray payload, MessageAction action)
+    static BinaryMessageAction binaryMessageAction(ByteArray payload, MessageAction action)
     {
         return FACTORY.binaryMessageAction(payload, action);
     }

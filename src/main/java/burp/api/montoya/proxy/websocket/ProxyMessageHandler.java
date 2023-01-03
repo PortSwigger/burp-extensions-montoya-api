@@ -33,7 +33,7 @@ public interface ProxyMessageHandler
      *
      * @return The {@link TextMessageReceivedAction} containing the required action and text message to be passed through.
      */
-    TextMessageToSendAction handleTextMessageToSend(InterceptedTextMessage interceptedTextMessage);
+    TextMessageToBeSentAction handleTextMessageToBeSent(InterceptedTextMessage interceptedTextMessage);
 
     /**
      * Invoked when a binary message is received from either the client or server.
@@ -55,7 +55,7 @@ public interface ProxyMessageHandler
      *
      * @return The {@link BinaryMessageReceivedAction} containing the required action and binary message to be passed through.
      */
-    BinaryMessageToSendAction handleBinaryMessageToSend(InterceptedBinaryMessage interceptedBinaryMessage);
+    BinaryMessageToBeSentAction handleBinaryMessageToBeSent(InterceptedBinaryMessage interceptedBinaryMessage);
 
     /**
      * Invoked when the WebSocket is closed.

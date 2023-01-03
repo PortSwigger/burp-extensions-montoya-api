@@ -14,16 +14,16 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * An instance of this interface should be returned by {@link HttpHandler#handleHttpRequestToSend} if a custom {@link HttpHandler} has been registered with Burp.
+ * An instance of this interface should be returned by {@link HttpHandler#handleHttpRequestToBeSent} if a custom {@link HttpHandler} has been registered with Burp.
  */
-public interface RequestToSendAction
+public interface RequestToBeSentAction
 {
     /**
      * @return the action.
      */
-    default HttpRequestAction action()
+    default RequestAction action()
     {
-        return HttpRequestAction.CONTINUE;
+        return RequestAction.CONTINUE;
     }
 
     /**
@@ -43,7 +43,7 @@ public interface RequestToSendAction
      *
      * @return A new {@code RequestHandlerResult} instance.
      */
-    static RequestToSendAction continueWith(HttpRequest request)
+    static RequestToBeSentAction continueWith(HttpRequest request)
     {
         return FACTORY.requestResult(request);
     }
@@ -56,7 +56,7 @@ public interface RequestToSendAction
      *
      * @return A new {@code RequestHandlerResult} instance.
      */
-    static RequestToSendAction continueWith(HttpRequest request, Annotations annotations)
+    static RequestToBeSentAction continueWith(HttpRequest request, Annotations annotations)
     {
         return FACTORY.requestResult(request, annotations);
     }

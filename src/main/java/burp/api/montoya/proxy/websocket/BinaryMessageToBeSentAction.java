@@ -9,21 +9,21 @@
 package burp.api.montoya.proxy.websocket;
 
 import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.proxy.MessageSendAction;
+import burp.api.montoya.proxy.MessageToBeSentAction;
 import burp.api.montoya.websocket.BinaryMessage;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
  * Extensions can implement this interface when returning a binary message from
- * {@link ProxyMessageHandler#handleBinaryMessageToSend(InterceptedBinaryMessage)}.
+ * {@link ProxyMessageHandler#handleBinaryMessageToBeSent(InterceptedBinaryMessage)}.
  */
-public interface BinaryMessageToSendAction
+public interface BinaryMessageToBeSentAction
 {
     /**
      * @return The action associated with this message.
      */
-    MessageSendAction action();
+    MessageToBeSentAction action();
 
     /**
      * @return The payload of this message.
@@ -37,7 +37,7 @@ public interface BinaryMessageToSendAction
      *
      * @return The message.
      */
-    static BinaryMessageToSendAction continueWith(ByteArray payload)
+    static BinaryMessageToBeSentAction continueWith(ByteArray payload)
     {
         return FACTORY.continueWithFinalProxyBinaryMessage(payload);
     }
@@ -49,7 +49,7 @@ public interface BinaryMessageToSendAction
      *
      * @return The message.
      */
-    static BinaryMessageToSendAction continueWith(BinaryMessage message)
+    static BinaryMessageToBeSentAction continueWith(BinaryMessage message)
     {
         return FACTORY.continueWithFinalProxyBinaryMessage(message.payload());
     }
@@ -59,7 +59,7 @@ public interface BinaryMessageToSendAction
      *
      * @return The message to be dropped.
      */
-    static BinaryMessageToSendAction drop()
+    static BinaryMessageToBeSentAction drop()
     {
         return FACTORY.dropFinalProxyBinaryMessage();
     }

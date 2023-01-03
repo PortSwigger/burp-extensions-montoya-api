@@ -17,7 +17,7 @@ public interface WebSocketCreatedHandler
     /**
      * Invoked by Burp when an application WebSocket has been created.
      *
-     * @param webSocketCreated {@link WebSocketCreated} containing information about the application websocket that is being created
+     * @param webSocketCreated {@link WebSocketCreated} containing information about the application websocket that is being created.
      */
     void handleWebSocketCreated(WebSocketCreated webSocketCreated);
 }

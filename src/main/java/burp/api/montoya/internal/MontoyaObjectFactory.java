@@ -16,10 +16,10 @@ import burp.api.montoya.core.HighlightColor;
 import burp.api.montoya.core.Marker;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.HttpService;
-import burp.api.montoya.http.handler.RequestToSendAction;
+import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
+import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.HttpRequestResponse;
-import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -32,15 +32,15 @@ import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.persistence.PersistedList;
 import burp.api.montoya.persistence.PersistedObject;
 import burp.api.montoya.proxy.MessageReceivedAction;
-import burp.api.montoya.proxy.MessageSendAction;
+import burp.api.montoya.proxy.MessageToBeSentAction;
 import burp.api.montoya.proxy.http.ProxyRequestReceivedAction;
-import burp.api.montoya.proxy.http.ProxyRequestToSendAction;
+import burp.api.montoya.proxy.http.ProxyRequestToBeSentAction;
 import burp.api.montoya.proxy.http.ProxyResponseReceivedAction;
-import burp.api.montoya.proxy.http.ProxyResponseToSendAction;
+import burp.api.montoya.proxy.http.ProxyResponseToBeSentAction;
 import burp.api.montoya.proxy.websocket.BinaryMessageReceivedAction;
-import burp.api.montoya.proxy.websocket.BinaryMessageToSendAction;
+import burp.api.montoya.proxy.websocket.BinaryMessageToBeSentAction;
 import burp.api.montoya.proxy.websocket.TextMessageReceivedAction;
-import burp.api.montoya.proxy.websocket.TextMessageToSendAction;
+import burp.api.montoya.proxy.websocket.TextMessageToBeSentAction;
 import burp.api.montoya.scanner.AuditConfiguration;
 import burp.api.montoya.scanner.AuditResult;
 import burp.api.montoya.scanner.BuiltInAuditConfiguration;
@@ -140,13 +140,13 @@ public interface MontoyaObjectFactory
 
     ProxyRequestReceivedAction proxyRequestReceivedAction(HttpRequest request, Annotations annotations, MessageReceivedAction action);
 
-    ProxyRequestToSendAction proxyRequestToSendAction(HttpRequest request, Annotations annotations, MessageSendAction action);
+    ProxyRequestToBeSentAction proxyRequestToBeSentAction(HttpRequest request, Annotations annotations, MessageToBeSentAction action);
 
-    ProxyResponseToSendAction proxyResponseToReturnAction(HttpResponse response, Annotations annotations, MessageSendAction action);
+    ProxyResponseToBeSentAction proxyResponseToReturnAction(HttpResponse response, Annotations annotations, MessageToBeSentAction action);
 
     ProxyResponseReceivedAction proxyResponseReceivedAction(HttpResponse response, Annotations annotations, MessageReceivedAction action);
 
-    RequestToSendAction requestResult(HttpRequest request, Annotations annotations);
+    RequestToBeSentAction requestResult(HttpRequest request, Annotations annotations);
 
     ResponseReceivedAction responseResult(HttpResponse response, Annotations annotations);
 
@@ -204,13 +204,13 @@ public interface MontoyaObjectFactory
 
     TextMessageReceivedAction doNotInterceptInitialProxyTextMessage(String payload);
 
-    BinaryMessageToSendAction continueWithFinalProxyBinaryMessage(ByteArray payload);
+    BinaryMessageToBeSentAction continueWithFinalProxyBinaryMessage(ByteArray payload);
 
-    TextMessageToSendAction continueWithFinalProxyTextMessage(String payload);
+    TextMessageToBeSentAction continueWithFinalProxyTextMessage(String payload);
 
-    BinaryMessageToSendAction dropFinalProxyBinaryMessage();
+    BinaryMessageToBeSentAction dropFinalProxyBinaryMessage();
 
-    TextMessageToSendAction dropFinalProxyTextMessage();
+    TextMessageToBeSentAction dropFinalProxyTextMessage();
 
     PersistedObject persistedObject();
 
@@ -256,17 +256,17 @@ public interface MontoyaObjectFactory
 
     PayloadProcessingResult skipPayload();
 
-    ProxyRequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request);
+    ProxyRequestToBeSentAction requestFinalInterceptResultContinueWith(HttpRequest request);
 
-    ProxyRequestToSendAction requestFinalInterceptResultContinueWith(HttpRequest request, Annotations annotations);
+    ProxyRequestToBeSentAction requestFinalInterceptResultContinueWith(HttpRequest request, Annotations annotations);
 
-    ProxyRequestToSendAction requestFinalInterceptResultDrop();
+    ProxyRequestToBeSentAction requestFinalInterceptResultDrop();
 
-    ProxyResponseToSendAction responseFinalInterceptResultDrop();
+    ProxyResponseToBeSentAction responseFinalInterceptResultDrop();
 
-    ProxyResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response, Annotations annotations);
+    ProxyResponseToBeSentAction responseFinalInterceptResultContinueWith(HttpResponse response, Annotations annotations);
 
-    ProxyResponseToSendAction responseFinalInterceptResultContinueWith(HttpResponse response);
+    ProxyResponseToBeSentAction responseFinalInterceptResultContinueWith(HttpResponse response);
 
     ProxyResponseReceivedAction responseInitialInterceptResultIntercept(HttpResponse response);
 
@@ -298,7 +298,7 @@ public interface MontoyaObjectFactory
 
     ResponseReceivedAction responseResult(HttpResponse response);
 
-    RequestToSendAction requestResult(HttpRequest request);
+    RequestToBeSentAction requestResult(HttpRequest request);
 
     HighlightColor highlightColor(String color);
 

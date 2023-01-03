@@ -10,10 +10,10 @@ package burp.api.montoya.http.message.responses;
 
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.Marker;
+import burp.api.montoya.http.message.Cookie;
+import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.MimeType;
-import burp.api.montoya.http.message.cookies.Cookie;
-import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.responses.analysis.Attribute;
 import burp.api.montoya.http.message.responses.analysis.AttributeType;
 import burp.api.montoya.http.message.responses.analysis.KeywordCount;

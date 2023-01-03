@@ -12,8 +12,8 @@ import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.Marker;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.ContentType;
+import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.HttpMessage;
-import burp.api.montoya.http.message.headers.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
 

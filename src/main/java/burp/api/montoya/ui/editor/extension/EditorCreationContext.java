@@ -40,5 +40,4 @@ public interface EditorCreationContext
      * @return The mode required by the editor.
      */
     EditorMode editorMode();
-
 }

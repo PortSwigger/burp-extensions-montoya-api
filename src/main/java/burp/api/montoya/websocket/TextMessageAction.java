@@ -18,7 +18,7 @@ public interface TextMessageAction
     String payload();
 
     /**
-     * This is a helper method to build a text WebSocket message to be processed.
+     * Build a text WebSocket message to be processed.
      *
      * @param payload The text message payload.
      *
@@ -30,7 +30,7 @@ public interface TextMessageAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to be processed.
+     * Build a text WebSocket message to be processed.
      *
      * @param textMessage the text message payload
      *
@@ -42,7 +42,7 @@ public interface TextMessageAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to be dropped.
+     * Build a text WebSocket message to be dropped.
      *
      * @return The {@link TextMessageAction} dropping the message.
      */

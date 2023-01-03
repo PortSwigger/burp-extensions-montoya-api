@@ -31,7 +31,7 @@ public interface BinaryMessageToBeSentAction
     ByteArray payload();
 
     /**
-     * This is a helper method to build a binary WebSocket message to continue through Burp.
+     * Build a binary WebSocket message to continue through Burp.
      *
      * @param payload The binary message payload.
      *
@@ -43,7 +43,7 @@ public interface BinaryMessageToBeSentAction
     }
 
     /**
-     * This is a helper method to build a binary WebSocket message to continue through Burp.
+     * Build a binary WebSocket message to continue through Burp.
      *
      * @param message The binary message.
      *
@@ -55,7 +55,7 @@ public interface BinaryMessageToBeSentAction
     }
 
     /**
-     * This is a helper method to build a binary WebSocket message to be dropped.
+     * Build a binary WebSocket message to be dropped.
      *
      * @return The message to be dropped.
      */

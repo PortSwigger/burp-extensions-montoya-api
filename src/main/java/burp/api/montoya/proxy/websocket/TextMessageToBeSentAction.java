@@ -31,7 +31,7 @@ public interface TextMessageToBeSentAction
     String payload();
 
     /**
-     * This is a helper method to build a text WebSocket message to continue through Burp.
+     * Build a text WebSocket message to continue through Burp.
      *
      * @param payload The text message payload.
      *
@@ -43,7 +43,7 @@ public interface TextMessageToBeSentAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to continue through Burp.
+     * Build a text WebSocket message to continue through Burp.
      *
      * @param message The text message.
      *
@@ -55,7 +55,7 @@ public interface TextMessageToBeSentAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to be dropped.
+     * Build a text WebSocket message to be dropped.
      *
      * @return The message to be dropped.
      */

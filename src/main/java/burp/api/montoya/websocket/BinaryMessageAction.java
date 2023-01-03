@@ -20,7 +20,7 @@ public interface BinaryMessageAction
     ByteArray payload();
 
     /**
-     * This is a helper method to build a binary WebSocket message to be processed.
+     * Build a binary WebSocket message to be processed.
      *
      * @param payload The binary message payload.
      *
@@ -32,7 +32,7 @@ public interface BinaryMessageAction
     }
 
     /**
-     * This is a helper method to build a binary WebSocket message to be processed.
+     * Build a binary WebSocket message to be processed.
      *
      * @param binaryMessage The binary message payload.
      *
@@ -44,7 +44,7 @@ public interface BinaryMessageAction
     }
 
     /**
-     * This is a helper method to build a binary WebSocket message to be dropped.
+     * Build a binary WebSocket message to be dropped.
      *
      * @return The {@link BinaryMessageAction} dropping the message.
      */

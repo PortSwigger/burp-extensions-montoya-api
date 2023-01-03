@@ -734,7 +734,7 @@ public interface PersistedObject
     Set<String> byteArrayListKeys();
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedObject}.
+     * Create a new instance of {@link PersistedObject}.
      *
      * @return A new {@link PersistedObject} instance.
      */

@@ -19,8 +19,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface Selection
 {
     /**
-     * A helper method to create an instance of {@link Selection} without positional data.
-     *
      * @return The contents that are derived from within the user's selection range.
      */
     ByteArray contents();
@@ -41,7 +39,7 @@ public interface Selection
     }
 
     /**
-     * A helper method to create an instance of {@link Selection} without content data.
+     * Create an instance of {@link Selection} without content data.
      *
      * @param startIndexInclusive The start position of the selection range.
      * @param endIndexExclusive   The end position of the selection range.
@@ -54,7 +52,7 @@ public interface Selection
     }
 
     /**
-     * A helper method to create an instance of {@link Selection}.
+     * Create an instance of {@link Selection}.
      *
      * @param selectionContents   The contents of the selection.
      * @param startIndexInclusive The start position of the selection range.

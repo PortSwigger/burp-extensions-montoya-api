@@ -31,7 +31,7 @@ public interface TextMessageReceivedAction
     String payload();
 
     /**
-     * This is a helper method to build a text WebSocket message to
+     * Build a text WebSocket message to
      * follow the current interception rules to determine the appropriate
      * action to take for the message.
      *
@@ -46,7 +46,7 @@ public interface TextMessageReceivedAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to
+     * Build a text WebSocket message to
      * follow the current interception rules to determine the appropriate
      * action to take for the message.
      *
@@ -61,7 +61,7 @@ public interface TextMessageReceivedAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to be intercepted within the Proxy.
+     * Build a text WebSocket message to be intercepted within the Proxy.
      *
      * @param payload The text message payload.
      *
@@ -73,7 +73,7 @@ public interface TextMessageReceivedAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to be intercepted within the Proxy.
+     * Build a text WebSocket message to be intercepted within the Proxy.
      *
      * @param message The text message.
      *
@@ -85,7 +85,7 @@ public interface TextMessageReceivedAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to continue within the Proxy without interception.
+     * Build a text WebSocket message to continue within the Proxy without interception.
      *
      * @param payload The text message payload.
      *
@@ -97,7 +97,7 @@ public interface TextMessageReceivedAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to continue within the Proxy without interception.
+     * Build a text WebSocket message to continue within the Proxy without interception.
      *
      * @param message The text message payload.
      *
@@ -109,7 +109,7 @@ public interface TextMessageReceivedAction
     }
 
     /**
-     * This is a helper method to build a text WebSocket message to be dropped.
+     * Build a text WebSocket message to be dropped.
      *
      * @return The message to be dropped.
      */

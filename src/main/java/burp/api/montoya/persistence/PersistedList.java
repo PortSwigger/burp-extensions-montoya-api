@@ -24,7 +24,7 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface PersistedList<T> extends List<T>
 {
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link Boolean}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link Boolean}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -34,7 +34,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link Short}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link Short}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -44,7 +44,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link Integer}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link Integer}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -54,7 +54,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link Long}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link Long}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -64,7 +64,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link String}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link String}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -74,7 +74,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link ByteArray}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link ByteArray}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -84,7 +84,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link HttpRequest}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link HttpRequest}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -94,7 +94,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link HttpResponse}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link HttpResponse}.
      *
      * @return A new {@link PersistedList} instance.
      */
@@ -104,7 +104,7 @@ public interface PersistedList<T> extends List<T>
     }
 
     /**
-     * This is a helper method to create a new instance of {@link PersistedList} that contains instances of {@link HttpRequestResponse}.
+     * Create a new instance of {@link PersistedList} that contains instances of {@link HttpRequestResponse}.
      *
      * @return A new {@link PersistedList} instance.
      */

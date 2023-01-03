@@ -22,6 +22,7 @@
         </value>
       </option>
       <option name="RECORD_COMPONENTS_WRAP" value="0" />
+      <option name="JD_ADD_BLANK_AFTER_PARM_COMMENTS" value="true" />
     </JavaCodeStyleSettings>
     <JetCodeStyleSettings>
       <option name="NAME_COUNT_TO_USE_STAR_IMPORT" value="100" />

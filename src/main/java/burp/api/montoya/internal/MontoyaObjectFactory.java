@@ -10,11 +10,7 @@ package burp.api.montoya.internal;
 
 import burp.api.montoya.collaborator.InteractionFilter;
 import burp.api.montoya.collaborator.SecretKey;
-import burp.api.montoya.core.Annotations;
-import burp.api.montoya.core.ByteArray;
-import burp.api.montoya.core.HighlightColor;
-import burp.api.montoya.core.Marker;
-import burp.api.montoya.core.Range;
+import burp.api.montoya.core.*;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
@@ -82,8 +78,6 @@ public interface MontoyaObjectFactory
 
     HttpRequest httpRequest(HttpService service, String request);
 
-    HttpRequest httpRequest(HttpRequest httpRequestToCopy);
-
     HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body);
 
     HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body);
@@ -96,13 +90,9 @@ public interface MontoyaObjectFactory
 
     HttpResponse httpResponse(ByteArray response);
 
-    HttpResponse httpResponse(HttpResponse httpResponseToCopy);
-
     HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response, Annotations annotations);
 
     HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response);
-
-    HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy);
 
     Range range(int startIndexInclusive, int endIndexExclusive);
 
@@ -173,8 +163,6 @@ public interface MontoyaObjectFactory
     ByteArray byteArray(int[] ints);
 
     ByteArray byteArray(String text);
-
-    ByteArray byteArray(ByteArray byteArrayToCopy);
 
     TextMessageAction continueWithTextMessage(String payload);
 

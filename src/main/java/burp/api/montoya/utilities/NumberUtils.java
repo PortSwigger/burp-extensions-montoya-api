@@ -18,120 +18,84 @@ public interface NumberUtils
      *
      * @return string containing the octal representation
      */
-    default String convertBinaryToOctal(String binaryString)
-    {
-        return convertBinary(binaryString, 8);
-    }
+    String convertBinaryToOctal(String binaryString);
 
     /**
      * @param binaryString the binary string to convert
      *
      * @return string containing the decimal representation
      */
-    default String convertBinaryToDecimal(String binaryString)
-    {
-        return convertBinary(binaryString, 10);
-    }
+    String convertBinaryToDecimal(String binaryString);
 
     /**
      * @param binaryString the binary string to convert
      *
      * @return string containing the hex representation
      */
-    default String convertBinaryToHex(String binaryString)
-    {
-        return convertBinary(binaryString, 16);
-    }
+    String convertBinaryToHex(String binaryString);
 
     /**
      * @param octalString the octal string to convert
      *
      * @return string containing the binary representation
      */
-    default String convertOctalToBinary(String octalString)
-    {
-        return convertOctal(octalString, 2);
-    }
+    String convertOctalToBinary(String octalString);
 
     /**
      * @param octalString the octal string to convert
      *
      * @return string containing the decimal representation
      */
-    default String convertOctalToDecimal(String octalString)
-    {
-        return convertOctal(octalString, 10);
-    }
+    String convertOctalToDecimal(String octalString);
 
     /**
      * @param octalString the octal string to convert
      *
      * @return string containing the hex representation
      */
-    default String convertOctalToHex(String octalString)
-    {
-        return convertOctal(octalString, 16);
-    }
+    String convertOctalToHex(String octalString);
 
     /**
      * @param decimalString the decimal string to convert
      *
      * @return string containing the binary representation
      */
-    default String convertDecimalToBinary(String decimalString)
-    {
-        return convertDecimal(decimalString, 2);
-    }
+    String convertDecimalToBinary(String decimalString);
 
     /**
      * @param decimalString the decimal string to convert
      *
      * @return string containing the octal representation
      */
-    default String convertDecimalToOctal(String decimalString)
-    {
-        return convertDecimal(decimalString, 8);
-    }
+    String convertDecimalToOctal(String decimalString);
 
     /**
      * @param decimalString the decimal string to convert
      *
      * @return string containing the hex representation
      */
-    default String convertDecimalToHex(String decimalString)
-    {
-        return convertDecimal(decimalString, 16);
-    }
+    String convertDecimalToHex(String decimalString);
 
     /**
      * @param hexString the hex string to convert
      *
      * @return string containing the binary representation
      */
-    default String convertHexToBinary(String hexString)
-    {
-        return convertHex(hexString, 2);
-    }
+    String convertHexToBinary(String hexString);
 
     /**
      * @param hexString the hex string to convert
      *
      * @return string containing the octal representation
      */
-    default String convertHexToOctal(String hexString)
-    {
-        return convertHex(hexString, 8);
-    }
+    String convertHexToOctal(String hexString);
 
     /**
      * @param hexString the hex string to convert
      *
      * @return string containing the decimal representation
      */
-    default String convertHexToDecimal(String hexString)
-    {
-        return convertHex(hexString, 10);
-    }
+    String convertHexToDecimal(String hexString);
 
     /**
      * @param binaryString the binary string to convert

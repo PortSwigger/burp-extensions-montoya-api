@@ -38,7 +38,6 @@ public interface HttpRequest extends HttpMessage
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The URL in the request.
-     *
      * @throws MalformedRequestException if request is malformed.
      */
     String url();
@@ -48,7 +47,6 @@ public interface HttpRequest extends HttpMessage
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The HTTP method used in the request.
-     *
      * @throws MalformedRequestException if request is malformed.
      */
     String method();
@@ -58,7 +56,6 @@ public interface HttpRequest extends HttpMessage
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return the path and file in the request
-     *
      * @throws MalformedRequestException if request is malformed.
      */
     String path();
@@ -122,6 +119,16 @@ public interface HttpRequest extends HttpMessage
      */
     @Override
     String toString();
+
+    /**
+     * Create a copy of the {@code HttpRequest} in temporary file.<br>
+     * This method is used to save the {@code HttpRequest} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code HttpRequest} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code ByteArray} instance stored in temporary file.
+     */
+    HttpRequest copyToTempFile();
 
     /**
      * Create a copy of the {@code HttpRequest} with the new service.
@@ -318,7 +325,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a new empty instance of {@link HttpRequest}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @return A new {@link HttpRequest} instance.
      */
@@ -329,7 +335,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpRequest}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request
      *
@@ -342,7 +347,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpRequest}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request The HTTP request.
      *
@@ -355,7 +359,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpRequest}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
@@ -369,7 +372,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpRequest}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
@@ -382,21 +384,7 @@ public interface HttpRequest extends HttpMessage
     }
 
     /**
-     * Create a new instance of {@link HttpRequest} from the given {@link HttpRequest}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
-     *
-     * @param httpRequestToCopy source HTTP request.
-     *
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(HttpRequest httpRequestToCopy)
-    {
-        return FACTORY.httpRequest(httpRequestToCopy);
-    }
-
-    /**
      * Create a new instance of {@link HttpRequest}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param url A URL for the request.
      *
@@ -409,7 +397,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP 2 headers.
@@ -424,7 +411,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param service An HTTP service for the request.
      * @param headers A list of HTTP 2 headers.

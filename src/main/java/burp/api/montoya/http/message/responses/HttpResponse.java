@@ -132,6 +132,16 @@ public interface HttpResponse extends HttpMessage
     String toString();
 
     /**
+     * Create a copy of the {@code HttpResponse} in temporary file.<br>
+     * This method is used to save the {@code HttpResponse} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code HttpResponse} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code HttpResponse} instance stored in temporary file.
+     */
+    HttpResponse copyToTempFile();
+
+    /**
      * Create a copy of the {@code HttpResponse} with the provided status code.
      *
      * @param statusCode the new status code for response
@@ -254,7 +264,6 @@ public interface HttpResponse extends HttpMessage
 
     /**
      * Create a new empty instance of {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @return A new {@link HttpResponse} instance.
      */
@@ -265,7 +274,6 @@ public interface HttpResponse extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
      *
@@ -278,7 +286,6 @@ public interface HttpResponse extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
      *
@@ -287,18 +294,5 @@ public interface HttpResponse extends HttpMessage
     static HttpResponse httpResponse(String response)
     {
         return FACTORY.httpResponse(response);
-    }
-
-    /**
-     * Create a new instance of {@link HttpResponse} from the given {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
-     *
-     * @param httpResponseToCopy source HTTP response.
-     *
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(HttpResponse httpResponseToCopy)
-    {
-        return FACTORY.httpResponse(httpResponseToCopy);
     }
 }

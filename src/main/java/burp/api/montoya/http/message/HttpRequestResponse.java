@@ -44,7 +44,6 @@ public interface HttpRequestResponse
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The URL in the request.
-     *
      * @throws MalformedRequestException if request is malformed.
      */
     String url();
@@ -77,6 +76,16 @@ public interface HttpRequestResponse
      * @return List of response markers
      */
     List<Marker> responseMarkers();
+
+    /**
+     * Create a copy of the {@code HttpRequestResponse} in temporary file.<br>
+     * This method is used to save the {@code HttpRequestResponse} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code HttpRequest} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code ByteArray} instance stored in temporary file.
+     */
+    HttpRequestResponse copyToTempFile();
 
     /**
      * Create a copy of the {@code HttpRequestResponse} with the added annotations.
@@ -125,7 +134,6 @@ public interface HttpRequestResponse
 
     /**
      * Create a new instance of {@link HttpRequestResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request  The HTTP request.
      * @param response The HTTP response.
@@ -139,7 +147,6 @@ public interface HttpRequestResponse
 
     /**
      * Create a new instance of {@link HttpRequestResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param httpRequest  The HTTP request.
      * @param httpResponse The HTTP response.
@@ -150,18 +157,5 @@ public interface HttpRequestResponse
     static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
     {
         return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequestResponse} from the given {@link HttpRequestResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
-     *
-     * @param httpRequestResponseToCopy source HTTP request response.
-     *
-     * @return A new {@link HttpRequestResponse} instance.
-     */
-    static HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy)
-    {
-        return FACTORY.httpRequestResponse(httpRequestResponseToCopy);
     }
 }

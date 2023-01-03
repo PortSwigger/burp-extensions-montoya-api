@@ -98,6 +98,16 @@ public interface ByteArray extends Iterable<Byte>
     ByteArray copy();
 
     /**
+     * Create a copy of the {@code ByteArray} in temporary file.<br>
+     * This method is used to save the {@code ByteArray} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code ByteArray} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code ByteArray} instance stored in temporary file.
+     */
+    ByteArray copyToTempFile();
+
+    /**
      * Searches the data in the ByteArray for the first occurrence of a specified term.
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
@@ -265,7 +275,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} with the provided length.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param length array length.
      *
@@ -278,7 +287,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} with the provided byte data.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data byte[] to wrap, or sequence of bytes to wrap.
      *
@@ -291,7 +299,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} with the provided integers after a narrowing primitive conversion to bytes.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data int[] to wrap or sequence of integers to wrap.
      *
@@ -304,7 +311,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} from the provided text using the encoding specified by Burp Suite.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param text the text for the byte array.
      *
@@ -313,19 +319,6 @@ public interface ByteArray extends Iterable<Byte>
     static ByteArray byteArray(String text)
     {
         return FACTORY.byteArray(text);
-    }
-
-    /**
-     * Create a new {@code ByteArray} from the given {@code ByteArray}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
-     *
-     * @param byteArrayToCopy source byte array.
-     *
-     * @return New {@code ByteArray} holding a copy of the data in the source byte array.
-     */
-    static ByteArray byteArray(ByteArray byteArrayToCopy)
-    {
-        return FACTORY.byteArray(byteArrayToCopy);
     }
 }
 

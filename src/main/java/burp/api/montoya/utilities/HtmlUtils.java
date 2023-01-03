@@ -20,10 +20,7 @@ public interface HtmlUtils
      *
      * @return the encoded {@code String}.
      */
-    default String encode(String html)
-    {
-        return encode(html, HtmlEncoding.STANDARD);
-    }
+    String encode(String html);
 
     /**
      * Encode HTML text.

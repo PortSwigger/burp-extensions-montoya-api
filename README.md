@@ -1,11 +1,14 @@
-Burp Extensions API - Montoya Version
+Burp Extensions API - Montoya
 ============================
 
-This repository holds the Burp Suite Pro Extensions API for building user extensions ([BApps](https://portswigger.net/bappstore/)) leveraging the core functionality of Burp.
+This repository holds the Burp Suite Extensions API for building user extensions ([BApps](https://portswigger.net/bappstore/)) leveraging the core functionality of Burp.
 
-Supported Burp Suite Version
+Supported Versions
 --------
-Minimum required version of Burp Suite is **2023.1**
+
+| Montoya API | Minimum Burp Suite Version |
+|-------------|----------------------------|
+| 1.0.0       | 2023.1                     |
 
 Download
 --------
@@ -17,12 +20,12 @@ Available on [Maven Central](https://search.maven.org/search?q=Montoya-api) and 
     <dependency>
         <groupId>net.portswigger.burp.extensions</groupId>
         <artifactId>montoya-api</artifactId>
-        <version>LATEST</version>
+        <version>1.0.0</version>
     </dependency>
 
 <h5>Gradle</h5>
 
-    implementation 'net.portswigger.burp.extensions:montoya-api:+'
+    implementation 'net.portswigger.burp.extensions:montoya-api:1.0.0'
 
 Getting Started
 --------

@@ -254,7 +254,6 @@ public interface HttpResponse extends HttpMessage
 
     /**
      * Create a new empty instance of {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @return A new {@link HttpResponse} instance.
      */
@@ -265,7 +264,6 @@ public interface HttpResponse extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
      *
@@ -278,7 +276,6 @@ public interface HttpResponse extends HttpMessage
 
     /**
      * Create a new instance of {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param response The HTTP response.
      *
@@ -290,14 +287,16 @@ public interface HttpResponse extends HttpMessage
     }
 
     /**
-     * Create a new instance of {@link HttpResponse} from the given {@link HttpResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
+     * Create a copy of an {@link HttpResponse} in temporary file.<br>
+     * This method is used to save an {@link HttpResponse} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@link HttpResponse} objects into a form suitable for long-term storage.
      *
      * @param httpResponseToCopy source HTTP response.
      *
-     * @return A new {@link HttpResponse} instance.
+     * @return A new {@link HttpResponse} instance stored in temporary file.
      */
-    static HttpResponse httpResponse(HttpResponse httpResponseToCopy)
+    static HttpResponse httpResponseToTempFile(HttpResponse httpResponseToCopy)
     {
         return FACTORY.httpResponse(httpResponseToCopy);
     }

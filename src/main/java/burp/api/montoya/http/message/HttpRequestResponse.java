@@ -44,7 +44,6 @@ public interface HttpRequestResponse
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
      * @return The URL in the request.
-     *
      * @throws MalformedRequestException if request is malformed.
      */
     String url();
@@ -125,7 +124,6 @@ public interface HttpRequestResponse
 
     /**
      * Create a new instance of {@link HttpRequestResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param request  The HTTP request.
      * @param response The HTTP response.
@@ -139,7 +137,6 @@ public interface HttpRequestResponse
 
     /**
      * Create a new instance of {@link HttpRequestResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param httpRequest  The HTTP request.
      * @param httpResponse The HTTP response.
@@ -153,14 +150,16 @@ public interface HttpRequestResponse
     }
 
     /**
-     * Create a new instance of {@link HttpRequestResponse} from the given {@link HttpRequestResponse}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
+     * Create a copy of an {@link HttpRequestResponse} in temporary file.<br>
+     * This method is used to save an {@link HttpRequestResponse} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@link HttpRequestResponse} objects into a form suitable for long-term storage.
      *
      * @param httpRequestResponseToCopy source HTTP request response.
      *
-     * @return A new {@link HttpRequestResponse} instance.
+     * @return A new {@link HttpRequestResponse} instance stored in temporary file.
      */
-    static HttpRequestResponse httpRequestResponse(HttpRequestResponse httpRequestResponseToCopy)
+    static HttpRequestResponse httpRequestResponseToTempFile(HttpRequestResponse httpRequestResponseToCopy)
     {
         return FACTORY.httpRequestResponse(httpRequestResponseToCopy);
     }

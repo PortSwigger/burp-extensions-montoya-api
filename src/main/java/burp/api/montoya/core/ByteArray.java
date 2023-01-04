@@ -265,7 +265,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} with the provided length.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param length array length.
      *
@@ -278,7 +277,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} with the provided byte data.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data byte[] to wrap, or sequence of bytes to wrap.
      *
@@ -291,7 +289,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} with the provided integers after a narrowing primitive conversion to bytes.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param data int[] to wrap or sequence of integers to wrap.
      *
@@ -304,7 +301,6 @@ public interface ByteArray extends Iterable<Byte>
 
     /**
      * Create a new {@code ByteArray} from the provided text using the encoding specified by Burp Suite.<br>
-     * This object's data will be stored in temporary memory-mapped file.
      *
      * @param text the text for the byte array.
      *
@@ -316,14 +312,16 @@ public interface ByteArray extends Iterable<Byte>
     }
 
     /**
-     * Create a new {@code ByteArray} from the given {@code ByteArray}.<br>
-     * This object's data will be stored in temporary memory-mapped file.
+     * Create a copy of an {@link ByteArray} in temporary file.<br>
+     * This method is used to save an {@link ByteArray} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@link ByteArray} objects into a form suitable for long-term storage.
      *
      * @param byteArrayToCopy source byte array.
      *
-     * @return New {@code ByteArray} holding a copy of the data in the source byte array.
+     * @return A new {@link ByteArray} instance stored in temporary file.
      */
-    static ByteArray byteArray(ByteArray byteArrayToCopy)
+    static ByteArray byteArrayToTempFile(ByteArray byteArrayToCopy)
     {
         return FACTORY.byteArray(byteArrayToCopy);
     }

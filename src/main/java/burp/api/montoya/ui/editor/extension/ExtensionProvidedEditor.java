@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ * Copyright (c) 2023. PortSwigger Ltd. All rights reserved.
  *
  * This code may be used to extend the functionality of Burp Suite Community Edition
  * and Burp Suite Professional, provided that this usage does not violate the
@@ -9,22 +9,15 @@
 package burp.api.montoya.ui.editor.extension;
 
 import burp.api.montoya.http.message.HttpRequestResponse;
-import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.ui.Selection;
 
 import java.awt.Component;
 
 /**
- * Extensions that register an {@link HttpResponseEditorProvider} must return an instance of this interface. Burp will then use that instance to create custom tabs within
- * its HTTP response editor.
+ * Provides the shared behaviour between the different extension provided editor types.
  */
-public interface ExtensionHttpResponseEditor
+public interface ExtensionProvidedEditor
 {
-    /**
-     * @return An instance of {@link HttpResponse} derived from the content of the HTTP response editor.
-     */
-    HttpResponse getResponse();
-
     /**
      * Sets the provided {@link HttpRequestResponse} object within the editor component.
      *

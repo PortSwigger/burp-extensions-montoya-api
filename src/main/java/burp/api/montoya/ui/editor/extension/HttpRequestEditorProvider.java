@@ -18,7 +18,7 @@ public interface HttpRequestEditorProvider
      *
      * @param creationContext details about the context that is requiring a request editor
      *
-     * @return An instance of {@link ExtensionHttpRequestEditor}
+     * @return An instance of {@link ExtensionProvidedHttpRequestEditor}
      */
-    ExtensionHttpRequestEditor provideHttpRequestEditor(EditorCreationContext creationContext);
+    ExtensionProvidedHttpRequestEditor provideHttpRequestEditor(EditorCreationContext creationContext);
 }

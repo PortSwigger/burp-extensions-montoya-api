@@ -11,7 +11,7 @@ package burp.api.montoya.ui.editor;
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.ui.Selection;
 
-import javax.swing.JComponent;
+import java.awt.Component;
 import java.util.Optional;
 
 /**
@@ -64,5 +64,5 @@ public interface RawEditor extends Editor
      * {@inheritDoc}
      */
     @Override
-    JComponent uiComponent();
+    Component uiComponent();
 }

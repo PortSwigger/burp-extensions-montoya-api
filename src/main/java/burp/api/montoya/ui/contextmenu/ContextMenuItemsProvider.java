@@ -8,7 +8,7 @@
 
 package burp.api.montoya.ui.contextmenu;
 
-import javax.swing.JComponent;
+import java.awt.Component;
 import java.util.List;
 
 /**
@@ -24,5 +24,5 @@ public interface ContextMenuItemsProvider
      *
      * @return A list of custom menu items (which may include sub-menus, checkbox menu items, etc.) that should be displayed.
      */
-    List<JComponent> provideMenuItems(ContextMenuEvent event);
+    List<Component> provideMenuItems(ContextMenuEvent event);
 }

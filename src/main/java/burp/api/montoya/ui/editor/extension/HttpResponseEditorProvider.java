@@ -18,7 +18,7 @@ public interface HttpResponseEditorProvider
      *
      * @param creationContext details about the context that is requiring a response editor
      *
-     * @return An instance of {@link ExtensionHttpResponseEditor}
+     * @return An instance of {@link ExtensionProvidedHttpResponseEditor}
      */
-    ExtensionHttpResponseEditor provideHttpResponseEditor(EditorCreationContext creationContext);
+    ExtensionProvidedHttpResponseEditor provideHttpResponseEditor(EditorCreationContext creationContext);
 }

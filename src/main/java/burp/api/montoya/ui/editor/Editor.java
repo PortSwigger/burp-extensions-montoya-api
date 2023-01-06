@@ -10,11 +10,11 @@ package burp.api.montoya.ui.editor;
 
 import burp.api.montoya.ui.Selection;
 
-import javax.swing.JComponent;
+import java.awt.Component;
 import java.util.Optional;
 
 /**
- * Provides the shared behaviour between the different editor types available from the Extensions API.
+ * Provides the shared behaviour between the different editor types.
  */
 public interface Editor
 {
@@ -45,5 +45,5 @@ public interface Editor
     /**
      * @return UI component of the editor, for extensions to add to their own UI.
      */
-    JComponent uiComponent();
+    Component uiComponent();
 }

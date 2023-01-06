@@ -22,10 +22,7 @@ public interface ByteUtils
      *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(byte[] data, byte[] searchTerm)
-    {
-        return indexOf(data, searchTerm, true, 0, data.length);
-    }
+    int indexOf(byte[] data, byte[] searchTerm);
 
     /**
      * This method searches a piece of data for the first occurrence of a specified pattern.
@@ -37,10 +34,7 @@ public interface ByteUtils
      *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    default int indexOf(byte[] data, byte[] searchTerm, boolean caseSensitive)
-    {
-        return indexOf(data, searchTerm, caseSensitive, 0, data.length);
-    }
+    int indexOf(byte[] data, byte[] searchTerm, boolean caseSensitive);
 
     /**
      * This method searches a piece of data for the first occurrence of a specified pattern.
@@ -64,10 +58,7 @@ public interface ByteUtils
      *
      * @return The count of all matches of the pattern
      */
-    default int countMatches(byte[] data, byte[] searchTerm)
-    {
-        return countMatches(data, searchTerm, true);
-    }
+    int countMatches(byte[] data, byte[] searchTerm);
 
     /**
      * This method searches a piece of data and counts all matches for a specified pattern.

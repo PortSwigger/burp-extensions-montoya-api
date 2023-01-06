@@ -121,6 +121,16 @@ public interface HttpRequest extends HttpMessage
     String toString();
 
     /**
+     * Create a copy of the {@code HttpRequest} in temporary file.<br>
+     * This method is used to save the {@code HttpRequest} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code HttpRequest} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code ByteArray} instance stored in temporary file.
+     */
+    HttpRequest copyToTempFile();
+
+    /**
      * Create a copy of the {@code HttpRequest} with the new service.
      *
      * @param service An {@link HttpService} reference to add.
@@ -411,20 +421,5 @@ public interface HttpRequest extends HttpMessage
     static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body)
     {
         return FACTORY.http2Request(service, headers, body);
-    }
-
-    /**
-     * Create a copy of an {@link HttpRequest} in temporary file.<br>
-     * This method is used to save an {@link HttpRequest} object to a temporary file,
-     * so that it is no longer held in memory. Extensions can use this method to convert
-     * {@link HttpRequest} objects into a form suitable for long-term storage.
-     *
-     * @param httpRequestToCopy source HTTP request.
-     *
-     * @return A new {@link HttpRequest} instance stored in temporary file.
-     */
-    static HttpRequest httpRequestToTempFile(HttpRequest httpRequestToCopy)
-    {
-        return FACTORY.httpRequest(httpRequestToCopy);
     }
 }

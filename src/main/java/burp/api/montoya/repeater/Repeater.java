@@ -23,20 +23,17 @@ public interface Repeater
      *
      * @param request The full HTTP request.
      */
-    default void sendToRepeater(HttpRequest request)
-    {
-        sendToRepeater(null, request);
-    }
+    void sendToRepeater(HttpRequest request);
 
     /**
      * This method can be used to send an HTTP request to the Burp Repeater
      * tool. The request will be displayed in the user interface, but will not
      * be issued until the user initiates this action.
      *
+     * @param request The full HTTP request.
      * @param name    An optional caption which will appear on the Repeater
      *                tab containing the request. If this value is {@code null} then a default
      *                tab index will be displayed.
-     * @param request The full HTTP request.
      */
-    void sendToRepeater(String name, HttpRequest request);
+    void sendToRepeater(HttpRequest request, String name);
 }

@@ -98,6 +98,16 @@ public interface ByteArray extends Iterable<Byte>
     ByteArray copy();
 
     /**
+     * Create a copy of the {@code ByteArray} in temporary file.<br>
+     * This method is used to save the {@code ByteArray} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code ByteArray} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code ByteArray} instance stored in temporary file.
+     */
+    ByteArray copyToTempFile();
+
+    /**
      * Searches the data in the ByteArray for the first occurrence of a specified term.
      * It works on byte-based data in a way that is similar to the way the native Java method {@link String#indexOf(String)} works on String-based data.
      *
@@ -309,21 +319,6 @@ public interface ByteArray extends Iterable<Byte>
     static ByteArray byteArray(String text)
     {
         return FACTORY.byteArray(text);
-    }
-
-    /**
-     * Create a copy of an {@link ByteArray} in temporary file.<br>
-     * This method is used to save an {@link ByteArray} object to a temporary file,
-     * so that it is no longer held in memory. Extensions can use this method to convert
-     * {@link ByteArray} objects into a form suitable for long-term storage.
-     *
-     * @param byteArrayToCopy source byte array.
-     *
-     * @return A new {@link ByteArray} instance stored in temporary file.
-     */
-    static ByteArray byteArrayToTempFile(ByteArray byteArrayToCopy)
-    {
-        return FACTORY.byteArray(byteArrayToCopy);
     }
 }
 

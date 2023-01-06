@@ -78,6 +78,16 @@ public interface HttpRequestResponse
     List<Marker> responseMarkers();
 
     /**
+     * Create a copy of the {@code HttpRequestResponse} in temporary file.<br>
+     * This method is used to save the {@code HttpRequestResponse} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code HttpRequest} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code ByteArray} instance stored in temporary file.
+     */
+    HttpRequestResponse copyToTempFile();
+
+    /**
      * Create a copy of the {@code HttpRequestResponse} with the added annotations.
      *
      * @param annotations annotations to add.
@@ -147,20 +157,5 @@ public interface HttpRequestResponse
     static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations)
     {
         return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
-    }
-
-    /**
-     * Create a copy of an {@link HttpRequestResponse} in temporary file.<br>
-     * This method is used to save an {@link HttpRequestResponse} object to a temporary file,
-     * so that it is no longer held in memory. Extensions can use this method to convert
-     * {@link HttpRequestResponse} objects into a form suitable for long-term storage.
-     *
-     * @param httpRequestResponseToCopy source HTTP request response.
-     *
-     * @return A new {@link HttpRequestResponse} instance stored in temporary file.
-     */
-    static HttpRequestResponse httpRequestResponseToTempFile(HttpRequestResponse httpRequestResponseToCopy)
-    {
-        return FACTORY.httpRequestResponse(httpRequestResponseToCopy);
     }
 }

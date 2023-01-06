@@ -132,6 +132,16 @@ public interface HttpResponse extends HttpMessage
     String toString();
 
     /**
+     * Create a copy of the {@code HttpResponse} in temporary file.<br>
+     * This method is used to save the {@code HttpResponse} object to a temporary file,
+     * so that it is no longer held in memory. Extensions can use this method to convert
+     * {@code HttpResponse} objects into a form suitable for long-term usage.
+     *
+     * @return A new {@code HttpResponse} instance stored in temporary file.
+     */
+    HttpResponse copyToTempFile();
+
+    /**
      * Create a copy of the {@code HttpResponse} with the provided status code.
      *
      * @param statusCode the new status code for response
@@ -284,20 +294,5 @@ public interface HttpResponse extends HttpMessage
     static HttpResponse httpResponse(String response)
     {
         return FACTORY.httpResponse(response);
-    }
-
-    /**
-     * Create a copy of an {@link HttpResponse} in temporary file.<br>
-     * This method is used to save an {@link HttpResponse} object to a temporary file,
-     * so that it is no longer held in memory. Extensions can use this method to convert
-     * {@link HttpResponse} objects into a form suitable for long-term storage.
-     *
-     * @param httpResponseToCopy source HTTP response.
-     *
-     * @return A new {@link HttpResponse} instance stored in temporary file.
-     */
-    static HttpResponse httpResponseToTempFile(HttpResponse httpResponseToCopy)
-    {
-        return FACTORY.httpResponse(httpResponseToCopy);
     }
 }

@@ -20,10 +20,7 @@ public interface RandomUtils
      *
      * @return randomly generated string
      */
-    default String randomString(int length)
-    {
-        return randomString(length, CharacterSet.ASCII_LETTERS, CharacterSet.DIGITS);
-    }
+    String randomString(int length);
 
     /**
      * Generate a random string using the supplied characters
@@ -33,10 +30,7 @@ public interface RandomUtils
      *
      * @return randomly generated string
      */
-    default String randomString(int length, String chars)
-    {
-        return randomString(length, length, chars);
-    }
+    String randomString(int length, String chars);
 
     /**
      * Generate a random string using the supplied {@link CharacterSet}
@@ -46,10 +40,7 @@ public interface RandomUtils
      *
      * @return randomly generated string
      */
-    default String randomString(int length, CharacterSet... characterSets)
-    {
-        return randomString(length, length, characterSets);
-    }
+    String randomString(int length, CharacterSet... characterSets);
 
     /**
      * Generate a random string using the supplied characters

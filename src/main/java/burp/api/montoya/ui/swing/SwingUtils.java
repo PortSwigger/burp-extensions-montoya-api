@@ -8,6 +8,9 @@
 
 package burp.api.montoya.ui.swing;
 
+import burp.api.montoya.core.HighlightColor;
+
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Frame;
 import java.awt.Window;
@@ -30,4 +33,13 @@ public interface SwingUtils
      * @return the top-level {@code Window} containing the component.
      */
     Window windowForComponent(Component component);
+
+    /**
+     * Convert a highlight color to a java color.
+     *
+     * @param highlightColor the {@link HighlightColor}
+     *
+     * @return the java color for the highlight color.
+     */
+    Color colorForHighLight(HighlightColor highlightColor);
 }

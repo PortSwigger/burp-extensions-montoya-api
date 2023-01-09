@@ -16,8 +16,9 @@ import burp.api.montoya.core.Registration;
 public interface Extension
 {
     /**
-     * Set the display name for the current extension,
-     * which will be displayed within the user interface for the Extensions tool.
+     * Set the display name for the current extension.<br/>
+     * This will be displayed within the user interface for the Extensions tool and
+     * will be used to identify persisted data.
      *
      * @param extensionName the name of the extension
      */

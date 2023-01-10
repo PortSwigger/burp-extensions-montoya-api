@@ -177,7 +177,7 @@ release.
 
 4.1       In this Licence Agreement "Extension" means all programming additions
 made by a Licensee or on his behalf or with his concurrence to the Software
-using the Burp Extensions API (as hereinafter defined) to either
+using any of Burp Suite's official APIs (as hereinafter defined) to either
 
 4.1.1    extend the functionality of the Software or any other software produced
 by the Licensor; or
@@ -191,7 +191,7 @@ software produced by the Licensor;
 and "Burp App" or "BApp" means an Extension adopted by the Licensor pursuant to
 this clause.
 
-4.2       "Burp Extensions API" means the official Burp Extensions application
+4.2       "Burp Suite's official APIs" means any of the official application
 programming interface available as part of the Documentation.
 
 4.3       Extensions may be created for the use of the Licensee Provided that if

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ * Copyright (c) 2022-2023. PortSwigger Ltd. All rights reserved.
  *
  * This code may be used to extend the functionality of Burp Suite Community Edition
  * and Burp Suite Professional, provided that this usage does not violate the
@@ -39,8 +39,8 @@ public interface ScanCheck
      *                            can be queried to obtain details of the insertion point being tested, and
      *                            can be used to build requests for particular payloads.
      *
-     * @return A list of {@link AuditIssue} objects, or {@code null} if no
-     * issues are identified.
+     * @return An {@link AuditResult} object with a list of {@link AuditIssue}
+     * objects, or an empty {@link AuditResult} object if no issues are identified.
      */
     AuditResult activeAudit(HttpRequestResponse baseRequestResponse, AuditInsertionPoint auditInsertionPoint);
 
@@ -53,8 +53,8 @@ public interface ScanCheck
      * @param baseRequestResponse The base {@link HttpRequestResponse} that
      *                            should be passively audited.
      *
-     * @return A list of {@link AuditIssue} objects, or {@code null} if no
-     * issues are identified.
+     * @return An {@link AuditResult} object with a list of {@link AuditIssue}
+     * objects, or an empty {@link AuditResult} object if no issues are identified.
      */
     AuditResult passiveAudit(HttpRequestResponse baseRequestResponse);
 

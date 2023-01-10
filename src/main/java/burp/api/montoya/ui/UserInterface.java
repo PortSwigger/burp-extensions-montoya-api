@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ * Copyright (c) 2022-2023. PortSwigger Ltd. All rights reserved.
  *
  * This code may be used to extend the functionality of Burp Suite Community Edition
  * and Burp Suite Professional, provided that this usage does not violate the
@@ -14,8 +14,10 @@ import burp.api.montoya.ui.editor.EditorOptions;
 import burp.api.montoya.ui.editor.HttpRequestEditor;
 import burp.api.montoya.ui.editor.HttpResponseEditor;
 import burp.api.montoya.ui.editor.RawEditor;
+import burp.api.montoya.ui.editor.WebSocketMessageEditor;
 import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
+import burp.api.montoya.ui.menu.MenuBar;
 import burp.api.montoya.ui.swing.SwingUtils;
 
 import java.awt.Component;
@@ -27,6 +29,11 @@ import java.awt.Component;
  */
 public interface UserInterface
 {
+    /**
+     * @return The Burp Suite {@link MenuBar}.
+     */
+    MenuBar menuBar();
+
     /**
      * Add a custom tab to the main Burp Suite window.
      *
@@ -72,6 +79,15 @@ public interface UserInterface
      * @return An instance of the {@link RawEditor} interface.
      */
     RawEditor createRawEditor(EditorOptions... options);
+
+    /**
+     * Create a new instance of Burp's WebSocket message editor, for the extension to use in its own UI.
+     *
+     * @param options Optional options to apply to the editor.
+     *
+     * @return An instance of the {@link WebSocketMessageEditor} interface.
+     */
+    WebSocketMessageEditor createWebSocketMessageEditor(EditorOptions... options);
 
     /**
      * Create a new instance of Burp's HTTP request editor, for the extension to use in its own UI.

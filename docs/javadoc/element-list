@@ -31,6 +31,8 @@ burp.api.montoya.ui
 burp.api.montoya.ui.contextmenu
 burp.api.montoya.ui.editor
 burp.api.montoya.ui.editor.extension
+burp.api.montoya.ui.menu
 burp.api.montoya.ui.swing
 burp.api.montoya.utilities
 burp.api.montoya.websocket
+burp.api.montoya.websocket.extension

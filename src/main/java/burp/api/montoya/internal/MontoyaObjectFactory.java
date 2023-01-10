@@ -10,7 +10,11 @@ package burp.api.montoya.internal;
 
 import burp.api.montoya.collaborator.InteractionFilter;
 import burp.api.montoya.collaborator.SecretKey;
-import burp.api.montoya.core.*;
+import burp.api.montoya.core.Annotations;
+import burp.api.montoya.core.ByteArray;
+import burp.api.montoya.core.HighlightColor;
+import burp.api.montoya.core.Marker;
+import burp.api.montoya.core.Range;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
@@ -98,11 +102,11 @@ public interface MontoyaObjectFactory
 
     Annotations annotations();
 
-    Annotations annotations(String comment);
+    Annotations annotations(String notes);
 
     Annotations annotations(HighlightColor highlightColor);
 
-    Annotations annotations(String comment, HighlightColor highlightColor);
+    Annotations annotations(String notes, HighlightColor highlightColor);
 
     AuditInsertionPoint auditInsertionPoint(String name, HttpRequest baseRequest, int startIndexInclusive, int endIndexExclusive);
 
@@ -119,6 +123,18 @@ public interface MontoyaObjectFactory
             String remediationBackground,
             AuditIssueSeverity typicalSeverity,
             List<HttpRequestResponse> requestResponses);
+
+    AuditIssue auditIssue(
+            String name,
+            String detail,
+            String remediation,
+            String baseUrl,
+            AuditIssueSeverity severity,
+            AuditIssueConfidence confidence,
+            String background,
+            String remediationBackground,
+            AuditIssueSeverity typicalSeverity,
+            HttpRequestResponse... requestResponses);
 
     Selection selection(ByteArray selectionContents);
 

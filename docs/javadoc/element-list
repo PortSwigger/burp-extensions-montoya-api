@@ -6,9 +6,8 @@ burp.api.montoya.core
 burp.api.montoya.decoder
 burp.api.montoya.extension
 burp.api.montoya.http
+burp.api.montoya.http.handler
 burp.api.montoya.http.message
-burp.api.montoya.http.message.cookies
-burp.api.montoya.http.message.headers
 burp.api.montoya.http.message.params
 burp.api.montoya.http.message.requests
 burp.api.montoya.http.message.responses
@@ -19,6 +18,8 @@ burp.api.montoya.intruder
 burp.api.montoya.logging
 burp.api.montoya.persistence
 burp.api.montoya.proxy
+burp.api.montoya.proxy.http
+burp.api.montoya.proxy.websocket
 burp.api.montoya.repeater
 burp.api.montoya.scanner
 burp.api.montoya.scanner.audit

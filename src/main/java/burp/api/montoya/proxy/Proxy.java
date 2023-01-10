@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ * Copyright (c) 2022-2023. PortSwigger Ltd. All rights reserved.
  *
  * This code may be used to extend the functionality of Burp Suite Community Edition
  * and Burp Suite Professional, provided that this usage does not violate the
@@ -31,24 +31,44 @@ public interface Proxy
     void disableIntercept();
 
     /**
-     * This method returns details of all items in the Proxy history.
+     * This method returns details of all items in the Proxy HTTP history.
      *
      * @return The list of all the {@link ProxyHttpRequestResponse} items in the
-     * Proxy history.
+     * Proxy HTTP history.
      */
     List<ProxyHttpRequestResponse> history();
 
     /**
-     * This method returns details of items in the Proxy history based on the
-     * filter.
+     * This method returns details of items in the Proxy HTTP history based on
+     * the filter.
      *
      * @param filter An instance of {@link ProxyHistoryFilter} that can be used
      *               to filter the items in the Proxy history.
      *
      * @return The list of {@link ProxyHttpRequestResponse} items in the Proxy
-     * history that matched the filter.
+     * HTTP history that matched the filter.
      */
     List<ProxyHttpRequestResponse> history(ProxyHistoryFilter filter);
+
+    /**
+     * This method returns details of all items in the Proxy WebSockets history.
+     *
+     * @return The list of all the {@link ProxyWebSocketMessage} items in the
+     * Proxy WebSockets history.
+     */
+    List<ProxyWebSocketMessage> webSocketHistory();
+
+    /**
+     * This method returns details of items in the Proxy WebSockets history based
+     * on the filter.
+     *
+     * @param filter An instance of {@link ProxyWebSocketHistoryFilter} that can be used
+     *               to filter the items in the Proxy WebSockets history.
+     *
+     * @return The list of {@link ProxyWebSocketMessage} items in the Proxy WebSockets
+     * history that matched the filter.
+     */
+    List<ProxyWebSocketMessage> webSocketHistory(ProxyWebSocketHistoryFilter filter);
 
     /**
      * Register a handler which will be notified of

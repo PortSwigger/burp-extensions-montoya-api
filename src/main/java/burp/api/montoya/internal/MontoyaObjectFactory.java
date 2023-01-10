@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ * Copyright (c) 2022-2023. PortSwigger Ltd. All rights reserved.
  *
  * This code may be used to extend the functionality of Burp Suite Community Edition
  * and Burp Suite Professional, provided that this usage does not violate the
@@ -52,6 +52,8 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueDefinition;
 import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
+import burp.api.montoya.ui.menu.Menu;
+import burp.api.montoya.ui.menu.BasicMenuItem;
 import burp.api.montoya.websocket.BinaryMessageAction;
 import burp.api.montoya.websocket.MessageAction;
 import burp.api.montoya.websocket.TextMessageAction;
@@ -309,4 +311,8 @@ public interface MontoyaObjectFactory
     ActionResult actionResult(HttpRequest request);
 
     ActionResult actionResult(HttpRequest request, Annotations annotations);
+
+    Menu menu(String caption);
+
+    BasicMenuItem basicMenuItem(String caption);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. PortSwigger Ltd. All rights reserved.
+ * Copyright (c) 2022-2023. PortSwigger Ltd. All rights reserved.
  *
  * This code may be used to extend the functionality of Burp Suite Community Edition
  * and Burp Suite Professional, provided that this usage does not violate the
@@ -8,6 +8,7 @@
 
 package burp.api.montoya.proxy.websocket;
 
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.websocket.Direction;
 import burp.api.montoya.websocket.TextMessage;
 
@@ -24,4 +25,9 @@ public interface InterceptedTextMessage extends TextMessage
      */
     @Override
     Direction direction();
+
+    /**
+     * @return The annotations.
+     */
+    Annotations annotations();
 }

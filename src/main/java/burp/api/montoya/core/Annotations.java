@@ -16,16 +16,16 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface Annotations
 {
     /**
-     * @return the comment
+     * @return the notes
      */
-    String comment();
+    String notes();
 
     /**
-     * Set (mutate) the current annotations comment value
+     * Set (mutate) the current annotations notes value
      *
-     * @param comment the comment to set on the current annotation
+     * @param notes the notes to set on the current annotations
      */
-    void setComment(String comment);
+    void setNotes(String notes);
 
     /**
      * @return the highlight color;
@@ -35,18 +35,18 @@ public interface Annotations
     /**
      * Set (mutate) the current annotations highlight color value
      *
-     * @param highlightColor the highlight color to set on the current annotation
+     * @param highlightColor the highlight color to set on the current annotations
      */
     void setHighlightColor(HighlightColor highlightColor);
 
     /**
-     * Create a copy of the annotations with a new comment.
+     * Create a copy of the annotations with new notes.
      *
-     * @param comment The new comment.
+     * @param notes The new notes.
      *
      * @return The new annotations.
      */
-    Annotations withComment(String comment);
+    Annotations withNotes(String notes);
 
     /**
      * Create a copy of the annotations with a new highlight color.
@@ -68,21 +68,21 @@ public interface Annotations
     }
 
     /**
-     * Create a new annotations with a comment.
+     * Create a new annotations with notes.
      *
-     * @param comment The comment of the annotation
+     * @param notes The notes of the annotations
      *
      * @return The annotations.
      */
-    static Annotations annotations(String comment)
+    static Annotations annotations(String notes)
     {
-        return FACTORY.annotations(comment);
+        return FACTORY.annotations(notes);
     }
 
     /**
      * Create a new annotations with a highlight color.
      *
-     * @param highlightColor The highlight color of the annotation
+     * @param highlightColor The highlight color of the annotations
      *
      * @return The annotations.
      */
@@ -92,15 +92,15 @@ public interface Annotations
     }
 
     /**
-     * Create a new annotations with a comment and a highlight color.
+     * Create a new annotations with notes and a highlight color.
      *
-     * @param comment        The comment of the annotation
-     * @param highlightColor The highlight color of the annotation
+     * @param notes        The notes of the annotations
+     * @param highlightColor The highlight color of the annotations
      *
      * @return The annotations.
      */
-    static Annotations annotations(String comment, HighlightColor highlightColor)
+    static Annotations annotations(String notes, HighlightColor highlightColor)
     {
-        return FACTORY.annotations(comment, highlightColor);
+        return FACTORY.annotations(notes, highlightColor);
     }
 }

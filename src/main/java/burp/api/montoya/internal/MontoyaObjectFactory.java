@@ -102,11 +102,11 @@ public interface MontoyaObjectFactory
 
     Annotations annotations();
 
-    Annotations annotations(String comment);
+    Annotations annotations(String notes);
 
     Annotations annotations(HighlightColor highlightColor);
 
-    Annotations annotations(String comment, HighlightColor highlightColor);
+    Annotations annotations(String notes, HighlightColor highlightColor);
 
     AuditInsertionPoint auditInsertionPoint(String name, HttpRequest baseRequest, int startIndexInclusive, int endIndexExclusive);
 

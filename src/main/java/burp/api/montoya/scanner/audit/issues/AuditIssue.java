@@ -14,7 +14,6 @@ import burp.api.montoya.scanner.ScanCheck;
 import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.sitemap.SiteMap;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
@@ -131,7 +130,7 @@ public interface AuditIssue
             AuditIssueSeverity typicalSeverity,
             HttpRequestResponse... requestResponses)
     {
-        return auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, Arrays.asList(requestResponses));
+        return FACTORY.auditIssue(name, detail, remediation, baseUrl, severity, confidence, background, remediationBackground, typicalSeverity, requestResponses);
     }
 
     /**

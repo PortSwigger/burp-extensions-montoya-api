@@ -8,6 +8,7 @@
 
 package burp.api.montoya.websocket;
 
+import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.Registration;
 
 /**
@@ -21,6 +22,13 @@ public interface WebSocket
      * @param message The message to be sent.
      */
     void sendTextMessage(String message);
+
+    /**
+     * This method allows an extension to send a binary message via the WebSocket.
+     *
+     * @param message The message to be sent.
+     */
+    void sendBinaryMessage(ByteArray message);
 
     /**
      * This method will close the WebSocket.

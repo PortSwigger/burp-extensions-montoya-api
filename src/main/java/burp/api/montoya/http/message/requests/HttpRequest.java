@@ -126,7 +126,7 @@ public interface HttpRequest extends HttpMessage
      * so that it is no longer held in memory. Extensions can use this method to convert
      * {@code HttpRequest} objects into a form suitable for long-term usage.
      *
-     * @return A new {@code ByteArray} instance stored in temporary file.
+     * @return A new {@code HttpRequest} instance stored in temporary file.
      */
     HttpRequest copyToTempFile();
 

@@ -9,6 +9,8 @@
 package burp.api.montoya.websocket;
 
 import burp.api.montoya.core.Registration;
+import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.message.requests.HttpRequest;
 
 /**
  * Provides access to WebSocket related functionality of Burp.
@@ -23,4 +25,23 @@ public interface WebSockets
      * @return The {@link Registration} for the handler.
      */
     Registration registerWebSocketCreatedHandler(WebSocketCreatedHandler handler);
+
+    /**
+     * Create a new WebSocket using the specified service and path.
+     *
+     * @param service An {@link HttpService} specifying the target host
+     * @param path path for the upgrade HTTP request
+     *
+     * @return The {@link WebSocketCreation} result.
+     */
+    WebSocketCreation createWebSocket(HttpService service, String path);
+
+    /**
+     * Create a new WebSocket using the specified upgrade request.
+     *
+     * @param upgradeRequest The {@link HttpRequest} upgrade request
+     *
+     * @return The {@link WebSocketCreation} result.
+     */
+    WebSocketCreation createWebSocket(HttpRequest upgradeRequest);
 }

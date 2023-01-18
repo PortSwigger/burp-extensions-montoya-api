@@ -8,6 +8,7 @@
 
 package burp.api.montoya.proxy.websocket;
 
+import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.Registration;
 import burp.api.montoya.websocket.Direction;
 
@@ -23,6 +24,14 @@ public interface ProxyWebSocket
      * @param direction   The direction of the message.
      */
     void sendTextMessage(String textMessage, Direction direction);
+
+    /**
+     * This method allows an extension to send a binary message via the WebSocket to either the client or the server.
+     *
+     * @param binaryMessage The message to be sent.
+     * @param direction   The direction of the message.
+     */
+    void sendBinaryMessage(ByteArray binaryMessage, Direction direction);
 
     /**
      * This method will close the WebSocket.

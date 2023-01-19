@@ -8,6 +8,7 @@
 
 package burp.api.montoya.proxy.websocket;
 
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.websocket.BinaryMessage;
 import burp.api.montoya.websocket.Direction;
@@ -25,4 +26,9 @@ public interface InterceptedBinaryMessage extends BinaryMessage
      */
     @Override
     Direction direction();
+
+    /**
+     * @return The annotations.
+     */
+    Annotations annotations();
 }

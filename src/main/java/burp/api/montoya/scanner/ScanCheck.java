@@ -40,7 +40,7 @@ public interface ScanCheck
      *                            can be used to build requests for particular payloads.
      *
      * @return An {@link AuditResult} object with a list of {@link AuditIssue}
-     * objects, or empty {@link AuditResult} object if no issues are identified.
+     * objects, or an empty {@link AuditResult} object if no issues are identified.
      */
     AuditResult activeAudit(HttpRequestResponse baseRequestResponse, AuditInsertionPoint auditInsertionPoint);
 
@@ -54,7 +54,7 @@ public interface ScanCheck
      *                            should be passively audited.
      *
      * @return An {@link AuditResult} object with a list of {@link AuditIssue}
-     * objects, or empty {@link AuditResult} object if no issues are identified.
+     * objects, or an empty {@link AuditResult} object if no issues are identified.
      */
     AuditResult passiveAudit(HttpRequestResponse baseRequestResponse);
 

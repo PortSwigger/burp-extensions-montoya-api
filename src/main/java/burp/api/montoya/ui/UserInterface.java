@@ -17,6 +17,7 @@ import burp.api.montoya.ui.editor.RawEditor;
 import burp.api.montoya.ui.editor.WebSocketMessageEditor;
 import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
+import burp.api.montoya.ui.menu.MenuBar;
 import burp.api.montoya.ui.swing.SwingUtils;
 
 import java.awt.Component;
@@ -28,6 +29,11 @@ import java.awt.Component;
  */
 public interface UserInterface
 {
+    /**
+     * @return The Burp Suite {@link MenuBar}.
+     */
+    MenuBar menuBar();
+
     /**
      * Add a custom tab to the main Burp Suite window.
      *

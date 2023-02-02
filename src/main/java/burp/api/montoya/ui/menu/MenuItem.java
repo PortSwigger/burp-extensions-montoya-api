@@ -20,6 +20,15 @@ public interface MenuItem
     void action();
 
     /**
+     * Create a copy of {@link MenuItem} with a new caption.
+     *
+     * @param caption The new caption.
+     *
+     * @return An updated copy of {@link MenuItem}
+     */
+    MenuItem withCaption(String caption);
+
+    /**
      * Create a copy of {@link MenuItem} with a new {@link Runnable} action.
      *
      * @param action The new {@link Runnable} action.

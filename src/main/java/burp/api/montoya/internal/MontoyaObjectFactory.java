@@ -53,7 +53,7 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.ui.menu.Menu;
-import burp.api.montoya.ui.menu.MenuItem;
+import burp.api.montoya.ui.menu.BasicMenuItem;
 import burp.api.montoya.websocket.BinaryMessageAction;
 import burp.api.montoya.websocket.MessageAction;
 import burp.api.montoya.websocket.TextMessageAction;
@@ -314,5 +314,5 @@ public interface MontoyaObjectFactory
 
     Menu menu(String caption);
 
-    MenuItem menuItem(String caption);
+    BasicMenuItem basicMenuItem(String caption);
 }

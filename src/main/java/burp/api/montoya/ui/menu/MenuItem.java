@@ -15,37 +15,14 @@ public interface MenuItem
     String caption();
 
     /**
-     * The action performed when the {@link MenuItem} is clicked.
+     * Create a new instance of {@link BasicMenuItem} with a caption.
+     *
+     * @param caption The caption for the {@link BasicMenuItem}.
+     *
+     * @return A new instance of the {@link BasicMenuItem}.
      */
-    void action();
-
-    /**
-     * Create a copy of {@link MenuItem} with a new caption.
-     *
-     * @param caption The new caption.
-     *
-     * @return An updated copy of {@link MenuItem}
-     */
-    MenuItem withCaption(String caption);
-
-    /**
-     * Create a copy of {@link MenuItem} with a new {@link Runnable} action.
-     *
-     * @param action The new {@link Runnable} action.
-     *
-     * @return An updated copy of {@link MenuItem}.
-     */
-    MenuItem withAction(Runnable action);
-
-    /**
-     * Create a new instance of {@link MenuItem} with a caption.
-     *
-     * @param caption The caption for the {@link MenuItem}.
-     *
-     * @return A new instance of the {@link MenuItem}.
-     */
-    static MenuItem menuItem(String caption)
+    static BasicMenuItem basicMenuItem(String caption)
     {
-        return FACTORY.menuItem(caption);
+        return FACTORY.basicMenuItem(caption);
     }
 }

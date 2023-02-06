@@ -3,12 +3,6 @@ Burp Extensions API - Montoya
 
 This repository holds the Burp Suite Extensions API for building user extensions ([BApps](https://portswigger.net/bappstore/)) leveraging the core functionality of Burp.
 
-Supported Versions
---------
-
-| Montoya API | Minimum Burp Suite Version |
-|-------------|----------------------------|
-| 1.0.0       | 2023.1                     |
 
 Download
 --------

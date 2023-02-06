@@ -8,7 +8,6 @@
 
 package burp.api.montoya.persistence;
 
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -197,7 +196,7 @@ public interface Preferences
 
     /**
      * {@link Long} associated with the specified key,
-     * or {@link Optional#empty}} if this map contains no mapping for the key.
+     * or {@code null}} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      *

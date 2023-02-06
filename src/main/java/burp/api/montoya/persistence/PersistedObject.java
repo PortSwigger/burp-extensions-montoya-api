@@ -13,7 +13,6 @@ import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
-import java.util.Optional;
 import java.util.Set;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
@@ -26,7 +25,7 @@ public interface PersistedObject
 {
     /**
      * {@link PersistedObject} associated with the specified key.
-     * or {@link Optional#empty} if this map contains no mapping for the key.
+     * or {@code null} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      *
@@ -240,7 +239,7 @@ public interface PersistedObject
 
     /**
      * {@link Long} associated with the specified key,
-     * or {@link Optional#empty}} if this map contains no mapping for the key.
+     * or {@code null}} if this map contains no mapping for the key.
      *
      * @param key the key whose associated value is to be returned
      *

@@ -29,6 +29,11 @@ import java.util.List;
 public interface HttpResponseReceived extends HttpResponse
 {
     /**
+     * @return The ID for this response which is identical to the ID on the corresponding request.
+     */
+    int id();
+
+    /**
      * @return initiatingRequest The HTTP request that was sent.
      */
     HttpRequest initiatingRequest();

@@ -7,7 +7,7 @@ This repository holds the Burp Suite Extensions API for building user extensions
 Download
 --------
 
-Available on [Maven Central](https://search.maven.org/search?q=Montoya-api) and in [Burp Suite](https://portswigger.net/burp/communitydownload).
+Available on [Maven Central](https://search.maven.org/artifact/net.portswigger.burp.extensions/montoya-api) and in [Burp Suite](https://portswigger.net/burp/communitydownload).
 
 <h5>Maven</h5>
 

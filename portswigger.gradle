@@ -26,6 +26,13 @@ artifacts {
     archives javadocJar
 }
 
+jar {
+    manifest {
+        attributes("Implementation-Title": "Montoya Api",
+                "Implementation-Version": archiveVersion)
+    }
+}
+
 publishing {
     repositories {
         maven {

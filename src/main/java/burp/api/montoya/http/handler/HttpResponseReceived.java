@@ -31,7 +31,7 @@ public interface HttpResponseReceived extends HttpResponse
     /**
      * @return The ID for this response which is identical to the ID on the corresponding request.
      */
-    int id();
+    int messageId();
 
     /**
      * @return initiatingRequest The HTTP request that was sent.

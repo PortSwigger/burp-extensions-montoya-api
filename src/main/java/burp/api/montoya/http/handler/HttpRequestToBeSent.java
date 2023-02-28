@@ -30,7 +30,7 @@ public interface HttpRequestToBeSent extends HttpRequest
     /**
      * @return The ID for this request to be sent. The corresponding response will have an identical ID.
      */
-    int id();
+    int messageId();
 
     /**
      * @return annotations for request/response

@@ -48,6 +48,7 @@ public interface HttpResponse extends HttpMessage
      *
      * @return Version string
      */
+    @Override
     String httpVersion();
 
     /**

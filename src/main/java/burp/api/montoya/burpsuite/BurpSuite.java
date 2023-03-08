@@ -71,11 +71,4 @@ public interface BurpSuite
      *                shutdown.
      */
     void shutdown(ShutdownOptions... options);
-
-    /**
-     * Access the functionality of the task execution engine.
-     *
-     * @return An implementation of the TaskExecutionEngine interface which exposes task execution engine functionality.
-     */
-    TaskExecutionEngine taskExecutionEngine();
 }

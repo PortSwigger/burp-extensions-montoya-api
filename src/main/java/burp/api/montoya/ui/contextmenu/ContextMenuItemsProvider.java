@@ -11,18 +11,49 @@ package burp.api.montoya.ui.contextmenu;
 import java.awt.Component;
 import java.util.List;
 
+import static java.util.Collections.emptyList;
+
 /**
  * This interface allows extensions to implement and register a provider for custom context menu items.
  */
 public interface ContextMenuItemsProvider
 {
     /**
-     * Invoked by Burp Suite when the user requests a context menu anywhere in the user interface.
-     * Extensions should return {@code null} from this method, to indicate that no menu items are required.
+     * Invoked by Burp Suite when the user requests a context menu with HTTP request/response information in the user interface.
+     * Extensions should return {@code null} or {@link java.util.Collections#emptyList()} from this method, to indicate that no menu items are required.
      *
-     * @param event This object can be queried to find out about HTTP request/responses or issues that are associated with the context menu invocation.
+     * @param event This object can be queried to find out about HTTP request/responses that are associated with the context menu invocation.
      *
      * @return A list of custom menu items (which may include sub-menus, checkbox menu items, etc.) that should be displayed.
      */
-    List<Component> provideMenuItems(ContextMenuEvent event);
+    default List<Component> provideMenuItems(ContextMenuEvent event)
+    {
+        return emptyList();
+    }
+
+    /**
+     * Invoked by Burp Suite when the user requests a context menu with WebSocket information in the user interface.
+     * Extensions should return {@code null} or {@link java.util.Collections#emptyList()} from this method, to indicate that no menu items are required.
+     *
+     * @param event This object can be queried to find out about WebSocket messages that are associated with the context menu invocation.
+     *
+     * @return A list of custom menu items (which may include sub-menus, checkbox menu items, etc.) that should be displayed.
+     */
+    default List<Component> provideMenuItems(WebSocketContextMenuEvent event)
+    {
+        return emptyList();
+    }
+
+    /**
+     * Invoked by Burp Suite when the user requests a context menu with audit issue information in the user interface.
+     * Extensions should return {@code null} or {@link java.util.Collections#emptyList()} from this method, to indicate that no menu items are required.
+     *
+     * @param event This object can be queried to find out about audit issues that are associated with the context menu invocation.
+     *
+     * @return A list of custom menu items (which may include sub-menus, checkbox menu items, etc.) that should be displayed.
+     */
+    default List<Component> provideMenuItems(AuditIssueContextMenuEvent event)
+    {
+        return emptyList();
+    }
 }

@@ -9,11 +9,9 @@
 package burp.api.montoya.ui.contextmenu;
 
 import burp.api.montoya.core.ToolSource;
-import burp.api.montoya.core.ToolType;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
 
-import java.awt.event.InputEvent;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,36 +40,8 @@ public interface ContextMenuEvent extends ComponentEvent, ToolSource, Invocation
      * This will return an empty list if no issues are applicable to the invocation.
      *
      * @return a List of {@link AuditIssue} objects representing the items that were shown or selected by the user when the context menu was invoked.
+     * @deprecated Use {@link ContextMenuItemsProvider#provideMenuItems(AuditIssueContextMenuEvent)} instead.
      */
+    @Deprecated
     List<AuditIssue> selectedIssues();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    ToolType toolType();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    boolean isFromTool(ToolType... toolType);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    InputEvent inputEvent();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    InvocationType invocationType();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    boolean isFrom(InvocationType... invocationType);
 }

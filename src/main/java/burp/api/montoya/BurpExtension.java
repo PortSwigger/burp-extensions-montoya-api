@@ -16,9 +16,9 @@ package burp.api.montoya;
 public interface BurpExtension
 {
     /**
-     * Invoked when the extension is loaded.
+     * Invoked when the extension is loaded. Any registered handlers will only be enabled once this method has completed.
      *
-     * @param api The api implementation to access the functionality of burp suite.
+     * @param api The API implementation to access the functionality of Burp Suite.
      */
     void initialize(MontoyaApi api);
 }

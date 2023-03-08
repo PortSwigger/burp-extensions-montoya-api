@@ -7,19 +7,19 @@ This repository holds the Burp Suite Extensions API for building user extensions
 Download
 --------
 
-Available on [Maven Central](https://search.maven.org/artifact/net.portswigger.burp.extensions/montoya-api) and in [Burp Suite](https://portswigger.net/burp/communitydownload).
+Available on [Maven Central](https://search.maven.org/search?q=Montoya-api) and in [Burp Suite](https://portswigger.net/burp/communitydownload).
 
 <h5>Maven</h5>
 
     <dependency>
         <groupId>net.portswigger.burp.extensions</groupId>
         <artifactId>montoya-api</artifactId>
-        <version>2023.2</version>
+        <version>2023.3</version>
     </dependency>
 
 <h5>Gradle</h5>
 
-    implementation 'net.portswigger.burp.extensions:montoya-api:2023.2'
+    implementation 'net.portswigger.burp.extensions:montoya-api:2023.3'
 
 Getting Started
 --------

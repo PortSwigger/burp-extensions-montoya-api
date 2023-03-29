@@ -66,6 +66,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return Version string
      */
+    @Override
     String httpVersion();
 
     /**

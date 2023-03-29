@@ -56,6 +56,34 @@ public interface BurpSuite
     void importProjectOptionsFromJson(String json);
 
     /**
+     * Export current user-level configuration in JSON format.
+     * This is the same format that can be saved and loaded via
+     * the Burp user interface. To include only certain sections of the
+     * configuration, you can optionally supply the path to each section that
+     * should be included, for example: "user_options.connections". If no
+     * paths are provided, then the entire configuration will be saved.
+     *
+     * @param paths A list of Strings representing the path to each
+     *              configuration section that should be included.
+     *
+     * @return A String representing the current configuration in JSON format.
+     */
+    String exportUserOptionsAsJson(String... paths);
+
+    /**
+     * Import a new user-level configuration from the JSON String provided.
+     * This is the same format that can be saved and
+     * loaded via the Burp user interface. Partial configurations are
+     * acceptable, and any settings not specified will be left unmodified.
+     * <p>
+     * Any project-level configuration options contained in the input will be
+     * ignored.
+     *
+     * @param json A JSON String containing the new configuration.
+     */
+    void importUserOptionsFromJson(String json);
+
+    /**
      * Command line arguments that were passed to Burp on startup.
      *
      * @return The command line arguments that were passed to Burp on startup.

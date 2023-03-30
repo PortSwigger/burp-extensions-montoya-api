@@ -17,6 +17,7 @@ import burp.api.montoya.ui.editor.RawEditor;
 import burp.api.montoya.ui.editor.WebSocketMessageEditor;
 import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
+import burp.api.montoya.ui.editor.extension.WebSocketMessageEditorProvider;
 import burp.api.montoya.ui.menu.MenuBar;
 import burp.api.montoya.ui.swing.SwingUtils;
 
@@ -70,6 +71,15 @@ public interface UserInterface
      * @return A {@link Registration} of the HTTP response editor provider.
      */
     Registration registerHttpResponseEditorProvider(HttpResponseEditorProvider provider);
+
+    /**
+     * This method can be used to register a provider of custom Web Socket message editors.
+     *
+     * @param provider The provider to register.
+     *
+     * @return A {@link Registration} of the Web Socket message editor provider.
+     */
+    Registration registerWebSocketMessageEditorProvider(WebSocketMessageEditorProvider provider);
 
     /**
      * Create a new instance of Burp's plain text editor, for the extension to use in its own UI.

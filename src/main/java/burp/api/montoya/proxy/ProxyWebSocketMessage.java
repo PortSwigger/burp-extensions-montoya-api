@@ -11,32 +11,35 @@ package burp.api.montoya.proxy;
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.ui.contextmenu.WebSocketMessage;
 import burp.api.montoya.websocket.Direction;
 
 /**
  * WebSocket message intercepted by the Proxy.
  */
-public interface ProxyWebSocketMessage
+public interface ProxyWebSocketMessage extends WebSocketMessage
 {
     /**
-     * This method retrieves the annotations for the message.
-     *
-     * @return The {@link Annotations} for the message.
+     * {@inheritDoc}
      */
+    @Override
     Annotations annotations();
 
     /**
-     * @return The direction of the message.
+     * {@inheritDoc}
      */
+    @Override
     Direction direction();
 
     /**
-     * @return WebSocket payload.
+     * {@inheritDoc}
      */
+    @Override
     ByteArray payload();
 
     /**
-     * @return The {@link HttpRequest} used to create the WebSocket.
+     * {@inheritDoc}
      */
+    @Override
     HttpRequest upgradeRequest();
 }

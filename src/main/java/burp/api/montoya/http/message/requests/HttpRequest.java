@@ -196,7 +196,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a copy of the {@code HttpRequest} with the updated HTTP parameters.<br>
-     * If a parameter does not exist in the request, a new one will be added.
      *
      * @param parameters HTTP parameters to update.
      *
@@ -206,7 +205,6 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * Create a copy of the {@code HttpRequest} with the updated HTTP parameters.<br>
-     * If a parameter does not exist in the request, a new one will be added.
      *
      * @param parameters HTTP parameters to update.
      *

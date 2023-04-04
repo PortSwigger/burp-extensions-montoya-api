@@ -21,7 +21,7 @@ import java.util.List;
  * server configuration that was in place at the time the client was created.
  * </p>
  */
-public interface CollaboratorClient
+public interface CollaboratorClient extends CollaboratorPayloadGenerator
 {
     /**
      * Generate new Burp Collaborator payloads. Options
@@ -35,6 +35,7 @@ public interface CollaboratorClient
      *
      * @throws IllegalStateException if Burp Collaborator is disabled
      */
+    @Override
     CollaboratorPayload generatePayload(PayloadOption... options);
 
     /**

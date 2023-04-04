@@ -22,6 +22,7 @@ import burp.api.montoya.ui.menu.MenuBar;
 import burp.api.montoya.ui.swing.SwingUtils;
 
 import java.awt.Component;
+import java.awt.Font;
 
 /**
  * This interface gives you access to various user interface related features.
@@ -128,12 +129,26 @@ public interface UserInterface
     /**
      * Identify the theme currently being used.
      *
-     * @return the current {@link Theme}
+     * @return The current {@link Theme}
      */
     Theme currentTheme();
 
     /**
-     * @return an instance of {@link SwingUtils}
+     * Access the message editor's font type and size.
+     *
+     * @return The current {@link java.awt.Font}, as specified in the <strong>Settings</strong> dialog under the <strong>HTTP message display</strong> setting.
+     */
+    Font currentEditorFont();
+
+    /**
+     * Access Burp's font size. 
+     *
+     * @return The current {@link java.awt.Font}, as specified in the <strong>Settings</strong> dialog under the <strong>Appearance</strong> setting.
+     */
+    Font currentDisplayFont();
+
+    /**
+     * @return An instance of {@link SwingUtils}
      */
     SwingUtils swingUtils();
 }

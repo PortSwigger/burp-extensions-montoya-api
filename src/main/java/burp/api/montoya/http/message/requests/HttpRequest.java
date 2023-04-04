@@ -159,6 +159,40 @@ public interface HttpRequest extends HttpMessage
     HttpRequest withMethod(String method);
 
     /**
+     * Create a copy of the {@code HttpRequest} with the added or updated header.<br>
+     * If the header exists in the request, it is updated.<br>
+     * If the header doesn't exist in the request, it is added.
+     *
+     * @param header HTTP header to add or update.
+     *
+     * @return A new {@code HttpRequest} with the added or updated header.
+     */
+    HttpRequest withHeader(HttpHeader header);
+
+    /**
+     * Create a copy of the {@code HttpRequest} with the added or updated header.<br>
+     * If the header exists in the request, it is updated.<br>
+     * If the header doesn't exist in the request, it is added.
+     *
+     * @param name  The name of the header.
+     * @param value The value of the header.
+     *
+     * @return A new {@code HttpRequest} with the added or updated header.
+     */
+    HttpRequest withHeader(String name, String value);
+
+    /**
+     * Create a copy of the {@code HttpRequest} with the HTTP parameter.<br>
+     * If the parameter exists in the request, it is updated.<br>
+     * If the parameter doesn't exist in the request, it is added.
+     *
+     * @param parameters HTTP parameter to add or update.
+     *
+     * @return A new {@code HttpRequest} with the added or updated parameter.
+     */
+    HttpRequest withParameter(HttpParameter parameters);
+
+    /**
      * Create a copy of the {@code HttpRequest} with the added HTTP parameters.
      *
      * @param parameters HTTP parameters to add.

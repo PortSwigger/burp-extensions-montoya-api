@@ -8,6 +8,7 @@
 
 package burp.api.montoya.scanner.audit.issues;
 
+import burp.api.montoya.collaborator.Interaction;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.scanner.ScanCheck;
@@ -90,6 +91,14 @@ public interface AuditIssue
      * which the issue was generated.
      */
     List<HttpRequestResponse> requestResponses();
+
+    /**
+     * Collaborator interactions that caused the issue to be generated.
+     *
+     * @return The list of Burp Collaborator {@link Interaction} objects that caused the issue to be generated.
+     * If there are no interactions, this will be empty.
+     */
+    List<Interaction> collaboratorInteractions();
 
     /**
      * Definition for this issue.

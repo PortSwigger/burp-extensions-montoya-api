@@ -27,6 +27,7 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.http.sessions.ActionResult;
 import burp.api.montoya.intruder.GeneratedPayload;
 import burp.api.montoya.intruder.HttpRequestTemplate;
+import burp.api.montoya.intruder.HttpRequestTemplateGenerationOptions;
 import burp.api.montoya.intruder.PayloadProcessingAction;
 import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.persistence.PersistedList;
@@ -52,8 +53,8 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueDefinition;
 import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
-import burp.api.montoya.ui.menu.Menu;
 import burp.api.montoya.ui.menu.BasicMenuItem;
+import burp.api.montoya.ui.menu.Menu;
 import burp.api.montoya.websocket.BinaryMessageAction;
 import burp.api.montoya.websocket.MessageAction;
 import burp.api.montoya.websocket.TextMessageAction;
@@ -161,6 +162,10 @@ public interface MontoyaObjectFactory
     HttpRequestTemplate httpRequestTemplate(ByteArray content, List<Range> insertionPointOffsets);
 
     HttpRequestTemplate httpRequestTemplate(HttpRequest request, List<Range> insertionPointOffsets);
+
+    HttpRequestTemplate httpRequestTemplate(ByteArray content, HttpRequestTemplateGenerationOptions options);
+
+    HttpRequestTemplate httpRequestTemplate(HttpRequest request, HttpRequestTemplateGenerationOptions options);
 
     PayloadProcessingResult payloadProcessingResult(ByteArray processedPayload, PayloadProcessingAction action);
 

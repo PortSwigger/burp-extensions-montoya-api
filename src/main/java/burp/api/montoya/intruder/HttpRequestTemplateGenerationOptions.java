@@ -14,12 +14,12 @@ package burp.api.montoya.intruder;
 public enum HttpRequestTemplateGenerationOptions
 {
     /**
-     * Replace base parameter value with offsets
+     * Replace base parameter value with offsets.
      */
     REPLACE_BASE_PARAMETER_VALUE_WITH_OFFSETS,
 
     /**
-     * Append offsets to base parameter value
+     * Append offsets to base parameter value.
      */
     APPEND_OFFSETS_TO_BASE_PARAMETER_VALUE
 }

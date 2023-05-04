@@ -134,16 +134,16 @@ public interface UserInterface
     Theme currentTheme();
 
     /**
-     * The current message editor font. This is specified within Settings -> User Interface -> Inspector and message editor.
+     * Access the message editor's font type and size.
      *
-     * @return The current {@link java.awt.Font}
+     * @return The current {@link java.awt.Font}, as specified in the **Settings** dialog under the **HTTP message display** setting.
      */
     Font currentEditorFont();
 
     /**
-     * The current display font. This is specified within Settings -> User Interface -> Display.
+     * Access Burp's font size. 
      *
-     * @return The current {@link java.awt.Font}
+     * @return The current {@link java.awt.Font}, as specified in the **Settings** dialog under the **Appearance** setting.
      */
     Font currentDisplayFont();
 

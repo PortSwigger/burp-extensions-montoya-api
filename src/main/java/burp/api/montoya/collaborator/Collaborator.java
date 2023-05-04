@@ -37,11 +37,9 @@ public interface Collaborator
     CollaboratorClient restoreClient(SecretKey secretKey);
 
     /**
-     * Obtains the default Burp Collaborator payload generator
-     * which is associated with the currently selected sub-tab within the Collaborator tool.
+     * Obtain Burp's default Collaborator payload generator. This enables you to generate Collaborator payloads that are linked to the Collaborator tab. Any interactions are shown in the Collaborator results tab that was open when the payload was generated.
      *
-     * @return The instance of {@link CollaboratorPayloadGenerator} that can be used to
-     * generate Collaborator payloads.
+     * @return The current instance of Burp's default {@link CollaboratorPayloadGenerator}.
      */
     CollaboratorPayloadGenerator defaultPayloadGenerator();
 }

@@ -63,10 +63,10 @@ public interface HttpRequestTemplate
 
     /**
      * Create a new {@link HttpRequestTemplate} instance
-     * from an {@link HttpRequest} object with insertion point offsets at each URL, cookie and body parameter position.
+     * from an {@link HttpRequest} object with insertion point offsets at each URL, cookie, and body parameter position.
      *
      * @param request               An instance of {@link HttpRequest}.
-     * @param options               Options to use when generating template
+     * @param options               Options to use when generating the template.
      *
      * @return A new instance of {@link HttpRequestTemplate}.
      */
@@ -77,10 +77,10 @@ public interface HttpRequestTemplate
 
     /**
      * Create a new {@link HttpRequestTemplate} instance
-     * from an HTTP request in a byte array form with insertion point offsets at each URL, cookie and body parameter position.
+     * from an HTTP request in a byte array form with insertion point offsets at each URL, cookie, and body parameter position.
      *
      * @param content               An HTTP request in a byte array form.
-     * @param options               Options to use when generating template
+     * @param options               Options to use when generating the template.
      *
      * @return A new instance of {@link HttpRequestTemplate}.
      */

@@ -95,8 +95,7 @@ public interface AuditIssue
     /**
      * Collaborator interactions that caused the issue to be generated.
      *
-     * @return The list of {@link Interaction} objects on the basis of
-     * which the issue was generated. This will be empty if there were no interactions.
+     * @return The list of Burp Collaborator {@link Interaction} objects that caused the issue to be generated. If there are no interactions, this will be empty.
      */
     List<Interaction> collaboratorInteractions();
 

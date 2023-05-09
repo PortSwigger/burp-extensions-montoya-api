@@ -136,14 +136,14 @@ public interface UserInterface
     /**
      * Access the message editor's font type and size.
      *
-     * @return The current {@link java.awt.Font}, as specified in the **Settings** dialog under the **HTTP message display** setting.
+     * @return The current {@link java.awt.Font}, as specified in the <strong>Settings</strong> dialog under the <strong>HTTP message display</strong> setting.
      */
     Font currentEditorFont();
 
     /**
      * Access Burp's font size. 
      *
-     * @return The current {@link java.awt.Font}, as specified in the **Settings** dialog under the **Appearance** setting.
+     * @return The current {@link java.awt.Font}, as specified in the <strong>Settings</strong> dialog under the <strong>Appearance</strong> setting.
      */
     Font currentDisplayFont();
 

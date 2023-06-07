@@ -19,12 +19,12 @@ public enum HttpMode
     AUTO,
     /**
      * Use HTTP 1 protocol for the connection.<br>
-     * Will error is server is HTTP 2 only.
+     * Will error if server is HTTP 2 only.
      */
     HTTP_1,
     /**
      * Use HTTP 2 protocol for the connection.<br>
-     * Will error is server is HTTP 1 only.
+     * Will error if server is HTTP 1 only.
      */
     HTTP_2,
     /**

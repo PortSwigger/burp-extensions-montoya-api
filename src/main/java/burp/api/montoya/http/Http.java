@@ -76,6 +76,16 @@ public interface Http
     HttpRequestResponse sendRequest(HttpRequest request, HttpMode httpMode, String connectionId);
 
     /**
+     * Send HTTP request with specific request options and retrieve its response.
+     *
+     * @param request        The full HTTP request.
+     * @param requestOptions A {@link RequestOptions} value which indicates how a request should be sent.
+     *
+     * @return An object that implements the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the response.
+     */
+    HttpRequestResponse sendRequest(HttpRequest request, RequestOptions requestOptions);
+
+    /**
      * Create a new response keyword analyzer.
      *
      * @param keywords A list of keywords the analyzer will look for.

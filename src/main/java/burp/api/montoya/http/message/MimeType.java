@@ -35,6 +35,8 @@ public enum MimeType
     VIDEO("video"),
     APPLICATION_FLASH("a flash object"),
     APPLICATION_UNKNOWN("an unknown application type"),
+    FONT_WOFF("a WOFF font file"),
+    FONT_WOFF2("a WOFF2 font file"),
     LEGACY_SER_AMF("");
 
     private final String description;

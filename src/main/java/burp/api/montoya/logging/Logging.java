@@ -21,7 +21,10 @@ public interface Logging
      * Burp user to configure how that output is handled from within the UI.
      *
      * @return The extension's standard output stream.
+     *
+     * @deprecated Use {@link burp.api.montoya.logging.Logging#logToOutput} instead.
      */
+    @Deprecated
     PrintStream output();
 
     /**
@@ -31,7 +34,10 @@ public interface Logging
      * within the UI.
      *
      * @return The extension's standard error stream.
+     *
+     * @deprecated Use {@link burp.api.montoya.logging.Logging#logToError} instead.
      */
+    @Deprecated
     PrintStream error();
 
     /**
@@ -49,6 +55,23 @@ public interface Logging
      * @param message The message to print.
      */
     void logToError(String message);
+
+    /**
+     * This method prints a message and a stack trace to the current extension's standard
+     * error stream.
+     *
+     * @param message The message to print.
+     * @param cause The cause of the error being logged.
+     */
+    void logToError(String message, Throwable cause);
+
+    /**
+     * This method prints a stack trace to the current extension's standard
+     * error stream.
+     *
+     * @param cause The cause of the error being logged.
+     */
+    void logToError(Throwable cause);
 
     /**
      * This method can be used to display a debug event in the Burp Suite

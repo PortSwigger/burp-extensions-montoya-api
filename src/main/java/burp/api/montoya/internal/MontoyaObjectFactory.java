@@ -16,6 +16,7 @@ import burp.api.montoya.core.HighlightColor;
 import burp.api.montoya.core.Marker;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.RequestOptions;
 import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
 import burp.api.montoya.http.message.HttpHeader;
@@ -320,4 +321,6 @@ public interface MontoyaObjectFactory
     Menu menu(String caption);
 
     BasicMenuItem basicMenuItem(String caption);
+
+    RequestOptions requestOptions();
 }

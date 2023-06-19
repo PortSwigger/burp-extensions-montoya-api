@@ -8,6 +8,8 @@
 
 package burp.api.montoya.utilities;
 
+import burp.api.montoya.core.ByteArray;
+
 /**
  * This interface gives you access to number string conversion features.
  */
@@ -21,6 +23,13 @@ public interface NumberUtils
     String convertBinaryToOctal(String binaryString);
 
     /**
+     * @param byteArray the byte array to convert
+     *
+     * @return string containing the octal representation
+     */
+    String convertBinaryToOctal(ByteArray byteArray);
+
+    /**
      * @param binaryString the binary string to convert
      *
      * @return string containing the decimal representation
@@ -28,11 +37,25 @@ public interface NumberUtils
     String convertBinaryToDecimal(String binaryString);
 
     /**
+     * @param byteArray the byte array to convert
+     *
+     * @return string containing the decimal representation
+     */
+    String convertBinaryToDecimal(ByteArray byteArray);
+
+    /**
      * @param binaryString the binary string to convert
      *
      * @return string containing the hex representation
      */
     String convertBinaryToHex(String binaryString);
+
+    /**
+     * @param byteArray the byte array to convert
+     *
+     * @return string containing the hex representation
+     */
+    String convertBinaryToHex(ByteArray byteArray);
 
     /**
      * @param octalString the octal string to convert

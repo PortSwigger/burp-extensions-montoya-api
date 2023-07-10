@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'signing'
+    id 'net.researchgate.release'
 }
 
 repositories {
@@ -37,6 +38,13 @@ publishing {
     }
 }
 
+release {
+    tagTemplate = '$name-$version'
+    git {
+        requireBranch.set('main')
+    }
+}
 
+createReleaseTag.dependsOn publish
 
 apply(from: "portswigger.gradle")

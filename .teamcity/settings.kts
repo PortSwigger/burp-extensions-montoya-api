@@ -82,6 +82,7 @@ object CompileAndGenerateJavaDocs : BuildType({
         vcs {
             triggerRules = """
                     -:.teamcity/**
+                    -:docs/**
                     -:comment=^\[Gradle Release Plugin\].*${'$'}:gradle.properties
                 """.trimIndent()
             perCheckinTriggering = false

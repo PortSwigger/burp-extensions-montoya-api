@@ -65,7 +65,7 @@ object CompileAndGenerateJavaDocs : BuildType({
         }
 
         gradle {
-            tasks = "javadoc"
+            tasks = "build javadoc"
             dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
             dockerPull = true
             dockerImagePlatform = GradleBuildStep.ImagePlatform.Linux

@@ -28,7 +28,7 @@ Create a class that implements [BurpExtension](https://github.com/PortSwigger/bu
 The initialize method will give you an implementation of the [MontoyaApi](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/api/src/main/java/burp/api/montoya/MontoyaApi.java) which can be used to interact and modify Burp suite.
 
 Documentation
---------
+-------- 
 * [Javadoc](https://portswigger.github.io/burp-extensions-montoya-api/javadoc/burp/api/montoya/MontoyaApi.html)
 
 Examples

@@ -34,7 +34,6 @@ version = "2020.1"
 project {
     buildType(CompileAndGenerateJavaDocs)
     buildType(PublishToNexus)
-    buildTypesOrder = listOf(CompileAndGenerateJavaDocs, PublishToNexus)
 }
 
 object CompileAndGenerateJavaDocs : BuildType({
@@ -58,7 +57,7 @@ object CompileAndGenerateJavaDocs : BuildType({
         }
 
         gradle {
-            tasks = "javadocs"
+            tasks = "javadoc"
             dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
             dockerPull = true
             dockerImagePlatform = GradleBuildStep.ImagePlatform.Linux

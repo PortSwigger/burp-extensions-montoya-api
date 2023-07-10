@@ -80,10 +80,15 @@ object CompileAndGenerateJavaDocs : BuildType({
 
     triggers {
         vcs {
-            triggerRules = """-:comment=^\[Gradle Release Plugin\].*${'$'}:gradle.properties"""
-            branchFilter = ""
-            perCheckinTriggering = true
+            triggerRules = """
+                    -:.teamcity/**
+                    -:comment=^\[Gradle Release Plugin\].*${'$'}:gradle.properties
+                """.trimIndent()
+            perCheckinTriggering = false
             enableQueueOptimization = false
+            branchFilter = """
+                    +:<default>
+                """.trimIndent()
         }
     }
 

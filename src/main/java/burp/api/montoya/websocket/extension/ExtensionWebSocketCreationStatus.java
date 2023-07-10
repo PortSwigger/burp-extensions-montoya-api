@@ -9,7 +9,7 @@
 package burp.api.montoya.websocket.extension;
 
 /**
- * Status of a WebSocket creation attempt
+ * Status of a WebSocket creation attempt.
  */
 public enum ExtensionWebSocketCreationStatus
 {

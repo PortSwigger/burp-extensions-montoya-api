@@ -10,12 +10,12 @@ import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 version = "2020.1"
 
 project {
-    buildType(GenerateJavaDocsAndPublishToNexus)
+    buildType(GenerateArtifactsAndPublishToNexus)
 }
 
-object GenerateJavaDocsAndPublishToNexus : BuildType({
+object GenerateArtifactsAndPublishToNexus : BuildType({
     uuid = "603cefbe-4e79-4e9d-a12f-91923d088ca3"
-    name = "Generate Java Docs and publish to nexus"
+    name = "Generate artifacts and publish to Nexus"
     maxRunningBuilds = 1
 
     vcs {

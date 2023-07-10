@@ -21,7 +21,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'signing'
-    id 'net.researchgate.release'
+    id 'net.researchgate.release' version '3.0.1'
 }
 
 compileJava {

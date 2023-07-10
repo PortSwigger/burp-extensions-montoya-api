@@ -1,3 +1,22 @@
+buildscript {
+    ext {
+        mavenExternalUrl = findProperty('mavenExternalUrl') ?: 'https://maven-external.devtools.portswigger.com'
+        mavenInternalUrl = findProperty('mavenInternalUrl') ?: 'https://maven-internal.devtools.portswigger.com'
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url mavenExternalUrl
+        }
+        maven {
+            url mavenInternalUrl
+        }
+    }
+    dependencies {
+        classpath 'net.researchgate:gradle-release:3.0.1'
+    }
+}
+
 plugins {
     id 'java'
     id 'maven-publish'
@@ -5,27 +24,10 @@ plugins {
     id 'net.researchgate.release'
 }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation(
-            "org.junit.jupiter:junit-jupiter:${junit5Version}",
-            "org.assertj:assertj-core:${assertJVersion}",
-            "org.mockito:mockito-core:${mockitoVersion}"
-    )
-}
-
 compileJava {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
     options.encoding = "UTF-8"
-}
-
-test {
-    useJUnitPlatform()
 }
 
 publishing {

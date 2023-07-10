@@ -45,7 +45,7 @@ object GenerateArtifactsAndPublishToNexus : BuildType({
                 mv build/docs .
                 git add docs
                 git commit -m "Automated update of Java Docs"
-                git pull
+                git pull --rebase
                 git push
             """
             dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"

@@ -30,8 +30,55 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.1"
 
 project {
+    buildType(CompileAndGenerateJavaDocs)
     buildType(PublishToNexus)
+    buildTypesOrder = listOf(CompileAndGenerateJavaDocs, PublishToNexus)
 }
+
+object CompileAndGenerateJavaDocs : BuildType({
+    uuid = "603cefbe-4e79-4e9d-a12f-91923d088ca3"
+    name = "Compile and generate Java Docs"
+    maxRunningBuilds = 1
+
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            scriptContent = """
+                git rm -r docs
+            """
+            dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
+            dockerPull = true
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+        gradle {
+            tasks = "javadocs"
+            dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
+            dockerPull = true
+            dockerImagePlatform = GradleBuildStep.ImagePlatform.Linux
+        }
+
+        script {
+            scriptContent = """
+                git add docs
+                git commit -m "Automated update of Java Docs"
+                git pull
+                git push
+            """
+            dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
+            dockerPull = true
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    failureConditions {
+        executionTimeoutMin = 5
+    }
+})
 
 object PublishToNexus : BuildType({
     uuid = "76a8fa7a-4a29-4657-9d9d-951fab9cfbd6"

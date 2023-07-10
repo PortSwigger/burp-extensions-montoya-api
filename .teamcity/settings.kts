@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.v2018_2.project
 import jetbrains.buildServer.configs.kotlin.v2018_2.version
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.vcs
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -65,6 +66,7 @@ object CompileAndGenerateJavaDocs : BuildType({
 
         script {
             scriptContent = """
+                mv build/docs .
                 git add docs
                 git commit -m "Automated update of Java Docs"
                 git pull
@@ -73,6 +75,15 @@ object CompileAndGenerateJavaDocs : BuildType({
             dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
             dockerPull = true
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """-:comment=^\[Gradle Release Plugin\].*${'$'}:gradle.properties"""
+            branchFilter = ""
+            perCheckinTriggering = true
+            enableQueueOptimization = false
         }
     }
 

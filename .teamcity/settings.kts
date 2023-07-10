@@ -1,8 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2018_2.BuildType
-import jetbrains.buildServer.configs.kotlin.v2018_2.CheckoutMode
 import jetbrains.buildServer.configs.kotlin.v2018_2.DslContext
-import jetbrains.buildServer.configs.kotlin.v2018_2.FailureAction
-import jetbrains.buildServer.configs.kotlin.v2018_2.PublishMode
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.GradleBuildStep
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.gradle
@@ -45,13 +42,9 @@ object CompileAndGenerateJavaDocs : BuildType({
     name = "Compile and generate Java Docs"
     maxRunningBuilds = 1
 
-    artifactRules = ".build-cache/** => build-cache.zip"
-    publishArtifacts = PublishMode.SUCCESSFUL
-
     vcs {
         root(DslContext.settingsRoot)
         cleanCheckout = true
-        checkoutMode = CheckoutMode.ON_AGENT
     }
 
     steps {
@@ -65,7 +58,7 @@ object CompileAndGenerateJavaDocs : BuildType({
         }
 
         gradle {
-            tasks = "build javadoc"
+            tasks = "javadoc"
             dockerImage = "docker-internal.devtools.portswigger.com/portswigger/desktop-linux:java-max"
             dockerPull = true
             dockerImagePlatform = GradleBuildStep.ImagePlatform.Linux
@@ -111,7 +104,6 @@ object PublishToNexus : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-        checkoutMode = CheckoutMode.ON_AGENT
     }
 
     steps {
@@ -125,15 +117,9 @@ object PublishToNexus : BuildType({
 
     dependencies {
         dependency(CompileAndGenerateJavaDocs) {
-            snapshot {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-
-            artifacts {
-                artifactRules = "build-cache.zip!** => .build-cache/"
-            }
         }
     }
+
     failureConditions {
         executionTimeoutMin = 5
     }

@@ -51,6 +51,7 @@ object CompileAndGenerateJavaDocs : BuildType({
     vcs {
         root(DslContext.settingsRoot)
         cleanCheckout = true
+        checkoutMode = CheckoutMode.ON_AGENT
     }
 
     steps {

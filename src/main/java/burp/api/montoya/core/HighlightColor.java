@@ -42,7 +42,7 @@ public enum HighlightColor
     }
 
     /**
-     * Create HighlightColor from display name string
+     * Create HighlightColor from display name string.
      *
      * @param colorName Color's display name
      *

@@ -17,6 +17,7 @@ import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.List;
+import java.util.Optional;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -41,11 +42,11 @@ public interface HttpRequestResponse
     Annotations annotations();
 
     /**
-     * Retrieve the timing data associated with this request.
+     * Retrieve the timing data associated with this request if available.
      *
      * @return The timing data.
      */
-    TimingData timingData();
+    Optional<TimingData> timingData();
 
     /**
      * Retrieve the URL for the request.<br>

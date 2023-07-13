@@ -11,6 +11,7 @@ package burp.api.montoya.http.message;
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.Marker;
 import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.handler.TimingData;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -38,6 +39,13 @@ public interface HttpRequestResponse
      * @return The annotations.
      */
     Annotations annotations();
+
+    /**
+     * Retrieve the timing data associated with this request.
+     *
+     * @return The timing data.
+     */
+    TimingData timingData();
 
     /**
      * Retrieve the URL for the request.<br>

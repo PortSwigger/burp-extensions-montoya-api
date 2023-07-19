@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://maven-external.devtools.portswigger.com"
+        }
+        maven {
+            url "https://maven-internal.devtools.portswigger.com"
+        }
+    }
+}
+
+rootProject.name='montoya-api'

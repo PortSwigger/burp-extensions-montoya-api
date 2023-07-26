@@ -9,6 +9,7 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
+import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -70,6 +71,11 @@ public interface ProxyHttpRequestResponse
      * @return The hostname or IP address for the service.
      */
     String host();
+
+    /**
+     * @return The MIME type of the final response.
+     */
+    MimeType mimeType();
 
     /**
      * @return The port number for the service.

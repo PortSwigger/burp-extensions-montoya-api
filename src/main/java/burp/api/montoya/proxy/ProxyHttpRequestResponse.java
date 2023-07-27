@@ -10,9 +10,12 @@ package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.MimeType;
+import burp.api.montoya.http.message.StatusCodeClass;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
+
+import java.util.regex.Pattern;
 
 /**
  * HTTP request and response intercepted by the Proxy.
@@ -62,7 +65,7 @@ public interface ProxyHttpRequestResponse
      * Path and File for the issued final request.
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
-     * @return the path and file in the request
+     * @return the path and file in the request.
      * @throws MalformedRequestException if request is malformed.
      */
     String path();
@@ -73,17 +76,12 @@ public interface ProxyHttpRequestResponse
     String host();
 
     /**
-     * @return The MIME type of the final response.
-     */
-    MimeType mimeType();
-
-    /**
      * @return The port number for the service.
      */
     int port();
 
     /**
-     * @return True is a secure protocol is used for the connection, false otherwise.
+     * @return True if a secure protocol is used for the connection, false otherwise.
      */
     boolean secure();
 
@@ -94,17 +92,83 @@ public interface ProxyHttpRequestResponse
 
     /**
      * HTTP Version text parsed from the request line for HTTP 1 messages.
-     * HTTP 2 messages will return "HTTP/2"
+     * HTTP 2 messages will return "HTTP/2".
      *
-     * @return Version string
+     * @return Version string.
      */
     String requestHttpVersion();
 
     /**
-     * Body of the issued final request
+     * Body of the issued final request.
      *
      * @return The body of a message as a {@code String}.
      */
     String requestBody();
 
+    /**
+     * @return True if there is a response.
+     */
+    boolean hasResponse();
+
+    /**
+     * @return True if there are any notes for this HTTP request and response.
+     */
+    boolean hasNotes();
+
+    /**
+     * @return True if there is a highlight color for this HTTP request and response.
+     */
+    boolean hasHighlightColor();
+
+    /**
+     * @return True if the HTTP request is in-scope.
+     */
+    boolean isInScope();
+
+    /**
+     * Searches the data in the HTTP request and response for the specified search term.
+     *
+     * @param searchTerm    The value to be searched for.
+     * @param caseSensitive Flags whether the search is case-sensitive.
+     *
+     * @return True if the search term is found.
+     */
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * Searches the data in the HTTP request and response for the specified regular expression.
+     *
+     * @param pattern The regular expression to be searched for.
+     *
+     * @return True if the pattern is matched.
+     */
+    boolean contains(Pattern pattern);
+
+    /**
+     * Test whether the status code is in the specified class.
+     *
+     * @param statusCodeClass The class of status code to test.
+     *
+     * @return True if the status code is in the class.
+     */
+    boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
+
+    /**
+     * @return True if the request has parameters.
+     */
+    boolean hasParameters();
+
+    /**
+     * Obtain the MIME type of the response, as stated in the HTTP headers.
+     *
+     * @return The stated MIME type.
+     */
+    MimeType statedMimeType();
+
+    /**
+     * Obtain the MIME type of the response, as inferred from the contents of the HTTP message body.
+     *
+     * @return The inferred MIME type.
+     */
+    MimeType inferredMimeType();
 }

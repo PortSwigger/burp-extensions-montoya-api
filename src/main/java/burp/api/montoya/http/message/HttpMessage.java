@@ -14,6 +14,7 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Burp message retrieve common information shared by {@link HttpRequest} and {@link HttpResponse}.
@@ -62,6 +63,25 @@ public interface HttpMessage
      * @return A list of markers.
      */
     List<Marker> markers();
+
+    /**
+     * Searches the data in the HTTP message for the specified search term.
+     *
+     * @param searchTerm    The value to be searched for.
+     * @param caseSensitive Flags whether the search is case-sensitive.
+     *
+     * @return True if the search term is found.
+     */
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * Searches the data in the HTTP message for the specified regular expression.
+     *
+     * @param pattern The regular expression to be searched for.
+     *
+     * @return True if the pattern is matched.
+     */
+    boolean contains(Pattern pattern);
 
     /**
      * Message as a byte array.

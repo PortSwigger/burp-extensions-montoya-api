@@ -14,11 +14,13 @@ import burp.api.montoya.http.message.Cookie;
 import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.MimeType;
+import burp.api.montoya.http.message.StatusCodeClass;
 import burp.api.montoya.http.message.responses.analysis.Attribute;
 import burp.api.montoya.http.message.responses.analysis.AttributeType;
 import burp.api.montoya.http.message.responses.analysis.KeywordCount;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -33,6 +35,15 @@ public interface HttpResponse extends HttpMessage
      * @return HTTP status code.
      */
     short statusCode();
+
+    /**
+     * Test whether the status code is in the specified class.
+     *
+     * @param statusCodeClass The class of status code to test.
+     *
+     * @return True if the status code is in the class.
+     */
+    boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
 
     /**
      * Obtain the HTTP reason phrase contained in the response for HTTP 1 messages.
@@ -119,6 +130,18 @@ public interface HttpResponse extends HttpMessage
      * @return List of {@link Attribute} objects.
      */
     List<Attribute> attributes(AttributeType... types);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(Pattern pattern);
 
     /**
      * {@inheritDoc}

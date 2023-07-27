@@ -18,6 +18,7 @@ import burp.api.montoya.http.message.params.HttpParameter;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -86,6 +87,11 @@ public interface HttpRequest extends HttpMessage
     List<ParsedHttpParameter> parameters();
 
     /**
+     * @return True if the HTTP request has parameters.
+     */
+    boolean hasParameters();
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -108,6 +114,23 @@ public interface HttpRequest extends HttpMessage
      */
     @Override
     List<Marker> markers();
+
+    /**
+     * @return True if the HTTP request is in-scope.
+     */
+    boolean isInScope();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(Pattern pattern);
 
     /**
      * {@inheritDoc}

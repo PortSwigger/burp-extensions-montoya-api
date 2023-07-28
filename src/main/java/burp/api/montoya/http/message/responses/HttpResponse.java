@@ -37,6 +37,14 @@ public interface HttpResponse extends HttpMessage
     short statusCode();
 
     /**
+     * Obtain the HTTP reason phrase contained in the response for HTTP 1 messages.
+     * HTTP 2 messages will return a mapped phrase based on the status code.
+     *
+     * @return HTTP Reason phrase.
+     */
+    String reasonPhrase();
+
+    /**
      * Test whether the status code is in the specified class.
      *
      * @param statusCodeClass The class of status code to test.
@@ -44,14 +52,6 @@ public interface HttpResponse extends HttpMessage
      * @return True if the status code is in the class.
      */
     boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
-
-    /**
-     * Obtain the HTTP reason phrase contained in the response for HTTP 1 messages.
-     * HTTP 2 messages will return a mapped phrase based on the status code.
-     *
-     * @return HTTP Reason phrase.
-     */
-    String reasonPhrase();
 
     /**
      * Return the HTTP Version text parsed from the response line for HTTP 1 messages.

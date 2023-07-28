@@ -53,7 +53,7 @@ public interface ByteUtils
     int indexOf(byte[] data, byte[] searchTerm, boolean caseSensitive, int from, int to);
 
     /**
-     * Searches the data in the ByteArray for the first occurrence of a specified pattern.
+     * This method searches a piece of data for the first occurrence of a specified pattern.
      *
      * @param data    The data to be searched.
      * @param pattern The pattern to be matched.
@@ -63,16 +63,16 @@ public interface ByteUtils
     int indexOf(byte[] data, Pattern pattern);
 
     /**
-     * Searches the data in the ByteArray for the first occurrence of a specified pattern.
+     * This method searches a piece of data for the first occurrence of a specified pattern.
      *
-     * @param data                The data to be searched.
-     * @param pattern             The pattern to be matched.
-     * @param startIndexInclusive The inclusive start index for the search.
-     * @param endIndexExclusive   The exclusive end index for the search.
+     * @param data    The data to be searched.
+     * @param pattern The pattern to be matched.
+     * @param from    The offset within data where the search should begin.
+     * @param to      The offset within data where the search should end.
      *
      * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
      */
-    int indexOf(byte[] data, Pattern pattern, int startIndexInclusive, int endIndexExclusive);
+    int indexOf(byte[] data, Pattern pattern, int from, int to);
 
     /**
      * This method searches a piece of data and counts all matches for a specified pattern.
@@ -109,7 +109,7 @@ public interface ByteUtils
     int countMatches(byte[] data, byte[] searchTerm, boolean caseSensitive, int from, int to);
 
     /**
-     * Searches the data in the ByteArray and counts all matches for a specified pattern.
+     * This method searches a piece of data and counts all matches for a specified pattern.
      *
      * @param data    The data to be searched.
      * @param pattern The pattern to be matched.
@@ -119,16 +119,16 @@ public interface ByteUtils
     int countMatches(byte[] data, Pattern pattern);
 
     /**
-     * Searches the data in the ByteArray and counts all matches for a specified pattern.
+     * This method searches a piece of data and counts all matches for a specified pattern.
      *
-     * @param data                The data to be searched.
-     * @param pattern             The pattern to be matched.
-     * @param startIndexInclusive The inclusive start index for the search.
-     * @param endIndexExclusive   The exclusive end index for the search.
+     * @param data    The data to be searched.
+     * @param pattern The pattern to be matched.
+     * @param from    The offset within data where the search should begin.
+     * @param to      The offset within data where the search should end.
      *
      * @return The count of all matches of the pattern within the specified bounds.
      */
-    int countMatches(byte[] data, Pattern pattern, int startIndexInclusive, int endIndexExclusive);
+    int countMatches(byte[] data, Pattern pattern, int from, int to);
 
     /**
      * This method can be used to convert data from an array of bytes into String form. The conversion does not reflect any particular character set, and a byte with the

@@ -28,6 +28,11 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface HttpRequest extends HttpMessage
 {
     /**
+     * @return True if the request is in-scope.
+     */
+    boolean isInScope();
+
+    /**
      * HTTP service for the request.
      *
      * @return An {@link HttpService} object containing details of the HTTP service.
@@ -87,7 +92,7 @@ public interface HttpRequest extends HttpMessage
     List<ParsedHttpParameter> parameters();
 
     /**
-     * @return True if the HTTP request has parameters.
+     * @return True if the request has parameters.
      */
     boolean hasParameters();
 
@@ -114,11 +119,6 @@ public interface HttpRequest extends HttpMessage
      */
     @Override
     List<Marker> markers();
-
-    /**
-     * @return True if the HTTP request is in-scope.
-     */
-    boolean isInScope();
 
     /**
      * {@inheritDoc}

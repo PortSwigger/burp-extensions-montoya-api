@@ -18,6 +18,7 @@ import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -37,9 +38,29 @@ public interface HttpRequestResponse
     HttpResponse response();
 
     /**
+     * @return True if there is an HTTP response message.
+     */
+    boolean hasResponse();
+
+    /**
      * @return The annotations.
      */
     Annotations annotations();
+
+    /**
+     * @return True if there are any notes for this HTTP request and response.
+     */
+    boolean hasNotes();
+
+    /**
+     * @return True if there is a highlight color for this HTTP request and response.
+     */
+    boolean hasHighlightColor();
+
+    /**
+     * @return True if the HTTP request is in-scope.
+     */
+    boolean isInScope();
 
     /**
      * Retrieve the timing data associated with this request if available.
@@ -77,6 +98,34 @@ public interface HttpRequestResponse
     short statusCode();
 
     /**
+     * Test whether the HTTP status code is in the specified class.
+     *
+     * @param statusCodeClass The class of HTTP status code to test.
+     *
+     * @return True if the HTTP status code is in the class.
+     */
+    boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
+
+    /**
+     * @return True if the request has parameters.
+     */
+    boolean hasParameters();
+
+    /**
+     * Obtain the MIME type of the response, as stated in the HTTP headers.
+     *
+     * @return The stated MIME type.
+     */
+    MimeType statedMimeType();
+
+    /**
+     * Obtain the MIME type of the response, as inferred from the contents of the HTTP message body.
+     *
+     * @return The inferred MIME type.
+     */
+    MimeType inferredMimeType();
+
+    /**
      * @return List of request markers
      */
     List<Marker> requestMarkers();
@@ -85,6 +134,25 @@ public interface HttpRequestResponse
      * @return List of response markers
      */
     List<Marker> responseMarkers();
+
+    /**
+     * Searches the data in the HTTP request and response for the specified search term.
+     *
+     * @param searchTerm    The value to be searched for.
+     * @param caseSensitive Flags whether the search is case-sensitive.
+     *
+     * @return True if the search term is found.
+     */
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * Searches the data in the HTTP request and response for the specified regular expression.
+     *
+     * @param pattern The regular expression to be searched for.
+     *
+     * @return True if the pattern is matched.
+     */
+    boolean contains(Pattern pattern);
 
     /**
      * Create a copy of the {@code HttpRequestResponse} in temporary file.<br>

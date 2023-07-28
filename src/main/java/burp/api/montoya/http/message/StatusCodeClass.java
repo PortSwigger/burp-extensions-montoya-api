@@ -25,7 +25,7 @@ public enum StatusCodeClass
      *
      * @return True if the status code is in the status code class.
      */
-    boolean contains(short statusCode)
+    public boolean contains(short statusCode)
     {
         return range.contains(statusCode);
     }

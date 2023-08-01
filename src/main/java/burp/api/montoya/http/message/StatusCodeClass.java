@@ -6,23 +6,58 @@ package burp.api.montoya.http.message;
 public enum StatusCodeClass
 {
     /**
-     * The Enum that represents status codes 100 to 199.
+     * Informational response (100 to 199).
      */
-    CLASS_1XX_INFORMATIONAL_RESPONSE,
+    CLASS_1XX_INFORMATIONAL_RESPONSE(100, 200),
     /**
-     * The Enum that represents status codes 200 to 299.
+     * Success (200 to 299).
      */
-    CLASS_2XX_SUCCESS,
+    CLASS_2XX_SUCCESS(200, 300),
     /**
-     * The Enum that represents status codes 300 to 399.
+     * Redirection (300 to 399).
      */
-    CLASS_3XX_REDIRECTION,
+    CLASS_3XX_REDIRECTION(300, 400),
     /**
-     * The Enum that represents status codes 400 to 499.
+     * Client errors (400 to 499).
      */
-    CLASS_4XX_CLIENT_ERRORS,
+    CLASS_4XX_CLIENT_ERRORS(400, 500),
     /**
-     * The Enum that represents status codes 500 to 599.
+     * Server errors (500 to 599).
      */
-    CLASS_5XX_SERVER_ERRORS
+    CLASS_5XX_SERVER_ERRORS(500, 600);
+
+    private final int startStatusCodeInclusive;
+    private final int endStatusCodeExclusive;
+
+    StatusCodeClass(int startStatusCodeInclusive, int endStatusCodeExclusive)
+    {
+        this.startStatusCodeInclusive = startStatusCodeInclusive;
+        this.endStatusCodeExclusive = endStatusCodeExclusive;
+    }
+
+    /**
+     * @return the inclusive start status code.
+     */
+    public int startStatusCodeInclusive()
+    {
+        return startStatusCodeInclusive;
+    }
+
+    /**
+     * @return the exclusive end status code.
+     */
+    public int endStatusCodeExclusive()
+    {
+        return endStatusCodeExclusive;
+    }
+
+    /**
+     * @param statusCode The status code to test.
+     *
+     * @return True if the status code is in the status code class.
+     */
+    public boolean contains(int statusCode)
+    {
+        return startStatusCodeInclusive >= statusCode && statusCode < endStatusCodeExclusive;
+    }
 }

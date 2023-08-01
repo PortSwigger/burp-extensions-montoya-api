@@ -148,7 +148,7 @@ public interface HttpRequestToBeSent extends HttpRequest
      * {@inheritDoc}
      */
     @Override
-    HttpRequest withAddedParameters(List<HttpParameter> parameters);
+    HttpRequest withAddedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * {@inheritDoc}
@@ -160,7 +160,7 @@ public interface HttpRequestToBeSent extends HttpRequest
      * {@inheritDoc}
      */
     @Override
-    HttpRequest withRemovedParameters(List<HttpParameter> parameters);
+    HttpRequest withRemovedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * {@inheritDoc}
@@ -172,7 +172,7 @@ public interface HttpRequestToBeSent extends HttpRequest
      * {@inheritDoc}
      */
     @Override
-    HttpRequest withUpdatedParameters(List<HttpParameter> parameters);
+    HttpRequest withUpdatedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * {@inheritDoc}

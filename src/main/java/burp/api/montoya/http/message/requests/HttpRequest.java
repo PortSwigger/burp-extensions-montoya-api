@@ -222,7 +222,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A new {@code HttpRequest} instance.
      */
-    HttpRequest withAddedParameters(List<HttpParameter> parameters);
+    HttpRequest withAddedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * Create a copy of the {@code HttpRequest} with the added HTTP parameters.
@@ -240,7 +240,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A new {@code HttpRequest} instance.
      */
-    HttpRequest withRemovedParameters(List<HttpParameter> parameters);
+    HttpRequest withRemovedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * Create a copy of the {@code HttpRequest} with the removed HTTP parameters.
@@ -258,7 +258,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A new {@code HttpRequest} instance.
      */
-    HttpRequest withUpdatedParameters(List<HttpParameter> parameters);
+    HttpRequest withUpdatedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * Create a copy of the {@code HttpRequest} with the updated HTTP parameters.<br>

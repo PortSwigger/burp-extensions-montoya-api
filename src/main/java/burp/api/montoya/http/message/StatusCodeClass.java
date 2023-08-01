@@ -58,6 +58,6 @@ public enum StatusCodeClass
      */
     public boolean contains(int statusCode)
     {
-        return startStatusCodeInclusive >= statusCode && statusCode < endStatusCodeExclusive;
+        return startStatusCodeInclusive <= statusCode && statusCode < endStatusCodeExclusive;
     }
 }

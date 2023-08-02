@@ -72,6 +72,36 @@ public interface HttpResponse extends HttpMessage
      * {@inheritDoc}
      */
     @Override
+    boolean hasHeader(HttpHeader header);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name, String value);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpHeader header(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String headerValue(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     ByteArray body();
 
     /**

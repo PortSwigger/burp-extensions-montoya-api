@@ -22,6 +22,42 @@ import java.util.regex.Pattern;
 public interface HttpMessage
 {
     /**
+     * @param header The header to check if it exists in the request.
+     *
+     * @return True if the header exists in the request.
+     */
+    boolean hasHeader(HttpHeader header);
+
+    /**
+     * @param name The name of the header to query within the request.
+     *
+     * @return True if a header exists in the request with the supplied name.
+     */
+    boolean hasHeader(String name);
+
+    /**
+     * @param name  The name of the header to check.
+     * @param value The value of the header to check.
+     *
+     * @return True if a header exists in the request that matches the name and value supplied.
+     */
+    boolean hasHeader(String name, String value);
+
+    /**
+     * @param name The name of the header to retrieve.
+     *
+     * @return An instance of {@link HttpHeader} that matches the name supplied, {@code null} if no match found.
+     */
+    HttpHeader header(String name);
+
+    /**
+     * @param name The name of the header to retrieve.
+     *
+     * @return The {@code String} value of the header that matches the name supplied, {@code null} if no match found.
+     */
+    String headerValue(String name);
+
+    /**
      * HTTP headers contained in the message.
      *
      * @return A list of HTTP headers.

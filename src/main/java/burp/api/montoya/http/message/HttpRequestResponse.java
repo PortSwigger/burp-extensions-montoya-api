@@ -112,6 +112,13 @@ public interface HttpRequestResponse
     boolean hasParameters();
 
     /**
+     * Obtain the MIME type of the response, as determined by Burp Suite.
+     *
+     * @return The MIME type.
+     */
+    MimeType mimeType();
+
+    /**
      * Obtain the MIME type of the response, as stated in the HTTP headers.
      *
      * @return The stated MIME type.

@@ -336,7 +336,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @param markers Request markers to add.
      *
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @return A new {@link HttpRequest} instance.
      */
     HttpRequest withMarkers(List<Marker> markers);
 
@@ -345,14 +345,14 @@ public interface HttpRequest extends HttpMessage
      *
      * @param markers Request markers to add.
      *
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @return A new {@link HttpRequest} instance.
      */
     HttpRequest withMarkers(Marker... markers);
 
     /**
      * Create a copy of the {@code HttpRequest} with added default headers.
      *
-     * @return a new (@code HttpRequest) with added default headers
+     * @return a new {@link HttpRequest} with added default headers
      */
     HttpRequest withDefaultHeaders();
 
@@ -396,7 +396,7 @@ public interface HttpRequest extends HttpMessage
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
      *
-     * @return A new {@link HttpRequest} instance. A new {@link HttpRequest} instance.
+     * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequest(HttpService service, ByteArray request)
     {

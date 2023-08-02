@@ -86,6 +86,25 @@ public interface Http
     HttpRequestResponse sendRequest(HttpRequest request, RequestOptions requestOptions);
 
     /**
+     * Send HTTP requests in parallel and retrieve their responses.
+     *
+     * @param requests The list of full HTTP requests.
+     *
+     * @return A list of objects that implement the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the responses.
+     */
+    List<HttpRequestResponse> sendRequests(List<HttpRequest> requests);
+
+    /**
+     * Send HTTP requests in parallel and retrieve their responses.
+     *
+     * @param requests The list of full HTTP requests.
+     * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
+     *
+     * @return A list of objects that implement the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the responses.
+     */
+    List<HttpRequestResponse> sendRequests(List<HttpRequest> requests, HttpMode httpMode);
+
+    /**
      * Create a new response keyword analyzer.
      *
      * @param keywords A list of keywords the analyzer will look for.

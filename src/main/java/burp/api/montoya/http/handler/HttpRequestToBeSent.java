@@ -156,6 +156,12 @@ public interface HttpRequestToBeSent extends HttpRequest
      * {@inheritDoc}
      */
     @Override
+    List<ParsedHttpParameter> parameters(HttpParameterType type);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     ByteArray body();
 
     /**

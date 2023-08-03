@@ -12,6 +12,9 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.Marker;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.handler.TimingData;
+import burp.api.montoya.http.message.params.HttpParameter;
+import burp.api.montoya.http.message.params.HttpParameterType;
+import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -107,9 +110,52 @@ public interface HttpRequestResponse
     boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
 
     /**
+     * @return The parameters contained in the request.
+     */
+    List<ParsedHttpParameter> parameters();
+
+    /**
+     * @param type The type of parameter that will be returned in the filtered list.
+     *
+     * @return A filtered list of {@link ParsedHttpParameter} containing only the provided type.
+     */
+    List<ParsedHttpParameter> parameters(HttpParameterType type);
+
+    /**
      * @return True if the request has parameters.
      */
     boolean hasParameters();
+
+    /**
+     * @param name The name of the parameter to find.
+     * @param type The type of the parameter to find.
+     *
+     * @return An instance of {@link ParsedHttpParameter} that matches the type and name specified. {@code null} if not found.
+     */
+    ParsedHttpParameter parameter(String name, HttpParameterType type);
+
+    /**
+     * @param name The name of the parameter to get the value from.
+     * @param type The type of the parameter to get the value from.
+     *
+     * @return The value of the parameter that matches the name and type specified. {@code null} if not found.
+     */
+    String parameterValue(String name, HttpParameterType type);
+
+    /**
+     * @param name The name of the parameter to find.
+     * @param type The type of the parameter to find.
+     *
+     * @return {@code true} if a parameter exists that matches the name and type specified. {@code false} if not found.
+     */
+    boolean hasParameter(String name, HttpParameterType type);
+
+    /**
+     * @param parameter An instance of {@link HttpParameter} to match to an existing parameter.
+     *
+     * @return {@code true} if a parameter exists that matches the data within the provided {@link HttpParameter}. {@code false} if not found.
+     */
+    boolean hasParameter(HttpParameter parameter);
 
     /**
      * Obtain the MIME type of the response, as determined by Burp Suite.

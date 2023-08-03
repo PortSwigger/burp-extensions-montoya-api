@@ -146,6 +146,12 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      * {@inheritDoc}
      */
     @Override
+    List<ParsedHttpParameter> parameters(HttpParameterType type);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     ByteArray body();
 
     /**

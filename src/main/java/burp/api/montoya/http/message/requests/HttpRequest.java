@@ -123,6 +123,13 @@ public interface HttpRequest extends HttpMessage
     List<ParsedHttpParameter> parameters();
 
     /**
+     * @param type The type of parameter that will be returned in the filtered list.
+     *
+     * @return A filtered list of {@link ParsedHttpParameter} containing only the provided type.
+     */
+    List<ParsedHttpParameter> parameters(HttpParameterType type);
+
+    /**
      * @return True if the request has parameters.
      */
     boolean hasParameters();

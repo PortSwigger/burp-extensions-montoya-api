@@ -28,4 +28,11 @@ public interface TimingData
      * @return the duration or null if no response returned or the response never completes.
      */
     Duration timeBetweenRequestSentAndEndOfResponse();
+
+    /**
+     * The time that burp issued the request.
+     *
+     * @return the time that burp issued the request.
+     */
+    long timeRequestSent();
 }

@@ -37,6 +37,11 @@ public interface HttpRequestResponse
     HttpResponse response();
 
     /**
+     * @return The time the HTTP request was sent.
+     */
+    long sentTime();
+
+    /**
      * @return The annotations.
      */
     Annotations annotations();
@@ -140,6 +145,15 @@ public interface HttpRequestResponse
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withResponseMarkers(Marker... responseMarkers);
+
+    /**
+     * Create a copy of the {@code HttpRequestResponse} with the supplied sent time.
+     *
+     * @param sentTime sent time to use.
+     *
+     * @return A new {@code HttpRequestResponse} instance.
+     */
+    HttpRequestResponse withSentTime(long sentTime);
 
     /**
      * Create a new instance of {@link HttpRequestResponse}.<br>

@@ -130,6 +130,34 @@ public interface HttpResponse extends HttpMessage
     List<Cookie> cookies();
 
     /**
+     * @param name The name of the cookie to find.
+     *
+     * @return An instance of {@link Cookie} that matches the name provided. {@code null} if not found.
+     */
+    Cookie cookie(String name);
+
+    /**
+     * @param name The name of the cookie to retrieve the value from.
+     *
+     * @return The value of the cookie that matches the name provided. {@code null} if not found.
+     */
+    String cookieValue(String name);
+
+    /**
+     * @param name The name of the cookie to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the name provided. {@code false} if not.
+     */
+    boolean hasCookie(String name);
+
+    /**
+     * @param cookie An instance of {@link Cookie} to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the {@link Cookie} provided. {@code false} if not.
+     */
+    boolean hasCookie(Cookie cookie);
+
+    /**
      * Obtain the MIME type of the response, as determined by Burp Suite.
      *
      * @return The MIME type.

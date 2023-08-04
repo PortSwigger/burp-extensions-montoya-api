@@ -9,6 +9,7 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
+import burp.api.montoya.http.message.Cookie;
 import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.StatusCodeClass;
 import burp.api.montoya.http.message.params.HttpParameter;
@@ -137,6 +138,41 @@ public interface ProxyHttpRequestResponse
      * @return True if the status code is in the class.
      */
     boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
+
+    /**
+     * Obtain details of the HTTP cookies set in the response.
+     *
+     * @return A list of {@link Cookie} objects representing the cookies set in the response, if any.
+     */
+    List<Cookie> cookies();
+
+    /**
+     * @param name The name of the cookie to find in the response, if any.
+     *
+     * @return An instance of {@link Cookie} that matches the name provided. {@code null} if not found.
+     */
+    Cookie cookie(String name);
+
+    /**
+     * @param name The name of the cookie to retrieve the value from in the response, if any.
+     *
+     * @return The value of the cookie that matches the name provided. {@code null} if not found.
+     */
+    String cookieValue(String name);
+
+    /**
+     * @param name The name of the cookie to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the name provided. {@code false} if not.
+     */
+    boolean hasCookie(String name);
+
+    /**
+     * @param cookie An instance of {@link Cookie} to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the {@link Cookie} provided. {@code false} if not.
+     */
+    boolean hasCookie(Cookie cookie);
 
     /**
      * @return The parameters contained in the request.

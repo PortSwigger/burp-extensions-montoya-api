@@ -15,19 +15,20 @@ import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.ContentType;
 import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.params.HttpParameter;
+import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.HttpTransformation;
 
 import java.net.InetAddress;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * HTTP request intercepted by Burp Proxy.
  */
 public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
 {
-
     /**
      * @return Annotations for request/response.
      */
@@ -73,6 +74,66 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      * {@inheritDoc}
      */
     @Override
+    boolean hasHeader(HttpHeader header);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name, String value);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpHeader header(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String headerValue(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasParameters();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    ParsedHttpParameter parameter(String name, HttpParameterType type);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String parameterValue(String name, HttpParameterType type);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasParameter(String name, HttpParameterType type);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasParameter(HttpParameter parameter);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     ContentType contentType();
 
     /**
@@ -80,6 +141,12 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      */
     @Override
     List<ParsedHttpParameter> parameters();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    List<ParsedHttpParameter> parameters(HttpParameterType type);
 
     /**
      * {@inheritDoc}
@@ -133,7 +200,7 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      * {@inheritDoc}
      */
     @Override
-    HttpRequest withAddedParameters(List<HttpParameter> parameters);
+    HttpRequest withAddedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * {@inheritDoc}
@@ -145,7 +212,7 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      * {@inheritDoc}
      */
     @Override
-    HttpRequest withRemovedParameters(List<HttpParameter> parameters);
+    HttpRequest withRemovedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * {@inheritDoc}
@@ -157,7 +224,7 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      * {@inheritDoc}
      */
     @Override
-    HttpRequest withUpdatedParameters(List<HttpParameter> parameters);
+    HttpRequest withUpdatedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * {@inheritDoc}
@@ -260,4 +327,46 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      */
     @Override
     InetAddress destinationIpAddress();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean isInScope();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(Pattern pattern);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpRequest copyToTempFile();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpRequest withHeader(HttpHeader header);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpRequest withHeader(String name, String value);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpRequest withParameter(HttpParameter parameters);
 }

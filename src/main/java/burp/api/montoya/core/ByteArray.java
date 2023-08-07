@@ -9,6 +9,8 @@
 package burp.api.montoya.core;
 
 
+import java.util.regex.Pattern;
+
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
@@ -184,11 +186,31 @@ public interface ByteArray extends Iterable<Byte>
     int indexOf(String searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
 
     /**
+     * Searches the data in the ByteArray for the first occurrence of a specified pattern.
+     *
+     * @param pattern The pattern to be matched.
+     *
+     * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
+     */
+    int indexOf(Pattern pattern);
+
+    /**
+     * Searches the data in the ByteArray for the first occurrence of a specified pattern.
+     *
+     * @param pattern             The pattern to be matched.
+     * @param startIndexInclusive The inclusive start index for the search.
+     * @param endIndexExclusive   The exclusive end index for the search.
+     *
+     * @return The offset of the first occurrence of the pattern within the specified bounds, or -1 if no match is found.
+     */
+    int indexOf(Pattern pattern, int startIndexInclusive, int endIndexExclusive);
+
+    /**
      * Searches the data in the ByteArray and counts all matches for a specified term.
      *
      * @param searchTerm The value to be searched for.
      *
-     * @return The count of all matches of the pattern
+     * @return The count of all matches of the pattern.
      */
     int countMatches(ByteArray searchTerm);
 
@@ -197,7 +219,7 @@ public interface ByteArray extends Iterable<Byte>
      *
      * @param searchTerm The value to be searched for.
      *
-     * @return The count of all matches of the pattern
+     * @return The count of all matches of the pattern.
      */
     int countMatches(String searchTerm);
 
@@ -207,7 +229,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
      *
-     * @return The count of all matches of the pattern
+     * @return The count of all matches of the pattern.
      */
     int countMatches(ByteArray searchTerm, boolean caseSensitive);
 
@@ -217,7 +239,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
      *
-     * @return The count of all matches of the pattern
+     * @return The count of all matches of the pattern.
      */
     int countMatches(String searchTerm, boolean caseSensitive);
 
@@ -229,7 +251,7 @@ public interface ByteArray extends Iterable<Byte>
      * @param startIndexInclusive The inclusive start index for the search.
      * @param endIndexExclusive   The exclusive end index for the search.
      *
-     * @return The count of all matches of the pattern within the specified bounds
+     * @return The count of all matches of the pattern within the specified bounds.
      */
     int countMatches(ByteArray searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
 
@@ -241,9 +263,29 @@ public interface ByteArray extends Iterable<Byte>
      * @param startIndexInclusive The inclusive start index for the search.
      * @param endIndexExclusive   The exclusive end index for the search.
      *
-     * @return The count of all matches of the pattern within the specified bounds
+     * @return The count of all matches of the pattern within the specified bounds.
      */
     int countMatches(String searchTerm, boolean caseSensitive, int startIndexInclusive, int endIndexExclusive);
+
+    /**
+     * Searches the data in the ByteArray and counts all matches for a specified pattern.
+     *
+     * @param pattern The pattern to be matched.
+     *
+     * @return The count of all matches of the pattern within the specified bounds.
+     */
+    int countMatches(Pattern pattern);
+
+    /**
+     * Searches the data in the ByteArray and counts all matches for a specified pattern.
+     *
+     * @param pattern             The pattern to be matched.
+     * @param startIndexInclusive The inclusive start index for the search.
+     * @param endIndexExclusive   The exclusive end index for the search.
+     *
+     * @return The count of all matches of the pattern within the specified bounds.
+     */
+    int countMatches(Pattern pattern, int startIndexInclusive, int endIndexExclusive);
 
     /**
      * Convert the bytes of the ByteArray into String form using the encoding specified by Burp Suite.

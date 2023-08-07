@@ -26,6 +26,13 @@ public interface Range
     int endIndexExclusive();
 
     /**
+     * @param index The index to test.
+     *
+     * @return True if the index is in the range.
+     */
+    boolean contains(int index);
+
+    /**
      * Create a range object from two indices.
      *
      * @param startIndexInclusive The start index of the range inclusive of this value.

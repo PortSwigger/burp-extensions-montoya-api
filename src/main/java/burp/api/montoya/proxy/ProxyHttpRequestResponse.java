@@ -144,35 +144,35 @@ public interface ProxyHttpRequestResponse
      *
      * @return A list of {@link Cookie} objects representing the cookies set in the response, if any.
      */
-    List<Cookie> cookies();
+    List<Cookie> responseCookies();
 
     /**
      * @param name The name of the cookie to find in the response, if any.
      *
      * @return An instance of {@link Cookie} that matches the name provided. {@code null} if not found.
      */
-    Cookie cookie(String name);
+    Cookie responseCookie(String name);
 
     /**
      * @param name The name of the cookie to retrieve the value from in the response, if any.
      *
      * @return The value of the cookie that matches the name provided. {@code null} if not found.
      */
-    String cookieValue(String name);
+    String responseCookieValue(String name);
 
     /**
      * @param name The name of the cookie to check if it exists in the response.
      *
      * @return {@code true} If a cookie exists within the response that matches the name provided. {@code false} if not.
      */
-    boolean hasCookie(String name);
+    boolean responseHasCookie(String name);
 
     /**
      * @param cookie An instance of {@link Cookie} to check if it exists in the response.
      *
      * @return {@code true} If a cookie exists within the response that matches the {@link Cookie} provided. {@code false} if not.
      */
-    boolean hasCookie(Cookie cookie);
+    boolean responseHasCookie(Cookie cookie);
 
     /**
      * @return The parameters contained in the request.

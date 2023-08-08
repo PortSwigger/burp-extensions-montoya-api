@@ -9,6 +9,7 @@
 package burp.api.montoya.http.handler;
 
 import java.time.Duration;
+import java.time.ZonedDateTime;
 
 /**
  * Timing data
@@ -34,5 +35,5 @@ public interface TimingData
      *
      * @return the time that burp issued the request.
      */
-    long timeRequestSent();
+    ZonedDateTime timeRequestSent();
 }

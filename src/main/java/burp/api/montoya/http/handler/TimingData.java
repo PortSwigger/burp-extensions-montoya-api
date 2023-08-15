@@ -31,9 +31,9 @@ public interface TimingData
     Duration timeBetweenRequestSentAndEndOfResponse();
 
     /**
-     * The time that burp issued the request.
+     * The time that Burp issued the request.
      *
-     * @return the time that burp issued the request.
+     * @return the time that Burp issued the request.
      */
     ZonedDateTime timeRequestSent();
 }

@@ -25,7 +25,7 @@ public interface Organizer
     void sendToOrganizer(HttpRequest request);
 
     /**
-     * This method can be used to send an HTTP request response to the Burp
+     * This method can be used to send an HTTP request and response to the Burp
      * Organizer tool.
      *
      * @param requestResponse The full HTTP request and response.

@@ -223,6 +223,11 @@ public interface ProxyHttpRequestResponse
     boolean hasParameter(HttpParameter parameter);
 
     /**
+     * @return True if the request or response was edited
+     */
+    boolean isEdited();
+
+    /**
      * Obtain the MIME type of the response, as determined by Burp Suite.
      *
      * @return The MIME type.

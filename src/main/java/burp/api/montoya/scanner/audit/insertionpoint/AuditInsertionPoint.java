@@ -43,7 +43,7 @@ public interface AuditInsertionPoint
     String baseValue();
 
     /**
-     * Vuild a request with the specified payload placed
+     * Build a request with the specified payload placed
      * into the insertion point. There is no requirement for extension-provided
      * insertion points to adjust the Content-Length header in requests if the
      * body length has changed, although Burp-provided insertion points will

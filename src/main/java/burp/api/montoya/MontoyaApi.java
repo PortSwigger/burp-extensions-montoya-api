@@ -16,6 +16,7 @@ import burp.api.montoya.extension.Extension;
 import burp.api.montoya.http.Http;
 import burp.api.montoya.intruder.Intruder;
 import burp.api.montoya.logging.Logging;
+import burp.api.montoya.organizer.Organizer;
 import burp.api.montoya.persistence.Persistence;
 import burp.api.montoya.proxy.Proxy;
 import burp.api.montoya.repeater.Repeater;
@@ -91,6 +92,13 @@ public interface MontoyaApi
      * @return An implementation of the Logging interface which exposes logging functionality.
      */
     Logging logging();
+
+    /**
+     * Access the functionality of the Organizer.
+     *
+     * @return An implementation of the Organizer interface which exposes Organizer functionality.
+     */
+    Organizer organizer();
 
     /**
      * Access the functionality related to persistence.

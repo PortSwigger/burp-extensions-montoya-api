@@ -9,6 +9,7 @@
 package burp.api.montoya.http.handler;
 
 import java.time.Duration;
+import java.time.ZonedDateTime;
 
 /**
  * Timing data
@@ -28,4 +29,11 @@ public interface TimingData
      * @return the duration or null if no response returned or the response never completes.
      */
     Duration timeBetweenRequestSentAndEndOfResponse();
+
+    /**
+     * The time that Burp issued the request.
+     *
+     * @return the time that Burp issued the request.
+     */
+    ZonedDateTime timeRequestSent();
 }

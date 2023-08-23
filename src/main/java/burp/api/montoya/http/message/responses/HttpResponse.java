@@ -14,11 +14,13 @@ import burp.api.montoya.http.message.Cookie;
 import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.MimeType;
+import burp.api.montoya.http.message.StatusCodeClass;
 import burp.api.montoya.http.message.responses.analysis.Attribute;
 import burp.api.montoya.http.message.responses.analysis.AttributeType;
 import burp.api.montoya.http.message.responses.analysis.KeywordCount;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -43,6 +45,15 @@ public interface HttpResponse extends HttpMessage
     String reasonPhrase();
 
     /**
+     * Test whether the status code is in the specified class.
+     *
+     * @param statusCodeClass The class of status code to test.
+     *
+     * @return True if the status code is in the class.
+     */
+    boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
+
+    /**
      * Return the HTTP Version text parsed from the response line for HTTP 1 messages.
      * HTTP 2 messages will return "HTTP/2"
      *
@@ -56,6 +67,36 @@ public interface HttpResponse extends HttpMessage
      */
     @Override
     List<HttpHeader> headers();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(HttpHeader header);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name, String value);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpHeader header(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String headerValue(String name);
 
     /**
      * {@inheritDoc}
@@ -89,6 +130,41 @@ public interface HttpResponse extends HttpMessage
     List<Cookie> cookies();
 
     /**
+     * @param name The name of the cookie to find.
+     *
+     * @return An instance of {@link Cookie} that matches the name provided. {@code null} if not found.
+     */
+    Cookie cookie(String name);
+
+    /**
+     * @param name The name of the cookie to retrieve the value from.
+     *
+     * @return The value of the cookie that matches the name provided. {@code null} if not found.
+     */
+    String cookieValue(String name);
+
+    /**
+     * @param name The name of the cookie to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the name provided. {@code false} if not.
+     */
+    boolean hasCookie(String name);
+
+    /**
+     * @param cookie An instance of {@link Cookie} to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the {@link Cookie} provided. {@code false} if not.
+     */
+    boolean hasCookie(Cookie cookie);
+
+    /**
+     * Obtain the MIME type of the response, as determined by Burp Suite.
+     *
+     * @return The MIME type.
+     */
+    MimeType mimeType();
+
+    /**
      * Obtain the MIME type of the response, as stated in the HTTP headers.
      *
      * @return The stated MIME type.
@@ -119,6 +195,18 @@ public interface HttpResponse extends HttpMessage
      * @return List of {@link Attribute} objects.
      */
     List<Attribute> attributes(AttributeType... types);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(Pattern pattern);
 
     /**
      * {@inheritDoc}

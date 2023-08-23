@@ -15,9 +15,11 @@ import burp.api.montoya.http.message.ContentType;
 import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.HttpMessage;
 import burp.api.montoya.http.message.params.HttpParameter;
+import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.params.ParsedHttpParameter;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
@@ -26,6 +28,11 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface HttpRequest extends HttpMessage
 {
+    /**
+     * @return True if the request is in-scope.
+     */
+    boolean isInScope();
+
     /**
      * HTTP service for the request.
      *
@@ -76,6 +83,36 @@ public interface HttpRequest extends HttpMessage
     List<HttpHeader> headers();
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(HttpHeader header);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasHeader(String name, String value);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    HttpHeader header(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String headerValue(String name);
+
+    /**
      * @return The detected content type of the request.
      */
     ContentType contentType();
@@ -84,6 +121,49 @@ public interface HttpRequest extends HttpMessage
      * @return The parameters contained in the request.
      */
     List<ParsedHttpParameter> parameters();
+
+    /**
+     * @param type The type of parameter that will be returned in the filtered list.
+     *
+     * @return A filtered list of {@link ParsedHttpParameter} containing only the provided type.
+     */
+    List<ParsedHttpParameter> parameters(HttpParameterType type);
+
+    /**
+     * @return True if the request has parameters.
+     */
+    boolean hasParameters();
+
+    /**
+     * @param name The name of the parameter to find.
+     * @param type The type of the parameter to find.
+     *
+     * @return An instance of {@link ParsedHttpParameter} that matches the type and name specified. {@code null} if not found.
+     */
+    ParsedHttpParameter parameter(String name, HttpParameterType type);
+
+    /**
+     * @param name The name of the parameter to get the value from.
+     * @param type The type of the parameter to get the value from.
+     *
+     * @return The value of the parameter that matches the name and type specified. {@code null} if not found.
+     */
+    String parameterValue(String name, HttpParameterType type);
+
+    /**
+     * @param name The name of the parameter to find.
+     * @param type The type of the parameter to find.
+     *
+     * @return {@code true} if a parameter exists that matches the name and type specified. {@code false} if not found.
+     */
+    boolean hasParameter(String name, HttpParameterType type);
+
+    /**
+     * @param parameter An instance of {@link HttpParameter} to match to an existing parameter.
+     *
+     * @return {@code true} if a parameter exists that matches the data within the provided {@link HttpParameter}. {@code false} if not found.
+     */
+    boolean hasParameter(HttpParameter parameter);
 
     /**
      * {@inheritDoc}
@@ -108,6 +188,18 @@ public interface HttpRequest extends HttpMessage
      */
     @Override
     List<Marker> markers();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean contains(Pattern pattern);
 
     /**
      * {@inheritDoc}
@@ -199,7 +291,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A new {@code HttpRequest} instance.
      */
-    HttpRequest withAddedParameters(List<HttpParameter> parameters);
+    HttpRequest withAddedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * Create a copy of the {@code HttpRequest} with the added HTTP parameters.
@@ -217,7 +309,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A new {@code HttpRequest} instance.
      */
-    HttpRequest withRemovedParameters(List<HttpParameter> parameters);
+    HttpRequest withRemovedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * Create a copy of the {@code HttpRequest} with the removed HTTP parameters.
@@ -235,7 +327,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A new {@code HttpRequest} instance.
      */
-    HttpRequest withUpdatedParameters(List<HttpParameter> parameters);
+    HttpRequest withUpdatedParameters(List<? extends HttpParameter> parameters);
 
     /**
      * Create a copy of the {@code HttpRequest} with the updated HTTP parameters.<br>
@@ -336,7 +428,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @param markers Request markers to add.
      *
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @return A new {@link HttpRequest} instance.
      */
     HttpRequest withMarkers(List<Marker> markers);
 
@@ -345,14 +437,14 @@ public interface HttpRequest extends HttpMessage
      *
      * @param markers Request markers to add.
      *
-     * @return A new {@code MarkedHttpRequestResponse} instance.
+     * @return A new {@link HttpRequest} instance.
      */
     HttpRequest withMarkers(Marker... markers);
 
     /**
      * Create a copy of the {@code HttpRequest} with added default headers.
      *
-     * @return a new (@code HttpRequest) with added default headers
+     * @return a new {@link HttpRequest} with added default headers
      */
     HttpRequest withDefaultHeaders();
 
@@ -396,7 +488,7 @@ public interface HttpRequest extends HttpMessage
      * @param service An HTTP service for the request.
      * @param request The HTTP request.
      *
-     * @return A new {@link HttpRequest} instance. A new {@link HttpRequest} instance.
+     * @return A new {@link HttpRequest} instance.
      */
     static HttpRequest httpRequest(HttpService service, ByteArray request)
     {

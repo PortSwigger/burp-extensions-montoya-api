@@ -96,6 +96,30 @@ public interface InterceptedResponse extends InterceptedHttpMessage, HttpRespons
      * {@inheritDoc}
      */
     @Override
+    Cookie cookie(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    String cookieValue(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasCookie(String name);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasCookie(Cookie cookie);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     MimeType statedMimeType();
 
     /**

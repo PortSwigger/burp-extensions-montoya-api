@@ -75,6 +75,13 @@ public interface ProxyHttpRequestResponse
     boolean edited();
 
     /**
+     * Returns the proxy listener port used for the request/response.
+     *
+     * @return the port number used by the proxy listener
+     */
+    int listenerPort();
+
+    /**
      * Searches the data in the HTTP request and response for the specified search term.
      *
      * @param searchTerm    The value to be searched for.

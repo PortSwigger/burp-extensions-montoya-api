@@ -96,6 +96,15 @@ public interface ProxyHttpRequestResponse
     String path();
 
     /**
+     * Request path excluding the query parameters.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return the path excluding query parameters.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String resourcePath();
+
+    /**
      * @return The hostname or IP address for the service.
      */
     String host();
@@ -129,6 +138,13 @@ public interface ProxyHttpRequestResponse
      * @return The body of a message as a {@code String}.
      */
     String requestBody();
+
+    /**
+     * HTTP status code contained in the response.
+     *
+     * @return HTTP status code or -1 if there is no response.
+     */
+    short statusCode();
 
     /**
      * Test whether the status code is in the specified class.
@@ -190,6 +206,11 @@ public interface ProxyHttpRequestResponse
      * @return True if the request has parameters.
      */
     boolean hasParameters();
+
+    /**
+     * @return True if the request has parameters of type {@link HttpParameterType}
+     */
+    boolean hasParameters(HttpParameterType type);
 
     /**
      * @param name The name of the parameter to find.

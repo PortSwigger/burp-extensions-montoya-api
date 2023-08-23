@@ -59,13 +59,22 @@ public interface HttpRequest extends HttpMessage
     String method();
 
     /**
-     * Path and File for the request.
+     * Request path including the query parameters.
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
-     * @return the path and file in the request
+     * @return the path and query parameters.
      * @throws MalformedRequestException if request is malformed.
      */
     String path();
+
+    /**
+     * Request path excluding the query parameters.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return the path excluding query parameters.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String resourcePath();
 
     /**
      * HTTP Version text parsed from the request line for HTTP 1 messages.
@@ -133,6 +142,11 @@ public interface HttpRequest extends HttpMessage
      * @return True if the request has parameters.
      */
     boolean hasParameters();
+
+    /**
+     * @return True if the request has parameters of type {@link HttpParameterType}
+     */
+    boolean hasParameters(HttpParameterType type);
 
     /**
      * @param name The name of the parameter to find.

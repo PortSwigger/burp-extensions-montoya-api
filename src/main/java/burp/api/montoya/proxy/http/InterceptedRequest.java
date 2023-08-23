@@ -62,6 +62,12 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      * {@inheritDoc}
      */
     @Override
+    String resourcePath();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     String httpVersion();
 
     /**
@@ -105,6 +111,12 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      */
     @Override
     boolean hasParameters();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasParameters(HttpParameterType type);
 
     /**
      * {@inheritDoc}

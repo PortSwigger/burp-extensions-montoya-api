@@ -72,6 +72,12 @@ public interface HttpRequestToBeSent extends HttpRequest
      * {@inheritDoc}
      */
     @Override
+    String resourcePath();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     String httpVersion();
 
     /**
@@ -115,6 +121,12 @@ public interface HttpRequestToBeSent extends HttpRequest
      */
     @Override
     boolean hasParameters();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    boolean hasParameters(HttpParameterType type);
 
     /**
      * {@inheritDoc}

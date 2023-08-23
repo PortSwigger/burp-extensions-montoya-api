@@ -51,21 +51,6 @@ public interface HttpRequestResponse
     Annotations annotations();
 
     /**
-     * @return True if there are any notes for this HTTP request and response.
-     */
-    boolean hasNotes();
-
-    /**
-     * @return True if there is a highlight color for this HTTP request and response.
-     */
-    boolean hasHighlightColor();
-
-    /**
-     * @return True if the HTTP request is in-scope.
-     */
-    boolean isInScope();
-
-    /**
      * Retrieve the timing data associated with this request if available.
      *
      * @return The timing data.
@@ -73,145 +58,11 @@ public interface HttpRequestResponse
     Optional<TimingData> timingData();
 
     /**
-     * Retrieve the URL for the request.<br>
-     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
-     *
-     * @return The URL in the request.
-     * @throws MalformedRequestException if request is malformed.
-     */
-    String url();
-
-    /**
      * HTTP service for the request.
      *
      * @return An {@link HttpService} object containing details of the HTTP service.
      */
     HttpService httpService();
-
-    /**
-     * @return The detected content type of the request.
-     */
-    ContentType contentType();
-
-    /**
-     * HTTP status code contained in the response.
-     *
-     * @return HTTP status code or -1 if there is no response.
-     */
-    short statusCode();
-
-    /**
-     * Test whether the HTTP status code is in the specified class.
-     *
-     * @param statusCodeClass The class of HTTP status code to test.
-     *
-     * @return True if the HTTP status code is in the class.
-     */
-    boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
-
-    /**
-     * Obtain details of the HTTP cookies set in the response.
-     *
-     * @return A list of {@link Cookie} objects representing the cookies set in the response, if any.
-     */
-    List<Cookie> responseCookies();
-
-    /**
-     * @param name The name of the cookie to find in the response, if any.
-     *
-     * @return An instance of {@link Cookie} that matches the name provided. {@code null} if not found.
-     */
-    Cookie responseCookie(String name);
-
-    /**
-     * @param name The name of the cookie to retrieve the value from in the response, if any.
-     *
-     * @return The value of the cookie that matches the name provided. {@code null} if not found.
-     */
-    String responseCookieValue(String name);
-
-    /**
-     * @param name The name of the cookie to check if it exists in the response.
-     *
-     * @return {@code true} If a cookie exists within the response that matches the name provided. {@code false} if not.
-     */
-    boolean responseHasCookie(String name);
-
-    /**
-     * @param cookie An instance of {@link Cookie} to check if it exists in the response.
-     *
-     * @return {@code true} If a cookie exists within the response that matches the {@link Cookie} provided. {@code false} if not.
-     */
-    boolean responseHasCookie(Cookie cookie);
-
-    /**
-     * @return The parameters contained in the request.
-     */
-    List<ParsedHttpParameter> parameters();
-
-    /**
-     * @param type The type of parameter that will be returned in the filtered list.
-     *
-     * @return A filtered list of {@link ParsedHttpParameter} containing only the provided type.
-     */
-    List<ParsedHttpParameter> parameters(HttpParameterType type);
-
-    /**
-     * @return True if the request has parameters.
-     */
-    boolean hasParameters();
-
-    /**
-     * @param name The name of the parameter to find.
-     * @param type The type of the parameter to find.
-     *
-     * @return An instance of {@link ParsedHttpParameter} that matches the type and name specified. {@code null} if not found.
-     */
-    ParsedHttpParameter parameter(String name, HttpParameterType type);
-
-    /**
-     * @param name The name of the parameter to get the value from.
-     * @param type The type of the parameter to get the value from.
-     *
-     * @return The value of the parameter that matches the name and type specified. {@code null} if not found.
-     */
-    String parameterValue(String name, HttpParameterType type);
-
-    /**
-     * @param name The name of the parameter to find.
-     * @param type The type of the parameter to find.
-     *
-     * @return {@code true} if a parameter exists that matches the name and type specified. {@code false} if not found.
-     */
-    boolean hasParameter(String name, HttpParameterType type);
-
-    /**
-     * @param parameter An instance of {@link HttpParameter} to match to an existing parameter.
-     *
-     * @return {@code true} if a parameter exists that matches the data within the provided {@link HttpParameter}. {@code false} if not found.
-     */
-    boolean hasParameter(HttpParameter parameter);
-
-    /**
-     * Obtain the MIME type of the response, as determined by Burp Suite.
-     *
-     * @return The MIME type.
-     */
-    MimeType mimeType();
-
-    /**
-     * Obtain the MIME type of the response, as stated in the HTTP headers.
-     *
-     * @return The stated MIME type.
-     */
-    MimeType statedMimeType();
-
-    /**
-     * Obtain the MIME type of the response, as inferred from the contents of the HTTP message body.
-     *
-     * @return The inferred MIME type.
-     */
-    MimeType inferredMimeType();
 
     /**
      * @return List of request markers

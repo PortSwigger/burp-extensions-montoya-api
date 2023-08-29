@@ -14,6 +14,7 @@ import burp.api.montoya.core.Marker;
 import burp.api.montoya.http.message.Cookie;
 import burp.api.montoya.http.message.HttpHeader;
 import burp.api.montoya.http.message.MimeType;
+import burp.api.montoya.http.message.StatusCodeClass;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.http.message.responses.analysis.Attribute;
@@ -22,6 +23,7 @@ import burp.api.montoya.http.message.responses.analysis.KeywordCount;
 
 import java.net.InetAddress;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * HTTP response intercepted by Burp Proxy.
@@ -39,211 +41,412 @@ public interface InterceptedResponse extends InterceptedHttpMessage, HttpRespons
     Annotations annotations();
 
     /**
-     * {@inheritDoc}
+     * Obtain the HTTP status code contained in the response.
+     *
+     * @return HTTP status code.
      */
     @Override
     short statusCode();
 
     /**
-     * {@inheritDoc}
+     * Obtain the HTTP reason phrase contained in the response for HTTP 1 messages.
+     * HTTP 2 messages will return a mapped phrase based on the status code.
+     *
+     * @return HTTP Reason phrase.
      */
     @Override
     String reasonPhrase();
 
     /**
-     * {@inheritDoc}
+     * Test whether the status code is in the specified class.
+     *
+     * @param statusCodeClass The class of status code to test.
+     *
+     * @return True if the status code is in the class.
+     */
+    @Override
+    boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
+
+    /**
+     * Return the HTTP Version text parsed from the response line for HTTP 1 messages.
+     * HTTP 2 messages will return "HTTP/2"
+     *
+     * @return Version string
      */
     @Override
     String httpVersion();
 
     /**
-     * {@inheritDoc}
+     * HTTP headers contained in the message.
+     *
+     * @return A list of HTTP headers.
      */
     @Override
     List<HttpHeader> headers();
 
     /**
-     * {@inheritDoc}
+     * Offset within the message where the message body begins.
+     *
+     * @return The message body offset.
+     */
+    @Override
+    boolean hasHeader(HttpHeader header);
+
+    /**
+     * @param name The name of the header to query within the request.
+     *
+     * @return True if a header exists in the request with the supplied name.
+     */
+    @Override
+    boolean hasHeader(String name);
+
+    /**
+     * @param name  The name of the header to check.
+     * @param value The value of the header to check.
+     *
+     * @return True if a header exists in the request that matches the name and value supplied.
+     */
+    @Override
+    boolean hasHeader(String name, String value);
+
+    /**
+     * @param name The name of the header to retrieve.
+     *
+     * @return An instance of {@link HttpHeader} that matches the name supplied, {@code null} if no match found.
+     */
+    @Override
+    HttpHeader header(String name);
+
+    /**
+     * @param name The name of the header to retrieve.
+     *
+     * @return The {@code String} value of the header that matches the name supplied, {@code null} if no match found.
+     */
+    @Override
+    String headerValue(String name);
+
+    /**
+     * Body of a message as a byte array.
+     *
+     * @return The body of a message as a byte array.
      */
     @Override
     ByteArray body();
 
     /**
-     * {@inheritDoc}
+     * Body of a message as a {@code String}.
+     *
+     * @return The body of a message as a {@code String}.
      */
     @Override
     String bodyToString();
 
     /**
-     * {@inheritDoc}
+     * Offset within the message where the message body begins.
+     *
+     * @return The message body offset.
      */
     @Override
     int bodyOffset();
 
     /**
-     * {@inheritDoc}
+     * Markers for the message.
+     *
+     * @return A list of markers.
      */
     @Override
     List<Marker> markers();
 
     /**
-     * {@inheritDoc}
+     * Obtain details of the HTTP cookies set in the response.
+     *
+     * @return A list of {@link Cookie} objects representing the cookies set in the response, if any.
      */
     @Override
     List<Cookie> cookies();
 
     /**
-     * {@inheritDoc}
+     * @param name The name of the cookie to find.
+     *
+     * @return An instance of {@link Cookie} that matches the name provided. {@code null} if not found.
      */
     @Override
     Cookie cookie(String name);
 
     /**
-     * {@inheritDoc}
+     * @param name The name of the cookie to retrieve the value from.
+     *
+     * @return The value of the cookie that matches the name provided. {@code null} if not found.
      */
     @Override
     String cookieValue(String name);
 
     /**
-     * {@inheritDoc}
+     * @param name The name of the cookie to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the name provided. {@code false} if not.
      */
     @Override
     boolean hasCookie(String name);
 
     /**
-     * {@inheritDoc}
+     * @param cookie An instance of {@link Cookie} to check if it exists in the response.
+     *
+     * @return {@code true} If a cookie exists within the response that matches the {@link Cookie} provided. {@code false} if not.
      */
     @Override
     boolean hasCookie(Cookie cookie);
 
     /**
-     * {@inheritDoc}
+     * Obtain the MIME type of the response, as determined by Burp Suite.
+     *
+     * @return The MIME type.
+     */
+    @Override
+    MimeType mimeType();
+
+    /**
+     * Obtain the MIME type of the response, as stated in the HTTP headers.
+     *
+     * @return The stated MIME type.
      */
     @Override
     MimeType statedMimeType();
 
     /**
-     * {@inheritDoc}
+     * Obtain the MIME type of the response, as inferred from the contents of the HTTP message body.
+     *
+     * @return The inferred MIME type.
      */
     @Override
     MimeType inferredMimeType();
 
     /**
-     * {@inheritDoc}
+     * Retrieve the number of types given keywords appear in the response.
+     *
+     * @param keywords Keywords to count.
+     *
+     * @return List of keyword counts in the order they were provided.
      */
     @Override
     List<KeywordCount> keywordCounts(String... keywords);
 
     /**
-     * {@inheritDoc}
+     * Retrieve the values of response attributes.
+     *
+     * @param types Response attributes to retrieve values for.
+     *
+     * @return List of {@link Attribute} objects.
      */
     @Override
     List<Attribute> attributes(AttributeType... types);
 
     /**
-     * {@inheritDoc}
+     * Searches the data in the HTTP message for the specified search term.
+     *
+     * @param searchTerm    The value to be searched for.
+     * @param caseSensitive Flags whether the search is case-sensitive.
+     *
+     * @return True if the search term is found.
+     */
+    @Override
+    boolean contains(String searchTerm, boolean caseSensitive);
+
+    /**
+     * Searches the data in the HTTP message for the specified regular expression.
+     *
+     * @param pattern The regular expression to be searched for.
+     *
+     * @return True if the pattern is matched.
+     */
+    @Override
+    boolean contains(Pattern pattern);
+
+    /**
+     * Message as a byte array.
+     *
+     * @return The message as a byte array.
      */
     @Override
     ByteArray toByteArray();
 
     /**
-     * {@inheritDoc}
+     * Message as a {@code String}.
+     *
+     * @return The message as a {@code String}.
+     */
+    @Override
+    String toString();
+
+    /**
+     * Create a copy of the {@code HttpResponse} with the provided status code.
+     *
+     * @param statusCode the new status code for response
+     *
+     * @return A new {@code HttpResponse} instance.
      */
     @Override
     HttpResponse withStatusCode(short statusCode);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse} with the new reason phrase.
+     *
+     * @param reasonPhrase the new reason phrase for response
+     *
+     * @return A new {@code HttpResponse} instance.
      */
     @Override
     HttpResponse withReasonPhrase(String reasonPhrase);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse} with the new http version.
+     *
+     * @param httpVersion the new http version for response
+     *
+     * @return A new {@code HttpResponse} instance.
      */
     @Override
     HttpResponse withHttpVersion(String httpVersion);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse} with the updated body.<br>
+     * Updates Content-Length header.
+     *
+     * @param body the new body for the response
+     *
+     * @return A new {@code HttpResponse} instance.
      */
     @Override
     HttpResponse withBody(String body);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse} with the updated body.<br>
+     * Updates Content-Length header.
+     *
+     * @param body the new body for the response
+     *
+     * @return A new {@code HttpResponse} instance.
      */
     @Override
     HttpResponse withBody(ByteArray body);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse} with the added header.
+     *
+     * @param header The {@link HttpHeader} to add to the response.
+     *
+     * @return The updated response containing the added header.
      */
     @Override
     HttpResponse withAddedHeader(HttpHeader header);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse}  with the added header.
+     *
+     * @param name  The name of the header.
+     * @param value The value of the header.
+     *
+     * @return The updated response containing the added header.
      */
     @Override
     HttpResponse withAddedHeader(String name, String value);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse}  with the updated header.
+     *
+     * @param header The {@link HttpHeader} to update containing the new value.
+     *
+     * @return The updated response containing the updated header.
      */
     @Override
     HttpResponse withUpdatedHeader(HttpHeader header);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse}  with the updated header.
+     *
+     * @param name  The name of the header to update the value of.
+     * @param value The new value of the specified HTTP header.
+     *
+     * @return The updated response containing the updated header.
      */
     @Override
     HttpResponse withUpdatedHeader(String name, String value);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse}  with the removed header.
+     *
+     * @param header The {@link HttpHeader} to remove from the response.
+     *
+     * @return The updated response containing the removed header.
      */
     @Override
     HttpResponse withRemovedHeader(HttpHeader header);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse}  with the removed header.
+     *
+     * @param name The name of the HTTP header to remove from the response.
+     *
+     * @return The updated response containing the removed header.
      */
     @Override
     HttpResponse withRemovedHeader(String name);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse} with the added markers.
+     *
+     * @param markers Request markers to add.
+     *
+     * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     @Override
     HttpResponse withMarkers(List<Marker> markers);
 
     /**
-     * {@inheritDoc}
+     * Create a copy of the {@code HttpResponse} with the added markers.
+     *
+     * @param markers Request markers to add.
+     *
+     * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     @Override
     HttpResponse withMarkers(Marker... markers);
 
     /**
-     * {@inheritDoc}
+     * This method retrieves a unique ID for this request/response.
+     *
+     * @return An identifier that is unique to a single request/response pair.
+     * Extensions can use this to correlate details of requests and responses
+     * and perform processing on the response message accordingly.
      */
     @Override
     int messageId();
 
     /**
-     * {@inheritDoc}
+     * This method retrieves the name of the Burp Proxy listener that is
+     * processing the intercepted message.
+     *
+     * @return The name of the Burp Proxy listener that is processing the
+     * intercepted message. The format is the same as that shown in the Proxy
+     * Listeners UI - for example, "127.0.0.1:8080".
      */
     @Override
     String listenerInterface();
 
     /**
-     * {@inheritDoc}
+     * This method retrieves the IP address for the source of the intercepted
+     * message.
+     *
+     * @return The IP address for the source of the intercepted message.
      */
     @Override
     InetAddress sourceIpAddress();
 
     /**
-     * {@inheritDoc}
+     * This method retrieves the IP address for the destination of the
+     * intercepted message.
+     *
+     * @return The IP address for the destination of the intercepted message.
      */
     @Override
     InetAddress destinationIpAddress();

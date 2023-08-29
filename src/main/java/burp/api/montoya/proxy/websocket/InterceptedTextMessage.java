@@ -15,19 +15,19 @@ import burp.api.montoya.websocket.TextMessage;
 public interface InterceptedTextMessage extends TextMessage
 {
     /**
-     * {@inheritDoc}
+     * @return The annotations.
+     */
+    Annotations annotations();
+
+    /**
+     * @return Text based WebSocket payload.
      */
     @Override
     String payload();
 
     /**
-     * {@inheritDoc}
+     * @return The direction of the message.
      */
     @Override
     Direction direction();
-
-    /**
-     * @return The annotations.
-     */
-    Annotations annotations();
 }

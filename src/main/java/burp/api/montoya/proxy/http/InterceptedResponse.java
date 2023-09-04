@@ -32,6 +32,12 @@ public interface InterceptedResponse extends InterceptedHttpMessage, HttpRespons
 {
     /**
      * @return initiatingRequest The HTTP request that was sent.
+     * @see InterceptedResponse#initiatingRequest()
+     */
+    HttpRequest request();
+
+    /**
+     * @return initiatingRequest The HTTP request that was sent.
      */
     HttpRequest initiatingRequest();
 

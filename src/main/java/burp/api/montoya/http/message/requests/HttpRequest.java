@@ -74,7 +74,7 @@ public interface HttpRequest extends HttpMessage
      * @return the path excluding query parameters.
      * @throws MalformedRequestException if request is malformed.
      */
-    String resourcePath();
+    String pathWithoutQuery();
 
     /**
      * @return The detected content type of the request.
@@ -139,6 +139,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return True if the header exists in the request.
      */
+    @Override
     boolean hasHeader(HttpHeader header);
 
     /**
@@ -146,6 +147,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return True if a header exists in the request with the supplied name.
      */
+    @Override
     boolean hasHeader(String name);
 
     /**
@@ -154,6 +156,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return True if a header exists in the request that matches the name and value supplied.
      */
+    @Override
     boolean hasHeader(String name, String value);
 
     /**
@@ -161,6 +164,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return An instance of {@link HttpHeader} that matches the name supplied, {@code null} if no match found.
      */
+    @Override
     HttpHeader header(String name);
 
     /**
@@ -168,6 +172,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return The {@code String} value of the header that matches the name supplied, {@code null} if no match found.
      */
+    @Override
     String headerValue(String name);
 
     /**
@@ -175,6 +180,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A list of HTTP headers.
      */
+    @Override
     List<HttpHeader> headers();
 
     /**
@@ -183,6 +189,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return Version string
      */
+    @Override
     String httpVersion();
 
     /**
@@ -190,6 +197,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return The message body offset.
      */
+    @Override
     int bodyOffset();
 
     /**
@@ -197,6 +205,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return The body of a message as a byte array.
      */
+    @Override
     ByteArray body();
 
     /**
@@ -204,6 +213,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return The body of a message as a {@code String}.
      */
+    @Override
     String bodyToString();
 
     /**
@@ -211,6 +221,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return A list of markers.
      */
+    @Override
     List<Marker> markers();
 
     /**
@@ -221,6 +232,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return True if the search term is found.
      */
+    @Override
     boolean contains(String searchTerm, boolean caseSensitive);
 
     /**
@@ -230,6 +242,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return True if the pattern is matched.
      */
+    @Override
     boolean contains(Pattern pattern);
 
     /**
@@ -237,6 +250,7 @@ public interface HttpRequest extends HttpMessage
      *
      * @return The message as a byte array.
      */
+    @Override
     ByteArray toByteArray();
 
     /**

@@ -87,7 +87,7 @@ public interface InterceptedRequest extends InterceptedHttpMessage, HttpRequest
      * @throws MalformedRequestException if request is malformed.
      */
     @Override
-    String resourcePath();
+    String pathWithoutQuery();
 
     /**
      * HTTP Version text parsed from the request line for HTTP 1 messages.

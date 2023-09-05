@@ -13,5 +13,7 @@ package burp.api.montoya.utilities;
  */
 public enum CompressionType
 {
-    GZIP
+    GZIP,
+    DEFLATE,
+    BROTLI
 }

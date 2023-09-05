@@ -10,6 +10,7 @@ package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
@@ -80,6 +81,14 @@ public interface ProxyHttpRequestResponse
      * @return the port number used by the proxy listener
      */
     int listenerPort();
+
+    /**
+     * Obtain the MIME type of the response or request, as determined by Burp Suite.
+     * If there is no response the mime type will be determined from the request url.
+     *
+     * @return The MIME type.
+     */
+    MimeType mimeType();
 
     /**
      * Searches the data in the HTTP request and response for the specified search term.

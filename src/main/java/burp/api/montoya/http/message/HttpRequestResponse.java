@@ -12,9 +12,6 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.Marker;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.handler.TimingData;
-import burp.api.montoya.http.message.params.HttpParameter;
-import burp.api.montoya.http.message.params.HttpParameterType;
-import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -58,11 +55,38 @@ public interface HttpRequestResponse
     Optional<TimingData> timingData();
 
     /**
+     * Retrieve the URL for the request.<br>
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The URL in the request.
+     * @throws MalformedRequestException if request is malformed.
+     * @deprecated use {@link #request()} url instead.
+     */
+    @Deprecated(forRemoval = true)
+    String url();
+
+    /**
      * HTTP service for the request.
      *
      * @return An {@link HttpService} object containing details of the HTTP service.
      */
     HttpService httpService();
+
+    /**
+     * @return The detected content type of the request.
+     * @deprecated use {@link #request()} contentType instead.
+     */
+    @Deprecated(forRemoval = true)
+    ContentType contentType();
+
+    /**
+     * HTTP status code contained in the response.
+     *
+     * @return HTTP status code or -1 if there is no response.
+     * @deprecated use {@link #response()} statusCode instead.
+     */
+    @Deprecated(forRemoval = true)
+    short statusCode();
 
     /**
      * @return List of request markers

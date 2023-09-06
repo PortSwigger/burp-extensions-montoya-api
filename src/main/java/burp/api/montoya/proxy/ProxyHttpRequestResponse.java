@@ -9,8 +9,8 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
-import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.regex.Pattern;
@@ -42,9 +42,83 @@ public interface ProxyHttpRequestResponse
     HttpResponse originalResponse();
 
     /**
-     * @return True if there is a response.
+     * URL for the issued final request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The URL in the request.
+     * @throws MalformedRequestException if request is malformed.
      */
-    boolean hasResponse();
+    @Deprecated(forRemoval = true)
+    String url();
+
+    /**
+     * HTTP method for the issued final request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The HTTP method used in the request.
+     * @throws MalformedRequestException if request is malformed.
+     * @deprecated use {@link #finalRequest()} method instead.
+     */
+    @Deprecated(forRemoval = true)
+    String method();
+
+    /**
+     * Path and File for the issued final request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return the path and file in the request
+     * @throws MalformedRequestException if request is malformed.
+     * @deprecated use {@link #finalRequest()} path instead.
+     */
+    @Deprecated(forRemoval = true)
+    String path();
+
+    /**
+     * @return The hostname or IP address for the service.
+     * @deprecated use {@link #finalRequest()} httpService instead.
+     */
+    @Deprecated(forRemoval = true)
+    String host();
+
+    /**
+     * @return The port number for the service.
+     * @deprecated use {@link #finalRequest()} httpService instead.
+     */
+    @Deprecated(forRemoval = true)
+    int port();
+
+    /**
+     * @return True is a secure protocol is used for the connection, false otherwise.
+     * @deprecated use {@link #finalRequest()} httpService instead.
+     */
+    @Deprecated(forRemoval = true)
+    boolean secure();
+
+    /**
+     * @return The {@code String} representation of the service.
+     * @deprecated use {@link #finalRequest()} httpService instead.
+     */
+    @Deprecated(forRemoval = true)
+    String httpServiceString();
+
+    /**
+     * HTTP Version text parsed from the request line for HTTP 1 messages.
+     * HTTP 2 messages will return "HTTP/2"
+     *
+     * @return Version string
+     * @deprecated use {@link #finalRequest()} httpVersion instead.
+     */
+    @Deprecated(forRemoval = true)
+    String requestHttpVersion();
+
+    /**
+     * Body of the issued final request
+     *
+     * @return The body of a message as a {@code String}.
+     * @deprecated use {@link #finalRequest()} body instead.
+     */
+    @Deprecated(forRemoval = true)
+    String requestBody();
 
     /**
      * @return True if the request or response was edited

@@ -73,6 +73,7 @@ public interface ProxyHttpRequestResponse
      * @return The URL in the request.
      * @throws MalformedRequestException if request is malformed.
      */
+    @Deprecated(forRemoval = true)
     String url();
 
     /**
@@ -81,7 +82,9 @@ public interface ProxyHttpRequestResponse
      *
      * @return The HTTP method used in the request.
      * @throws MalformedRequestException if request is malformed.
+     * @deprecated use {@link #finalRequest()} method instead.
      */
+    @Deprecated(forRemoval = true)
     String method();
 
     /**
@@ -90,27 +93,37 @@ public interface ProxyHttpRequestResponse
      *
      * @return the path and file in the request
      * @throws MalformedRequestException if request is malformed.
+     * @deprecated use {@link #finalRequest()} path instead.
      */
+    @Deprecated(forRemoval = true)
     String path();
 
     /**
      * @return The hostname or IP address for the service.
+     * @deprecated use {@link #finalRequest()} httpService instead.
      */
+    @Deprecated(forRemoval = true)
     String host();
 
     /**
      * @return The port number for the service.
+     * @deprecated use {@link #finalRequest()} httpService instead.
      */
+    @Deprecated(forRemoval = true)
     int port();
 
     /**
      * @return True is a secure protocol is used for the connection, false otherwise.
+     * @deprecated use {@link #finalRequest()} httpService instead.
      */
+    @Deprecated(forRemoval = true)
     boolean secure();
 
     /**
      * @return The {@code String} representation of the service.
+     * @deprecated use {@link #finalRequest()} httpService instead.
      */
+    @Deprecated(forRemoval = true)
     String httpServiceString();
 
     /**
@@ -118,16 +131,19 @@ public interface ProxyHttpRequestResponse
      * HTTP 2 messages will return "HTTP/2"
      *
      * @return Version string
+     * @deprecated use {@link #finalRequest()} httpVersion instead.
      */
+    @Deprecated(forRemoval = true)
     String requestHttpVersion();
 
     /**
      * Body of the issued final request
      *
      * @return The body of a message as a {@code String}.
+     * @deprecated use {@link #finalRequest()} body instead.
      */
+    @Deprecated(forRemoval = true)
     String requestBody();
-
 
     /**
      * @return True if the request or response was edited

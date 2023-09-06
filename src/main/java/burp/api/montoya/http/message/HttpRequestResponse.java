@@ -62,7 +62,9 @@ public interface HttpRequestResponse
      *
      * @return The URL in the request.
      * @throws MalformedRequestException if request is malformed.
+     * @deprecated use {@link #request()} url instead.
      */
+    @Deprecated(forRemoval = true)
     String url();
 
     /**
@@ -72,14 +74,18 @@ public interface HttpRequestResponse
 
     /**
      * @return The detected content type of the request.
+     * @deprecated use {@link #request()} contentType instead.
      */
+    @Deprecated(forRemoval = true)
     ContentType contentType();
 
     /**
      * HTTP status code contained in the response.
      *
      * @return HTTP status code or -1 if there is no response.
+     * @deprecated use {@link #response()} statusCode instead.
      */
+    @Deprecated(forRemoval = true)
     short statusCode();
 
     /**

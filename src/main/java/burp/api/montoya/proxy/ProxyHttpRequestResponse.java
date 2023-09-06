@@ -12,6 +12,7 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
 import java.util.regex.Pattern;
@@ -66,9 +67,67 @@ public interface ProxyHttpRequestResponse
     HttpService httpService();
 
     /**
-     * @return True if there is a response.
+     * URL for the issued final request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The URL in the request.
+     * @throws MalformedRequestException if request is malformed.
      */
-    boolean hasResponse();
+    String url();
+
+    /**
+     * HTTP method for the issued final request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The HTTP method used in the request.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String method();
+
+    /**
+     * Path and File for the issued final request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return the path and file in the request
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String path();
+
+    /**
+     * @return The hostname or IP address for the service.
+     */
+    String host();
+
+    /**
+     * @return The port number for the service.
+     */
+    int port();
+
+    /**
+     * @return True is a secure protocol is used for the connection, false otherwise.
+     */
+    boolean secure();
+
+    /**
+     * @return The {@code String} representation of the service.
+     */
+    String httpServiceString();
+
+    /**
+     * HTTP Version text parsed from the request line for HTTP 1 messages.
+     * HTTP 2 messages will return "HTTP/2"
+     *
+     * @return Version string
+     */
+    String requestHttpVersion();
+
+    /**
+     * Body of the issued final request
+     *
+     * @return The body of a message as a {@code String}.
+     */
+    String requestBody();
+
 
     /**
      * @return True if the request or response was edited

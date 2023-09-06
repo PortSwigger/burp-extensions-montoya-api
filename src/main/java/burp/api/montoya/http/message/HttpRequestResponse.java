@@ -12,9 +12,6 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.Marker;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.handler.TimingData;
-import burp.api.montoya.http.message.params.HttpParameter;
-import burp.api.montoya.http.message.params.HttpParameterType;
-import burp.api.montoya.http.message.params.ParsedHttpParameter;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
@@ -60,9 +57,30 @@ public interface HttpRequestResponse
     Optional<TimingData> timingData();
 
     /**
+     * Retrieve the URL for the request.<br>
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return The URL in the request.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String url();
+
+    /**
      * @return True if there is an HTTP response message.
      */
     boolean hasResponse();
+
+    /**
+     * @return The detected content type of the request.
+     */
+    ContentType contentType();
+
+    /**
+     * HTTP status code contained in the response.
+     *
+     * @return HTTP status code or -1 if there is no response.
+     */
+    short statusCode();
 
     /**
      * @return List of request markers

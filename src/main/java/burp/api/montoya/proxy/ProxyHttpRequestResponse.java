@@ -166,6 +166,11 @@ public interface ProxyHttpRequestResponse
     MimeType mimeType();
 
     /**
+     * @return True if there is a response.
+     */
+    boolean hasResponse();
+
+    /**
      * Searches the data in the HTTP request and response for the specified search term.
      *
      * @param searchTerm    The value to be searched for.

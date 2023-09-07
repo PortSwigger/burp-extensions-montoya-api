@@ -24,7 +24,8 @@ public enum ToolType
     DECODER("Decoder"),
     COMPARER("Comparer"),
     EXTENSIONS("Extensions"),
-    RECORDED_LOGIN_REPLAYER("Recorded login replayer");
+    RECORDED_LOGIN_REPLAYER("Recorded login replayer"),
+    ORGANIZER("Organizer");
 
     private final String toolName;
 

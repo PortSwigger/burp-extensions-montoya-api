@@ -15,6 +15,7 @@ import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
+import java.time.ZonedDateTime;
 import java.util.regex.Pattern;
 
 /**
@@ -149,6 +150,11 @@ public interface ProxyHttpRequestResponse
      * @return True if the request or response was edited
      */
     boolean edited();
+
+    /**
+     * @return The time that the request arrived in the proxy
+     */
+    ZonedDateTime time();
 
     /**
      * Returns the proxy listener port used for the request/response.

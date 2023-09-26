@@ -36,6 +36,13 @@ public interface Version
     String minor();
 
     /**
+     * The patch version (e.g. 1).
+     *
+     * @return The patch version, or zero if there is no patch part to the version number.
+     */
+    String patch();
+
+    /**
      * The build number (e.g. 9320).
      *
      * @return The build number.

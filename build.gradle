@@ -5,8 +5,6 @@ plugins {
     id 'net.researchgate.release' version '3.0.1'
 }
 
-apply(from: "portswigger.gradle")
-
 repositories {
     mavenLocal()
     mavenCentral()
@@ -49,3 +47,4 @@ release {
 
 createReleaseTag.dependsOn publish
 
+apply(from: "portswigger.gradle")

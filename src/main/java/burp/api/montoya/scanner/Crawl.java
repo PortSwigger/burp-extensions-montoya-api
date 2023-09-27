@@ -39,6 +39,8 @@ public interface Crawl extends ScanTask
     void delete();
 
     /**
+     * This functionality is not yet implemented.
+     *
      * @return the current status message of the task
      */
     @Override

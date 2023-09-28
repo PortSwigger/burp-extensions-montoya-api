@@ -9,7 +9,7 @@
 package burp.api.montoya.collaborator;
 
 /**
- * Provides access to the facilities of Burp Collaborator.
+ * [Professional only] Provides access to the facilities of Burp Collaborator.
  */
 public interface Collaborator
 {

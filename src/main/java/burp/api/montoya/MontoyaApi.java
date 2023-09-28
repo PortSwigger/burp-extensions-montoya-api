@@ -45,7 +45,7 @@ public interface MontoyaApi
     BurpSuite burpSuite();
 
     /**
-     * Access the functionality of the Collaborator.
+     * [Professional only] Access the functionality of the Collaborator.
      *
      * @return An implementation of the Collaborator interface which exposes Collaborator functionality.
      */
@@ -122,7 +122,7 @@ public interface MontoyaApi
     Repeater repeater();
 
     /**
-     * Access the functionality of the Scanner.
+     * [Professional only] Access the functionality of the Scanner.
      *
      * @return An implementation of the Scanner interface which exposes Scanner functionality.
      */

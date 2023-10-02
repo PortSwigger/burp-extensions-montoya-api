@@ -25,29 +25,36 @@ public interface Version
      * The major version (e.g. 2022.8).
      *
      * @return The major version.
+     * @deprecated use {@link #toString()} or {@link #buildNumber()} instead.
      */
+    @Deprecated(forRemoval = true)
     String major();
 
     /**
      * The minor version (e.g. 1).
      *
      * @return The minor version.
+     * @deprecated use {@link #toString()} or {@link #buildNumber()} instead.
      */
+    @Deprecated(forRemoval = true)
     String minor();
-
-    /**
-     * The patch version (e.g. 1).
-     *
-     * @return The patch version, or zero if there is no patch part to the version number.
-     */
-    String patch();
 
     /**
      * The build number (e.g. 9320).
      *
      * @return The build number.
+     * @deprecated use {@link #toString()} or {@link #buildNumber()} instead.
      */
+    @Deprecated(forRemoval = true)
     String build();
+
+    /**
+     * Build number for Burp Suite. This will increase for subsequent releases, but there are no other guarantees
+     * about the format of this number.
+     *
+     * @return The build number.
+     */
+    int buildNumber();
 
     /**
      * The edition of Burp Suite
@@ -56,6 +63,12 @@ public interface Version
      */
     BurpSuiteEdition edition();
 
+    /**
+     * The human-readable version string. There are no guarantees about the structure of this, and therefore
+     * should not be manually parsed. See also: {@link #buildNumber()}.
+     *
+     * @return The human-readable version string.
+     */
     @Override
     String toString();
 }

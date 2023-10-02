@@ -54,7 +54,7 @@ public interface Version
      *
      * @return The build number.
      */
-    int buildNumber();
+    long buildNumber();
 
     /**
      * The edition of Burp Suite

@@ -49,8 +49,7 @@ public interface Version
     String build();
 
     /**
-     * Build number for Burp Suite. This will increase for subsequent releases, but there are no other guarantees
-     * about the format of this number.
+     * Build number for Burp Suite. You can use this to determine compatibility with different versions of Burp Suite. Do not parse this information, because the format of the number may change.
      *
      * @return The build number.
      */
@@ -64,8 +63,7 @@ public interface Version
     BurpSuiteEdition edition();
 
     /**
-     * The human-readable version string. There are no guarantees about the structure of this, and therefore
-     * should not be manually parsed. See also: {@link #buildNumber()}.
+     * The human-readable version string. Do not parse this information, because the format may change. See also: {@link #buildNumber()}.
      *
      * @return The human-readable version string.
      */

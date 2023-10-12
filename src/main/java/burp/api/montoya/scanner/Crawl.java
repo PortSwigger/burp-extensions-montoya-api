@@ -14,26 +14,35 @@ package burp.api.montoya.scanner;
 public interface Crawl extends ScanTask
 {
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    void delete();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    String statusMessage();
-
-    /**
-     * {@inheritDoc}
+     * Number of requests that have been made for the
+     * scan task.
+     *
+     * @return The number of requests that have been made for the scan task.
      */
     @Override
     int requestCount();
 
     /**
-     * {@inheritDoc}
+     * Number of network errors that have occurred for
+     * the scan task.
+     *
+     * @return The number of network errors that have occurred for the scan
+     * task.
      */
     @Override
     int errorCount();
+
+    /**
+     * Delete the task.
+     */
+    @Override
+    void delete();
+
+    /**
+     * This functionality is not yet implemented.
+     *
+     * @return the current status message of the task
+     */
+    @Override
+    String statusMessage();
 }

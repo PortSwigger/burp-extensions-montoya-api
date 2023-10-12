@@ -38,9 +38,11 @@ public interface HttpRequestResponse
     HttpResponse response();
 
     /**
-     * @return True if there is an HTTP response message.
+     * HTTP service for the request.
+     *
+     * @return An {@link HttpService} object containing details of the HTTP service.
      */
-    boolean hasResponse();
+    HttpService httpService();
 
     /**
      * @return The annotations.
@@ -66,11 +68,9 @@ public interface HttpRequestResponse
     String url();
 
     /**
-     * HTTP service for the request.
-     *
-     * @return An {@link HttpService} object containing details of the HTTP service.
+     * @return True if there is an HTTP response message.
      */
-    HttpService httpService();
+    boolean hasResponse();
 
     /**
      * @return The detected content type of the request.
@@ -99,7 +99,7 @@ public interface HttpRequestResponse
     List<Marker> responseMarkers();
 
     /**
-     * Searches the data in the HTTP request and response for the specified search term.
+     * Searches the data in the HTTP request,response and notes for the specified search term.
      *
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.
@@ -109,7 +109,7 @@ public interface HttpRequestResponse
     boolean contains(String searchTerm, boolean caseSensitive);
 
     /**
-     * Searches the data in the HTTP request and response for the specified regular expression.
+     * Searches the data in the HTTP request, response and notes for the specified regular expression.
      *
      * @param pattern The regular expression to be searched for.
      *

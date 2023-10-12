@@ -18,7 +18,7 @@ import java.util.Set;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
- * Enables data to be stored and accessed from the Burp project.
+ * [Professional only] Enables data to be stored and accessed from the Burp project.
  * Supports HTTP requests, HTTP responses, byte arrays, primitives, lists of all these, and object hierarchies.
  */
 public interface PersistedObject

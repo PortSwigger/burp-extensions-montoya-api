@@ -61,25 +61,32 @@ public interface Audit extends ScanTask
     void addRequestResponse(HttpRequestResponse requestResponse);
 
     /**
-     * {@inheritDoc}
+     * Number of requests that have been made for the
+     * scan task.
+     *
+     * @return The number of requests that have been made for the scan task.
      */
     @Override
     int requestCount();
 
     /**
-     * {@inheritDoc}
+     * Number of network errors that have occurred for
+     * the scan task.
+     *
+     * @return The number of network errors that have occurred for the scan
+     * task.
      */
     @Override
     int errorCount();
 
     /**
-     * {@inheritDoc}
+     * Delete the task.
      */
     @Override
     void delete();
 
     /**
-     * {@inheritDoc}
+     * @return the current status message of the task
      */
     @Override
     String statusMessage();

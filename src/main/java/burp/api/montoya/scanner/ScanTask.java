@@ -33,13 +33,13 @@ public interface ScanTask extends Task
     int errorCount();
 
     /**
-     * {@inheritDoc}
+     * Delete the task.
      */
     @Override
     void delete();
 
     /**
-     * {@inheritDoc}
+     * @return the current status message of the task
      */
     @Override
     String statusMessage();

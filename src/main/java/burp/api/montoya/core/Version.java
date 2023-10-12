@@ -25,22 +25,35 @@ public interface Version
      * The major version (e.g. 2022.8).
      *
      * @return The major version.
+     * @deprecated use {@link #toString()} or {@link #buildNumber()} instead.
      */
+    @Deprecated(forRemoval = true)
     String major();
 
     /**
      * The minor version (e.g. 1).
      *
      * @return The minor version.
+     * @deprecated use {@link #toString()} or {@link #buildNumber()} instead.
      */
+    @Deprecated(forRemoval = true)
     String minor();
 
     /**
      * The build number (e.g. 9320).
      *
      * @return The build number.
+     * @deprecated use {@link #toString()} or {@link #buildNumber()} instead.
      */
+    @Deprecated(forRemoval = true)
     String build();
+
+    /**
+     * Build number for Burp Suite. You can use this to determine compatibility with different versions of Burp Suite. Do not parse this information, because the format of the number may change.
+     *
+     * @return The build number.
+     */
+    long buildNumber();
 
     /**
      * The edition of Burp Suite
@@ -49,6 +62,11 @@ public interface Version
      */
     BurpSuiteEdition edition();
 
+    /**
+     * The human-readable version string. Do not parse this information, because the format may change. See also: {@link #buildNumber()}.
+     *
+     * @return The human-readable version string.
+     */
     @Override
     String toString();
 }

@@ -9,10 +9,13 @@
 package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
+import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
+import java.time.ZonedDateTime;
 import java.util.regex.Pattern;
 
 /**
@@ -21,11 +24,12 @@ import java.util.regex.Pattern;
 public interface ProxyHttpRequestResponse
 {
     /**
-     * This method retrieves the annotations for the request/response pair.
+     * This method retrieves the HTTP request that was sent by Burp Proxy.
      *
-     * @return The {@link Annotations} for the request/response pair.
+     * @return The {@link HttpRequest} that was sent by Burp Proxy.
+     * @see ProxyHttpRequestResponse#finalRequest()
      */
-    Annotations annotations();
+    HttpRequest request();
 
     /**
      * This method retrieves the HTTP request that was sent by Burp Proxy.
@@ -38,8 +42,30 @@ public interface ProxyHttpRequestResponse
      * This method retrieves the HTTP response that was received by Burp Proxy.
      *
      * @return The {@link HttpResponse} that was received by Burp Proxy.
+     * @see ProxyHttpRequestResponse#originalResponse()
+     */
+    HttpResponse response();
+
+    /**
+     * This method retrieves the HTTP response that was received by Burp Proxy.
+     *
+     * @return The {@link HttpResponse} that was received by Burp Proxy.
      */
     HttpResponse originalResponse();
+
+    /**
+     * This method retrieves the annotations for the request/response pair.
+     *
+     * @return The {@link Annotations} for the request/response pair.
+     */
+    Annotations annotations();
+
+    /**
+     * HTTP service for the request.
+     *
+     * @return An {@link HttpService} object containing details of the HTTP service.
+     */
+    HttpService httpService();
 
     /**
      * URL for the issued final request.
@@ -124,6 +150,33 @@ public interface ProxyHttpRequestResponse
      * @return True if the request or response was edited
      */
     boolean edited();
+
+    /**
+     * Returns the date and time in ISO-8601 format at which Burp Proxy received the request.
+     *
+     * @return The time at which Burp Proxy received the request.
+     */
+    ZonedDateTime time();
+
+    /**
+     * Returns the proxy listener port used for the request/response.
+     *
+     * @return the port number used by the proxy listener
+     */
+    int listenerPort();
+
+    /**
+     * Obtain the MIME type of the response or request, as determined by Burp Suite.
+     * If there is no response the mime type will be determined from the request url.
+     *
+     * @return The MIME type.
+     */
+    MimeType mimeType();
+
+    /**
+     * @return True if there is a response.
+     */
+    boolean hasResponse();
 
     /**
      * Searches the data in the HTTP request and response for the specified search term.

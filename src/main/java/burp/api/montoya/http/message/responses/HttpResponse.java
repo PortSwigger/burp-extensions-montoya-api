@@ -54,75 +54,6 @@ public interface HttpResponse extends HttpMessage
     boolean isStatusCodeClass(StatusCodeClass statusCodeClass);
 
     /**
-     * Return the HTTP Version text parsed from the response line for HTTP 1 messages.
-     * HTTP 2 messages will return "HTTP/2"
-     *
-     * @return Version string
-     */
-    @Override
-    String httpVersion();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    List<HttpHeader> headers();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    boolean hasHeader(HttpHeader header);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    boolean hasHeader(String name);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    boolean hasHeader(String name, String value);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    HttpHeader header(String name);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    String headerValue(String name);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    ByteArray body();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    String bodyToString();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    int bodyOffset();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    List<Marker> markers();
-
-    /**
      * Obtain details of the HTTP cookies set in the response.
      *
      * @return A list of {@link Cookie} objects representing the cookies set in the response, if any.
@@ -197,25 +128,128 @@ public interface HttpResponse extends HttpMessage
     List<Attribute> attributes(AttributeType... types);
 
     /**
-     * {@inheritDoc}
+     * @param header The header to check if it exists in the request.
+     *
+     * @return True if the header exists in the request.
+     */
+    @Override
+    boolean hasHeader(HttpHeader header);
+
+    /**
+     * @param name The name of the header to query within the request.
+     *
+     * @return True if a header exists in the request with the supplied name.
+     */
+    @Override
+    boolean hasHeader(String name);
+
+    /**
+     * @param name  The name of the header to check.
+     * @param value The value of the header to check.
+     *
+     * @return True if a header exists in the request that matches the name and value supplied.
+     */
+    @Override
+    boolean hasHeader(String name, String value);
+
+    /**
+     * @param name The name of the header to retrieve.
+     *
+     * @return An instance of {@link HttpHeader} that matches the name supplied, {@code null} if no match found.
+     */
+    @Override
+    HttpHeader header(String name);
+
+    /**
+     * @param name The name of the header to retrieve.
+     *
+     * @return The {@code String} value of the header that matches the name supplied, {@code null} if no match found.
+     */
+    @Override
+    String headerValue(String name);
+
+    /**
+     * HTTP headers contained in the message.
+     *
+     * @return A list of HTTP headers.
+     */
+    @Override
+    List<HttpHeader> headers();
+
+    /**
+     * HTTP Version text parsed from the request or response line for HTTP 1 messages.
+     * HTTP 2 messages will return "HTTP/2"
+     *
+     * @return Version string
+     */
+    @Override
+    String httpVersion();
+
+    /**
+     * Offset within the message where the message body begins.
+     *
+     * @return The message body offset.
+     */
+    @Override
+    int bodyOffset();
+
+    /**
+     * Body of a message as a byte array.
+     *
+     * @return The body of a message as a byte array.
+     */
+    @Override
+    ByteArray body();
+
+    /**
+     * Body of a message as a {@code String}.
+     *
+     * @return The body of a message as a {@code String}.
+     */
+    @Override
+    String bodyToString();
+
+    /**
+     * Markers for the message.
+     *
+     * @return A list of markers.
+     */
+    @Override
+    List<Marker> markers();
+
+    /**
+     * Searches the data in the HTTP message for the specified search term.
+     *
+     * @param searchTerm    The value to be searched for.
+     * @param caseSensitive Flags whether the search is case-sensitive.
+     *
+     * @return True if the search term is found.
      */
     @Override
     boolean contains(String searchTerm, boolean caseSensitive);
 
     /**
-     * {@inheritDoc}
+     * Searches the data in the HTTP message for the specified regular expression.
+     *
+     * @param pattern The regular expression to be searched for.
+     *
+     * @return True if the pattern is matched.
      */
     @Override
     boolean contains(Pattern pattern);
 
     /**
-     * {@inheritDoc}
+     * Message as a byte array.
+     *
+     * @return The message as a byte array.
      */
     @Override
     ByteArray toByteArray();
 
     /**
-     * {@inheritDoc}
+     * Message as a {@code String}.
+     *
+     * @return The message as a {@code String}.
      */
     @Override
     String toString();

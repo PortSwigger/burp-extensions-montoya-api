@@ -37,31 +37,35 @@ public interface RawEditor extends Editor
     void setContents(ByteArray contents);
 
     /**
-     * {@inheritDoc}
+     * Update the search expression that is shown in the search bar below the editor.
+     *
+     * @param expression The search expression.
      */
     @Override
     void setSearchExpression(String expression);
 
     /**
-     * {@inheritDoc}
+     * @return True if the user has modified the contents of the editor since the last time the content was set programmatically.
      */
     @Override
     boolean isModified();
 
     /**
-     * {@inheritDoc}
+     * @return The index of the position for the carat within the current message editor.
      */
     @Override
     int caretPosition();
 
     /**
-     * {@inheritDoc}
+     * This will return {@link Optional#empty()} if the user has not made a selection.
+     *
+     * @return An {@link Optional} containing the users current selection in the editor.
      */
     @Override
     Optional<Selection> selection();
 
     /**
-     * {@inheritDoc}
+     * @return UI component of the editor, for extensions to add to their own UI.
      */
     @Override
     Component uiComponent();

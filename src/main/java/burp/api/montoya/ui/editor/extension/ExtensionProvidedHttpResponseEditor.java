@@ -26,37 +26,45 @@ public interface ExtensionProvidedHttpResponseEditor extends ExtensionProvidedEd
     HttpResponse getResponse();
 
     /**
-     * {@inheritDoc}
+     * Sets the provided {@link HttpRequestResponse} object within the editor component.
+     *
+     * @param requestResponse The request and response to set in the editor.
      */
     @Override
     void setRequestResponse(HttpRequestResponse requestResponse);
 
     /**
-     * {@inheritDoc}
+     * A check to determine if the HTTP message editor is enabled for a specific {@link HttpRequestResponse}
+     *
+     * @param requestResponse The {@link HttpRequestResponse} to check.
+     *
+     * @return True if the HTTP message editor is enabled for the provided request and response.
      */
     @Override
     boolean isEnabledFor(HttpRequestResponse requestResponse);
 
     /**
-     * {@inheritDoc}
+     * @return The caption located in the message editor tab header.
      */
     @Override
     String caption();
 
     /**
-     * {@inheritDoc}
+     * @return The component that is rendered within the message editor tab.
      */
     @Override
     Component uiComponent();
 
     /**
-     * {@inheritDoc}
+     * The method should return {@code null} if no data has been selected.
+     *
+     * @return The data that is currently selected by the user.
      */
     @Override
     Selection selectedData();
 
     /**
-     * {@inheritDoc}
+     * @return True if the user has modified the current message within the editor.
      */
     @Override
     boolean isModified();

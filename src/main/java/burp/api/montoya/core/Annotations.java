@@ -21,6 +21,16 @@ public interface Annotations
     String notes();
 
     /**
+     * @return True if there are any notes for this HTTP request and response.
+     */
+    boolean hasNotes();
+
+    /**
+     * @return True if there is a highlight color for this HTTP request and response.
+     */
+    boolean hasHighlightColor();
+
+    /**
      * Set (mutate) the current annotations notes value
      *
      * @param notes the notes to set on the current annotations

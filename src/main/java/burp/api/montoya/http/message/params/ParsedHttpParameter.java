@@ -16,19 +16,19 @@ import burp.api.montoya.core.Range;
 public interface ParsedHttpParameter extends HttpParameter
 {
     /**
-     * {@inheritDoc}
+     * @return The parameter type.
      */
     @Override
     HttpParameterType type();
 
     /**
-     * {@inheritDoc}
+     * @return The parameter name.
      */
     @Override
     String name();
 
     /**
-     * {@inheritDoc}
+     * @return The parameter value.
      */
     @Override
     String value();

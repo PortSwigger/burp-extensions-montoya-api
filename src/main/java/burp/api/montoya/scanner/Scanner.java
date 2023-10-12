@@ -18,7 +18,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * Provides access to the functionality of the Scanner tool.
+ * [Professional only] Provides access to the functionality of the Scanner tool.
  */
 public interface Scanner
 {

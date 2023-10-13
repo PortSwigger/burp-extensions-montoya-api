@@ -179,7 +179,8 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">sendToIntruder</span><wbr><span class="parameters">(<a href="../http/HttpService.html" title="interface in burp.api.montoya.http">HttpService</a>&nbsp;service,
  <a href="HttpRequestTemplate.html" title="interface in burp.api.montoya.intruder">HttpRequestTemplate</a>&nbsp;requestTemplate)</span></div>
 <div class="block">Send an HTTP request to the Burp Intruder tool. The request
- will be displayed in the user interface.</div>
+ will be displayed in the user interface, and markers for attack payloads will be placed
+ into the locations specified in the provided <a href="HttpRequestTemplate.html" title="interface in burp.api.montoya.intruder"><code>HttpRequestTemplate</code></a> object.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>service</code> - An <a href="../http/HttpService.html" title="interface in burp.api.montoya.http"><code>HttpService</code></a> object that specifies the hostname, port and protocol

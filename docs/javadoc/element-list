@@ -26,6 +26,7 @@ burp.api.montoya.scanner
 burp.api.montoya.scanner.audit
 burp.api.montoya.scanner.audit.insertionpoint
 burp.api.montoya.scanner.audit.issues
+burp.api.montoya.scanner.bchecks
 burp.api.montoya.scope
 burp.api.montoya.sitemap
 burp.api.montoya.ui

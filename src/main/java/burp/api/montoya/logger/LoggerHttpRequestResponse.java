@@ -9,7 +9,7 @@
 package burp.api.montoya.logger;
 
 import burp.api.montoya.core.Annotations;
-import burp.api.montoya.core.ToolType;
+import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.handler.TimingData;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -62,9 +62,9 @@ public interface LoggerHttpRequestResponse
     /**
      * The tool that issued the request.
      *
-     * @return The tool.
+     * @return ToolSource which indicates which Burp tool sent the request.
      */
-    ToolType tool();
+    ToolSource toolSource();
 
     /**
      * @return True if there is an HTTP response message.

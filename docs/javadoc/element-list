@@ -15,6 +15,7 @@ burp.api.montoya.http.message.responses.analysis
 burp.api.montoya.http.sessions
 burp.api.montoya.internal
 burp.api.montoya.intruder
+burp.api.montoya.logger
 burp.api.montoya.logging
 burp.api.montoya.organizer
 burp.api.montoya.persistence

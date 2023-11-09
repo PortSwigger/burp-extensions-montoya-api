@@ -15,7 +15,6 @@ import burp.api.montoya.http.handler.TimingData;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
-import java.util.Optional;
 import java.util.regex.Pattern;
 
 /**
@@ -46,11 +45,11 @@ public interface LoggerHttpRequestResponse
     Annotations annotations();
 
     /**
-     * Retrieve the timing data associated with this request if available.
+     * Retrieve the timing data associated with this request.
      *
      * @return The timing data.
      */
-    Optional<TimingData> timingData();
+    TimingData timingData();
 
     /**
      * The page title for the response.
@@ -65,11 +64,6 @@ public interface LoggerHttpRequestResponse
      * @return ToolSource which indicates which Burp tool sent the request.
      */
     ToolSource toolSource();
-
-    /**
-     * @return True if there is an HTTP response message.
-     */
-    boolean hasResponse();
 
     /**
      * Searches the data in the HTTP request, response and notes for the specified search term.

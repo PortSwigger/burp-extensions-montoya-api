@@ -152,7 +152,7 @@ public interface ProxyHttpRequestResponse
     boolean edited();
 
     /**
-     * Returns the date and time in ISO-8601 format at which Burp Proxy received the request.
+     * Returns the date and time at which Burp Proxy received the request.
      *
      * @return The time at which Burp Proxy received the request.
      */

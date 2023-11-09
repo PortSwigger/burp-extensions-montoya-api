@@ -68,6 +68,15 @@ public interface HttpRequest extends HttpMessage
     String path();
 
     /**
+     * The query for the request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return the query, or an empty string if there is none.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String query();
+
+    /**
      * Request path excluding the query parameters.
      * If the request is malformed, then a {@link MalformedRequestException} is thrown.
      *
@@ -75,6 +84,15 @@ public interface HttpRequest extends HttpMessage
      * @throws MalformedRequestException if request is malformed.
      */
     String pathWithoutQuery();
+
+    /**
+     * The file extension for the request.
+     * If the request is malformed, then a {@link MalformedRequestException} is thrown.
+     *
+     * @return the file extension, or an empty string if there is none.
+     * @throws MalformedRequestException if request is malformed.
+     */
+    String fileExtension();
 
     /**
      * @return The detected content type of the request.

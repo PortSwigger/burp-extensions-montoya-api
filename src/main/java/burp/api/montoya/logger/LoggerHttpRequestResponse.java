@@ -12,9 +12,11 @@ import burp.api.montoya.core.Annotations;
 import burp.api.montoya.core.ToolSource;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.handler.TimingData;
+import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 
+import java.time.ZonedDateTime;
 import java.util.regex.Pattern;
 
 /**
@@ -43,6 +45,26 @@ public interface LoggerHttpRequestResponse
      * @return The annotations.
      */
     Annotations annotations();
+
+    /**
+     * Returns the date and time at which Burp Logger received the request.
+     *
+     * @return The time at which Burp Logger received the request.
+     */
+    ZonedDateTime time();
+
+    /**
+     * Obtain the MIME type of the response or request, as determined by Burp Suite.
+     * If there is no response the mime type will be determined from the request url.
+     *
+     * @return The MIME type.
+     */
+    MimeType mimeType();
+
+    /**
+     * @return True if there is a response.
+     */
+    boolean hasResponse();
 
     /**
      * Retrieve the timing data associated with this request.

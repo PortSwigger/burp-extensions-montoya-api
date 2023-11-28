@@ -7,6 +7,8 @@ ext {
 }
 
 repositories {
+    clear()
+    mavenLocal()
     maven {
         url mavenInternalUrl
     }

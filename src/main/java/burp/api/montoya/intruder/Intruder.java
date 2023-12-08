@@ -56,8 +56,7 @@ public interface Intruder
 
     /**
      * Send an HTTP request to the Burp Intruder tool. The request
-     * will be displayed in the user interface, and markers for attack payloads will be placed
-     * into default locations within the request.
+     * will be displayed in the user interface.
      *
      * @param request The full HTTP request.
      */

@@ -10,6 +10,7 @@ package burp.api.montoya.proxy;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.HttpService;
+import burp.api.montoya.http.handler.TimingData;
 import burp.api.montoya.http.message.MimeType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.requests.MalformedRequestException;
@@ -152,7 +153,7 @@ public interface ProxyHttpRequestResponse
     boolean edited();
 
     /**
-     * Returns the date and time in ISO-8601 format at which Burp Proxy received the request.
+     * Returns the date and time at which Burp Proxy received the request.
      *
      * @return The time at which Burp Proxy received the request.
      */
@@ -196,4 +197,11 @@ public interface ProxyHttpRequestResponse
      * @return True if the pattern is matched.
      */
     boolean contains(Pattern pattern);
+
+    /**
+     * Retrieve the timing data associated with this request and response.
+     *
+     * @return The timing data.
+     */
+    TimingData timingData();
 }

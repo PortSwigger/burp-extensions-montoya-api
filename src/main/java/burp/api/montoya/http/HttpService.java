@@ -27,9 +27,16 @@ public interface HttpService
     int port();
 
     /**
-     * @return True is a secure protocol is used for the connection, false otherwise.
+     * @return True if a secure protocol is used for the connection, false otherwise.
      */
     boolean secure();
+
+    /**
+     * Dynamically resolve the host to an IP address.
+     *
+     * @return The IP address of the host.
+     */
+    String ipAddress();
 
     /**
      * @return The {@code String} representation of the service.
@@ -55,7 +62,7 @@ public interface HttpService
      * Create a new instance of {@code HttpService}.
      *
      * @param host   The hostname or IP address for the service.
-     * @param secure True is the secure connection is to be used.
+     * @param secure True if a secure connection is to be used.
      *
      * @return A new {@code HttpService} instance.
      */
@@ -69,7 +76,7 @@ public interface HttpService
      *
      * @param host   The hostname or IP address for the service.
      * @param port   The port number for the service.
-     * @param secure True is the secure connection is to be used.
+     * @param secure True if a secure connection is to be used.
      *
      * @return A new {@code HttpService} instance.
      */

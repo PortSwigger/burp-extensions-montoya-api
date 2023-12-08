@@ -99,7 +99,7 @@ public interface HttpRequestResponse
     List<Marker> responseMarkers();
 
     /**
-     * Searches the data in the HTTP request,response and notes for the specified search term.
+     * Searches the data in the HTTP request, response and notes for the specified search term.
      *
      * @param searchTerm    The value to be searched for.
      * @param caseSensitive Flags whether the search is case-sensitive.

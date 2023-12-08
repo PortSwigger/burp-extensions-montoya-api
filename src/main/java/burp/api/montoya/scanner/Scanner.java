@@ -13,6 +13,7 @@ import burp.api.montoya.scanner.audit.Audit;
 import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPointProvider;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
+import burp.api.montoya.scanner.bchecks.BChecks;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -85,4 +86,11 @@ public interface Scanner
      * @param path   The {@link Path} to the file that will be saved.
      */
     void generateReport(List<AuditIssue> issues, ReportFormat format, Path path);
+
+    /**
+     * Access functionality related to BChecks.
+     *
+     * @return An implementation of the {@link BChecks} interface which exposes BChecks functionality.
+     */
+    BChecks bChecks();
 }

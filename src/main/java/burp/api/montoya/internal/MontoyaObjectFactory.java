@@ -56,11 +56,19 @@ import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.ui.menu.BasicMenuItem;
 import burp.api.montoya.ui.menu.Menu;
+import burp.api.montoya.utilities.json.JsonArrayNode;
+import burp.api.montoya.utilities.json.JsonBooleanNode;
+import burp.api.montoya.utilities.json.JsonNode;
+import burp.api.montoya.utilities.json.JsonNullNode;
+import burp.api.montoya.utilities.json.JsonNumberNode;
+import burp.api.montoya.utilities.json.JsonObjectNode;
+import burp.api.montoya.utilities.json.JsonStringNode;
 import burp.api.montoya.websocket.BinaryMessageAction;
 import burp.api.montoya.websocket.MessageAction;
 import burp.api.montoya.websocket.TextMessageAction;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MontoyaObjectFactory
 {
@@ -323,4 +331,28 @@ public interface MontoyaObjectFactory
     BasicMenuItem basicMenuItem(String caption);
 
     RequestOptions requestOptions();
+
+    JsonNode jsonNode(String json);
+
+    JsonArrayNode jsonArrayNode();
+
+    JsonArrayNode jsonArrayNode(List<? extends JsonNode> value);
+
+    JsonArrayNode jsonArrayNode(JsonNode... values);
+
+    JsonBooleanNode jsonBooleanNode(boolean value);
+
+    JsonNullNode jsonNullNode();
+
+    JsonNumberNode jsonNumberNode(long value);
+
+    JsonNumberNode jsonNumberNode(double value);
+
+    JsonNumberNode jsonNumberNode(Number value);
+
+    JsonObjectNode jsonObjectNode();
+
+    JsonObjectNode jsonObjectNode(Map<String, ? extends JsonNode> value);
+
+    JsonStringNode jsonStringNode(String value);
 }

@@ -8,6 +8,8 @@
 
 package burp.api.montoya.utilities;
 
+import burp.api.montoya.utilities.json.JsonUtils;
+
 /**
  * This interface gives you access to other interfaces that have various data conversion and querying features.
  */
@@ -57,4 +59,9 @@ public interface Utilities
      * @return an instance of {@link burp.api.montoya.utilities.URLUtils}
      */
     URLUtils urlUtils();
+
+    /**
+     * @return an instance of {@link JsonUtils}
+     */
+    JsonUtils jsonUtils();
 }

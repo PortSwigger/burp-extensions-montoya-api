@@ -1,0 +1,11 @@
+# Changelog
+
+## v2024.7
+
+- Added JSON parsing / manipulation support with *JsonUtils* and *JsonNode*.
+- Added ability to control redirection behavior when issuing HTTP requests using *RedirectionMode* and *RequestOptions*.
+- Added utility methods to *HttpRequest* and *HttpResponse* which add, update or remove multiple headers.
+- Added *EditorOptions.SHOW_NON_PRINTABLE_CHARACTERS* and *EditorOptions.WRAP_LINES* which can be applied when creating RawEditors.
+- Added method to *Intruder* which enables sending of HTTP requests with an associated tab name.
+- Added *Project* which allows retrieval of the current project name.
+- Added method to *Proxy* to determine the current interception state.

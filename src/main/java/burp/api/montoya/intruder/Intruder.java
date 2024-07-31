@@ -56,9 +56,34 @@ public interface Intruder
 
     /**
      * Send an HTTP request to the Burp Intruder tool. The request
+     * will be displayed in the user interface, and markers for attack payloads will be placed
+     * into the locations specified in the provided {@link HttpRequestTemplate} object.
+     *
+     * @param service         An {@link HttpService} object that specifies the hostname, port and protocol
+     *                        of a remote server.
+     * @param requestTemplate An HTTP request template containing insertion point offsets.
+     * @param name            An optional caption which will appear on the Intruder
+     *                        tab containing the request. If this value is {@code null} then a default
+     *                        tab index will be displayed.
+     */
+    void sendToIntruder(HttpService service, HttpRequestTemplate requestTemplate, String name);
+
+    /**
+     * Send an HTTP request to the Burp Intruder tool. The request
      * will be displayed in the user interface.
      *
      * @param request The full HTTP request.
      */
     void sendToIntruder(HttpRequest request);
+
+    /**
+     * Send an HTTP request to the Burp Intruder tool. The request
+     * will be displayed in the user interface.
+     *
+     * @param request The full HTTP request.
+     * @param name    A name which will appear on the Intruder
+     *                tab containing the request. If this value is {@code null} then a default
+     *                tab index will be displayed.
+     */
+    void sendToIntruder(HttpRequest request, String name);
 }

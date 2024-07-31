@@ -18,6 +18,7 @@ import burp.api.montoya.intruder.Intruder;
 import burp.api.montoya.logging.Logging;
 import burp.api.montoya.organizer.Organizer;
 import burp.api.montoya.persistence.Persistence;
+import burp.api.montoya.project.Project;
 import burp.api.montoya.proxy.Proxy;
 import burp.api.montoya.repeater.Repeater;
 import burp.api.montoya.scanner.Scanner;
@@ -106,6 +107,13 @@ public interface MontoyaApi
      * @return An implementation of the Persistence interface which exposes persistence functionality.
      */
     Persistence persistence();
+
+    /**
+     * Access functionality related to the project.
+     *
+     * @return An implementation of the Project interface which exposes project functionality.
+     */
+    Project project();
 
     /**
      * Access the functionality of the Proxy.

@@ -33,6 +33,15 @@ public interface RequestOptions
     RequestOptions withUpstreamTLSVerification();
 
     /**
+     * Specify redirection mode to be used when request sent.
+     *
+     * @param redirectionMode A {@link RedirectionMode} enum value which indicates how redirects should be handled.
+     *
+     * @return request options
+     */
+    RequestOptions withRedirectionMode(RedirectionMode redirectionMode);
+
+    /**
      * Use to obtain a new RequestOptions instance
      *
      * @return request options

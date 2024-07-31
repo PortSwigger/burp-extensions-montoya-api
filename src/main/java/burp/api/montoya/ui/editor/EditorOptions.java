@@ -13,5 +13,16 @@ package burp.api.montoya.ui.editor;
  */
 public enum EditorOptions
 {
-    READ_ONLY
+    /**
+     * Editor should be read only.
+     */
+    READ_ONLY,
+    /**
+     * Editor should wrap lines - only applicable for Raw Editors.
+     */
+    WRAP_LINES,
+    /**
+     * Editor should show non printable characters - only applicable for Raw Editors.
+     */
+    SHOW_NON_PRINTABLE_CHARACTERS
 }

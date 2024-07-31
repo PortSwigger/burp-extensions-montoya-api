@@ -331,6 +331,24 @@ public interface HttpResponse extends HttpMessage
     HttpResponse withAddedHeader(String name, String value);
 
     /**
+     * Create a copy of the {@code HttpResponse} with the added HTTP headers.<br>
+     *
+     * @param headers HTTP headers to add.
+     *
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withAddedHeaders(List<? extends HttpHeader> headers);
+
+    /**
+     * Create a copy of the {@code HttpResponse} with the added HTTP headers.<br>
+     *
+     * @param headers HTTP headers to add.
+     *
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withAddedHeaders(HttpHeader... headers);
+
+    /**
      * Create a copy of the {@code HttpResponse}  with the updated header.
      *
      * @param header The {@link HttpHeader} to update containing the new value.
@@ -350,6 +368,24 @@ public interface HttpResponse extends HttpMessage
     HttpResponse withUpdatedHeader(String name, String value);
 
     /**
+     * Create a copy of the {@code HttpResponse} with the updated HTTP headers.<br>
+     *
+     * @param headers HTTP headers to update.
+     *
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withUpdatedHeaders(List<? extends HttpHeader> headers);
+
+    /**
+     * Create a copy of the {@code HttpResponse} with the updated HTTP headers.<br>
+     *
+     * @param headers HTTP headers to update.
+     *
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withUpdatedHeaders(HttpHeader... headers);
+
+    /**
      * Create a copy of the {@code HttpResponse}  with the removed header.
      *
      * @param header The {@link HttpHeader} to remove from the response.
@@ -366,6 +402,24 @@ public interface HttpResponse extends HttpMessage
      * @return The updated response containing the removed header.
      */
     HttpResponse withRemovedHeader(String name);
+
+    /**
+     * Create a copy of the {@code HttpResponse} with the removed HTTP headers.
+     *
+     * @param headers HTTP headers to remove.
+     *
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withRemovedHeaders(List<? extends HttpHeader> headers);
+
+    /**
+     * Create a copy of the {@code HttpResponse} with the removed HTTP headers.
+     *
+     * @param headers HTTP headers to remove.
+     *
+     * @return A new {@code HttpResponse} instance.
+     */
+    HttpResponse withRemovedHeaders(HttpHeader... headers);
 
     /**
      * Create a copy of the {@code HttpResponse} with the added markers.

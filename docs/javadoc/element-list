@@ -19,6 +19,7 @@ burp.api.montoya.logger
 burp.api.montoya.logging
 burp.api.montoya.organizer
 burp.api.montoya.persistence
+burp.api.montoya.project
 burp.api.montoya.proxy
 burp.api.montoya.proxy.http
 burp.api.montoya.proxy.websocket
@@ -37,5 +38,6 @@ burp.api.montoya.ui.editor.extension
 burp.api.montoya.ui.menu
 burp.api.montoya.ui.swing
 burp.api.montoya.utilities
+burp.api.montoya.utilities.json
 burp.api.montoya.websocket
 burp.api.montoya.websocket.extension

@@ -31,6 +31,11 @@ public interface Proxy
     void disableIntercept();
 
     /**
+     * @return True if master interception for Burp Proxy is enabled.
+     */
+    boolean isInterceptEnabled();
+
+    /**
      * This method returns details of all items in the Proxy HTTP history.
      *
      * @return The list of all the {@link ProxyHttpRequestResponse} items in the

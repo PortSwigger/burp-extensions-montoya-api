@@ -1,5 +1,9 @@
 # Changelog
 
+## v2024.11
+
+- Added requestResponse and issues methods to *SiteMapNode*.
+
 ## v2024.7
 
 - Added JSON parsing / manipulation support with *JsonUtils* and *JsonNode*.

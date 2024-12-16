@@ -1,7 +1,10 @@
 # Changelog
 
-## v2024.11
+## v2024.12
+- Added ability to set custom server name indicator using *RequestOptions*. 
+- Added ability to set custom response timeout using *RequestOptions*. 
 
+## v2024.11
 - Added requestResponse and issues methods to *SiteMapNode*.
 
 ## v2024.7

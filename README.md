@@ -14,12 +14,12 @@ Available on [Maven Central](https://search.maven.org/search?q=Montoya-api) and 
     <dependency>
         <groupId>net.portswigger.burp.extensions</groupId>
         <artifactId>montoya-api</artifactId>
-        <version>2024.11</version>
+        <version>2024.12</version>
     </dependency>
 
 <h5>Gradle</h5>
 
-    implementation 'net.portswigger.burp.extensions:montoya-api:2024.11'
+    implementation 'net.portswigger.burp.extensions:montoya-api:2024.12'
 
 Getting Started
 --------

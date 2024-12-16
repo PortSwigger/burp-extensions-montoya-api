@@ -42,6 +42,24 @@ public interface RequestOptions
     RequestOptions withRedirectionMode(RedirectionMode redirectionMode);
 
     /**
+     * Specify the server name indicator (SNI) to be used when request sent.
+     *
+     * @param serverNameIndicator The server name indicator to use.
+     *
+     * @return request options
+     */
+    RequestOptions withServerNameIndicator(String serverNameIndicator);
+
+    /**
+     * Specify the timeout to be used while reading the response.
+     *
+     * @param timeoutMs timeout in ms. Zero indicates no timeout.
+     *
+     * @return request options
+     */
+    RequestOptions withResponseTimeout(long timeoutMs);
+
+    /**
      * Use to obtain a new RequestOptions instance
      *
      * @return request options

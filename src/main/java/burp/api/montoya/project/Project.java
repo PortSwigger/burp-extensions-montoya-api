@@ -11,4 +11,11 @@ public interface Project
      * @return name
      */
     String name();
+
+    /**
+     * Retrieves the unique identifier of the current project.
+     *
+     * @return identifier
+     */
+    String id();
 }

@@ -139,6 +139,20 @@ public interface HttpRequest extends HttpMessage
 
     /**
      * @param name The name of the parameter to find.
+     *
+     * @return An instance of {@link ParsedHttpParameter} that matches the name specified. {@code null} if not found.
+     */
+    ParsedHttpParameter parameter(String name);
+
+    /**
+     * @param name The name of the parameter to get the value from.
+     *
+     * @return The value of the parameter that matches the name specified. {@code null} if not found.
+     */
+    String parameterValue(String name);
+
+    /**
+     * @param name The name of the parameter to find.
      * @param type The type of the parameter to find.
      *
      * @return {@code true} if a parameter exists that matches the name and type specified. {@code false} if not found.

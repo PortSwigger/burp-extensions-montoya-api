@@ -8,6 +8,7 @@
 
 package burp.api.montoya;
 
+import burp.api.montoya.ai.Ai;
 import burp.api.montoya.burpsuite.BurpSuite;
 import burp.api.montoya.collaborator.Collaborator;
 import burp.api.montoya.comparer.Comparer;
@@ -38,6 +39,14 @@ import burp.api.montoya.websocket.WebSockets;
  */
 public interface MontoyaApi
 {
+    /**
+     * [Professional only] Access AI related functionality.
+     * <p> Note that an extension must declare that it requires AI functionality via {@link BurpExtension#enhancedCapabilities()}.</p>
+     *
+     * @return An implementation of the BurpSuite interface which exposes AI related functionality.
+     */
+    Ai ai();
+
     /**
      * Access functionality related to the Burp Suite application.
      *

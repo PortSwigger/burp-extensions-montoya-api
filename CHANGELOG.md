@@ -1,5 +1,10 @@
 # Changelog
 
+## v2025.2
+- Added ability to get parameters without specifying the type from *HttpRequest*.
+- Added ability to retrieve project identifier using *Project*.
+- Added ability to send chat requests to LLMs using the new *Ai* interface.
+
 ## v2024.12
 - Added ability to set custom server name indicator using *RequestOptions*. 
 - Added ability to set custom response timeout using *RequestOptions*. 

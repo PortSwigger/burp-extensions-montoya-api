@@ -8,6 +8,8 @@
 
 package burp.api.montoya.internal;
 
+import burp.api.montoya.ai.chat.Message;
+import burp.api.montoya.ai.chat.PromptOptions;
 import burp.api.montoya.collaborator.InteractionFilter;
 import burp.api.montoya.collaborator.SecretKey;
 import burp.api.montoya.core.Annotations;
@@ -355,4 +357,12 @@ public interface MontoyaObjectFactory
     JsonObjectNode jsonObjectNode(Map<String, ? extends JsonNode> value);
 
     JsonStringNode jsonStringNode(String value);
+
+    PromptOptions promptOptions();
+
+    Message systemMessage(String content);
+
+    Message userMessage(String content);
+
+    Message assistantMessage(String content);
 }

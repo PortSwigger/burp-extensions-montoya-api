@@ -8,6 +8,10 @@
 
 package burp.api.montoya;
 
+import java.util.Set;
+
+import static java.util.Collections.emptySet;
+
 /**
  * All extensions must implement this interface.
  * <p>
@@ -21,4 +25,15 @@ public interface BurpExtension
      * @param api The API implementation to access the functionality of Burp Suite.
      */
     void initialize(MontoyaApi api);
+
+    /**
+     * Called when the extension is loaded to determine if it requires any enhanced capabilities.
+     *
+     * @see EnhancedCapability
+     * @return set of required capabilities
+     */
+    default Set<EnhancedCapability> enhancedCapabilities()
+    {
+        return emptySet();
+    }
 }

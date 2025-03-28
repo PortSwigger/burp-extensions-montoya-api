@@ -25,7 +25,8 @@ public enum ToolType
     COMPARER("Comparer"),
     EXTENSIONS("Extensions"),
     RECORDED_LOGIN_REPLAYER("Recorded login replayer"),
-    ORGANIZER("Organizer");
+    ORGANIZER("Organizer"),
+    BURP_AI("Burp AI");
 
     private final String toolName;
 

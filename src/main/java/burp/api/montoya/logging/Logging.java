@@ -50,6 +50,14 @@ public interface Logging
 
     /**
      * This method prints a line of output to the current extension's standard
+     * output stream.
+     *
+     * @param object The object to print.
+     */
+    void logToOutput(Object object);
+
+    /**
+     * This method prints a line of output to the current extension's standard
      * error stream.
      *
      * @param message The message to print.

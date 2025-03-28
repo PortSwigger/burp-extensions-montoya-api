@@ -18,4 +18,16 @@ public interface RequestResponseSelection
      * @return The selection for the response.
      */
     Selection responseSelection();
+
+    /**
+     * Indicates whether user-selected content from the HTTP request is available.
+     * @return True if there is user-selected content from the HTTP request.
+     */
+    boolean hasRequestSelection();
+
+    /**
+     * Indicates whether user-selected content from the HTTP response is available.
+     * @return True if there is user-selected content from the HTTP response.
+     */
+    boolean hasResponseSelection();
 }

@@ -37,6 +37,7 @@ burp.api.montoya.ui
 burp.api.montoya.ui.contextmenu
 burp.api.montoya.ui.editor
 burp.api.montoya.ui.editor.extension
+burp.api.montoya.ui.hotkey
 burp.api.montoya.ui.menu
 burp.api.montoya.ui.swing
 burp.api.montoya.utilities

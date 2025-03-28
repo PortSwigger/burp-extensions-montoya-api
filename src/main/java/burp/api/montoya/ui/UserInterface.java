@@ -18,6 +18,8 @@ import burp.api.montoya.ui.editor.WebSocketMessageEditor;
 import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
 import burp.api.montoya.ui.editor.extension.WebSocketMessageEditorProvider;
+import burp.api.montoya.ui.hotkey.HotKeyContext;
+import burp.api.montoya.ui.hotkey.HotKeyHandler;
 import burp.api.montoya.ui.menu.MenuBar;
 import burp.api.montoya.ui.swing.SwingUtils;
 
@@ -81,6 +83,18 @@ public interface UserInterface
      * @return A {@link Registration} of the Web Socket message editor provider.
      */
     Registration registerWebSocketMessageEditorProvider(WebSocketMessageEditorProvider provider);
+
+    /**
+     * This method can be used to register hotkey handlers.
+     * Hotkeys are defined in the same format as within Burp's Settings.
+     *
+     * @param context context
+     * @param hotKey hotkey
+     * @param handler the handler to register
+     *
+     * @return A {@link Registration} of the Hot Key handler.
+     */
+    Registration registerHotKeyHandler(HotKeyContext context, String hotKey, HotKeyHandler handler);
 
     /**
      * Create a new instance of Burp's plain text editor, for the extension to use in its own UI.

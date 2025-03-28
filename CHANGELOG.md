@@ -1,5 +1,11 @@
 # Changelog
 
+## v2025.3
+- Added ability to register Editor hotkeys.
+- Added additional URL encoding methods.
+- Added overloaded logToOutput method to Logging.
+- Added utility hasRequestSelection and hasResponseSelection to RequestResponseSelection.
+
 ## v2025.2
 - Added ability to get parameters without specifying the type from *HttpRequest*.
 - Added ability to retrieve project identifier using *Project*.

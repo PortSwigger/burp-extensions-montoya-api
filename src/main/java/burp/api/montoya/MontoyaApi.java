@@ -9,6 +9,7 @@
 package burp.api.montoya;
 
 import burp.api.montoya.ai.Ai;
+import burp.api.montoya.bambda.Bambda;
 import burp.api.montoya.burpsuite.BurpSuite;
 import burp.api.montoya.collaborator.Collaborator;
 import burp.api.montoya.comparer.Comparer;
@@ -46,6 +47,13 @@ public interface MontoyaApi
      * @return An implementation of the BurpSuite interface which exposes AI related functionality.
      */
     Ai ai();
+
+    /**
+     * Access functionality related to Bambdas.
+     *
+     * @return An implementation of the {@link Bambda} interface which exposes Bambda functionality.
+     */
+    Bambda bambda();
 
     /**
      * Access functionality related to the Burp Suite application.

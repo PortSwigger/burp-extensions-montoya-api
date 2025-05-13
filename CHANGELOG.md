@@ -1,5 +1,8 @@
 # Changelog
 
+## v2025.5
+- Added ability to register a custom settings panel.
+
 ## v2025.4
 - Added ability to import bambdas using the new *Bambda* interface.
 
@@ -22,7 +25,6 @@
 - Added requestResponse and issues methods to *SiteMapNode*.
 
 ## v2024.7
-
 - Added JSON parsing / manipulation support with *JsonUtils* and *JsonNode*.
 - Added ability to control redirection behavior when issuing HTTP requests using *RedirectionMode* and *RequestOptions*.
 - Added utility methods to *HttpRequest* and *HttpResponse* which add, update or remove multiple headers.

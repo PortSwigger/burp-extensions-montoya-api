@@ -21,6 +21,7 @@ import burp.api.montoya.ui.editor.extension.WebSocketMessageEditorProvider;
 import burp.api.montoya.ui.hotkey.HotKeyContext;
 import burp.api.montoya.ui.hotkey.HotKeyHandler;
 import burp.api.montoya.ui.menu.MenuBar;
+import burp.api.montoya.ui.settings.SettingsPanel;
 import burp.api.montoya.ui.swing.SwingUtils;
 
 import java.awt.Component;
@@ -95,6 +96,15 @@ public interface UserInterface
      * @return A {@link Registration} of the Hot Key handler.
      */
     Registration registerHotKeyHandler(HotKeyContext context, String hotKey, HotKeyHandler handler);
+
+    /**
+     * This method can be used to register a settings panel within Burp's Settings dialog.
+     *
+     * @param settingsPanel the settings panel to register
+     *
+     * @return A {@link Registration} of the settings panel.
+     */
+    Registration registerSettingsPanel(SettingsPanel settingsPanel);
 
     /**
      * Create a new instance of Burp's plain text editor, for the extension to use in its own UI.

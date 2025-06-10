@@ -14,7 +14,7 @@ import java.awt.Component;
 import java.util.Optional;
 
 /**
- * Provides the shared behaviour between the different editor types.
+ * Provides the shared behavior between the different editor types.
  */
 public interface Editor
 {

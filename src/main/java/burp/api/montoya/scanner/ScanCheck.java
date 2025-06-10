@@ -18,7 +18,10 @@ import burp.api.montoya.scanner.audit.issues.AuditIssue;
  * check. When performing an audit, Burp will ask the check to perform an
  * active or passive audit on the base request, and report any audit issues
  * that are identified.
+ * @deprecated
+ * New scan checks should instead implement {@link burp.api.montoya.scanner.scancheck.ActiveScanCheck} or {@link burp.api.montoya.scanner.scancheck.PassiveScanCheck}.
  */
+@Deprecated
 public interface ScanCheck
 {
     /**
@@ -68,13 +71,13 @@ public interface ScanCheck
      * the consolidation process will simply be a matter of comparing these
      * features for the two issues.
      *
-     * @param newIssue      An {@link AuditIssue} at the same URL path that has been
-     *                      newly reported by this Scan check.
      * @param existingIssue An {@link AuditIssue} that was previously reported
      *                      by this Scan check.
+     * @param newIssue      An {@link AuditIssue} at the same URL path that has been
+     *                      newly reported by this Scan check.
      *
      * @return A {@link ConsolidationAction} to determine which issue(s) should
      * be reported in the main Scanner results.
      */
-    ConsolidationAction consolidateIssues(AuditIssue newIssue, AuditIssue existingIssue);
+    ConsolidationAction consolidateIssues(AuditIssue existingIssue, AuditIssue newIssue);
 }

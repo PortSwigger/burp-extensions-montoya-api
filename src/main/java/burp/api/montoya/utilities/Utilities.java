@@ -9,9 +9,10 @@
 package burp.api.montoya.utilities;
 
 import burp.api.montoya.utilities.json.JsonUtils;
+import burp.api.montoya.utilities.shell.ShellUtils;
 
 /**
- * This interface gives you access to other interfaces that have various data conversion and querying features.
+ * This interface gives you access to other interfaces that have various data conversion, querying and miscellaneous features.
  */
 public interface Utilities
 {
@@ -64,4 +65,9 @@ public interface Utilities
      * @return an instance of {@link JsonUtils}
      */
     JsonUtils jsonUtils();
+
+    /**
+     * @return an instance of {@link ShellUtils}
+     */
+    ShellUtils shellUtils();
 }

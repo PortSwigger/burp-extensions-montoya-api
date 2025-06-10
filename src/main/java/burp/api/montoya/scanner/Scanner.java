@@ -14,6 +14,9 @@ import burp.api.montoya.scanner.audit.AuditIssueHandler;
 import burp.api.montoya.scanner.audit.insertionpoint.AuditInsertionPointProvider;
 import burp.api.montoya.scanner.audit.issues.AuditIssue;
 import burp.api.montoya.scanner.bchecks.BChecks;
+import burp.api.montoya.scanner.scancheck.ActiveScanCheck;
+import burp.api.montoya.scanner.scancheck.PassiveScanCheck;
+import burp.api.montoya.scanner.scancheck.ScanCheckType;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -23,6 +26,33 @@ import java.util.List;
  */
 public interface Scanner
 {
+    /**
+     * Register a custom active scan check.
+     * During scanning, Burp will invoke this check
+     * on the base request, and report any identified issues.
+     *
+     * @param activeScanCheck An object created by the extension that implements the {@link ActiveScanCheck} interface.
+     * @param scanCheckType A {@link ScanCheckType} object. This specifies the point a scan check is invoked by the scanner.
+     *
+     * @return The {@link Registration} for the check.
+     */
+
+    Registration registerActiveScanCheck(ActiveScanCheck activeScanCheck, ScanCheckType scanCheckType);
+
+    /**
+     * Register a custom passive scan check.
+     * During scanning, Burp will invoke this check
+     * on the base request, and report any identified issues.
+     *
+     * @param passiveScanCheck An object created by the extension that implements the {@link PassiveScanCheck} interface.
+     * @param scanCheckType   A {@link ScanCheckType} object. This specifies the point a scan check is invoked by the scanner.
+     *
+     * @return The {@link Registration} for the check.
+     *
+     * @throws IllegalArgumentException if the specified {@link ScanCheckType} is not applicable to passive scan checks (See {@link ScanCheckType}).
+     */
+    Registration registerPassiveScanCheck(PassiveScanCheck passiveScanCheck, ScanCheckType scanCheckType);
+
     /**
      * Register a handler which will be notified of new
      * audit issues that are reported by the Scanner tool. Extensions can
@@ -40,12 +70,15 @@ public interface Scanner
      * Register a custom Scanner check. When performing
      * scanning, Burp will ask the check to perform active or passive scanning
      * on the base request, and report any Scanner issues that are identified.
+     * @deprecated
+     * This method has been superseded by {@link Scanner#registerActiveScanCheck(ActiveScanCheck, ScanCheckType)} and {@link Scanner#registerPassiveScanCheck(PassiveScanCheck, ScanCheckType)}.
      *
      * @param scanCheck An object created by the extension that implements the
      *                  {@link ScanCheck} interface.
      *
      * @return The {@link Registration} for the check.
      */
+    @Deprecated
     Registration registerScanCheck(ScanCheck scanCheck);
 
     /**

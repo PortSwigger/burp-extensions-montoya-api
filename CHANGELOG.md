@@ -1,5 +1,10 @@
 # Changelog
 
+## v2025.6
+- Added ability to register scan checks of different types, such as active per host.
+- Added *SettingsPanelBuilder* to create settings panels.
+- Added *ShellUtils* to simplify external process execution.
+
 ## v2025.5
 - Added ability to register a custom settings panel.
 

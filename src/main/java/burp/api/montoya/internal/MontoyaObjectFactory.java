@@ -58,6 +58,8 @@ import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.ui.menu.BasicMenuItem;
 import burp.api.montoya.ui.menu.Menu;
+import burp.api.montoya.ui.settings.SettingsPanelBuilder;
+import burp.api.montoya.ui.settings.SettingsPanelSetting;
 import burp.api.montoya.utilities.json.JsonArrayNode;
 import burp.api.montoya.utilities.json.JsonBooleanNode;
 import burp.api.montoya.utilities.json.JsonNode;
@@ -65,6 +67,7 @@ import burp.api.montoya.utilities.json.JsonNullNode;
 import burp.api.montoya.utilities.json.JsonNumberNode;
 import burp.api.montoya.utilities.json.JsonObjectNode;
 import burp.api.montoya.utilities.json.JsonStringNode;
+import burp.api.montoya.utilities.shell.ExecuteOptions;
 import burp.api.montoya.websocket.BinaryMessageAction;
 import burp.api.montoya.websocket.MessageAction;
 import burp.api.montoya.websocket.TextMessageAction;
@@ -365,4 +368,24 @@ public interface MontoyaObjectFactory
     Message userMessage(String content);
 
     Message assistantMessage(String content);
+
+    SettingsPanelBuilder settingsPanel();
+
+    SettingsPanelSetting integerSetting(String name);
+
+    SettingsPanelSetting integerSetting(String name, int defaultValue);
+
+    SettingsPanelSetting booleanSetting(String name);
+
+    SettingsPanelSetting booleanSetting(String name, boolean defaultValue);
+
+    SettingsPanelSetting stringSetting(String name);
+
+    SettingsPanelSetting stringSetting(String name, String defaultValue);
+
+    SettingsPanelSetting listSetting(String name, String... values);
+
+    SettingsPanelSetting listSetting(String name, List<String> values, String defaultValue);
+
+    ExecuteOptions executeOptions();
 }

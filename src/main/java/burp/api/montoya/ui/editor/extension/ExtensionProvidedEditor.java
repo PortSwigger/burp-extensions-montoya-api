@@ -14,7 +14,7 @@ import burp.api.montoya.ui.Selection;
 import java.awt.Component;
 
 /**
- * Provides the shared behaviour between the different extension provided editor types.
+ * Provides the shared behavior between the different extension provided editor types.
  */
 public interface ExtensionProvidedEditor
 {

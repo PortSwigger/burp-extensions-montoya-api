@@ -9,7 +9,7 @@
 package burp.api.montoya.ui.editor;
 
 /**
- * These options allow you to configure additional behaviour to {@link Editor} implementations.
+ * These options allow you to configure additional behavior to {@link Editor} implementations.
  */
 public enum EditorOptions
 {

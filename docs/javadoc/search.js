@@ -1,5 +1,0 @@
-
-
-getURLPrefix = function(ui) {
-    return '';
-};

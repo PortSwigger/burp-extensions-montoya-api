@@ -32,6 +32,7 @@ burp.api.montoya.scanner.audit
 burp.api.montoya.scanner.audit.insertionpoint
 burp.api.montoya.scanner.audit.issues
 burp.api.montoya.scanner.bchecks
+burp.api.montoya.scanner.scancheck
 burp.api.montoya.scope
 burp.api.montoya.sitemap
 burp.api.montoya.ui
@@ -44,5 +45,6 @@ burp.api.montoya.ui.settings
 burp.api.montoya.ui.swing
 burp.api.montoya.utilities
 burp.api.montoya.utilities.json
+burp.api.montoya.utilities.shell
 burp.api.montoya.websocket
 burp.api.montoya.websocket.extension

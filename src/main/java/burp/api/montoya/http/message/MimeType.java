@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message;
 
 /**
- * MIME types that are recognised by Burp.
+ * MIME types that are recognized by Burp.
  */
 public enum MimeType
 {
@@ -24,6 +24,7 @@ public enum MimeType
     RTF("RTF"),
     XML("XML"),
     YAML("YAML"),
+    SSE("server-sent events"),
     IMAGE_UNKNOWN("an unknown image type"),
     IMAGE_JPEG("a JPEG image"),
     IMAGE_GIF("a GIF image"),

@@ -52,6 +52,12 @@ public interface HttpResponseEditor extends Editor
     int caretPosition();
 
     /**
+     * @param position The index to set the caret position to.
+     */
+    @Override
+    void setCaretPosition(int position);
+
+    /**
      * This will return {@link Optional#empty()} if the user has not made a selection.
      *
      * @return An {@link Optional} containing the users current selection in the editor.

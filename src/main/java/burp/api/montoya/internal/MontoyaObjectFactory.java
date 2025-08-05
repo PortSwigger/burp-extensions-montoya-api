@@ -87,6 +87,8 @@ public interface MontoyaObjectFactory
 
     HttpHeader httpHeader(String header);
 
+    HttpHeader httpHeader(byte[] name, byte[] value);
+
     HttpParameter parameter(String name, String value, HttpParameterType type);
 
     HttpRequest httpRequest();

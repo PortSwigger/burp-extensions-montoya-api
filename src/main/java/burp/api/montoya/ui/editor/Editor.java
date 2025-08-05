@@ -31,9 +31,16 @@ public interface Editor
     boolean isModified();
 
     /**
-     * @return The index of the position for the carat within the current message editor.
+     * @return The index of the caret position within the current message editor.
      */
     int caretPosition();
+
+    /**
+     * Set the position of the caret within the current message editor.
+     *
+     * @param position The index to set the caret position to.
+     */
+    void setCaretPosition(int position);
 
     /**
      * This will return {@link Optional#empty()} if the user has not made a selection.

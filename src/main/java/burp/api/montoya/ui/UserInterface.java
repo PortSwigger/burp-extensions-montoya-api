@@ -28,8 +28,8 @@ import java.awt.Component;
 import java.awt.Font;
 
 /**
- * This interface gives you access to various user interface related features.
- * Such as registering your own User Interface providers, creating instances of Burps various editors
+ * This interface gives you access to various user-interface-related features.
+ * Such as registering your own User Interface providers, creating instances of Burp's various editors
  * and applying themes to custom components.
  */
 public interface UserInterface
@@ -90,7 +90,7 @@ public interface UserInterface
      * Hotkeys are defined in the same format as within Burp's Settings.
      *
      * @param context context
-     * @param hotKey hotkey
+     * @param hotKey  hotkey
      * @param handler the handler to register
      *
      * @return A {@link Registration} of the Hot Key handler.
@@ -143,6 +143,12 @@ public interface UserInterface
     HttpResponseEditor createHttpResponseEditor(EditorOptions... options);
 
     /**
+     * Open Burp's Settings dialog.
+     * If a custom {@link SettingsPanel} has been registered, it is selected automatically.
+     */
+    void openSettingsWindow();
+
+    /**
      * Customize UI components in line with Burp's UI style, including font size, colors, table line spacing, etc.
      * The action is performed recursively on any child components of the passed-in component.
      *
@@ -165,7 +171,7 @@ public interface UserInterface
     Font currentEditorFont();
 
     /**
-     * Access Burp's font size. 
+     * Access Burp's font size.
      *
      * @return The current {@link java.awt.Font}, as specified in the <strong>Settings</strong> dialog under the <strong>Appearance</strong> setting.
      */

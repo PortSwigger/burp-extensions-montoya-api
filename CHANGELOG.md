@@ -1,5 +1,10 @@
 # Changelog
 
+## v2025.8
+- Added ability to open Burp's Settings window.
+- Added ability to create *HttpHeader* using byte[].
+- Added ability to set caret position in Editors.
+
 ## v2025.7
 - Added ability to retrieve Organizer entries.
 

@@ -45,6 +45,19 @@ public interface HttpHeader
     }
 
     /**
+     * Create a new instance of {@code HttpHeader} from name and value.
+     *
+     * @param name  The name of the header.
+     * @param value The value of the header.
+     *
+     * @return A new {@code HttpHeader} instance.
+     */
+    static HttpHeader httpHeader(byte[] name, byte[] value)
+    {
+        return FACTORY.httpHeader(name, value);
+    }
+
+    /**
      * Create a new instance of HttpHeader from a {@code String} header representation.
      * It will be parsed according to the HTTP/1.1 specification for headers.
      *

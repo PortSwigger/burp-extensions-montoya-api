@@ -45,6 +45,7 @@ burp.api.montoya.ui.settings
 burp.api.montoya.ui.swing
 burp.api.montoya.utilities
 burp.api.montoya.utilities.json
+burp.api.montoya.utilities.rank
 burp.api.montoya.utilities.shell
 burp.api.montoya.websocket
 burp.api.montoya.websocket.extension

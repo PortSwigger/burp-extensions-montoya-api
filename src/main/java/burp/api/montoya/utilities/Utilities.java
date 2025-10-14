@@ -9,6 +9,7 @@
 package burp.api.montoya.utilities;
 
 import burp.api.montoya.utilities.json.JsonUtils;
+import burp.api.montoya.utilities.rank.RankingUtils;
 import burp.api.montoya.utilities.shell.ShellUtils;
 
 /**
@@ -70,4 +71,9 @@ public interface Utilities
      * @return an instance of {@link ShellUtils}
      */
     ShellUtils shellUtils();
+
+    /**
+     * @return an instance of {@link RankingUtils}
+     */
+    RankingUtils rankingUtils();
 }

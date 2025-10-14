@@ -71,6 +71,13 @@ public interface ProxyWebSocketMessage extends WebSocketMessage
     int listenerPort();
 
     /**
+     * Returns the ID of this message within the WebSocket history.
+     *
+     * @return the message ID
+     */
+    int id();
+
+    /**
      * Searches the data in the web socket message for the specified search term.
      *
      * @param searchTerm    The value to be searched for.

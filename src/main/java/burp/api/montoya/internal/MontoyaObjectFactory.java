@@ -377,17 +377,29 @@ public interface MontoyaObjectFactory
 
     SettingsPanelSetting integerSetting(String name, int defaultValue);
 
+    SettingsPanelSetting integerSetting(String description, String name);
+
+    SettingsPanelSetting integerSetting(String description, String name, int defaultValue);
+
     SettingsPanelSetting booleanSetting(String name);
 
     SettingsPanelSetting booleanSetting(String name, boolean defaultValue);
+
+    SettingsPanelSetting booleanSetting(String description, String name);
+
+    SettingsPanelSetting booleanSetting(String description, String name, boolean defaultValue);
 
     SettingsPanelSetting stringSetting(String name);
 
     SettingsPanelSetting stringSetting(String name, String defaultValue);
 
+    SettingsPanelSetting stringSetting(String description, String name, String defaultValue);
+
     SettingsPanelSetting listSetting(String name, String... values);
 
     SettingsPanelSetting listSetting(String name, List<String> values, String defaultValue);
+
+    SettingsPanelSetting listSetting(String description, String name, List<String> values, String defaultValue);
 
     ExecuteOptions executeOptions();
 }

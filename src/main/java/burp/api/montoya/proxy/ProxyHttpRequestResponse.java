@@ -167,6 +167,13 @@ public interface ProxyHttpRequestResponse
     int listenerPort();
 
     /**
+     * Returns the ID of this request within the HTTP history.
+     *
+     * @return the request ID
+     */
+    int id();
+
+    /**
      * Obtain the MIME type of the response or request, as determined by Burp Suite.
      * If there is no response the mime type will be determined from the request url.
      *

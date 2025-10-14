@@ -1,5 +1,11 @@
 # Changelog
 
+## v2025.10
+- Added *RankingUtils* which can be used to rank a collection of *HttpRequestResponse* objects.
+- Added optional description to *SettingsPanelSetting*.
+- Added ability to retrieve ID from *ProxyHttpRequestResponse* and *ProxyWebSocketMessage*.
+- Added support for *DEFLATE* compression within *CompressionUtils*. 
+
 ## v2025.8
 - Added ability to open Burp's Settings window.
 - Added ability to create *HttpHeader* using byte[].

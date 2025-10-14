@@ -8,6 +8,11 @@
 
 package burp.api.montoya.sitemap;
 
+import burp.api.montoya.http.message.HttpRequestResponse;
+import burp.api.montoya.scanner.audit.issues.AuditIssue;
+
+import java.util.List;
+
 /**
  * This interface is used to represent items in the Burp's site map.
  */
@@ -19,4 +24,18 @@ public interface SiteMapNode
      * @return The URL of the node.
      */
     String url();
+
+    /**
+     * Retrieve the {@link HttpRequestResponse} associated with the site map's node.
+     *
+     * @return The {@link HttpRequestResponse} for the node.
+     */
+    HttpRequestResponse requestResponse();
+
+    /**
+     * Retrieve the list of {@link AuditIssue} associated with the site map's node.
+     *
+     * @return A List containing any audit issues for the node.
+     */
+    List<AuditIssue> issues();
 }

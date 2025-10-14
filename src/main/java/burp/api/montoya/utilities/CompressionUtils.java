@@ -19,7 +19,7 @@ public interface CompressionUtils
      * Compress data using the specified compression type.
      *
      * @param data data to be compressed
-     * @param type {@link CompressionType} to use. Only GZIP is supported
+     * @param type {@link CompressionType} to use. GZIP and DEFLATE are supported
      *
      * @return compressed data
      */

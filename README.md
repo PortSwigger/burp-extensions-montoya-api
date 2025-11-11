@@ -14,17 +14,17 @@ Available on [Maven Central](https://search.maven.org/search?q=Montoya-api) and 
     <dependency>
         <groupId>net.portswigger.burp.extensions</groupId>
         <artifactId>montoya-api</artifactId>
-        <version>2025.10</version>
+        <version>2025.11</version>
     </dependency>
 
 <h5>Gradle</h5>
 
-    implementation 'net.portswigger.burp.extensions:montoya-api:2025.10'
+    implementation 'net.portswigger.burp.extensions:montoya-api:2025.11'
 
 Getting Started
 --------
 
-Create a class that implements [BurpExtension](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/src/main/java/burp/api/montoya/BurpExtension.java). 
+Create a class that implements [BurpExtension](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/src/main/java/burp/api/montoya/BurpExtension.java).
 The initialize method will give you an implementation of the [MontoyaApi](https://github.com/PortSwigger/burp-extensions-montoya-api/blob/main/src/main/java/burp/api/montoya/MontoyaApi.java) which can be used to interact and modify Burp suite.
 
 Documentation

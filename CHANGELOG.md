@@ -1,5 +1,8 @@
 # Changelog
 
+## v2025.11
+- Added ability to name hotkeys.
+
 ## v2025.10
 - Added *RankingUtils* which can be used to rank a collection of *HttpRequestResponse* objects.
 - Added optional description to *SettingsPanelSetting*.
@@ -9,7 +12,7 @@
 ## v2025.8
 - Added ability to open Burp's Settings window.
 - Added ability to create *HttpHeader* using byte[].
-- Added ability to set caret position in Editors.
+- Added ability to set caret position in Editors. 
 
 ## v2025.7
 - Added ability to retrieve Organizer entries.
@@ -41,7 +44,7 @@
 - Added ability to set custom response timeout using *RequestOptions*. 
 
 ## v2024.11
-- Added requestResponse and issues methods to *SiteMapNode*.
+- Added ability to retrieve issues and requests responses from *SiteMapNode*.
 
 ## v2024.7
 - Added JSON parsing / manipulation support with *JsonUtils* and *JsonNode*.

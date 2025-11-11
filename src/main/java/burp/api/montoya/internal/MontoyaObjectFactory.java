@@ -56,6 +56,7 @@ import burp.api.montoya.scanner.audit.issues.AuditIssueDefinition;
 import burp.api.montoya.scanner.audit.issues.AuditIssueSeverity;
 import burp.api.montoya.sitemap.SiteMapFilter;
 import burp.api.montoya.ui.Selection;
+import burp.api.montoya.ui.hotkey.HotKey;
 import burp.api.montoya.ui.menu.BasicMenuItem;
 import burp.api.montoya.ui.menu.Menu;
 import burp.api.montoya.ui.settings.SettingsPanelBuilder;
@@ -402,4 +403,6 @@ public interface MontoyaObjectFactory
     SettingsPanelSetting listSetting(String description, String name, List<String> values, String defaultValue);
 
     ExecuteOptions executeOptions();
+
+    HotKey hotkey(String name, String hotkey);
 }

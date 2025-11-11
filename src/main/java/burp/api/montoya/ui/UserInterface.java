@@ -18,6 +18,7 @@ import burp.api.montoya.ui.editor.WebSocketMessageEditor;
 import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
 import burp.api.montoya.ui.editor.extension.WebSocketMessageEditorProvider;
+import burp.api.montoya.ui.hotkey.HotKey;
 import burp.api.montoya.ui.hotkey.HotKeyContext;
 import burp.api.montoya.ui.hotkey.HotKeyHandler;
 import burp.api.montoya.ui.menu.MenuBar;
@@ -92,10 +93,23 @@ public interface UserInterface
      * @param context context
      * @param hotKey  hotkey
      * @param handler the handler to register
+     * @deprecated It is recommended to use {@link UserInterface#registerHotKeyHandler(HotKeyContext, HotKey, HotKeyHandler)} instead.
      *
      * @return A {@link Registration} of the Hot Key handler.
      */
+    @Deprecated
     Registration registerHotKeyHandler(HotKeyContext context, String hotKey, HotKeyHandler handler);
+
+    /**
+     * This method can be used to register hotkey handlers.
+     *
+     * @param context context
+     * @param hotKey  hotkey
+     * @param handler the handler to register
+     *
+     * @return A {@link Registration} of the Hot Key handler.
+     */
+    Registration registerHotKeyHandler(HotKeyContext context, HotKey hotKey, HotKeyHandler handler);
 
     /**
      * This method can be used to register a settings panel within Burp's Settings dialog.

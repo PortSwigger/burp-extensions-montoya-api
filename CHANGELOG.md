@@ -1,5 +1,8 @@
 # Changelog
 
+## v2025.12
+- Added ability to register hotkeys for tables.
+
 ## v2025.11
 - Added ability to name hotkeys.
 

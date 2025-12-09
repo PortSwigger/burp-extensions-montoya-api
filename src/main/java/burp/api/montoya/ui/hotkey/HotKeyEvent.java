@@ -9,10 +9,12 @@
 package burp.api.montoya.ui.hotkey;
 
 import burp.api.montoya.core.ToolSource;
+import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.ui.contextmenu.ComponentEvent;
 import burp.api.montoya.ui.contextmenu.InvocationSource;
 import burp.api.montoya.ui.contextmenu.MessageEditorHttpRequestResponse;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -26,4 +28,14 @@ public interface HotKeyEvent extends ComponentEvent, ToolSource, InvocationSourc
      * @return an {@link Optional} describing the currently selected request response with selection metadata.
      */
     Optional<MessageEditorHttpRequestResponse> messageEditorRequestResponse();
+
+    /**
+     * This method can be used to retrieve details of the currently selected HTTP request/response pairs
+     * when the hot key was invoked. This will return an empty list if no selection has been made.
+     *
+     * @return A list of request responses that have been selected.
+     */
+    List<HttpRequestResponse> selectedRequestResponses();
+
+
 }

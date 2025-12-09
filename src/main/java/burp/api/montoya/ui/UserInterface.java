@@ -102,6 +102,17 @@ public interface UserInterface
 
     /**
      * This method can be used to register hotkey handlers.
+     * When a hotkey is registered without a specific context then it will fire for any supported context.
+     *
+     * @param hotKey  hotkey
+     * @param handler the handler to register
+     *
+     * @return A {@link Registration} of the Hot Key handler.
+     */
+    Registration registerHotKeyHandler(HotKey hotKey, HotKeyHandler handler);
+
+    /**
+     * This method can be used to register hotkey handlers.
      *
      * @param context context
      * @param hotKey  hotkey

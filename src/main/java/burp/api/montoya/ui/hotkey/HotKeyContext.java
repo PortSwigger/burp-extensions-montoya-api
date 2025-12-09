@@ -10,5 +10,9 @@ package burp.api.montoya.ui.hotkey;
 
 public enum HotKeyContext
 {
-    HTTP_MESSAGE_EDITOR
+    HTTP_MESSAGE_EDITOR,
+    PROXY_HTTP_HISTORY,
+    INTRUDER_ATTACK_RESULTS,
+    ORGANIZER_ENTRIES,
+    SITE_MAP_CONTENTS_TABLE
 }

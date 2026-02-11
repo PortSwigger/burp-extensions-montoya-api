@@ -9,7 +9,7 @@
 package burp.api.montoya.http.message.responses.analysis;
 
 /**
- * Otions that Burp can use to query attributes of HTTP responses.
+ * Options that Burp can use to query attributes of HTTP responses.
  */
 public enum AttributeType
 {
@@ -43,5 +43,7 @@ public enum AttributeType
     INPUT_IMAGE_LABELS,
     CONTENT_LOCATION,
     LOCATION,
-    NON_HIDDEN_FORM_INPUT_TYPES
+    NON_HIDDEN_FORM_INPUT_TYPES,
+    COLON_COUNT,
+    HEADER_NAMES
 }

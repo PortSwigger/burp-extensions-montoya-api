@@ -33,7 +33,7 @@ public interface HttpRequestResponse
     HttpRequest request();
 
     /**
-     * @return The HTTP response message.
+     * @return The HTTP response message. May be null if the request hasn't been sent, or if a connection to the server cannot be established.
      */
     HttpResponse response();
 

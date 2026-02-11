@@ -1,5 +1,9 @@
 # Changelog
 
+## v2026.2
+- Added ability to URL encode key characters only to Unicode using *URLUtils*.
+- Added additional response fingerprint attributes to *AttributeType*.
+
 ## v2025.12
 - Added ability to register hotkeys for tables.
 

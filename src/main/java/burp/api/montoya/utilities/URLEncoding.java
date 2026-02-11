@@ -21,6 +21,11 @@ public enum URLEncoding
     KEY_CHARACTERS,
 
     /**
+     * Encode key characters only to Unicode.
+     */
+    KEY_CHARACTERS_UNICODE,
+
+    /**
      * Encode all characters.
      */
     ALL_CHARACTERS,

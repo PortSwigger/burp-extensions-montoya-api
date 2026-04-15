@@ -1,5 +1,9 @@
 # Changelog
 
+## v2026.4
+- Added ability to suppress the issuing of the request and provide a spoofed *HttpResponse* using *HttpHandler*.
+- Added ability to drop requests using *HttpHandler*.
+
 ## v2026.2
 - Added ability to URL encode key characters only to Unicode using *URLUtils*.
 - Added additional response fingerprint attributes to *AttributeType*.

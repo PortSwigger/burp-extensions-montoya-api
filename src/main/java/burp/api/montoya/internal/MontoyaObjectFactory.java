@@ -19,6 +19,7 @@ import burp.api.montoya.core.Marker;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.RequestOptions;
+import burp.api.montoya.http.handler.RequestAction;
 import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
 import burp.api.montoya.http.message.HttpHeader;
@@ -327,6 +328,8 @@ public interface MontoyaObjectFactory
     ResponseReceivedAction responseResult(HttpResponse response);
 
     RequestToBeSentAction requestResult(HttpRequest request);
+
+    RequestToBeSentAction requestResult(RequestAction action, HttpRequest request, HttpResponse response, Annotations annotations);
 
     HighlightColor highlightColor(String color);
 

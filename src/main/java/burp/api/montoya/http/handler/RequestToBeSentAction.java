@@ -10,7 +10,10 @@ package burp.api.montoya.http.handler;
 
 import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.message.requests.HttpRequest;
+import burp.api.montoya.http.message.responses.HttpResponse;
 
+import static burp.api.montoya.http.handler.RequestAction.DROP;
+import static burp.api.montoya.http.handler.RequestAction.SPOOF_RESPONSE;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 /**
@@ -37,11 +40,11 @@ public interface RequestToBeSentAction
     Annotations annotations();
 
     /**
-     * Create a new instance of {@code RequestResult}. Annotations will not be modified.
+     * Create a new instance of {@code RequestToBeSentAction}. Annotations will not be modified.
      *
      * @param request An HTTP request.
      *
-     * @return A new {@code RequestHandlerResult} instance.
+     * @return A new {@code RequestToBeSentAction} instance.
      */
     static RequestToBeSentAction continueWith(HttpRequest request)
     {
@@ -49,15 +52,62 @@ public interface RequestToBeSentAction
     }
 
     /**
-     * Create a new instance of {@code RequestResult}.
+     * Create a new instance of {@code RequestToBeSentAction}.
      *
      * @param request     An HTTP request.
      * @param annotations modified annotations.
      *
-     * @return A new {@code RequestHandlerResult} instance.
+     * @return A new {@code RequestToBeSentAction} instance.
      */
     static RequestToBeSentAction continueWith(HttpRequest request, Annotations annotations)
     {
         return FACTORY.requestResult(request, annotations);
+    }
+
+    /**
+     * Create a new instance of {@code RequestToBeSentAction} which will cause the HTTP request to be dropped. Annotations will not be modified.
+     *
+     * @return A new {@code RequestToBeSentAction} instance.
+     */
+    static RequestToBeSentAction drop()
+    {
+        return FACTORY.requestResult(DROP, null, null, null);
+    }
+
+    /**
+     * Create a new instance of {@code RequestToBeSentAction} which will cause the HTTP request to be dropped.
+     *
+     * @param annotations modified annotations.
+     *
+     * @return A new {@code RequestToBeSentAction} instance.
+     */
+    static RequestToBeSentAction drop(Annotations annotations)
+    {
+        return FACTORY.requestResult(DROP, null, null, annotations);
+    }
+
+    /**
+     * Create a new instance of {@code RequestToBeSentAction} which will suppress the HTTP request and returned the spoofed HTTP response. Annotations will not be modified.
+     *
+     * @param httpResponse spoof response.
+     *
+     * @return A new {@code RequestToBeSentAction} instance.
+     */
+    static RequestToBeSentAction spoof(HttpResponse httpResponse)
+    {
+        return FACTORY.requestResult(SPOOF_RESPONSE, null, httpResponse, null);
+    }
+
+    /**
+     * Create a new instance of {@code RequestToBeSentAction} which will suppress the HTTP request and returned the spoofed HTTP response.
+     *
+     * @param httpResponse spoof response.
+     * @param annotations  modified annotations.
+     *
+     * @return A new {@code RequestToBeSentAction} instance.
+     */
+    static RequestToBeSentAction spoof(HttpResponse httpResponse, Annotations annotations)
+    {
+        return FACTORY.requestResult(SPOOF_RESPONSE, null, httpResponse, annotations);
     }
 }

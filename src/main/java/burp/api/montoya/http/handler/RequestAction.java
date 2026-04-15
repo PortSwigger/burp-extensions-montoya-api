@@ -9,12 +9,22 @@
 package burp.api.montoya.http.handler;
 
 /**
- * Action to be taken when intercepting HTTP requests.
+ * Action to be taken when handling outbound HTTP requests.
  */
 public enum RequestAction
 {
     /**
      * Causes Burp to send the request.
      */
-    CONTINUE
+    CONTINUE,
+
+    /**
+     * Causes Burp to drop the request.
+     */
+    DROP,
+
+    /**
+     * Causes Burp to suppress the issuing of the request use a spoofed response.
+     */
+    SPOOF_RESPONSE
 }

@@ -9,6 +9,7 @@
 package burp.api.montoya.scanner.audit.issues;
 
 import burp.api.montoya.collaborator.Interaction;
+import burp.api.montoya.core.Annotations;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.scanner.ScanCheck;
@@ -83,6 +84,35 @@ public interface AuditIssue
      * @return The {@link AuditIssueConfidence} level.
      */
     AuditIssueConfidence confidence();
+
+    /**
+     * Set (mutate) the severity level of this issue.
+     *
+     * @param severity The {@link AuditIssueSeverity} level to set on this issue.
+     */
+    default void setSeverity(AuditIssueSeverity severity)
+    {
+    }
+
+    /**
+     * Set (mutate) the confidence level of this issue.
+     *
+     * @param confidence The {@link AuditIssueConfidence} level to set on this issue.
+     */
+    default void setConfidence(AuditIssueConfidence confidence)
+    {
+    }
+
+    /**
+     * Annotations for this issue. The notes and highlight color of the returned
+     * {@link Annotations} can be mutated to update this issue in Burp's results.
+     *
+     * @return The {@link Annotations} for this issue.
+     */
+    default Annotations annotations()
+    {
+        return Annotations.annotations();
+    }
 
     /**
      * HTTP request/response messages that caused the issue to be generated.

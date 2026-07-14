@@ -1,5 +1,8 @@
 # Changelog
 
+## v2026.7
+- Added *RequestExecutionEngine* (Professional only) for sending many requests concurrently under Burp's task execution engine.
+
 ## v2026.4
 - Added ability to suppress the issuing of the request and provide a spoofed *HttpResponse* using *HttpHandler*.
 - Added ability to drop requests using *HttpHandler*.

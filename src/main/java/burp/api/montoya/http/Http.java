@@ -9,6 +9,8 @@
 package burp.api.montoya.http;
 
 import burp.api.montoya.core.Registration;
+import burp.api.montoya.http.execution.RequestEngineOptions;
+import burp.api.montoya.http.execution.RequestExecutionEngine;
 import burp.api.montoya.http.handler.HttpHandler;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
@@ -103,6 +105,26 @@ public interface Http
      * @return A list of objects that implement the {@link HttpRequestResponse} interface, and which the extension can query to obtain the details of the responses.
      */
     List<HttpRequestResponse> sendRequests(List<HttpRequest> requests, HttpMode httpMode);
+
+    /**
+     * [Professional only] Create a new {@link RequestExecutionEngine} for sending many
+     * requests under Burp's task execution engine, using default options.
+     *
+     * @return A new {@link RequestExecutionEngine} instance.
+     */
+    RequestExecutionEngine createRequestEngine();
+
+    /**
+     * [Professional only] Create a new {@link RequestExecutionEngine} for sending many
+     * requests under Burp's task execution engine.
+     *
+     * @param options The {@link RequestEngineOptions} controlling the dashboard task name; the
+     *                {@link burp.api.montoya.http.execution.ResourcePool} set on it controls
+     *                concurrency, throttling and retries.
+     *
+     * @return A new {@link RequestExecutionEngine} instance.
+     */
+    RequestExecutionEngine createRequestEngine(RequestEngineOptions options);
 
     /**
      * Create a new response keyword analyzer.

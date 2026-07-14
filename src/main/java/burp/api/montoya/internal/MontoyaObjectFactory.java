@@ -19,6 +19,9 @@ import burp.api.montoya.core.Marker;
 import burp.api.montoya.core.Range;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.RequestOptions;
+import burp.api.montoya.http.execution.RequestEngineOptions;
+import burp.api.montoya.http.execution.ResourcePool;
+import burp.api.montoya.http.execution.SourcedRequest;
 import burp.api.montoya.http.handler.RequestAction;
 import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
@@ -342,6 +345,18 @@ public interface MontoyaObjectFactory
     BasicMenuItem basicMenuItem(String caption);
 
     RequestOptions requestOptions();
+
+    RequestEngineOptions requestEngineOptions();
+
+    ResourcePool resourcePool();
+
+    ResourcePool defaultResourcePool();
+
+    ResourcePool existingResourcePool(String name);
+
+    SourcedRequest sourcedRequest(HttpRequest request);
+
+    SourcedRequest sourcedRequest(HttpRequest request, String label);
 
     JsonNode jsonNode(String json);
 

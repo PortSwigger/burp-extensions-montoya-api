@@ -44,7 +44,7 @@ public interface MontoyaApi
      * [Professional only] Access AI related functionality.
      * <p> Note that an extension must declare that it requires AI functionality via {@link BurpExtension#enhancedCapabilities()}.</p>
      *
-     * @return An implementation of the BurpSuite interface which exposes AI related functionality.
+     * @return An implementation of the Burp Suite interface which exposes AI related functionality.
      */
     Ai ai();
 

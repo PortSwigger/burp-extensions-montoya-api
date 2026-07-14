@@ -9,6 +9,7 @@ burp.api.montoya.core
 burp.api.montoya.decoder
 burp.api.montoya.extension
 burp.api.montoya.http
+burp.api.montoya.http.execution
 burp.api.montoya.http.handler
 burp.api.montoya.http.message
 burp.api.montoya.http.message.params

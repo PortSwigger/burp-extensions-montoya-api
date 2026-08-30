@@ -1,0 +1,12 @@
+Uuid: 7f8a9b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c
+ExtensionType: 1
+Name: GhostDeceptor - Web Cache Deception Suite
+RepoFolder: .
+RepoUrl: https://github.com/NeuralGh0st/GhostDeceptor.git
+ScreenVersion: 1.0.0
+SerialVersion: 1
+MinPlatformVersion: 15
+Author: Eduardo Mendoza (NeuralGhost)
+ShortDescription: Advanced on-demand Web Cache Deception auditor featuring anti-WAF jitter, directory traversal payloads, and Repeater integration.
+EntryPoint: target/wcd-auditor-1.0.0-jar-with-dependencies.jar
+BuildCommand: mvn clean package -DskipTests
